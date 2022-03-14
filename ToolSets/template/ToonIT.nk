@@ -1,0 +1,87 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Dot {
+name Dot26
+selected true
+xpos -1138
+ypos -726
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nc8eff9b0 [stack 0]
+Dot {
+name Dot28
+selected true
+xpos -1338
+ypos -726
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nc8dcf4e0 [stack 0]
+Blur {
+size 20
+name Blur5
+label "\[value size]"
+selected true
+xpos -1372
+ypos -616
+}
+Dot {
+name Dot27
+selected true
+xpos -1338
+ypos -477
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Ne8e4430 [stack 0]
+push $Nc8dcf4e0
+Dot {
+name Dot29
+selected true
+xpos -1564
+ypos -726
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2
+operation max
+bbox B
+output rgb
+name Merge1
+selected true
+xpos -1598
+ypos -481
+}
+Dot {
+name Dot30
+selected true
+xpos -1564
+ypos -333
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $Ne8e4430
+push $Nc8eff9b0
+Merge2 {
+inputs 2
+operation min
+bbox B
+output rgb
+name Merge2
+selected true
+xpos -1172
+ypos -481
+}
+Merge2 {
+inputs 2
+operation atop
+bbox B
+output rgb
+name Merge3
+selected true
+xpos -1172
+ypos -337
+}

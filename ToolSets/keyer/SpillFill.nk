@@ -1,0 +1,650 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name SpillFill
+help "A simple expression based spill corrector that is enabled to use background luminance values if plugged in. Similar to the spill suppression in IBK Gizmo.\n\nAny questions contact cameron.a.carson@gmail.com"
+knobChanged "\nn = nuke.thisNode()\nk = nuke.thisKnob()\nif k.name() == 'spillType' or k.name() == 'spillOp':\n  nuke.thisNode()\['customCol'].setVisible(nuke.thisNode()\['spillType'].value()=='Custom')\n  nuke.thisNode()\['rgbWeight'].setVisible(nuke.thisNode()\['spillOp'].value()=='Custom')\n  nuke.thisNode()\['blgrtext'].setVisible(nuke.thisNode()\['spillOp'].value()=='Custom')\n"
+tile_color 0x7aa9ffff
+selected true
+xpos -2048
+ypos -36
+addUserKnob {20 Main}
+addUserKnob {4 spillType l "Spill Type" t "Select spill type to remove" M {Green Blue Custom "" ""}}
+addUserKnob {6 outputSpill l "Output Spill" t "Check to output spillmap instead of despilling" -STARTLINE}
+addUserKnob {18 customCol l "Custom Color" t "Custom Color to despill" +HIDDEN}
+customCol {0 1 0}
+addUserKnob {6 customCol_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {4 spillOp l "Spill Operation" t "Select the type of spill operation to perform" M {Average Max "Red Limit" "Blue/Green Limit" Custom "" ""}}
+addUserKnob {7 rgbWeight l "Red Weight" t "Adjust weight to favor one color or other." +HIDDEN R -1 1}
+addUserKnob {26 blgrtext l "Blue/Green Weight" -STARTLINE +HIDDEN T " "}
+addUserKnob {26 unnamed_1 l "" +STARTLINE T " "}
+addUserKnob {7 hueRot l "Hue Rotation" R -180 180}
+addUserKnob {7 opMult l "Operation Multiplier" t "This limiting channels are multiplied by this value." R 0 2}
+opMult 1
+addUserKnob {26 ""}
+addUserKnob {4 fillMath l "Fill Math" t "Math used to calculate fill luminence" M {"Rec 709" "Ccir 601" Average Maximum}}
+addUserKnob {18 fillColor l "Fill Color" t "Fill is multiplied by this" R 0 4}
+fillColor 1
+addUserKnob {6 fillColor_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {26 ""}
+addUserKnob {7 bgBlur l "BG PreBlur" t "Adjust to level of BG Blur Desired." R 0 50}
+bgBlur 20
+addUserKnob {20 fillGrade_1 l "Fill Grade"}
+addUserKnob {41 blackpoint T SpillGrade.blackpoint}
+addUserKnob {41 whitepoint T SpillGrade.whitepoint}
+addUserKnob {41 black l lift T SpillGrade.black}
+addUserKnob {41 white l gain T SpillGrade.white}
+addUserKnob {41 multiply T SpillGrade.multiply}
+addUserKnob {41 add l offset T SpillGrade.add}
+addUserKnob {41 gamma T SpillGrade.gamma}
+}
+Input {
+inputs 0
+name BG
+xpos 280
+ypos -670
+number 1
+}
+Group {
+name HueRotate2
+xpos 280
+ypos -550
+disable {{"(parent.spillType != 2 & parent.hueRot == 0)"}}
+addUserKnob {20 main}
+addUserKnob {41 inHue l "From Hue" T hueControl.inHue}
+addUserKnob {41 outHue l "To Hue" T hueControl.outHue}
+addUserKnob {26 spacer1 l "" +STARTLINE T " "}
+addUserKnob {41 rotation l Rotation T hueControl.rotation}
+addUserKnob {26 spacer2 l "" +STARTLINE T " "}
+addUserKnob {41 invert T hueControl.invert}
+}
+Input {
+inputs 0
+name Input1
+xpos 440
+ypos -610
+}
+Expression {
+temp_name0 temp
+temp_expr0 (r+g+b)*(1-hueControl.cosH)/3
+temp_name1 root3
+temp_expr1 sqrt(3)
+expr0 "temp + r*hueControl.cosH + (-g/root3+b/root3)*hueControl.sinH"
+expr1 "temp + g*hueControl.cosH + (r/root3-b/root3)*hueControl.sinH"
+expr2 "temp + b*hueControl.cosH + (-r/root3+g/root3)*hueControl.sinH"
+name HueRotateExp
+xpos 440
+ypos -550
+}
+Output {
+name Output1
+xpos 440
+ypos -490
+}
+NoOp {
+inputs 0
+name hueControl
+xpos 600
+ypos -610
+addUserKnob {20 main}
+addUserKnob {18 inHue l "From Hue"}
+inHue {{parent.parent.customCol.main} {parent.parent.customCol.main} {parent.parent.customCol.main}}
+addUserKnob {6 inHue_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inHue_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inHue_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inHue_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 outHue l "To Hue"}
+outHue {0 1 0}
+addUserKnob {6 outHue_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outHue_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outHue_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outHue_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {7 rotation l Rotation R -180 180}
+rotation {{parent.parent.hueRot.main}}
+addUserKnob {6 invert +STARTLINE}
+addUserKnob {18 inNorm}
+inNorm {{inHue.r-(inHue.r+inHue.g+inHue.b)/3} {inHue.g-(inHue.r+inHue.g+inHue.b)/3} {inHue.b-(inHue.r+inHue.g+inHue.b)/3}}
+addUserKnob {6 inNorm_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inNorm_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inNorm_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inNorm_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 outNorm}
+outNorm {{outHue.r-(outHue.r+outHue.g+outHue.b)/3} {outHue.g-(outHue.r+outHue.g+outHue.b)/3} {outHue.b-(outHue.r+outHue.g+outHue.b)/3}}
+addUserKnob {6 outNorm_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outNorm_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outNorm_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outNorm_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 crs}
+crs {{inNorm.g*outNorm.b-inNorm.b*outNorm.g} {inNorm.r*outNorm.b-inNorm.b*outNorm.r} {inNorm.r*outNorm.g-inNorm.g*outNorm.r}}
+addUserKnob {6 crs_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 crs_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 crs_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 crs_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {16 ang}
+ang {{acos((inNorm.r*outNorm.r+inNorm.g*outNorm.g+inNorm.b*outNorm.b)/sqrt((inNorm.r*inNorm.r+inNorm.g*inNorm.g+inNorm.b*inNorm.b)*(outNorm.r*outNorm.r+outNorm.g*outNorm.g+outNorm.b*outNorm.b)))}}
+addUserKnob {16 cAng}
+cAng {{"crs.r+crs.g+crs.b > 0 ? -ang : ang"}}
+addUserKnob {16 finalAngle}
+finalAngle {{"invert ? (cAng*180/PI)-rotation : rotation-(cAng*180/PI)"}}
+addUserKnob {16 cosH}
+cosH {{cos(finalAngle*PI/180)}}
+addUserKnob {16 sinH}
+sinH {{sin(finalAngle*PI/180)}}
+}
+end_group
+Blur {
+size {{bgBlur}}
+name Blur1
+xpos 280
+ypos -136
+}
+Input {
+inputs 0
+name FG
+xpos -200
+ypos -670
+}
+Group {
+name HueRotate1
+xpos -200
+ypos -550
+disable {{"(parent.spillType != 2 & parent.hueRot == 0)"}}
+addUserKnob {20 main}
+addUserKnob {41 inHue l "From Hue" T hueControl.inHue}
+addUserKnob {41 outHue l "To Hue" T hueControl.outHue}
+addUserKnob {26 spacer1 l "" +STARTLINE T " "}
+addUserKnob {41 rotation l Rotation T hueControl.rotation}
+addUserKnob {26 spacer2 l "" +STARTLINE T " "}
+addUserKnob {41 invert T hueControl.invert}
+}
+Input {
+inputs 0
+name Input1
+xpos 440
+ypos -610
+}
+Expression {
+temp_name0 temp
+temp_expr0 (r+g+b)*(1-hueControl.cosH)/3
+temp_name1 root3
+temp_expr1 sqrt(3)
+expr0 "temp + r*hueControl.cosH + (-g/root3+b/root3)*hueControl.sinH"
+expr1 "temp + g*hueControl.cosH + (r/root3-b/root3)*hueControl.sinH"
+expr2 "temp + b*hueControl.cosH + (-r/root3+g/root3)*hueControl.sinH"
+name HueRotateExp
+xpos 440
+ypos -550
+}
+Output {
+name Output1
+xpos 440
+ypos -490
+}
+NoOp {
+inputs 0
+name hueControl
+xpos 600
+ypos -610
+addUserKnob {20 main}
+addUserKnob {18 inHue l "From Hue"}
+inHue {{parent.parent.customCol.main} {parent.parent.customCol.main} {parent.parent.customCol.main}}
+addUserKnob {6 inHue_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inHue_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inHue_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 outHue l "To Hue"}
+outHue {0 1 0}
+addUserKnob {6 outHue_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outHue_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outHue_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {7 rotation l Rotation R -180 180}
+rotation {{parent.parent.hueRot.main}}
+addUserKnob {6 invert +STARTLINE}
+addUserKnob {18 inNorm}
+inNorm {{inHue.r-(inHue.r+inHue.g+inHue.b)/3} {inHue.g-(inHue.r+inHue.g+inHue.b)/3} {inHue.b-(inHue.r+inHue.g+inHue.b)/3}}
+addUserKnob {6 inNorm_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inNorm_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inNorm_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 outNorm}
+outNorm {{outHue.r-(outHue.r+outHue.g+outHue.b)/3} {outHue.g-(outHue.r+outHue.g+outHue.b)/3} {outHue.b-(outHue.r+outHue.g+outHue.b)/3}}
+addUserKnob {6 outNorm_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outNorm_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outNorm_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 crs}
+crs {{inNorm.g*outNorm.b-inNorm.b*outNorm.g} {inNorm.r*outNorm.b-inNorm.b*outNorm.r} {inNorm.r*outNorm.g-inNorm.g*outNorm.r}}
+addUserKnob {6 crs_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 crs_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 crs_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {16 ang}
+ang {{acos((inNorm.r*outNorm.r+inNorm.g*outNorm.g+inNorm.b*outNorm.b)/sqrt((inNorm.r*inNorm.r+inNorm.g*inNorm.g+inNorm.b*inNorm.b)*(outNorm.r*outNorm.r+outNorm.g*outNorm.g+outNorm.b*outNorm.b)))}}
+addUserKnob {16 cAng}
+cAng {{"crs.r+crs.g+crs.b > 0 ? -ang : ang"}}
+addUserKnob {16 finalAngle}
+finalAngle {{"invert ? (cAng*180/PI)-rotation : rotation-(cAng*180/PI)"}}
+addUserKnob {16 cosH}
+cosH {{cos(finalAngle*PI/180)}}
+addUserKnob {16 sinH}
+sinH {{sin(finalAngle*PI/180)}}
+}
+end_group
+Dot {
+name Dot1
+xpos -166
+ypos -426
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Ndab80e70 [stack 0]
+Dot {
+name Dot3
+xpos -6
+ypos -426
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot2
+xpos -6
+ypos -126
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N1ffb5640 [stack 0]
+Dot {
+name Dot4
+xpos -6
+ypos -66
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N233d37b0 [stack 0]
+push $N1ffb5640
+push $Ndab80e70
+Expression {
+expr0 r>(g+b)/(2*opMult)?(g+b)/(2*opMult):r
+expr1 g>(b+r)/(2*opMult)?(b+r)/(2*opMult):g
+expr2 b>(r+g)/(2*opMult)?(r+g)/(2*opMult):b
+name Average_Op
+xpos -200
+ypos -370
+disable {{"spillOp != 0" x1 1}}
+}
+Expression {
+temp_name0 lm
+temp_expr0 "spillOp == 2 ? r : spillType == 0 ? b : g"
+expr0 r>lm/opMult?lm/opMult:r
+expr1 g>lm/opMult?lm/opMult:g
+expr2 b>lm/opMult?lm/opMult:b
+name Limit_Op
+xpos -200
+ypos -310
+disable {{"!(spillOp == 2 || spillOp == 3)"}}
+}
+Expression {
+temp_name0 gb
+temp_expr0 (g>b?g:b)
+temp_name1 rb
+temp_expr1 (r>b?r:b)
+temp_name2 rg
+temp_expr2 (r>g?r:g)
+expr0 r>gb/opMult?gb/opMult:r
+expr1 g>rb/opMult?rb/opMult:g
+expr2 b>rg/opMult?rg/opMult:b
+name Max_Op
+xpos -200
+ypos -250
+disable {{"spillOp != 1"}}
+}
+Expression {
+temp_name0 rw
+temp_expr0 r*(1-rgbWeight)
+temp_name1 gw
+temp_expr1 g*(1+rgbWeight)
+temp_name2 bw
+temp_expr2 b*(1+rgbWeight)
+expr0 r>(gw+bw)/(2*opMult)?(gw+bw)/(2*opMult):r
+expr1 g>(bw+rw)/(2*opMult)?(bw+rw)/(2*opMult):g
+expr2 b>(rw+gw)/(2*opMult)?(rw+gw)/(2*opMult):b
+name Custom_Op
+xpos -200
+ypos -190
+disable {{"spillOp != 4" x1 1}}
+}
+ShuffleCopy {
+inputs 2
+red red
+blue blue
+alpha alpha2
+name Copy_RedBlue
+xpos -200
+ypos -130
+disable {{"spillType == 1"}}
+}
+ShuffleCopy {
+inputs 2
+red red
+green green
+alpha alpha2
+name Copy_RedGreen
+xpos -200
+ypos -70
+disable {{"spillType != 1"}}
+}
+Dot {
+name Dot6
+xpos -166
+ypos -6
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N223c18d0 [stack 0]
+push $N233d37b0
+Merge2 {
+inputs 2
+operation from
+name Merge3
+xpos -40
+ypos -10
+}
+Dot {
+name Dot9
+xpos -6
+ypos 54
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Ndabb7fc0 [stack 0]
+Saturation {
+saturation 0
+mode {{parent.fillMath}}
+name SpillLum
+xpos -40
+ypos 170
+}
+Grade {
+black_clamp false
+name SpillGrade
+xpos -40
+ypos 230
+}
+Multiply {
+channels rgb
+value {{"parent.fillColor * (1--1) + -1"} {"parent.fillColor * (1--1) + -1"} {"parent.fillColor * (1--1) + -1"} 1}
+name FillColor
+xpos -40
+ypos 290
+}
+Dot {
+name Dot5
+xpos -6
+ypos 354
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N20ff64c0 [stack 0]
+Merge2 {
+inputs 2
+operation multiply
+name Merge2
+xpos 280
+ypos 350
+}
+Dot {
+name Dot7
+xpos 314
+ypos 474
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N20ff64c0
+Switch {
+inputs 2
+which {{"\[exists parent.input1]"}}
+name bgInputSwitch
+xpos -40
+ypos 470
+}
+set N1ffbb0c0 [stack 0]
+Dot {
+name Dot8
+xpos -6
+ypos 594
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N1ffc2bc0 [stack 0]
+push $Ndabb7fc0
+Dot {
+name Dot10
+xpos 154
+ypos 54
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy1
+xpos 120
+ypos 584
+}
+Group {
+name HueRotate4
+xpos 120
+ypos 710
+disable {{"(parent.spillType != 2 & parent.hueRot == 0)"}}
+addUserKnob {20 main}
+addUserKnob {41 inHue l "From Hue" T hueControl.inHue}
+addUserKnob {41 outHue l "To Hue" T hueControl.outHue}
+addUserKnob {26 spacer1 l "" +STARTLINE T " "}
+addUserKnob {41 rotation l Rotation T hueControl.rotation}
+addUserKnob {26 spacer2 l "" +STARTLINE T " "}
+addUserKnob {41 invert T hueControl.invert}
+}
+Input {
+inputs 0
+name Input1
+xpos 440
+ypos -610
+}
+Expression {
+temp_name0 temp
+temp_expr0 (r+g+b)*(1-hueControl.cosH)/3
+temp_name1 root3
+temp_expr1 sqrt(3)
+expr0 "temp + r*hueControl.cosH + (-g/root3+b/root3)*hueControl.sinH"
+expr1 "temp + g*hueControl.cosH + (r/root3-b/root3)*hueControl.sinH"
+expr2 "temp + b*hueControl.cosH + (-r/root3+g/root3)*hueControl.sinH"
+name HueRotateExp
+xpos 440
+ypos -550
+}
+Output {
+name Output1
+xpos 440
+ypos -490
+}
+NoOp {
+inputs 0
+name hueControl
+xpos 600
+ypos -610
+addUserKnob {20 main}
+addUserKnob {18 inHue l "From Hue"}
+inHue {{parent.parent.customCol.main} {parent.parent.customCol.main} {parent.parent.customCol.main}}
+addUserKnob {6 inHue_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inHue_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inHue_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inHue_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 outHue l "To Hue"}
+outHue {0 1 0}
+addUserKnob {6 outHue_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outHue_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outHue_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outHue_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {7 rotation l Rotation R -180 180}
+rotation {{parent.parent.hueRot.main}}
+addUserKnob {6 invert +STARTLINE}
+invert true
+addUserKnob {18 inNorm}
+inNorm {{inHue.r-(inHue.r+inHue.g+inHue.b)/3} {inHue.g-(inHue.r+inHue.g+inHue.b)/3} {inHue.b-(inHue.r+inHue.g+inHue.b)/3}}
+addUserKnob {6 inNorm_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inNorm_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inNorm_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inNorm_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 outNorm}
+outNorm {{outHue.r-(outHue.r+outHue.g+outHue.b)/3} {outHue.g-(outHue.r+outHue.g+outHue.b)/3} {outHue.b-(outHue.r+outHue.g+outHue.b)/3}}
+addUserKnob {6 outNorm_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outNorm_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outNorm_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outNorm_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 crs}
+crs {{inNorm.g*outNorm.b-inNorm.b*outNorm.g} {inNorm.r*outNorm.b-inNorm.b*outNorm.r} {inNorm.r*outNorm.g-inNorm.g*outNorm.r}}
+addUserKnob {6 crs_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 crs_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 crs_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 crs_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {16 ang}
+ang {{acos((inNorm.r*outNorm.r+inNorm.g*outNorm.g+inNorm.b*outNorm.b)/sqrt((inNorm.r*inNorm.r+inNorm.g*inNorm.g+inNorm.b*inNorm.b)*(outNorm.r*outNorm.r+outNorm.g*outNorm.g+outNorm.b*outNorm.b)))}}
+addUserKnob {16 cAng}
+cAng {{"crs.r+crs.g+crs.b > 0 ? -ang : ang"}}
+addUserKnob {16 finalAngle}
+finalAngle {{"invert ? (cAng*180/PI)-rotation : rotation-(cAng*180/PI)"}}
+addUserKnob {16 cosH}
+cosH {{cos(finalAngle*PI/180)}}
+addUserKnob {16 sinH}
+sinH {{sin(finalAngle*PI/180)}}
+}
+end_group
+Dot {
+name Dot11
+xpos 154
+ypos 834
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N1ffc2bc0
+push $N1ffbb0c0
+push $N223c18d0
+Merge2 {
+inputs 2
+operation plus
+output {rgba.red rgba.green rgba.blue -rgba.alpha}
+name Merge1
+xpos -200
+ypos 470
+}
+add_layer {SpillMap SpillMap.red SpillMap.green SpillMap.blue SpillMap.alpha}
+ShuffleCopy {
+inputs 2
+red red
+green green
+blue blue
+alpha alpha2
+out SpillMap
+name ShuffleCopy1
+xpos -200
+ypos 590
+}
+Group {
+name HueRotate3
+xpos -200
+ypos 710
+disable {{"(parent.spillType != 2 & parent.hueRot == 0)"}}
+addUserKnob {20 main}
+addUserKnob {41 inHue l "From Hue" T hueControl.inHue}
+addUserKnob {41 outHue l "To Hue" T hueControl.outHue}
+addUserKnob {26 spacer1 l "" +STARTLINE T " "}
+addUserKnob {41 rotation l Rotation T hueControl.rotation}
+addUserKnob {26 spacer2 l "" +STARTLINE T " "}
+addUserKnob {41 invert T hueControl.invert}
+}
+Input {
+inputs 0
+name Input1
+xpos 440
+ypos -610
+}
+Expression {
+temp_name0 temp
+temp_expr0 (r+g+b)*(1-hueControl.cosH)/3
+temp_name1 root3
+temp_expr1 sqrt(3)
+expr0 "temp + r*hueControl.cosH + (-g/root3+b/root3)*hueControl.sinH"
+expr1 "temp + g*hueControl.cosH + (r/root3-b/root3)*hueControl.sinH"
+expr2 "temp + b*hueControl.cosH + (-r/root3+g/root3)*hueControl.sinH"
+name HueRotateExp
+xpos 440
+ypos -550
+}
+Output {
+name Output1
+xpos 440
+ypos -490
+}
+NoOp {
+inputs 0
+name hueControl
+xpos 600
+ypos -610
+addUserKnob {20 main}
+addUserKnob {18 inHue l "From Hue"}
+inHue {{parent.parent.customCol.main} {parent.parent.customCol.main} {parent.parent.customCol.main}}
+addUserKnob {6 inHue_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inHue_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inHue_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inHue_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 outHue l "To Hue"}
+outHue {0 1 0}
+addUserKnob {6 outHue_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outHue_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outHue_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outHue_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {7 rotation l Rotation R -180 180}
+rotation {{parent.parent.hueRot.main}}
+addUserKnob {6 invert +STARTLINE}
+invert true
+addUserKnob {18 inNorm}
+inNorm {{inHue.r-(inHue.r+inHue.g+inHue.b)/3} {inHue.g-(inHue.r+inHue.g+inHue.b)/3} {inHue.b-(inHue.r+inHue.g+inHue.b)/3}}
+addUserKnob {6 inNorm_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inNorm_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inNorm_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 inNorm_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 outNorm}
+outNorm {{outHue.r-(outHue.r+outHue.g+outHue.b)/3} {outHue.g-(outHue.r+outHue.g+outHue.b)/3} {outHue.b-(outHue.r+outHue.g+outHue.b)/3}}
+addUserKnob {6 outNorm_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outNorm_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outNorm_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 outNorm_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 crs}
+crs {{inNorm.g*outNorm.b-inNorm.b*outNorm.g} {inNorm.r*outNorm.b-inNorm.b*outNorm.r} {inNorm.r*outNorm.g-inNorm.g*outNorm.r}}
+addUserKnob {6 crs_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 crs_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 crs_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 crs_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {16 ang}
+ang {{acos((inNorm.r*outNorm.r+inNorm.g*outNorm.g+inNorm.b*outNorm.b)/sqrt((inNorm.r*inNorm.r+inNorm.g*inNorm.g+inNorm.b*inNorm.b)*(outNorm.r*outNorm.r+outNorm.g*outNorm.g+outNorm.b*outNorm.b)))}}
+addUserKnob {16 cAng}
+cAng {{"crs.r+crs.g+crs.b > 0 ? -ang : ang"}}
+addUserKnob {16 finalAngle}
+finalAngle {{"invert ? (cAng*180/PI)-rotation : rotation-(cAng*180/PI)"}}
+addUserKnob {16 cosH}
+cosH {{cos(finalAngle*PI/180)}}
+addUserKnob {16 sinH}
+sinH {{sin(finalAngle*PI/180)}}
+}
+end_group
+Switch {
+inputs 2
+which {{parent.outputSpill}}
+name outputSwitch
+xpos -200
+ypos 830
+}
+Output {
+name Output1
+xpos -200
+ypos 950
+}
+end_group

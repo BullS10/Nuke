@@ -1,0 +1,332 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push 0
+push $cut_paste_input
+Dot {
+name Dot5
+selected true
+xpos -6
+ypos -3174
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N70a6f30 [stack 0]
+Dot {
+name Dot21
+selected true
+xpos -6
+ypos -2429
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N3f6a3df0 [stack 0]
+Dot {
+name Dot28
+selected true
+xpos -375
+ypos -2429
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N38ee7640 [stack 0]
+Dot {
+name Dot27
+selected true
+xpos -576
+ypos -2429
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot30
+selected true
+xpos -576
+ypos -2304
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N58a8b660 [stack 0]
+Laplacian {
+size 2
+name Laplacian2
+selected true
+xpos -610
+ypos -2228
+}
+push $N58a8b660
+push $N38ee7640
+Blur {
+size 20
+name Blur5
+label "\[value size]"
+selected true
+xpos -409
+ypos -2385
+}
+Merge2 {
+inputs 2
+operation divide
+bbox B
+output rgb
+name Merge9
+selected true
+xpos -409
+ypos -2308
+}
+Dot {
+name Dot29
+selected true
+xpos -375
+ypos -2149
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2
+operation divide
+bbox B
+output rgb
+name Merge8
+selected true
+xpos -610
+ypos -2153
+}
+push $N70a6f30
+Dot {
+name Dot11
+selected true
+xpos -1163
+ypos -3174
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N1f0288a0 [stack 0]
+Dot {
+name Dot10
+selected true
+xpos -1555
+ypos -3174
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Blur {
+size 10
+name Blur1
+label "\[value size]"
+selected true
+xpos -1589
+ypos -2972
+}
+set N35208000 [stack 0]
+Dot {
+name Dot17
+selected true
+xpos -1555
+ypos -1990
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Roto {
+inputs 0
+output alpha
+cliptype none
+replace true
+curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44800000 x44324000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px
+        {x43988000 x44180000}
+        {{{x40df9e52 -}
+       {x4146cd80 -}}
+      {{x406f7cf4 -}
+       {x40aa5000 -}}}
+        {{{x448aeaab 0 1 x3c96338a 1}
+       {x448b31c8 x3c96338a 1 0 1}}
+      {{x442f0c64 0 1 xbbce0000 1}
+       {x442f168c xbbce0000 1 0 1}}}
+        {{{xc0df9e50 -}
+       {xc0e92c00 -}}
+      {{xc06f7cf8 -}
+       {xc047c000 -}}}
+        {{{xc0eb4760 -}
+       {xc0db0600 -}}
+      {{x403d9b72 -}
+       {x407feb00 -}}}
+        {{{x448a40e9 0 1 xbb9a7ebc 1}
+       {x448a1332 xbb9a7ebc 1 0 1}}
+      {{x442b3333 0 1 xbc11e930 1}
+       {x442a8680 xbc11e930 1 0 1}}}
+        {{{x40eb4760 -}
+       {x41a19a00 -}}
+      {{xc03d9b71 -}
+       {xc13cd340 -}}}
+        {{xc102d660}
+      {xbf9ff9c6}}
+        {{{x44932db7 0 1 xbd0fc397 1}
+       {x44915041 xbd0fc397 1 0 1}}
+      {{x442a4924 0 1 xbd0953a5 1}
+       {x44278208 xbd0953a5 1 0 1}}}
+        {{x4102d660}
+      {x3f9ff9d6}}
+        {{{x40301118 -}
+       {x40821300 -}}
+      {{xc0f9a57d -}
+       {xc0e68e00 -}}}
+        {{{x4494c255 0 1 xbd2dcdbb 1}
+       {x4493aaf9 xbd2dcdbb 1 0 1}}
+      {{x442d2d1b 0 1 xbd050915 1}
+       {x442c0681 xbd050915 1 0 1}}}
+        {{{xc0301115 -}
+       {xc0092600 -}}
+      {{x40f9a57d -}
+       {x40731900 -}}}
+        {{x413b31fb}
+      {xbf98f56a}}
+        {{{x44914d1a 0 1 x3acdfe4f 1}
+       {x44911027 x3acdfe4f 1 0 1}}
+      {{x442e6597 0 1 xbd82e3cd 1}
+       {x442dcd36 xbd82e3cd 1 0 1}}}
+        {{xc13b31fb}
+      {x3f98f55b}}}}     idem}
+     {tx x43988000 x44903c29 x442e7333}
+     {a osw x41200000 osf 0 str 1 spx x44800000 spy x44324000 sb 1 ltn x43988000 ltm x43988000 tt x40800000}}}}}}
+toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+toolbar_brush_hardness 0.200000003
+toolbar_source_transform_scale {1 1}
+toolbar_source_transform_center {1024 713}
+colorOverlay {0 0 0 0}
+lifetime_type "all frames"
+lifetime_start 305
+lifetime_end 305
+motionblur_shutter_offset_type centred
+source_black_outside true
+name Roto3
+selected true
+xpos -1071
+ypos -2652
+}
+Blur {
+size 20
+name Blur2
+label "\[value size]"
+selected true
+xpos -1071
+ypos -2591
+}
+Transform {
+translate {{Tracker1.translate-Tracker1.translate(ref_frame)} {Tracker1.translate-Tracker1.translate(ref_frame)}}
+rotate {{Tracker1.rotate-Tracker1.rotate(ref_frame)}}
+scale {{-(Tracker1.scale(ref_frame)-1-Tracker1.scale)}}
+center {{Tracker1.center+(Tracker1.translate(ref_frame))} {Tracker1.center+(Tracker1.translate(ref_frame))}}
+name Tracker1_Matchmove2
+label "\[value ref_frame]"
+selected true
+xpos -1067
+ypos -2540
+addUserKnob {20 User}
+addUserKnob {3 ref_frame l "reference frame"}
+ref_frame 305
+}
+set Nfdcb1b0 [stack 0]
+push $Nfdcb1b0
+push $N35208000
+push $N1f0288a0
+Merge2 {
+inputs 2
+operation from
+bbox B
+output rgb
+name Merge1
+selected true
+xpos -1197
+ypos -2960
+}
+Grade {
+add 0.06
+black_clamp false
+name Grade1
+selected true
+xpos -1197
+ypos -2659
+}
+ColorCorrect {
+inputs 1+1
+shadows.gamma 1.3
+lookup {shadow {curve x-0.03035268188 0.9992828369 s-0 x0.06679672003 0 s0}
+  midtone {1-shadow-highlight}
+  highlight {}}
+name ColorCorrect1
+selected true
+xpos -1197
+ypos -2534
+}
+Blur {
+inputs 1+1
+size 10
+name Blur3
+label "\[value size]"
+selected true
+xpos -1197
+ypos -2493
+}
+Grade {
+add 0.06
+reverse true
+black_clamp false
+name Grade2
+selected true
+xpos -1197
+ypos -2421
+}
+Merge2 {
+inputs 2
+operation plus
+bbox B
+output rgb
+name Merge2
+selected true
+xpos -1197
+ypos -1994
+}
+Merge2 {
+inputs 2
+operation plus
+bbox B
+output rgb
+name Merge3
+selected true
+xpos -610
+ypos -1994
+}
+push $N3f6a3df0
+Keymix {
+inputs 3
+name Keymix1
+selected true
+xpos -40
+ypos -2000
+}

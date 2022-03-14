@@ -1,0 +1,248 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name STransform
+selected true
+xpos -3991
+ypos -2468
+addUserKnob {20 User}
+addUserKnob {41 format T Reformat6.format}
+addUserKnob {41 channels T STMap4.channels}
+addUserKnob {41 translate T Transform8.translate}
+addUserKnob {41 rotate T Transform8.rotate}
+addUserKnob {41 scale T Transform8.scale}
+addUserKnob {41 skewX l "skew X" T Transform8.skewX}
+addUserKnob {41 skewY l "skew Y" T Transform8.skewY}
+addUserKnob {41 center T Transform8.center}
+addUserKnob {26 ""}
+addUserKnob {41 filter T STMap4.filter}
+addUserKnob {7 Overscan R 1 5}
+Overscan 1.2
+addUserKnob {4 crop M {"crop intersect" "crop to format" "no crop"}}
+addUserKnob {3 addbbox l "add bbox" -STARTLINE}
+addbbox 25
+addUserKnob {7 mix}
+mix 1
+}
+Input {
+inputs 0
+name img
+label img
+xpos -950
+ypos -568
+}
+Dot {
+name Dot53
+xpos -916
+ypos -198
+}
+set Nc9fdb60 [stack 0]
+Dot {
+name Dot54
+xpos -1046
+ypos -198
+}
+set N64df2ac0 [stack 0]
+Dot {
+name Dot2
+xpos -1306
+ypos -198
+}
+Shuffle {
+red black
+green black
+blue black
+alpha black
+name Shuffle1
+label "\[value in] -> \[value out]"
+xpos -1340
+ypos -112
+}
+Dot {
+name Dot1
+xpos -1306
+ypos 18
+}
+push $N64df2ac0
+Transform {
+center {3026 818}
+shutteroffset centred
+name Transform8
+note_font "Bitstream Vera Sans"
+xpos -1080
+ypos -130
+}
+set C18a830c0 [stack 0]
+AdjBBox {
+numpixels {{parent.addbbox}}
+name AdjBBox1
+xpos -1080
+ypos -34
+}
+Merge2 {
+inputs 2
+Achannels rgb
+Bchannels rgb
+output rgb
+name Merge1
+xpos -1080
+ypos 14
+}
+Dot {
+name Dot55
+xpos -1046
+ypos 66
+}
+Input {
+inputs 0
+name Ctrl_mask
+label "Ctrl mask"
+xpos -247
+ypos -328
+number 1
+}
+Reformat {
+resize none
+pbb true
+name Reformat6
+xpos -247
+ypos -256
+}
+set C26b961a0 [stack 0]
+Dot {
+name Dot60
+xpos -213
+ypos -198
+}
+clone $C26b961a0 {
+inputs 0
+xpos -430
+ypos -592
+selected false
+}
+Transform {
+scale {{parent.scale}}
+center {{Reformat6.format.r/2} {Reformat6.format.t/2}}
+shutteroffset centred
+name Transform2
+xpos -430
+ypos -538
+disable {{Type}}
+}
+Expression {
+expr0 (x+0.5)/parent.Reformat6.width
+expr1 (y+0.5)/parent.Reformat6.height
+name Expression1
+xpos -430
+ypos -485
+}
+clone $C26b961a0 {
+xpos -430
+ypos -448
+selected false
+}
+Dot {
+name Dot59
+xpos -396
+ypos -342
+}
+set N133a1c40 [stack 0]
+Dot {
+name Dot58
+xpos -526
+ypos -342
+}
+clone $C18a830c0 {
+xpos -560
+ypos -274
+selected false
+}
+Dot {
+name Dot57
+xpos -526
+ypos -198
+}
+push $N133a1c40
+Dissolve {
+inputs 2+1
+channels rgb
+which {{parent.mix}}
+name Dissolve2
+label "\[value which]"
+selected true
+xpos -430
+ypos -208
+disable {{"!\[exists parent.input1]"}}
+}
+Dot {
+name Dot56
+xpos -396
+ypos -78
+}
+push $Nc9fdb60
+STMap {
+inputs 2
+channels rgba
+uv rgb
+name STMap4
+xpos -950
+ypos -82
+}
+CopyBBox {
+inputs 2
+name CopyBBox2
+xpos -950
+ypos 62
+}
+Dot {
+name Dot4
+xpos -916
+ypos 138
+}
+set N26f107f0 [stack 0]
+Dot {
+name Dot6
+xpos -1046
+ypos 138
+}
+set N39c446e0 [stack 0]
+Dot {
+name Dot3
+xpos -1176
+ypos 138
+}
+Dot {
+name Dot5
+xpos -1176
+ypos 330
+}
+push $N39c446e0
+Crop {
+box {{img.format.x} {img.format.y} {img.format.r} {img.format.t}}
+name Crop1
+xpos -1080
+ypos 206
+}
+push $N26f107f0
+Crop {
+box {{img.format.x} {img.format.y} {img.format.r} {img.format.t}}
+intersect true
+name Crop2
+xpos -950
+ypos 230
+}
+Switch {
+inputs 3
+which {{parent.crop}}
+name Switch1
+label "\[value which]"
+xpos -950
+ypos 320
+}
+Output {
+name Output1
+xpos -950
+ypos 446
+}
+end_group

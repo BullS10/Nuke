@@ -1,0 +1,1420 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+ name Details_Key
+ selected true
+ xpos -3732
+ ypos 256
+ addUserKnob {20 User}
+ addUserKnob {20 Alpha n 1}
+ Alpha 0
+ addUserKnob {41 screenColour l "Screen Colour" T Keylight1.screenColour}
+ addUserKnob {41 screenGain l "Screen Gain" T Keylight1.screenGain}
+ addUserKnob {41 screenBalance l "Screen Balance" T Keylight1.screenBalance}
+ addUserKnob {41 alphaBias l "Alpha Bias" T Keylight1.alphaBias}
+ addUserKnob {41 screenClipMin l "Clip Black" T Keylight1.screenClipMin}
+ addUserKnob {41 screenClipMax l "Clip White" T Keylight1.screenClipMax}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {41 Transparency T Grade37.whitepoint}
+ addUserKnob {20 despill n 1}
+ despill 0
+ addUserKnob {41 screenColour_1 l "Screen Colour" T Keylight2.screenColour}
+ addUserKnob {41 screenGain_1 l "Screen Gain" T Keylight2.screenGain}
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+ addUserKnob {26 additif}
+ addUserKnob {41 gamma T Grade39.gamma}
+ addUserKnob {41 mode l "luminance math" T Saturation1.mode}
+}
+ Input {
+  inputs 0
+  name FG
+  xpos -895
+  ypos -572
+  number 1
+ }
+ Dot {
+  name Dot144
+  label Plate
+  note_font_size 51
+  xpos -861
+  ypos -480
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Dot {
+  name Dot145
+  xpos -861
+  ypos -183
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Nb7a5ff00 [stack 0]
+ Dot {
+  name Dot146
+  xpos -1121
+  ypos -183
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N341cf610 [stack 0]
+ Dot {
+  name Dot154
+  xpos -1381
+  ypos -183
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ OFXuk.co.thefoundry.keylight.keylight_v201 {
+  show "Final Result"
+  unPreMultiply false
+  screenColour {0.3000000119 0.49 0.67}
+  screenGain 1.46
+  screenBalance 0.8
+  alphaBias {0.5 0.5 0.62}
+  despillBias {0.5 0.5 0.5}
+  gangBiases true
+  preBlur 0
+  "Screen Matte" 1
+  screenClipMin 0.3
+  screenClipMax 1
+  screenClipRollback 0
+  screenGrowShrink 2
+  screenSoftness 2
+  screenDespotBlack 0
+  screenDespotWhite 0
+  screenReplaceMethod "Soft Colour"
+  screenReplaceColour {0.5 0.5 0.5}
+  Tuning 0
+  midPoint 0.5
+  lowGain 1
+  midGain 1
+  highGain 1
+  "Inside Mask" 0
+  sourceAlphaHandling Ignore
+  insideReplaceMethod "Soft Colour"
+  insideReplaceColour {0.5 0.5 0.5}
+  Crops 0
+  SourceXMethod Colour
+  SourceYMethod Colour
+  SourceEdgeColour 0
+  SourceCropL 0
+  SourceCropR 1
+  SourceCropB 0
+  SourceCropT 1
+  balanceSet true
+  insideComponent None
+  outsideComponent None
+  cacheBreaker true
+  name Keylight1
+  xpos -1415
+  ypos -89
+ }
+ set Cef163d00 [stack 0]
+ Grade {
+  channels alpha
+  gamma 2
+  white_clamp true
+  name Grade1
+  xpos -1415
+  ypos -37
+ }
+ Clamp {
+  channels alpha
+  name Clamp4
+  xpos -1415
+  ypos 12
+ }
+set N9d5bd30 [stack 0]
+ Dot {
+  name Dot153
+  xpos -1381
+  ypos 126
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N9d5bd30
+push $N341cf610
+ OFXuk.co.thefoundry.keylight.keylight_v201 {
+  show "Final Result"
+  unPreMultiply false
+  screenColour {0 0.02999999933 0.3000000119}
+  screenGain 1
+  screenBalance 0.95
+  alphaBias {0.5 0.5 0.5}
+  despillBias {0.5 0.5 0.5}
+  gangBiases true
+  preBlur 0
+  "Screen Matte" 0
+  screenClipMin 0
+  screenClipMax 1
+  screenClipRollback 0
+  screenGrowShrink 0
+  screenSoftness 0
+  screenDespotBlack 0
+  screenDespotWhite 0
+  screenReplaceMethod "Soft Colour"
+  screenReplaceColour {0.5 0.5 0.5}
+  Tuning 0
+  midPoint 0.5
+  lowGain 1
+  midGain 1
+  highGain 1
+  "Inside Mask" 0
+  sourceAlphaHandling Ignore
+  insideReplaceMethod "Soft Colour"
+  insideReplaceColour {0.5 0.5 0.5}
+  Crops 0
+  SourceXMethod Colour
+  SourceYMethod Colour
+  SourceEdgeColour 0
+  SourceCropL 0
+  SourceCropR 1
+  SourceCropB 0
+  SourceCropT 1
+  balanceSet true
+  insideComponent None
+  outsideComponent None
+  cacheBreaker true
+  name Keylight2
+  xpos -1155
+  ypos -77
+ }
+ set Cb35faee0 [stack 0]
+set N15abf220 [stack 0]
+ PushPixL {
+  inputs 2
+  name PushPixL1
+  label "-\nIntermediate"
+  note_font "Verdana Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+  selected true
+  xpos -1155
+  ypos 11
+  disable true
+  uv_scale 10
+  edge_size 10
+  size 10
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  bbox A
+  name Copy3
+  xpos -1155
+  ypos 114
+ }
+ set C3d98ee50 [stack 0]
+ Grade {
+  whitepoint 0.9
+  white_clamp true
+  name Grade37
+  xpos -1155
+  ypos 202
+ }
+ set C9b03d610 [stack 0]
+ Premult {
+  name Premult32
+  xpos -1155
+  ypos 259
+ }
+set N9b030660 [stack 0]
+ Dot {
+  name Dot147
+  xpos -1121
+  ypos 672
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N9b030660
+push $Nb7a5ff00
+ Merge2 {
+  inputs 2
+  operation from
+  bbox B
+  output rgb
+  name Merge28
+  xpos -895
+  ypos 259
+ }
+ set C9b04d940 [stack 0]
+ Grade {
+  gamma 1.1
+  name Grade39
+  xpos -895
+  ypos 320
+ }
+ set C9219dd30 [stack 0]
+ Saturation {
+  saturation 0
+  name Saturation1
+  xpos -895
+  ypos 379
+ }
+ set C921ae390 [stack 0]
+ Dot {
+  name Dot148
+  xpos -861
+  ypos 456
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Input {
+  inputs 0
+  name Clean_plate
+  xpos -375
+  ypos -531
+  number 2
+ }
+ Dot {
+  name Dot157
+  label "Clean Plate"
+  note_font_size 51
+  xpos -341
+  ypos -467
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Dot {
+  name Dot151
+  xpos -341
+  ypos -192
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N8e494e60 [stack 0]
+ Dot {
+  name Dot152
+  xpos -211
+  ypos -192
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N8e49a0f0 [stack 0]
+clone $Cef163d00 {
+  xpos -245
+  ypos -101
+  selected false
+ }
+ Clamp {
+  channels alpha
+  name Clamp5
+  xpos -245
+  ypos -36
+ }
+ Dot {
+  name Dot155
+  xpos -211
+  ypos 48
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N8e49a0f0
+ Dot {
+  name Dot150
+  xpos 49
+  ypos -192
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+clone $Cb35faee0 {
+  xpos 15
+  ypos -101
+  selected false
+ }
+clone $C3d98ee50 {
+  inputs 2
+  xpos 15
+  ypos 36
+  selected false
+ }
+clone $C9b03d610 {
+  xpos 15
+  ypos 102
+  selected false
+ }
+ Premult {
+  name Premult33
+  xpos 15
+  ypos 160
+ }
+set Nd62cec00 [stack 0]
+push $N8e494e60
+clone $C9b04d940 {
+  inputs 2
+  xpos -375
+  ypos 160
+  selected false
+ }
+clone $C9219dd30 {
+  xpos -375
+  ypos 307
+  selected false
+ }
+clone $C921ae390 {
+  xpos -375
+  ypos 379
+  selected false
+ }
+ Merge2 {
+  inputs 2
+  operation divide
+  bbox B
+  output rgb
+  name Merge29
+  xpos -375
+  ypos 451
+ }
+ Group {
+  name RolloffLuminance6
+  xpos -115
+  ypos 444
+  addUserKnob {20 luminance l Luminance}
+  addUserKnob {41 contrast T RolloffContrast8.contrast}
+  addUserKnob {41 inlogspace l "In Log Space" t "Use the logspace to avoid clamping from the RolloffContrast." T Controller.inlogspace}
+  addUserKnob {41 disable_1 l "Turn off contrast" -STARTLINE T RolloffContrast8.disable}
+  addUserKnob {41 center T RolloffContrast8.center}
+  addUserKnob {41 soft_clip l "soft clip" T RolloffContrast8.soft_clip}
+  addUserKnob {4 merge_method l "merge method" M {copy min max "" "" "" "" ""}}
+  merge_method min
+  addUserKnob {26 ""}
+  addUserKnob {41 maskChannelMask l mask t "This mask just works with the maskinput and not with channels coming from the main stream." -STARTLINE T Merge3.maskChannelMask}
+  addUserKnob {41 invert_mask l invert -STARTLINE T Merge3.invert_mask}
+  addUserKnob {41 mix T Merge3.mix}
+  addUserKnob {26 ""}
+  addUserKnob {41 output l Output T Controller.output}
+  addUserKnob {26 copyright l "" -STARTLINE T "         © Marcel Pichert, 2019"}
+ }
+  NoOp {
+   inputs 0
+   name Controller
+   xpos 692
+   ypos 1518
+   addUserKnob {20 User}
+   addUserKnob {4 output l Output M {Image Luminance}}
+   addUserKnob {6 inlogspace l "In Log Space" +STARTLINE}
+   inlogspace true
+  }
+  Input {
+   inputs 0
+   name img
+   xpos 317
+   ypos -946
+  }
+  Colorspace {
+   colorspace_out AlexaV3LogC
+   name Colorspace1
+   xpos 317
+   ypos -829
+   disable {{!Controller.inlogspace x1057 1}}
+  }
+  Dot {
+   name Dot661
+   xpos 351
+   ypos -697
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N3b69b6d0 [stack 0]
+  Colorspace {
+   colorspace_out HSL
+   name Colorspace12
+   label "\[value colorspace_in] to \[value colorspace_out]"
+   xpos 317
+   ypos -636
+  }
+  Dot {
+   name Dot662
+   xpos 351
+   ypos -560
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N3b6b7810 [stack 0]
+  Dot {
+   name Dot663
+   xpos 68
+   ypos -560
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Shuffle {
+   red blue
+   green blue
+   alpha blue
+   name Shuffle127
+   label "b -> rgba"
+   xpos 34
+   ypos -479
+  }
+  RolloffContrast {
+   channels rgb
+   contrast 0.7
+   center 0.9
+   slope_mag_low1 0.8000000119
+   black_low 1
+   slope_mag_high2 0.8000000119
+   white_high 1
+   name RolloffContrast8
+   xpos 34
+   ypos -383
+  }
+  Dot {
+   name Dot664
+   xpos 68
+   ypos -248
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N5749b550 [stack 0]
+  Dot {
+   name Dot1
+   xpos 68
+   ypos 1525
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Input {
+   inputs 0
+   name mask
+   xpos 1488
+   ypos 129
+   number 1
+  }
+  Dot {
+   name Dot4
+   xpos 1522
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Dot {
+   name Dot12
+   xpos 1316
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N574ae530 [stack 0]
+  Dot {
+   name Dot13
+   xpos 1316
+   ypos 782
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N5749b550
+push $N3b6b7810
+  ShuffleCopy {
+   inputs 2
+   blue blue
+   alpha alpha2
+   name ShuffleCopy14
+   label "b -> rgba"
+   xpos 317
+   ypos -258
+  }
+  Colorspace {
+   colorspace_in HSL
+   name Colorspace13
+   label "\[value colorspace_in] to \[value colorspace_out]"
+   xpos 317
+   ypos -134
+  }
+  Dot {
+   name Dot8
+   xpos 351
+   ypos 10
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set Na30f30a0 [stack 0]
+  Dot {
+   name Dot10
+   xpos 691
+   ypos 10
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set Na30f7ea0 [stack 0]
+  Dot {
+   name Dot6
+   xpos 1139
+   ypos 10
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N3b69b6d0
+  Dot {
+   name Dot665
+   xpos -148
+   ypos -697
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Dot {
+   name Dot666
+   xpos -148
+   ypos 538
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set Na3106680 [stack 0]
+  Dot {
+   name Dot11
+   xpos -148
+   ypos 647
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set Na310b3c0 [stack 0]
+  Dot {
+   name Dot14
+   xpos -148
+   ypos 782
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Merge2 {
+   inputs 2+1
+   operation max
+   bbox B
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   maskChannelMask {{{parent.Merge3.maskChannelMask}}}
+   maskChannelInput {{{parent.Merge3.maskChannelInput}}}
+   invert_mask {{parent.Merge3.invert_mask}}
+   mix {{parent.Merge3.mix}}
+   name Merge2
+   label "\[if \{\[value mix]<1\} \{ value mix \}]"
+   xpos 1105
+   ypos 778
+  }
+  Dot {
+   name Dot15
+   xpos 1139
+   ypos 1063
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N574ae530
+  Dot {
+   name Dot9
+   xpos 868
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set Na3129d00 [stack 0]
+  Dot {
+   name Dot7
+   xpos 868
+   ypos 647
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $Na30f7ea0
+push $Na310b3c0
+  Merge2 {
+   inputs 2+1
+   operation min
+   bbox B
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   maskChannelMask {{{parent.Merge3.maskChannelMask}}}
+   maskChannelInput {{{parent.Merge3.maskChannelInput}}}
+   invert_mask {{parent.Merge3.invert_mask x1038 1}}
+   mix {{parent.Merge3.mix}}
+   name Merge1
+   label "\[if \{\[value mix]<1\} \{ value mix \}]"
+   xpos 657
+   ypos 643
+  }
+  Dot {
+   name Dot16
+   xpos 691
+   ypos 901
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $Na3129d00
+  Dot {
+   name Dot5
+   xpos 517
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Dot {
+   name Dot659
+   xpos 517
+   ypos 538
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $Na30f30a0
+push $Na3106680
+  Merge2 {
+   inputs 2+1
+   operation copy
+   bbox B
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   name Merge3
+   label "\[if \{\[value mix]<1\} \{ value mix \}]"
+   xpos 317
+   ypos 534
+  }
+  Switch {
+   inputs 3
+   which {{parent.merge_method}}
+   name Switch3
+   label "\[value which]"
+   xpos 317
+   ypos 1053
+  }
+  Colorspace {
+   colorspace_in AlexaV3LogC
+   name Colorspace2
+   xpos 317
+   ypos 1330
+   disable {{!Controller.inlogspace}}
+  }
+  Switch {
+   inputs 2
+   which {{Controller.output}}
+   name Switch1
+   label "\[value which]"
+   xpos 317
+   ypos 1515
+  }
+  Output {
+   name Output1
+   xpos 317
+   ypos 1733
+  }
+ end_group
+ Group {
+  name RolloffLuminance7
+  xpos 15
+  ypos 444
+  addUserKnob {20 luminance l Luminance}
+  addUserKnob {41 contrast T RolloffContrast8.contrast}
+  addUserKnob {41 inlogspace l "In Log Space" t "Use the logspace to avoid clamping from the RolloffContrast." T Controller.inlogspace}
+  addUserKnob {41 disable_1 l "Turn off contrast" -STARTLINE T RolloffContrast8.disable}
+  addUserKnob {41 center T RolloffContrast8.center}
+  addUserKnob {41 soft_clip l "soft clip" T RolloffContrast8.soft_clip}
+  addUserKnob {4 merge_method l "merge method" M {copy min max "" "" "" "" ""}}
+  merge_method min
+  addUserKnob {26 ""}
+  addUserKnob {41 maskChannelMask l mask t "This mask just works with the maskinput and not with channels coming from the main stream." -STARTLINE T Merge3.maskChannelMask}
+  addUserKnob {41 invert_mask l invert -STARTLINE T Merge3.invert_mask}
+  addUserKnob {41 mix T Merge3.mix}
+  addUserKnob {26 ""}
+  addUserKnob {41 output l Output T Controller.output}
+  addUserKnob {26 copyright l "" -STARTLINE T "         © Marcel Pichert, 2019"}
+ }
+  NoOp {
+   inputs 0
+   name Controller
+   xpos 692
+   ypos 1518
+   addUserKnob {20 User}
+   addUserKnob {4 output l Output M {Image Luminance}}
+   addUserKnob {6 inlogspace l "In Log Space" +STARTLINE}
+   inlogspace true
+  }
+  Input {
+   inputs 0
+   name img
+   xpos 317
+   ypos -946
+  }
+  Colorspace {
+   colorspace_out AlexaV3LogC
+   name Colorspace1
+   xpos 317
+   ypos -829
+   disable {{!Controller.inlogspace x1057 1}}
+  }
+  Dot {
+   name Dot661
+   xpos 351
+   ypos -697
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set Nebecb010 [stack 0]
+  Colorspace {
+   colorspace_out HSL
+   name Colorspace12
+   label "\[value colorspace_in] to \[value colorspace_out]"
+   xpos 317
+   ypos -636
+  }
+  Dot {
+   name Dot662
+   xpos 351
+   ypos -560
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set Ne5d9b280 [stack 0]
+  Dot {
+   name Dot663
+   xpos 68
+   ypos -560
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Shuffle {
+   red blue
+   green blue
+   alpha blue
+   name Shuffle127
+   label "b -> rgba"
+   xpos 34
+   ypos -479
+  }
+  RolloffContrast {
+   channels rgb
+   contrast 0.5
+   center 0.8
+   slope_mag_low1 0.8000000119
+   black_low 1
+   slope_mag_high2 0.8000000119
+   white_high 1
+   name RolloffContrast8
+   xpos 34
+   ypos -383
+  }
+  Dot {
+   name Dot664
+   xpos 68
+   ypos -248
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set Ne5dc3080 [stack 0]
+  Dot {
+   name Dot1
+   xpos 68
+   ypos 1525
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Input {
+   inputs 0
+   name mask
+   xpos 1488
+   ypos 129
+   number 1
+  }
+  Dot {
+   name Dot4
+   xpos 1522
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Dot {
+   name Dot12
+   xpos 1316
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N32285c80 [stack 0]
+  Dot {
+   name Dot13
+   xpos 1316
+   ypos 782
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $Ne5dc3080
+push $Ne5d9b280
+  ShuffleCopy {
+   inputs 2
+   blue blue
+   alpha alpha2
+   name ShuffleCopy14
+   label "b -> rgba"
+   xpos 317
+   ypos -258
+  }
+  Colorspace {
+   colorspace_in HSL
+   name Colorspace13
+   label "\[value colorspace_in] to \[value colorspace_out]"
+   xpos 317
+   ypos -134
+  }
+  Dot {
+   name Dot8
+   xpos 351
+   ypos 10
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N322b6e20 [stack 0]
+  Dot {
+   name Dot10
+   xpos 691
+   ypos 10
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N322bbc20 [stack 0]
+  Dot {
+   name Dot6
+   xpos 1139
+   ypos 10
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $Nebecb010
+  Dot {
+   name Dot665
+   xpos -148
+   ypos -697
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Dot {
+   name Dot666
+   xpos -148
+   ypos 538
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N322ca400 [stack 0]
+  Dot {
+   name Dot11
+   xpos -148
+   ypos 647
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set Nbc737020 [stack 0]
+  Dot {
+   name Dot14
+   xpos -148
+   ypos 782
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Merge2 {
+   inputs 2+1
+   operation max
+   bbox B
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   maskChannelMask {{{parent.Merge3.maskChannelMask}}}
+   maskChannelInput {{{parent.Merge3.maskChannelInput}}}
+   invert_mask {{parent.Merge3.invert_mask}}
+   mix {{parent.Merge3.mix}}
+   name Merge2
+   label "\[if \{\[value mix]<1\} \{ value mix \}]"
+   xpos 1105
+   ypos 778
+  }
+  Dot {
+   name Dot15
+   xpos 1139
+   ypos 1063
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N32285c80
+  Dot {
+   name Dot9
+   xpos 868
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set Nbc7559c0 [stack 0]
+  Dot {
+   name Dot7
+   xpos 868
+   ypos 647
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N322bbc20
+push $Nbc737020
+  Merge2 {
+   inputs 2+1
+   operation min
+   bbox B
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   maskChannelMask {{{parent.Merge3.maskChannelMask}}}
+   maskChannelInput {{{parent.Merge3.maskChannelInput}}}
+   invert_mask {{parent.Merge3.invert_mask x1038 1}}
+   mix {{parent.Merge3.mix}}
+   name Merge1
+   label "\[if \{\[value mix]<1\} \{ value mix \}]"
+   xpos 657
+   ypos 643
+  }
+  Dot {
+   name Dot16
+   xpos 691
+   ypos 901
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $Nbc7559c0
+  Dot {
+   name Dot5
+   xpos 517
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Dot {
+   name Dot659
+   xpos 517
+   ypos 538
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N322b6e20
+push $N322ca400
+  Merge2 {
+   inputs 2+1
+   operation copy
+   bbox B
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   name Merge3
+   label "\[if \{\[value mix]<1\} \{ value mix \}]"
+   xpos 317
+   ypos 534
+  }
+  Switch {
+   inputs 3
+   which {{parent.merge_method}}
+   name Switch3
+   label "\[value which]"
+   xpos 317
+   ypos 1053
+  }
+  Colorspace {
+   colorspace_in AlexaV3LogC
+   name Colorspace2
+   xpos 317
+   ypos 1330
+   disable {{!Controller.inlogspace}}
+  }
+  Switch {
+   inputs 2
+   which {{Controller.output}}
+   name Switch1
+   label "\[value which]"
+   xpos 317
+   ypos 1515
+  }
+  Output {
+   name Output1
+   xpos 317
+   ypos 1733
+  }
+ end_group
+ Group {
+  name RolloffLuminance8
+  xpos 145
+  ypos 444
+  addUserKnob {20 luminance l Luminance}
+  addUserKnob {41 contrast T RolloffContrast8.contrast}
+  addUserKnob {41 inlogspace l "In Log Space" t "Use the logspace to avoid clamping from the RolloffContrast." T Controller.inlogspace}
+  addUserKnob {41 disable_1 l "Turn off contrast" -STARTLINE T RolloffContrast8.disable}
+  addUserKnob {41 center T RolloffContrast8.center}
+  addUserKnob {41 soft_clip l "soft clip" T RolloffContrast8.soft_clip}
+  addUserKnob {4 merge_method l "merge method" M {copy min max "" "" "" "" ""}}
+  merge_method min
+  addUserKnob {26 ""}
+  addUserKnob {41 maskChannelMask l mask t "This mask just works with the maskinput and not with channels coming from the main stream." -STARTLINE T Merge3.maskChannelMask}
+  addUserKnob {41 invert_mask l invert -STARTLINE T Merge3.invert_mask}
+  addUserKnob {41 mix T Merge3.mix}
+  addUserKnob {26 ""}
+  addUserKnob {41 output l Output T Controller.output}
+  addUserKnob {26 copyright l "" -STARTLINE T "         © Marcel Pichert, 2019"}
+ }
+  NoOp {
+   inputs 0
+   name Controller
+   xpos 692
+   ypos 1518
+   addUserKnob {20 User}
+   addUserKnob {4 output l Output M {Image Luminance}}
+   addUserKnob {6 inlogspace l "In Log Space" +STARTLINE}
+   inlogspace true
+  }
+  Input {
+   inputs 0
+   name img
+   xpos 317
+   ypos -946
+  }
+  Colorspace {
+   colorspace_out AlexaV3LogC
+   name Colorspace1
+   xpos 317
+   ypos -829
+   disable {{!Controller.inlogspace x1057 1}}
+  }
+  Dot {
+   name Dot661
+   xpos 351
+   ypos -697
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N198eda50 [stack 0]
+  Colorspace {
+   colorspace_out HSL
+   name Colorspace12
+   label "\[value colorspace_in] to \[value colorspace_out]"
+   xpos 317
+   ypos -636
+  }
+  Dot {
+   name Dot662
+   xpos 351
+   ypos -560
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N19909b90 [stack 0]
+  Dot {
+   name Dot663
+   xpos 68
+   ypos -560
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Shuffle {
+   red blue
+   green blue
+   alpha blue
+   name Shuffle127
+   label "b -> rgba"
+   xpos 34
+   ypos -479
+  }
+  RolloffContrast {
+   channels rgb
+   contrast 0.3
+   center 0.84
+   slope_mag_low1 0.8000000119
+   black_low 1
+   slope_mag_high2 0.8000000119
+   white_high 1
+   name RolloffContrast8
+   xpos 34
+   ypos -383
+  }
+  Dot {
+   name Dot664
+   xpos 68
+   ypos -248
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N8514ed10 [stack 0]
+  Dot {
+   name Dot1
+   xpos 68
+   ypos 1525
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Input {
+   inputs 0
+   name mask
+   xpos 1488
+   ypos 129
+   number 1
+  }
+  Dot {
+   name Dot4
+   xpos 1522
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Dot {
+   name Dot12
+   xpos 1316
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N85161cf0 [stack 0]
+  Dot {
+   name Dot13
+   xpos 1316
+   ypos 782
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N8514ed10
+push $N19909b90
+  ShuffleCopy {
+   inputs 2
+   blue blue
+   alpha alpha2
+   name ShuffleCopy14
+   label "b -> rgba"
+   xpos 317
+   ypos -258
+  }
+  Colorspace {
+   colorspace_in HSL
+   name Colorspace13
+   label "\[value colorspace_in] to \[value colorspace_out]"
+   xpos 317
+   ypos -134
+  }
+  Dot {
+   name Dot8
+   xpos 351
+   ypos 10
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N598664f0 [stack 0]
+  Dot {
+   name Dot10
+   xpos 691
+   ypos 10
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N5986b2f0 [stack 0]
+  Dot {
+   name Dot6
+   xpos 1139
+   ypos 10
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N198eda50
+  Dot {
+   name Dot665
+   xpos -148
+   ypos -697
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Dot {
+   name Dot666
+   xpos -148
+   ypos 538
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N59879ad0 [stack 0]
+  Dot {
+   name Dot11
+   xpos -148
+   ypos 647
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N5987e810 [stack 0]
+  Dot {
+   name Dot14
+   xpos -148
+   ypos 782
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Merge2 {
+   inputs 2+1
+   operation max
+   bbox B
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   maskChannelMask {{{parent.Merge3.maskChannelMask}}}
+   maskChannelInput {{{parent.Merge3.maskChannelInput}}}
+   invert_mask {{parent.Merge3.invert_mask}}
+   mix {{parent.Merge3.mix}}
+   name Merge2
+   label "\[if \{\[value mix]<1\} \{ value mix \}]"
+   xpos 1105
+   ypos 778
+  }
+  Dot {
+   name Dot15
+   xpos 1139
+   ypos 1063
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N85161cf0
+  Dot {
+   name Dot9
+   xpos 868
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N5989d150 [stack 0]
+  Dot {
+   name Dot7
+   xpos 868
+   ypos 647
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N5986b2f0
+push $N5987e810
+  Merge2 {
+   inputs 2+1
+   operation min
+   bbox B
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   maskChannelMask {{{parent.Merge3.maskChannelMask}}}
+   maskChannelInput {{{parent.Merge3.maskChannelInput}}}
+   invert_mask {{parent.Merge3.invert_mask x1038 1}}
+   mix {{parent.Merge3.mix}}
+   name Merge1
+   label "\[if \{\[value mix]<1\} \{ value mix \}]"
+   xpos 657
+   ypos 643
+  }
+  Dot {
+   name Dot16
+   xpos 691
+   ypos 901
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N5989d150
+  Dot {
+   name Dot5
+   xpos 517
+   ypos 297
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Dot {
+   name Dot659
+   xpos 517
+   ypos 538
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N598664f0
+push $N59879ad0
+  Merge2 {
+   inputs 2+1
+   operation copy
+   bbox B
+   output {rgba.red rgba.green rgba.blue -rgba.alpha}
+   name Merge3
+   label "\[if \{\[value mix]<1\} \{ value mix \}]"
+   xpos 317
+   ypos 534
+  }
+  Switch {
+   inputs 3
+   which {{parent.merge_method}}
+   name Switch3
+   label "\[value which]"
+   xpos 317
+   ypos 1053
+  }
+  Colorspace {
+   colorspace_in AlexaV3LogC
+   name Colorspace2
+   xpos 317
+   ypos 1330
+   disable {{!Controller.inlogspace}}
+  }
+  Switch {
+   inputs 2
+   which {{Controller.output}}
+   name Switch1
+   label "\[value which]"
+   xpos 317
+   ypos 1515
+  }
+  Output {
+   name Output1
+   xpos 317
+   ypos 1733
+  }
+ end_group
+ Grade {
+  name Grade38
+  xpos 303
+  ypos 451
+ }
+push $Nd62cec00
+ Dot {
+  name Dot1
+  xpos 49
+  ypos 216
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Input {
+  inputs 0
+  name BG
+  xpos 665
+  ypos -223
+ }
+ Dot {
+  name Dot149
+  label BG
+  note_font_size 61
+  xpos 699
+  ypos -135
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Merge2 {
+  inputs 2
+  operation from
+  bbox B
+  output rgb
+  name Merge30
+  xpos 665
+  ypos 211
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  bbox B
+  output rgb
+  name Merge31
+  xpos 665
+  ypos 451
+ }
+ Shuffle {
+  alpha black
+  name Shuffle12
+  label "\[value in] -> \[value out]"
+  xpos 665
+  ypos 540
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  bbox B
+  name Merge32
+  xpos 665
+  ypos 667
+ }
+ Output {
+  name Output1
+  xpos 665
+  ypos 767
+ }
+push $N15abf220
+ Viewer {
+  frame_range 1001-1464
+  input_process false
+  name Viewer1
+  xpos -557
+  ypos -6
+ }
+end_group

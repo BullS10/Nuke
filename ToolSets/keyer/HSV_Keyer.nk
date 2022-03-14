@@ -1,0 +1,178 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name HSV_Keyer
+tile_color 0xff0000
+note_font "DejaVu Sans Bold"
+note_font_size 10
+selected true
+xpos -2624
+ypos -12049
+addUserKnob {20 ksvKey l "HSV Keyer"}
+addUserKnob {18 Color R -1 1}
+Color {0.1242844462 0.06305962801 0.04588510841}
+addUserKnob {6 Color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Color_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Color_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Color_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Color_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Color_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 invResult l "Invert Result?" -STARTLINE}
+invResult true
+addUserKnob {6 show_alpha -STARTLINE}
+show_alpha true
+addUserKnob {26 ""}
+addUserKnob {7 hueRange l "Hue Range:"}
+hueRange -0.39
+addUserKnob {7 hueSharp l "Hue Sharpness:"}
+hueSharp 0.7
+addUserKnob {7 hueFalloff l "Hue Falloff:" R -1 1}
+addUserKnob {26 ""}
+addUserKnob {7 satRange l "Saturation Range:"}
+addUserKnob {7 satSharp l "Saturation Sharpness:"}
+satSharp 0.7
+addUserKnob {7 satFalloff l "Saturation Falloff:" R -1 1}
+addUserKnob {26 ""}
+addUserKnob {7 valRange l "Value Range:"}
+addUserKnob {7 valSharp l "Value Sharpness:"}
+valSharp 0.6
+addUserKnob {7 valFalloff l "Value Falloff:" R -1 1}
+addUserKnob {26 ""}
+addUserKnob {32 resetKeyer l "Reset Values" -STARTLINE T "knob hueRange 0;\nknob hueSharp 0;\nknob hueFalloff 0;\nknob satRange 0;\nknob satSharp 0;\nknob satFalloff 0;\nknob valRange 0;\nknob valSharp 0;\nknob valFalloff 0;"}
+}
+Input {
+inputs 0
+name in
+xpos -358
+ypos -282
+}
+Dot {
+name Dot5
+xpos -324
+ypos -207
+}
+set N1d96d3c0 [stack 0]
+Grade {
+multiply 0.1
+name Grade2
+xpos -358
+ypos -142
+}
+Colorspace {
+illuminant_in A
+colorspace_out HSV
+illuminant_out 9300
+name Colorspace2
+xpos -358
+ypos -74
+}
+push $N1d96d3c0
+Remove {
+operation keep
+channels rgba
+name Remove2
+xpos -536
+ypos -154
+}
+Clamp {
+maximum 0
+name Clamp1
+xpos -536
+ypos -128
+}
+Grade {
+add {{parent.Color.r} {parent.Color.g} {parent.Color.b} 0}
+name Grade4
+xpos -536
+ypos -90
+}
+Grade {
+multiply 0.1
+name Grade3
+xpos -536
+ypos -43
+}
+Colorspace {
+illuminant_in A
+colorspace_out HSV
+illuminant_out 9300
+name Colorspace1
+xpos -536
+ypos 4
+}
+Merge2 {
+inputs 2
+operation minus
+name Merge1
+xpos -358
+ypos 4
+}
+Expression {
+expr0 abs(r)
+expr1 abs(g)
+expr2 abs(b)
+name Expression1
+xpos -358
+ypos 140
+}
+Invert {
+name Invert1
+xpos -358
+ypos 248
+}
+Dot {
+name Dot1
+xpos -324
+ypos 378
+}
+Grade {
+blackpoint {{"parent.hueSharp * (1 - parent.hueRange)"} {"parent.satSharp * (1 - parent.satRange)"} {"parent.valSharp * (1 - parent.valRange)"} 0}
+whitepoint {{"1 - parent.hueRange"} {"1- parent.satRange"} {"1- parent.valRange"} 1}
+gamma {{"-parent.hueFalloff + 1"} {"-parent.satFalloff + 1"} {"-parent.valFalloff + 1"} 1}
+name Grade1
+xpos -358
+ypos 453
+}
+Expression {
+expr3 r*g*b
+name Expression2
+xpos -358
+ypos 506
+}
+Remove {
+operation keep
+channels alpha
+name Remove1
+xpos -358
+ypos 654
+}
+Clamp {
+name Clamp3
+xpos -358
+ypos 711
+}
+Invert {
+name Invert2
+xpos -358
+ypos 751
+disable {{parent.invResult}}
+}
+Shuffle {
+in alpha
+red alpha
+green alpha
+blue alpha
+name Shuffle1
+tile_color 0xfefefeff
+label "\[value in] -> \[value out]"
+xpos -358
+ypos 822
+disable {{!show_alpha}}
+}
+Output {
+name Output1
+xpos -358
+ypos 918
+}
+end_group

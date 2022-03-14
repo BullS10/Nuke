@@ -1,0 +1,141 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name L_ExponBlur
+help "L_ExponBlur_v03 The ExponBlur blurs an image with an exponential falloff based upon an alpha. Most often used with roto shapes. The effect is applied to RGBA only. (For any questions, comments or suggestions please email gizmos@luma-pictures.com)"
+note_font "Bitstream Vera Sans"
+selected true
+xpos 1076
+ypos -2355
+mapsize {0.15 0.15}
+addUserKnob {20 ExponBlur}
+addUserKnob {26 Description l "" +STARTLINE T ":ExponBlur: by Luma Pictures\n\nExponentially blurs image outward or inward"}
+addUserKnob {14 size R -40 40}
+size 1
+addUserKnob {7 Multiplier R 0 10}
+Multiplier 1
+addUserKnob {6 crop l "crop to format" +STARTLINE}
+addUserKnob {6 disableCropBB l "disable CropBB" -STARTLINE}
+addUserKnob {26 ""}
+}
+Input {
+inputs 0
+name Input1
+xpos -372
+ypos 265
+}
+set N2d921dd0 [stack 0]
+Invert {
+name L_ExponBlur_Invert4
+xpos -372
+ypos 330
+disable {{"parent.size>=0 ? 1 : 0" i}}
+}
+set N28819530 [stack 0]
+Blur {
+size {{parent.size.w} {parent.size.h}}
+crop {{parent.crop}}
+name L_ExponBlur_Blur1
+label "\[value size]"
+selected true
+xpos -592
+ypos 480
+}
+push $N28819530
+Blur {
+size {{parent.size.w*parent.Multiplier} {parent.size.h*parent.Multiplier}}
+crop {{parent.crop}}
+name L_ExponBlur_Blur2
+label "\[value size]"
+xpos -482
+ypos 480
+}
+Merge2 {
+inputs 2
+name L_ExponBlur_Merge7
+xpos -537
+ypos 572
+}
+push $N28819530
+Blur {
+size {{parent.size.w*parent.Multiplier*2} {parent.size.h*parent.Multiplier*2}}
+crop {{parent.crop}}
+name L_ExponBlur_Blur3
+label "\[value size]"
+xpos -372
+ypos 479
+}
+Merge2 {
+inputs 2
+name L_ExponBlur_Merge8
+xpos -477
+ypos 637
+}
+push $N28819530
+Blur {
+size {{parent.size.w*parent.Multiplier*4} {parent.size.h*parent.Multiplier*4}}
+crop {{parent.crop}}
+name L_ExponBlur_Blur4
+label "\[value size]"
+xpos -262
+ypos 479
+}
+Merge2 {
+inputs 2
+name L_ExponBlur_Merge9
+xpos -372
+ypos 709
+}
+Invert {
+name L_ExponBlur_Invert5
+xpos -372
+ypos 773
+disable {{"parent.size>=0 ? 1 : 0"}}
+}
+Clamp {
+channels alpha
+name L_ExponBlur_clampOutput
+xpos -372
+ypos 833
+}
+set N2880a960 [stack 0]
+Viewer {
+input_process false
+name Viewer1
+xpos -372
+ypos 372
+}
+push $N2880a960
+Crop {
+box {0 0 {input.width} {input.height}}
+reformat true
+crop false
+name L_ExponBlur_Crop1
+xpos -372
+ypos 901
+disable {{parent.disableCropBB x-5 1}}
+}
+push $N2d921dd0
+Dot {
+name Dot1
+xpos -81
+ypos 270
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+ShuffleCopy {
+inputs 2
+red red
+green green
+blue blue
+name L_ExponBlur_ChannelsPassThrough
+xpos -115
+ypos 901
+}
+Output {
+name Output1
+xpos -115
+ypos 993
+}
+end_group

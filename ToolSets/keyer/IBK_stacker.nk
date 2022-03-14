@@ -1,0 +1,240 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+ name IBK_stacker
+ tile_color 0xffc400ff
+ note_font Verdana
+ selected true
+ xpos 7960
+ ypos 12425
+ lifetimeStart 1
+ lifetimeEnd 41
+ addUserKnob {20 IBK_Stacking_Controls l IBK_Controls}
+ addUserKnob {41 screen_type l "screen type" T IBKColourV3_1.screen_type}
+ addUserKnob {7 stack_number l "stack number" -STARTLINE R 1 9}
+ stack_number 1
+ addUserKnob {41 Size l size T IBKColourV3_1.Size}
+ addUserKnob {41 off l darks T IBKColourV3_1.off}
+ addUserKnob {41 mult l lights T IBKColourV3_1.mult}
+ addUserKnob {41 erode T IBKColourV3_1.erode}
+ addUserKnob {41 multi l "patch black" T IBKColourV3_2.multi}
+ addUserKnob {6 FIller l "Fill empty area" +STARTLINE}
+ FIller true
+}
+ Input {
+  inputs 0
+  name Denoised_Plate
+  xpos 114
+  ypos 172
+ }
+ IBKColourV3 {
+  name IBKColourV3_1
+  xpos 114
+  ypos 254
+  Size 1
+ }
+set N9cfe4020 [stack 0]
+ Dot {
+  name Dot1
+  xpos -377
+  ypos 258
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N63686230 [stack 0]
+ FilterErode {
+  size 20
+  filter gaussian
+  name FilterErode1
+  label "\[value size]"
+  xpos -411
+  ypos 639
+ }
+ Clamp {
+  channels alpha
+  name Clamp2
+  xpos -411
+  ypos 720
+ }
+ Premult {
+  name Premult1
+  xpos -411
+  ypos 859
+ }
+push $N9cfe4020
+ IBKColourV3 {
+  name IBKColourV3_2
+  xpos 114
+  ypos 313
+  screen_type {{IBKColourV3_1.screen_type}}
+  Size {{parent.IBKColourV3_1.Size}}
+  off {{parent.IBKColourV3_1.off.r} {parent.IBKColourV3_1.off.g} {parent.IBKColourV3_1.off.b}}
+  mult {{parent.IBKColourV3_1.mult.r} {parent.IBKColourV3_1.mult.g} {parent.IBKColourV3_1.mult.b}}
+  erode {{IBKColourV3_1.erode}}
+  multi 1
+ }
+set N47699630 [stack 0]
+ IBKColourV3 {
+  name IBKColourV3_3
+  xpos 114
+  ypos 370
+  screen_type {{IBKColourV3_1.screen_type}}
+  Size {{parent.IBKColourV3_1.Size}}
+  off {{parent.IBKColourV3_1.off.r} {parent.IBKColourV3_1.off.g} {parent.IBKColourV3_1.off.b}}
+  mult {{parent.IBKColourV3_1.mult.r} {parent.IBKColourV3_1.mult.g} {parent.IBKColourV3_1.mult.b}}
+  erode {{IBKColourV3_1.erode}}
+  multi {{(parent.IBKColourV3_2.multi)*2}}
+ }
+set Nfd7aeb20 [stack 0]
+ IBKColourV3 {
+  name IBKColourV3_4
+  xpos 114
+  ypos 436
+  screen_type {{IBKColourV3_1.screen_type}}
+  Size {{parent.IBKColourV3_1.Size}}
+  off {{parent.IBKColourV3_1.off.r} {parent.IBKColourV3_1.off.g} {parent.IBKColourV3_1.off.b}}
+  mult {{parent.IBKColourV3_1.mult.r} {parent.IBKColourV3_1.mult.g} {parent.IBKColourV3_1.mult.b}}
+  erode {{IBKColourV3_1.erode}}
+  multi {{(parent.IBKColourV3_2.multi)*4}}
+ }
+set N80c82f10 [stack 0]
+ IBKColourV3 {
+  name IBKColourV3_5
+  xpos 114
+  ypos 494
+  screen_type {{IBKColourV3_1.screen_type}}
+  Size {{parent.IBKColourV3_1.Size}}
+  off {{parent.IBKColourV3_1.off.r} {parent.IBKColourV3_1.off.g} {parent.IBKColourV3_1.off.b}}
+  mult {{parent.IBKColourV3_1.mult.r} {parent.IBKColourV3_1.mult.g} {parent.IBKColourV3_1.mult.b}}
+  erode {{IBKColourV3_1.erode}}
+  multi {{(parent.IBKColourV3_2.multi)*8}}
+ }
+set N935fa4e0 [stack 0]
+ IBKColourV3 {
+  name IBKColourV3_6
+  xpos 114
+  ypos 550
+  screen_type {{IBKColourV3_1.screen_type}}
+  Size {{parent.IBKColourV3_1.Size}}
+  off {{parent.IBKColourV3_1.off.r} {parent.IBKColourV3_1.off.g} {parent.IBKColourV3_1.off.b}}
+  mult {{parent.IBKColourV3_1.mult.r} {parent.IBKColourV3_1.mult.g} {parent.IBKColourV3_1.mult.b}}
+  erode {{IBKColourV3_1.erode}}
+  multi {{(parent.IBKColourV3_2.multi)*16}}
+ }
+set N90c92260 [stack 0]
+ IBKColourV3 {
+  name IBKColourV3_7
+  xpos 114
+  ypos 612
+  screen_type {{IBKColourV3_1.screen_type}}
+  Size {{parent.IBKColourV3_1.Size}}
+  off {{parent.IBKColourV3_1.off.r} {parent.IBKColourV3_1.off.g} {parent.IBKColourV3_1.off.b}}
+  mult {{parent.IBKColourV3_1.mult.r} {parent.IBKColourV3_1.mult.g} {parent.IBKColourV3_1.mult.b}}
+  erode {{IBKColourV3_1.erode}}
+  multi {{(parent.IBKColourV3_2.multi)*32}}
+ }
+set Na6ecabb0 [stack 0]
+ IBKColourV3 {
+  name IBKColourV3_8
+  xpos 114
+  ypos 679
+  screen_type {{IBKColourV3_1.screen_type}}
+  Size {{parent.IBKColourV3_1.Size}}
+  off {{parent.IBKColourV3_1.off.r} {parent.IBKColourV3_1.off.g} {parent.IBKColourV3_1.off.b}}
+  mult {{parent.IBKColourV3_1.mult.r} {parent.IBKColourV3_1.mult.g} {parent.IBKColourV3_1.mult.b}}
+  erode {{IBKColourV3_1.erode}}
+  multi {{(parent.IBKColourV3_2.multi)*64}}
+ }
+set Na5ebec20 [stack 0]
+ IBKColourV3 {
+  name IBKColourV3_9
+  xpos 114
+  ypos 739
+  screen_type {{IBKColourV3_1.screen_type}}
+  Size {{parent.IBKColourV3_1.Size}}
+  off {{parent.IBKColourV3_1.off.r} {parent.IBKColourV3_1.off.g} {parent.IBKColourV3_1.off.b}}
+  mult {{parent.IBKColourV3_1.mult.r} {parent.IBKColourV3_1.mult.g} {parent.IBKColourV3_1.mult.b}}
+  erode {{IBKColourV3_1.erode}}
+  multi {{(parent.IBKColourV3_2.multi)*128}}
+ }
+push $Na5ebec20
+push $Na6ecabb0
+push $N90c92260
+push $N935fa4e0
+push $N80c82f10
+push $Nfd7aeb20
+push $N47699630
+push $N9cfe4020
+push 0
+ Switch {
+  inputs 10
+  which {{parent.stack_number}}
+  name Switch1
+  label "\[value which]"
+  xpos -105
+  ypos 733
+ }
+ Merge2 {
+  inputs 2
+  bbox B
+  output rgb
+  name Merge1
+  xpos -105
+  ypos 859
+ }
+set N3503e430 [stack 0]
+ Keyer {
+  operation "luminance key"
+  range {0 0 1 1}
+  name Keyer1
+  xpos 144
+  ypos 853
+ }
+ Clamp {
+  channels alpha
+  name Clamp1
+  xpos 144
+  ypos 945
+ }
+push $N63686230
+ Dot {
+  name Dot2
+  xpos -724
+  ypos 258
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Rectangle {
+  area {0 0 {input.width} {input.height}}
+  color {{"\[sample this.input r (input.width/2) (input.height/2) (input.width/2) (input.height/2)]"} {"\[sample this.input g (input.width/2) (input.height/2) (input.width/2) (input.height/2)]"} {"\[sample this.input b (input.width/2) (input.height/2) (input.width/2) (input.height/2)]"} {"\[sample this.input r (input.width/2) (input.height/2) (input.width/2) (input.height/2)]"}}
+  name Rectangle1
+  xpos -758
+  ypos 951
+ }
+set N1c645920 [stack 0]
+push $N3503e430
+ Keymix {
+  inputs 3
+  channels rgb
+  invertMask true
+  bbox B
+  name Keymix1
+  selected true
+  xpos -105
+  ypos 951
+  disable {{!parent.FIller}}
+ }
+ Output {
+  name Output1
+  xpos -105
+  ypos 1087
+ }
+push $N1c645920
+ Viewer {
+  frame_range 1001-1587
+  name Viewer1
+  xpos -1018
+  ypos 959
+ }
+end_group
