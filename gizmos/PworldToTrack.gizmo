@@ -1,0 +1,200 @@
+#! /builds/nuke/9.0v7/fe3d649516/priv/libnuke-9.0.7.so -nx
+version 9.0 v7
+Gizmo {
+tile_color 0x66f400ff
+gl_color 0xff
+label "©copyright®\nMohsin Kazi\n"
+note_font_color 0xffff
+lifetimeStart 1200
+lifetimeEnd 1220
+addUserKnob {20 User}
+addUserKnob {6 a l INVISIBLE +INVISIBLE +STARTLINE}
+a {{NoOp1.track1}}
+addUserKnob {6 b l INVISIBLE +INVISIBLE +STARTLINE}
+b {{NoOp1.track2}}
+addUserKnob {6 c l INVISIBLE +INVISIBLE +STARTLINE}
+c {{NoOp1.track3}}
+addUserKnob {6 d l INVISIBLE +INVISIBLE +STARTLINE}
+d {{NoOp1.track4}}
+addUserKnob {41 in l Pworld_layer T Shuffle1.in}
+addUserKnob {22 Reset T "import nuke\nimport sys\nimport os\n\nnuke.root().begin()\nn=nuke.selectedNodes()\nfor n in n:\n    if n.Class()=='PworldToTrack':\n        n\['track1'].setValue(0)        \n        n\['track2'].setValue(0)        \n        n\['track3'].setValue(0)        \n        n\['track4'].setValue(0)\n        n\['in'].setValue('0')        \n" +STARTLINE}
+addUserKnob {41 track1 l Track1 T NoOp1.track1}
+addUserKnob {41 track2 l Track2 T NoOp1.track2}
+addUserKnob {41 track3 l Track3 T NoOp1.track3}
+addUserKnob {41 track4 l Track4 T NoOp1.track4}
+addUserKnob {22 Go l Go!!!! T "import nuke\nimport sys\nimport os\n\nnuke.root().begin()\nn=nuke.selectedNodes()\nfor n in n:\n    if 'fstop' in n.knobs():\n        camName=n\['name'].getValue()     \n    elif 'first' in n.knobs():\n        bgName=n\['name'].getValue()\n    elif n.Class()=='PworldToTrack':\n        nodeName=n\['name'].getValue()      \n\nframe = nuke.frame()\npanel = nuke.Panel(\"PworldToTrack\")\nfirst = nuke.Root().knob('first_frame').getValue()\nfirst = int(first)\nfirst = str(first)\nlast = nuke.Root().knob('last_frame').getValue()\nlast = int(last)\nlast = str(last)\nbasicRange = first+\"-\"+last\npanel.addSingleLineInput(\"Range:\", basicRange)\npanel.addEnumerationPulldown(\"Output:\", \"All Tracker CornerPin Roto \")\npanel.addSingleLineInput(\"Ref frame:\", frame)\nresult=panel.show()\n\nbasicRange = panel.value(\"Range:\")\nrefFrame = panel.value(\"Ref frame:\")\nOutput = panel.value(\"Output:\")\nAxis = panel.value(\"Translate Only\")\n\n\nrefFrame1 = float(refFrame)\nrangeA = basicRange.split(\"-\")\[0]\nrangeA=int(rangeA)\nrangeB = basicRange.split(\"-\")\[1]\nrangeB=int(rangeB)\nrangeA=int(rangeA)\nrangeB=int(rangeB)\n\n\ndef rename():\n    nuke.root().begin()\n    n=nuke.selectedNodes()\n    for n in n:\n        if 'fstop' in n.knobs():\n            camName=n\['name'].getValue()     \n            n\['name'].setValue('Scene_Camera')      \n        elif 'first' in n.knobs():\n            bgName=n\['name'].getValue()\n            n\['name'].setValue('BG')\n        elif n.Class()=='PworldToTrack':\n            nodeName=n\['name'].getValue()      \n            n\['name'].setValue('PworldToTrack')\n\nif result==1:\n    rename()\nelse:\n    None\n\n\n\n\n\n\ndef TrackerCreate():\n    Cam1=nuke.toNode('Scene_Camera')\n    BG=nuke.toNode('BG')\n    G=nuke.toNode('PworldToTrack')\n    GTV1=G\['track1'].getValue()\n    GTV2=G\['track2'].getValue()\n    GTV3=G\['track3'].getValue()\n    GTV4=G\['track4'].getValue()\n    GTA1=G\['a'].getValue()\n    GTA2=G\['b'].getValue()\n    GTA3=G\['c'].getValue()\n    GTA4=G\['d'].getValue()\n\n\n    #Create Tracker \n\n    n = nuke.createNode('Tracker4')\n    trackName=n\['name'].getValue()\n    n\['name'].setValue('tracker555')\n    n\['label'].setValue('\[value reference_frame]')\n    n\['reference_frame'].setValue(refFrame1)\n    n.setInput(0,None)\n    G.setInput(0,BG)\n    PX = G.xpos()\n    PY = G.ypos()\n    n.setXYpos(PX+200,PY)\n\n\n\n    if GTA1>0:\n        n\['add_track'].execute()\n    if GTA2>0:\n        n\['add_track'].execute()\n    if GTA3>0:\n        n\['add_track'].execute()\n    if GTA4>0:\n        n\['add_track'].execute()\n    frames = range(rangeA, rangeB)\n    k_tracks = n\['tracks']\n    numColumns = 31\n    trackIdx0 = 0\n    trackIdx1 = 1\n    trackIdx2 = 2\n    trackIdx3 = 3\n\n######\n    if GTA1>0:\n        Ca1=nuke.createNode('Axis')\n        Ca1\['name'].setValue('Ca1')        \n        Ca1\['translate'].setValue(GTV1)\n        Ca1.setInput(0,None)\n\n        LUP = nuke.nodes.Reconcile3D()\n        LUP.setInput(2,Ca1)\n        LUP.setInput(1,Cam1)\n        LUP.setInput(0,BG)\n        LUP\['name'].setValue(\"P1\")\n\n        P1 = nuke.toNode(\"P1\")\n        nuke.execute(P1,rangeA,rangeB)\n        P1p = P1\['output'].value()      \n        t_curves1 = P1\['output'].animations() \n\n        for f in frames:\n            for i, curve in enumerate(t_curves1):\n                k_tracks.setValueAt(curve.evaluate(f), f, numColumns*trackIdx0 + (2+i))\n\n\n\n\n\n    if GTA2>0:\n        Ca2=nuke.createNode('Axis')\n        Ca2\['name'].setValue('Ca2')        \n        Ca2\['translate'].setValue(GTV2)\n        Ca2.setInput(0,None)\n\n        RUP = nuke.nodes.Reconcile3D()\n        RUP.setInput(2,Ca2)\n        RUP.setInput(1,Cam1)\n        RUP.setInput(0,BG)\n        RUP\['name'].setValue(\"P2\")\n\n        P2 = nuke.toNode(\"P2\")\n        nuke.execute(P2,rangeA,rangeB)\n        P2p = P2\['output'].value()\n        t_curves2 = P2\['output'].animations()\n    \n        for f in frames:\n            for i, curve in enumerate(t_curves2):\n                k_tracks.setValueAt(curve.evaluate(f), f, numColumns*trackIdx1 + (2+i))\n\n\n\n    if GTA3>0:\n        Ca3=nuke.createNode('Axis')\n        Ca3\['name'].setValue('Ca3')        \n        Ca3\['translate'].setValue(GTV3)\n        Ca3.setInput(0,None)\n    \n        LLP = nuke.nodes.Reconcile3D()\n        LLP.setInput(2,Ca3)\n        LLP.setInput(1,Cam1)\n        LLP.setInput(0,BG)\n        LLP\['name'].setValue(\"P3\")\n\n        P3 = nuke.toNode(\"P3\")\n        nuke.execute(P3,rangeA,rangeB)\n        P3p = P3\['output'].value()\n        t_curves3 = P3\['output'].animations()\n\n        for f in frames:\n            for i, curve in enumerate(t_curves3):\n                k_tracks.setValueAt(curve.evaluate(f), f, numColumns*trackIdx2 + (2+i))\n\n\n\n    if GTA4>0:\n        Ca4=nuke.createNode('Axis')\n        Ca4\['name'].setValue('Ca4')        \n        Ca4\['translate'].setValue(GTV4)\n        Ca4.setInput(0,None)\n\n        RLP = nuke.nodes.Reconcile3D()\n        RLP.setInput(2,Ca4)\n        RLP.setInput(1,Cam1)\n        RLP.setInput(0,BG)\n        RLP\['name'].setValue(\"P4\")\n\n        P4 = nuke.toNode(\"P4\")\n        nuke.execute(P4,rangeA,rangeB)\n        P4p = P4\['output'].value()\n        t_curves4 = P4\['output'].animations()\n\n        for f in frames:\n            for i, curve in enumerate(t_curves4):\n                k_tracks.setValueAt(curve.evaluate(f), f, numColumns*trackIdx3 + (2+i))\n\n\n\n\n    #Create Corner pin \n    corner = nuke.nodes.CornerPin2D()  \n  \n\n    #Tracker animation\n\n\n\n\n\n\n\n    t = \[8, 39, 70, 101, 132, 163, 194, 225, 256, 287, 318, 7, 38, 69, 100, 131, 162, 193, 224, 255, 286, 317, 6, 37, 68, 99, 130, 161, 192, 223, 254, 285, 316, 349, 380, 411, 442, 473, 504, 535, 566, 597, 628, 659, 348, 379, 410, 441, 472, 503, 534, 565, 596, 627, 658, 347, 378, 409, 440, 471, 502, 533, 564, 595, 626, 657]\n    st=nuke.toNode('tracker555')\n    if st.Class() == 'Tracker4':\n        for n in t:\n            st\['tracks'].setValue(True, n)\n\n    tName=nuke.toNode(\"tracker555\")\n\n    tName\['name'].setValue(trackName)\n\n\n    X = tName.xpos()\n    Y = tName.ypos()\n\n    ##Create Roto\n    rt = nuke.createNode('Roto')\n    rt.setXYpos(X+200,Y)\n    rt.setInput(0, None)\n    rt\['translate'].fromScript(tName\['translate'].toScript())\n    rt\['rotate'].fromScript(tName\['rotate'].toScript())\n    rt\['scale'].fromScript(tName\['scale'].toScript())\n    rt\['center'].fromScript(tName\['center'].toScript())\n    rt\['opacity'].setValue(1)\n\n   \n    # corner pin animation\n    corner.setXYpos(X+400,Y)\n    if GTA1>0:\n        corner\['to1'].copyAnimations(P1\['output'].animations())\n        P1val = P1\['output'].getValueAt(refFrame1)\n        corner\['from1'].setValue(P1val)\n        nuke.delete(Ca1)\n        nuke.delete(P1)            \n    if GTA2>0:\n        corner\['to2'].copyAnimations(P2\['output'].animations())\n        P2val = P2\['output'].getValueAt(refFrame1)\n        corner\['from2'].setValue(P2val)\n        nuke.delete(Ca2)\n        nuke.delete(P2)            \n    if GTA3>0:\n        corner\['to3'].copyAnimations(P3\['output'].animations())\n        P3val = P3\['output'].getValueAt(refFrame1)\n        corner\['from3'].setValue(P3val)\n        nuke.delete(Ca3)\n        nuke.delete(P3)            \n    if GTA4>0:\n        corner\['to4'].copyAnimations(P4\['output'].animations())\n        P4val = P4\['output'].getValueAt(refFrame1)\n        corner\['from4'].setValue(P4val)\n        nuke.delete(Ca4)\n        nuke.delete(P4)            \n\n    ##refFrame = int(refFrame1)\n    ##refFrame = str(1017)\n\n    #Tracker Extraction from group\n    grp = nuke.toNode(\"PworldToTrack\")\n    TrackerNode=''\n    grp.begin()\n    nodes = nuke.allNodes()\n    \n    for node in nodes:\n        if node.Class() == 'Tracker3':\n            TrackerNode = node.name()\n            node.setSelected(True)\n            nuke.extractSelected()\n            nuke.nodeCopy(nukescripts.cut_paste_file())\n            nukescripts.node_delete()\n            grp.end()\n            nuke.nodePaste(nukescripts.cut_paste_file())\n\n\n    if Output == \"Tracker\":\n        nuke.delete(corner)\n        nuke.delete(rt)\n    if Output == \"Roto\":\n        nuke.delete(corner)\n        nuke.delete(tName)\n    if Output == \"CornerPin\":\n        nuke.delete(rt)\n        nuke.delete(tName)\n    if Output == \"All\":\n        nuke.message('All Nodes')        \n    else:\n        print None        \n\ndef final():\n    if result==1:\n        TrackerCreate()\n        carName=nuke.toNode(\"Scene_Camera\")\n        carName\['name'].setValue(camName)\n        bgrName=nuke.toNode(\"BG\")\n        bgrName\['name'].setValue(bgName)\n        gName=nuke.toNode(\"PworldToTrack\")\n        gName\['name'].setValue(nodeName)\n\n    if result==0:\n        None    \n    else:\n        nuke.message('BY Mohsin Kazi')\n\nfinal()" +STARTLINE}
+}
+Input {
+inputs 0
+name Input1
+xpos 229
+ypos 121
+}
+set N384fc6d0 [stack 0]
+Output {
+name Output1
+xpos 229
+ypos 260
+}
+push $N384fc6d0
+Shuffle {
+in none
+name Shuffle1
+xpos 229
+ypos 145
+}
+NoOp {
+name NoOp1
+xpos 318
+ypos 186
+addUserKnob {20 User}
+addUserKnob {18 track1 l Track1}
+addUserKnob {6 track1_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 track2 l Track2}
+addUserKnob {6 track2_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 track3 l Track3}
+addUserKnob {6 track3_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 track4 l Track4}
+addUserKnob {6 track4_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+}
+Roto {
+inputs 0
+output alpha
+curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 0}
+    {t
+   {r
+    {{{x44960000 x44da4763 -}     20}}}
+   {r
+    {{{x44960000 x4473bbf9 -}     20}}}  0
+   {{x44960000 0 0 1 xbf2ab400 1}
+    {x44962000 xbf338000 xbf451800 1 xbf451800 1}
+    {x44964000 xbfc51800 xbf22e000 1 xbf22e000 1}
+    {x44966000 xbffca000 xbf05e800 1 xbf05e800 1}
+    {x44968000 xc0258000 xbf240800 1 xbf240800 1}
+    {x4496a000 xc0505400 xbf2a4000 1 xbf2a4000 1}
+    {x4496c000 xc07aa000 xbf8aa200 1 xbf8aa200 1}
+    {x4496e000 xc0ad7b00 xbf814c00 1 xbf814c00 1}
+    {x44970000 xc0bdf600 xbf71f400 1 xbf71f400 1}
+    {x44972000 xc0e9f800 xbf684800 1 xbf684800 1}
+    {x44974000 xc0f80800 xbf026000 1 xbf026000 1}
+    {x44976000 xc1054800 xbf8b1600 1 xbf8b1600 1}
+    {x44978000 xc11ec980 xbf8a5400 1 xbf8a5400 1}
+    {x4497a000 xc127dd00 xbf5f2000 1 xbf5f2000 1}
+    {x4497c000 xc13aad80 xbf84a800 1 xbf84a800 1}
+    {x4497e000 xc1490700 xbf520c00 1 xbf520c00 1}
+    {x44980000 xc154ef00 -}
+    {x44982000 xc1526d80 -}
+    {x44984000 xc152fb00 -}
+    {x44986000 xc14f2800 x3eb79000 1 0 1}}
+   {{x44960000 0 0 1 xbda1e000 1}
+    {x44962000 xbdb28000 xbdd3c000 1 xbdd3c000 1}
+    {x44964000 xbe53c000 xbe924000 1 xbe924000 1}
+    {x44966000 xbf289000 xbf433000 1 xbf433000 1}
+    {x44968000 xbfdda800 xbf874600 1 xbf874600 1}
+    {x4496a000 xc0316a00 xbf913900 1 xbf913900 1}
+    {x4496c000 xc0800680 xbfab4f00 1 xbfab4f00 1}
+    {x4496e000 xc0ae5c80 xbfdb2400 1 xbfdb2400 1}
+    {x44970000 xc0ed9880 xc019be00 1 xc019be00 1}
+    {x44972000 xc1240d40 xc044ce80 1 xc044ce80 1}
+    {x44974000 xc1593380 xc06a6200 1 xc06a6200 1}
+    {x44976000 xc18c9f20 xc0802380 1 xc0802380 1}
+    {x44978000 xc1acab80 xc08a78c0 1 xc08a78c0 1}
+    {x4497a000 xc1d1db80 xc0983840 1 xc0983840 1}
+    {x4497c000 xc1f8c7a0 xc0a69440 1 xc0a69440 1}
+    {x4497e000 xc21292d0 xc0bdbc40 1 xc0bdbc40 1}
+    {x44980000 xc22bd2e0 xc0e25640 1 xc0e25640 1}
+    {x44982000 xc24b2860 xc0f9e000 1 xc0f9e000 1}
+    {x44984000 xc26a4ae0 xc10326c0 1 xc10326c0 1}
+    {x44986000 xc2865de0 xc10d11e0 1 0 1}}  0 0 0
+   {{x44960000 0 0 1 x3a5d3b72 1}
+    {x44962000 x3a137cf7 -}
+    {x44964000 xbb7b2943 -}
+    {x44966000 x3bb96ce5 -}
+    {x44968000 x3b66b8bd -}
+    {x4496a000 x3bf0ad6e -}
+    {x4496c000 xb8172a7c xbbcc0db5 1 xbbcc0db5 1}
+    {x4496e000 xbba76dfc -}
+    {x44970000 xbb60ec30 -}
+    {x44972000 xbc4d3253 -}
+    {x44974000 xbb8565f0 -}
+    {x44976000 xbc0ed086 -}
+    {x44978000 xbbd6d0f4 -}
+    {x4497a000 xbc3ac076 xbbae9f61 1 xbbae9f61 1}
+    {x4497c000 xbc8d03ee -}
+    {x4497e000 xbc5610b3 x3ba5dcf2 1 x3ba5dcf2 1}
+    {x44980000 xbbe855d3 -}
+    {x44982000 xbc6439ac -}
+    {x44984000 xbbb07c76 -}
+    {x44986000 xbc185ded xbbc05f17 1 0 1}}
+   {{x44960000 1 0 1 x383573f4 1}
+    {x44962000 x3f800184 x385b2453 1 x385b2453 1}
+    {x44964000 x3f80036d x38831b06 1 x38831b06 1}
+    {x44966000 x3f80059d x3875f65e 1 x3875f65e 1}
+    {x44968000 x3f800744 x384411ac 1 x384411ac 1}
+    {x4496a000 x3f8008ad x38274df3 1 x38274df3 1}
+    {x4496c000 x3f8009e2 x380805fc 1 x380805fc 1}
+    {x4496e000 x3f800acd x384a2610 1 x384a2610 1}
+    {x44970000 x3f800d0a x38700d77 1 x38700d77 1}
+    {x44972000 x3f800e8d x3855d694 1 x3855d694 1}
+    {x44974000 x3f801062 x38822f9b 1 x38822f9b 1}
+    {x44976000 x3f80129f x3884b463 1 x3884b463 1}
+    {x44978000 x3f801487 x385aa5a0 1 x385aa5a0 1}
+    {x4497a000 x3f80160a x381569e8 1 x381569e8 1}
+    {x4497c000 x3f8016dd x38327d15 1 x38327d15 1}
+    {x4497e000 x3f8018d3 x3878a952 1 x3878a952 1}
+    {x44980000 x3f801ac0 x38924e88 1 x38924e88 1}
+    {x44982000 x3f801d66 x389de1ca 1 x389de1ca 1}
+    {x44984000 x3f801faf x3853afc0 1 x3853afc0 1}
+    {x44986000 x3f8020b5 x37b57aa9 1 0 1}}
+   {{x44960000 1 0 1 x383573f4 1}
+    {x44962000 x3f800184 x385b2453 1 x385b2453 1}
+    {x44964000 x3f80036d x38831b06 1 x38831b06 1}
+    {x44966000 x3f80059d x3875f65e 1 x3875f65e 1}
+    {x44968000 x3f800744 x384411ac 1 x384411ac 1}
+    {x4496a000 x3f8008ad x38274df3 1 x38274df3 1}
+    {x4496c000 x3f8009e2 x380805fc 1 x380805fc 1}
+    {x4496e000 x3f800acd x384a2610 1 x384a2610 1}
+    {x44970000 x3f800d0a x38700d77 1 x38700d77 1}
+    {x44972000 x3f800e8d x3855d694 1 x3855d694 1}
+    {x44974000 x3f801062 x38822f9b 1 x38822f9b 1}
+    {x44976000 x3f80129f x3884b463 1 x3884b463 1}
+    {x44978000 x3f801487 x385aa5a0 1 x385aa5a0 1}
+    {x4497a000 x3f80160a x381569e8 1 x381569e8 1}
+    {x4497c000 x3f8016dd x38327d15 1 x38327d15 1}
+    {x4497e000 x3f8018d3 x3878a952 1 x3878a952 1}
+    {x44980000 x3f801ac0 x38924e88 1 x38924e88 1}
+    {x44982000 x3f801d66 x389de1ca 1 x389de1ca 1}
+    {x44984000 x3f801faf x3853afc0 1 x3853afc0 1}
+    {x44986000 x3f8020b5 x37b57aa9 1 0 1}}}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}}}}}
+toolbox {createBezier {
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+toolbar_brush_hardness 0.200000003
+toolbar_source_transform_scale {1 1}
+toolbar_source_transform_center {1053 562}
+motionblur_shutter_offset_type centred
+name Roto1
+selected true
+xpos 754
+ypos 1075
+}
+end_group
