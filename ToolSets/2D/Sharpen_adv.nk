@@ -1,0 +1,350 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name Sharpen_C1
+help "Sharpen Accurate\n\nMore options than in the original Nuke node (Sharpen).\n"
+onCreate "def main():\n    switch = nuke.toNode('Switch2OCIO')\n    switchback = nuke.toNode('Switch2OCIO2')\n    OCIOLog_Node = nuke.toNode('OCIO_Log')\n    OCIOLog_Node2 = nuke.toNode('OCIO_Log2')\n    try:\n        workingSpace = nuke.root().knob('workingSpaceLUT').value()\n    except:\n        return\n    \n    workingSpace = 'Aliases/' + workingSpace\n    logAlias = 'Aliases/logc3ei800_arriwide'\n    \n    if 'aces' in nuke.root().knob('OCIO_config').value():\n        switch\['which'].setValue(1)\n        switchback\['which'].setValue(1)\n        OCIOLog_Node\['in_colorspace'].setValue(workingSpace)\n        OCIOLog_Node\['out_colorspace'].setValue(logAlias)\n        OCIOLog_Node2\['in_colorspace'].setValue(logAlias)\n        OCIOLog_Node2\['out_colorspace'].setValue(workingSpace)\n    else:\n        switch\['which'].setValue(0)\n        switchback\['which'].setValue(0)\n        OCIOLog_Node\['in_colorspace'].setValue('linear')\n        OCIOLog_Node\['out_colorspace'].setValue('linear')\n        OCIOLog_Node2\['in_colorspace'].setValue('linear')\n        OCIOLog_Node2\['out_colorspace'].setValue('linear')\n\nmain()"
+knobChanged "c = nuke.toNode('Copy1')\nif nuke.thisKnob().name() == 'inputChange':\n   if nuke.thisNode().input(1) != None:\n       c\['from0'].setValue('rgba.alpha')\n   else:\n       c\['from0'].setValue('none')"
+tile_color 0xcf7e4aff
+note_font Verdana
+selected true
+xpos 636
+ypos 2766
+addUserKnob {20 FT l "Sharpen C" t "\n\n" -STARTLINE}
+addUserKnob {41 channels l Channels T Matrix2.channels}
+addUserKnob {7 intensity l Size R 0 20}
+intensity 15
+addUserKnob {26 S2 l " " T " "}
+addUserKnob {26 by2 l " " T "                                                                                               "}
+addUserKnob {26 CGEV l " " t "\nEn cas de probleme, contacter votre superviseur\n" -STARTLINE T "<font color=\"#1C1C1C\"> v05 - CGEV - 2017"}
+addUserKnob {26 ""}
+addUserKnob {41 from0 l "          mask" T Copy1.from0}
+addUserKnob {41 invertMask l invert -STARTLINE T Keymix1.invertMask}
+addUserKnob {41 mix T Dissolve1.which}
+}
+Input {
+inputs 0
+name mask
+xpos -312
+ypos 497
+number 1
+addUserKnob {20 User}
+addUserKnob {6 in +STARTLINE}
+in {{"\[exists input1]" i}}
+}
+AddChannels {
+channels rgba
+name AddChannels1
+xpos -312
+ypos 521
+}
+set Nbb844a0 [stack 0]
+push $Nbb844a0
+Copy {
+inputs 2
+to0 rgba.alpha
+name Copy1
+xpos -312
+ypos 545
+disable {{!parent.mask.in i}}
+}
+Invert {
+name Invert1
+xpos -312
+ypos 581
+}
+Input {
+inputs 0
+name Input
+xpos -51
+ypos -940
+}
+Dot {
+name Dot8
+xpos -17
+ypos -861
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nbbabfe0 [stack 0]
+Dot {
+name Dot4
+xpos -17
+ypos -711
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N881e540 [stack 0]
+Dot {
+name Dot2
+xpos 455
+ypos -711
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot10
+xpos 455
+ypos 200
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N8827660 [stack 0]
+Dot {
+name Dot14
+xpos 455
+ypos 378
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N882bf70 [stack 0]
+Dot {
+name Dot12
+xpos 455
+ypos 590
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N8827660
+Clamp {
+channels {{{parent.Matrix2.channels}}}
+minimum 1
+maximum 1500
+name Clamp_POS
+xpos 59
+ypos 196
+}
+Grade {
+channels {{{parent.Matrix2.channels}}}
+add -1
+black_clamp false
+name Grade_Offset
+xpos 59
+ypos 233
+icon -
+}
+push $Nbbabfe0
+Dot {
+name Dot7
+xpos -252
+ypos -861
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot5
+xpos -252
+ypos 141
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Clamp {
+channels {{{parent.Matrix2.channels}}}
+minimum -150
+maximum 0
+name Clamp_NEG
+xpos -176
+ypos 137
+}
+push $N881e540
+OCIOColorSpace {
+channels all
+in_colorspace linear
+out_colorspace linear
+name OCIO_Log
+xpos -115
+ypos -645
+}
+push $N881e540
+Log2Lin {
+channels all
+operation lin2log
+name Nuke_Log
+xpos 1
+ypos -641
+}
+Switch {
+inputs 2
+name Switch2OCIO
+xpos -51
+ypos -554
+}
+Clamp {
+maximum_enable false
+name Clamp1
+xpos -51
+ypos -498
+}
+set N8893180 [stack 0]
+Dot {
+name Dot1
+xpos 131
+ypos -488
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N88a1080 [stack 0]
+push $N88a1080
+Blur {
+size {{size_ctrl}}
+name Blur2
+xpos 273
+ypos -498
+addUserKnob {20 User}
+addUserKnob {7 size_ctrl}
+size_ctrl {{"clamp ((parent.intensity /3)-2 , 3, 9)"}}
+}
+Merge2 {
+inputs 2
+operation minus
+also_merge {{{parent.Matrix2.channels}}}
+name Merge1
+xpos 273
+ypos -371
+}
+Grade {
+channels all
+whitepoint {{"clamp (white*2-5, 1, 30)"}}
+white {{intensity}}
+add 0.5
+black_clamp false
+name Grade_Bandpass
+xpos 273
+ypos -228
+icon -
+}
+Saturation {
+saturation 0
+name Saturation1
+xpos 273
+ypos -160
+}
+Dot {
+name Dot3
+xpos 307
+ypos 20
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N8893180
+Matrix {
+channels rgb
+matrix {
+    {0 {"( parent.intensity) == 0\n? \n0\n: \n-1"} 0}
+    {{matrix.1} {"( Matrix2.antialiasing ) == 0\n? \n1\n: \nclamp((8- Matrix2.antialiasing ), 5, 100)"} {"( parent.intensity) == 0\n? \n0\n: \n-1"}}
+    {0 {matrix.5} 0}
+  }
+normalize true
+mix {{parent.intensity}}
+name Matrix2
+xpos -51
+ypos -373
+addUserKnob {20 User}
+addUserKnob {7 antialiasing R 0 4}
+antialiasing {{parent.intensity/4}}
+}
+Dot {
+name Dot16
+xpos -17
+ypos -275
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Naf72950 [stack 0]
+OCIOColorSpace {
+channels all
+in_colorspace linear
+out_colorspace linear
+name OCIO_Log2
+xpos -102
+ypos -217
+}
+push $Naf72950
+Log2Lin {
+channels all
+name Nuke_Log2
+xpos -1
+ypos -218
+}
+Switch {
+inputs 2
+name Switch2OCIO2
+xpos -51
+ypos -127
+}
+Merge2 {
+inputs 2
+operation overlay
+bbox B
+Achannels none
+Bchannels none
+output none
+also_merge {{{parent.Matrix2.channels}}}
+maskChannelMask none
+name MergeMask
+xpos -51
+ypos 10
+}
+Merge2 {
+inputs 2
+operation plus
+bbox B
+Achannels none
+Bchannels none
+output none
+also_merge {{{parent.Matrix2.channels}}}
+name Merge_Negative_Value
+xpos -51
+ypos 131
+}
+Merge2 {
+inputs 2
+operation plus
+bbox B
+Achannels none
+Bchannels none
+output none
+also_merge {{{parent.Matrix2.channels}}}
+name Merge_Positive_Value
+xpos -51
+ypos 233
+}
+push $N882bf70
+Dissolve {
+inputs 2
+channels {{{parent.Matrix2.channels}}}
+which 1
+name Dissolve1
+xpos -51
+ypos 374
+}
+Dot {
+name Dot6
+xpos -17
+ypos 493
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nafd9770 [stack 0]
+Keymix {
+inputs 3
+name Keymix1
+xpos -172
+ypos 581
+disable {{!parent.mask.in}}
+}
+push $Nafd9770
+Switch {
+inputs 2
+which {{Copy1.from0}}
+name Switch1
+xpos -51
+ypos 680
+}
+Output {
+name FranklinVFX
+xpos -51
+ypos 782
+}
+end_group

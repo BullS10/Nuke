@@ -1,0 +1,486 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name MS_Sexy_Lights_v5
+selected true
+xpos -1637
+ypos -2546
+addUserKnob {20 User}
+addUserKnob {41 NormalPass l "Select Normal Pass" T Shuffle2.in}
+addUserKnob {41 PWorldPass l "Select Pworld Pass" T Shuffle3.in}
+addUserKnob {4 Method M {Simple G_Expression "With Pworld" ""}}
+addUserKnob {7 Latitude R -200 200}
+addUserKnob {7 Longitude R -200 200}
+addUserKnob {7 Intensity R 0 5}
+Intensity 1
+addUserKnob {7 Softness R 0 200}
+Softness 1
+addUserKnob {7 Falloff R 0.01 2}
+addUserKnob {26 Specs}
+addUserKnob {6 AddSpecs l "Add Specs" t "Add Fake Specular" +STARTLINE}
+AddSpecs true
+addUserKnob {7 SpecMult l "Spec Mult" R 0 10}
+SpecMult 1.5
+addUserKnob {7 SpecFalloff l "Spec Falloff" R 0 3}
+SpecFalloff 0.5
+addUserKnob {7 SpecMix l "Spec Mix"}
+SpecMix 1
+addUserKnob {26 Mask}
+addUserKnob {6 UseAlpha l "Use Alpha" +STARTLINE}
+addUserKnob {26 Output_1 l Output}
+addUserKnob {4 Output M {relightRGBA specsOnly}}
+addUserKnob {20 G_Expression}
+addUserKnob {41 xlight T Relight_Normals.xlight}
+addUserKnob {41 ylight T Relight_Normals.ylight}
+addUserKnob {41 zlight T Relight_Normals.zlight}
+addUserKnob {26 ExtraExpression l "" +STARTLINE T "Gabriel Pires Expression"}
+}
+Input {
+inputs 0
+name InputAlpha
+xpos -169
+ypos -375
+number 2
+}
+AddChannels {
+channels alpha
+name AddChannels1
+xpos -169
+ypos -301
+}
+Dot {
+name Dot2
+xpos -138
+ypos -212
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot3
+xpos -138
+ypos 1668
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Input {
+inputs 0
+name InputNormal
+xpos 428
+ypos -372
+}
+Shuffle {
+name Shuffle2
+label "\[value in]"
+xpos 428
+ypos -307
+}
+set N25ef2ef0 [stack 0]
+Group {
+name RotateLight1
+xpos 428
+ypos -52
+addUserKnob {20 User}
+addUserKnob {7 RotateX l Latitude R -200 200}
+RotateX {{parent.Latitude}}
+addUserKnob {7 RotateY l Longitude R -200 200}
+RotateY {{parent.Longitude}}
+addUserKnob {7 RotateZ l Zrotation R 0 1000}
+}
+Input {
+inputs 0
+name Input1
+xpos -443
+ypos -269
+}
+set N25f0c5b0 [stack 0]
+Viewer {
+name Viewer1
+xpos -755
+ypos 110
+}
+push $N25f0c5b0
+ColorMatrix {
+matrix {
+    {{cos(radians(yrot))} 0 {-sin(radians(yrot))}}
+    {0 1 0}
+    {{sin(radians(yrot))} 0 {cos(radians(yrot))}}
+  }
+name Yaw
+label yrot
+xpos -443
+ypos -197
+addUserKnob {20 User}
+addUserKnob {7 yrot}
+yrot {{parent.RotateY}}
+}
+ColorMatrix {
+matrix {
+    {1 0 0}
+    {0 {cos(radians(xrot))} {sin(radians(xrot))}}
+    {0 {-sin(radians(xrot))} {cos(radians(xrot))}}
+  }
+name Pitch
+label xrot
+xpos -443
+ypos -121
+addUserKnob {20 User}
+addUserKnob {7 xrot}
+xrot {{parent.RotateX}}
+}
+ColorMatrix {
+matrix {
+    {{cos(radians(zrot))} {sin(radians(zrot))} 0}
+    {{-sin(radians(zrot))} {cos(radians(zrot))} 0}
+    {0 0 1}
+  }
+name Roll
+label zrot
+xpos -443
+ypos -45
+addUserKnob {20 User}
+addUserKnob {7 zrot l "" +STARTLINE}
+zrot {{parent.RotateZ}}
+}
+Output {
+name Output1
+xpos -443
+ypos 39
+}
+end_group
+set N25f03230 [stack 0]
+Input {
+inputs 0
+name InputPworld
+xpos 584
+ypos -367
+number 1
+}
+Shuffle {
+name Shuffle3
+label "\[value in]"
+xpos 584
+ypos -306
+}
+MergeExpression {
+inputs 2
+temp_name0 DotProduct
+temp_expr0 (Ar*Br)+(Ag*Bg)+(Ab*Bb)
+channel0 rgb
+expr0 max(0,DotProduct)
+name MergeExpression2
+xpos 584
+ypos -52
+addUserKnob {20 User}
+addUserKnob {7 xrot}
+xrot 1
+}
+push $N25ef2ef0
+Dot {
+name Dot4
+xpos 227
+ypos -304
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Expression {
+expr0 "(r*xlight + g*ylight + b*zlight)"
+expr1 "(r*xlight + g*ylight + b*zlight)"
+expr2 "(r*xlight + g*ylight + b*zlight)"
+expr3 "(r*xlight + g*ylight + b*zlight)"
+name Relight_Normals
+xpos 199
+ypos -61
+addUserKnob {20 User}
+addUserKnob {7 xlight R -1 1}
+addUserKnob {7 ylight R -1 1}
+addUserKnob {7 zlight R -1 1}
+}
+Dot {
+name Dot5
+xpos 227
+ypos 82
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot7
+xpos 382
+ypos 82
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N25f03230
+Dot {
+name Dot1
+xpos 456
+ypos 45
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Switch {
+inputs 3
+which {{Method}}
+name Switch1
+label "\[value which]"
+xpos 584
+ypos 79
+}
+Shuffle {
+red blue
+green blue
+alpha blue
+name Shuffle1
+label "\[value in]-->\[value out]"
+xpos 584
+ypos 130
+}
+Dot {
+name Dot6
+xpos 612
+ypos 199
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N25fb6f20 [stack 0]
+Dot {
+name Dot8
+xpos 394
+ypos 199
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N25fbbc80 [stack 0]
+Dot {
+name Dot9
+xpos 67
+ypos 199
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot10
+xpos 67
+ypos 392
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N25fc56d0 [stack 0]
+Dot {
+name Dot11
+xpos 67
+ypos 581
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N25fca470 [stack 0]
+Dot {
+name Dot13
+xpos 67
+ypos 754
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Grade {
+channels rgba
+white {{parent.Intensity}}
+gamma {{parent.Falloff/8}}
+name Intensity5
+label "\[value channels]"
+xpos 206
+ypos 751
+}
+Grade {
+channels rgba
+white {{parent.Grade1.white}}
+gamma {{parent.Grade1.gamma}}
+name Grade3
+label "\[value channels]"
+xpos 206
+ypos 827
+}
+push $N25fca470
+Grade {
+channels rgba
+white {{parent.Intensity}}
+gamma {{parent.Falloff/4}}
+name Intensity4
+label "\[value channels]"
+xpos 209
+ypos 578
+}
+Grade {
+channels rgba
+white {{parent.Grade1.white}}
+gamma {{parent.Grade1.gamma}}
+name Grade2
+label "\[value channels]"
+xpos 209
+ypos 631
+}
+push $N25fc56d0
+Grade {
+channels rgba
+white {{parent.Intensity}}
+gamma {{parent.Falloff/2}}
+name Intensity3
+label "\[value channels]"
+xpos 213
+ypos 389
+}
+Grade {
+channels rgba
+white {{SpecMult}}
+gamma {{SpecFalloff}}
+name Grade1
+label "\[value channels]"
+xpos 213
+ypos 447
+}
+push $N25fbbc80
+Grade {
+channels rgba
+white {{parent.Intensity}}
+gamma {{parent.Falloff}}
+name Intensity2
+label "\[value channels]"
+xpos 366
+ypos 276
+}
+set N260361a0 [stack 0]
+Dot {
+name Dot14
+xpos 280
+ypos 279
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Shuffle {
+red black
+green black
+blue black
+alpha black
+name Shuffle4
+label "\[value in]"
+xpos 252
+ypos 341
+}
+push $N260361a0
+Switch {
+inputs 2
+which {{Output}}
+name Switch4
+label "\[value which]"
+selected true
+xpos 366
+ypos 341
+}
+Merge2 {
+inputs 2
+operation plus
+mix {{SpecMix}}
+name Merge2
+xpos 366
+ypos 452
+}
+Merge2 {
+inputs 2
+operation plus
+mix {{parent.Merge2.mix}}
+name Merge3
+xpos 366
+ypos 636
+}
+Merge2 {
+inputs 2
+operation plus
+mix {{parent.Merge2.mix}}
+name Merge4
+xpos 366
+ypos 832
+}
+set N260834b0 [stack 0]
+Clamp {
+channels alpha
+name Clamp1
+xpos 366
+ypos 930
+}
+set N260935b0 [stack 0]
+Dot {
+name Dot12
+xpos 394
+ypos 1129
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N260a15e0 [stack 0]
+Dot {
+name Dot15
+xpos 394
+ypos 1341
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N260a15e0
+push $N25fb6f20
+Grade {
+channels rgba
+white {{parent.Intensity}}
+gamma {{parent.Falloff}}
+name Intensity1
+label "\[value channels]"
+xpos 584
+ypos 277
+}
+Switch {
+inputs 2
+which {{AddSpecs}}
+name Switch2
+label "\[value which]"
+xpos 584
+ypos 1126
+}
+Switch {
+inputs 2
+which {{Output}}
+name Switch3
+label "\[value which]"
+xpos 584
+ypos 1338
+}
+Blur {
+channels rgba
+size {{parent.Softness}}
+name Softness
+label "\[value channels] \n size \[value size] "
+xpos 584
+ypos 1492
+}
+set N260caea0 [stack 0]
+Merge2 {
+inputs 2
+operation mask
+name Merge1
+xpos 584
+ypos 1670
+disable {{(parent.UseAlpha)-1 x1 1}}
+}
+Output {
+name Output1
+xpos 584
+ypos 1822
+}
+push $N260834b0
+push $N260935b0
+push $N260caea0
+Viewer {
+inputs 3
+frame 1057
+frame_range 1057-1208
+input_number 2
+name Viewer1
+xpos -46
+ypos 2929
+}
+end_group

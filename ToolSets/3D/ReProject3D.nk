@@ -1,0 +1,18 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+ReProject3D {
+name ReProject3D
+selected true
+xpos 1055
+ypos -2858
+surface_point none
+surface_alpha none
+projected_matte none
+projection_occlusion 1
+shadow_point none
+surface_normal none
+exrcam 0
+focal "\[value parent.\[full_name \[node this]].Shuffle2.focal]"
+filmbackHeight "\[value parent.\[full_name \[node this]].Shuffle2.v_apert]"
+}

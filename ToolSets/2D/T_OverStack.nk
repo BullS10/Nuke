@@ -1,0 +1,89 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name T_OverStack
+knobChanged "#Code for knobchange\nfrom math import floor\n\nthisNode = nuke.thisNode()\nthisKnob = nuke.thisKnob()\n\n\nif thisKnob.name() == 'amount':\n\n    amount = int(floor(thisNode\['amount'].value()))\n\n    thisNode.begin()\n    dotIN = nuke.toNode('Dot_In')\n    dotOUT = nuke.toNode('Dot_Out')\n    mergeMaster = nuke.toNode('MergeMaster')\n    Xpos = nuke.toNode('MergeMaster').xpos()\n    Ypos = nuke.toNode('MergeMaster').ypos()\n\n    for n in nuke.allNodes('Merge2'):\n        if n.name() not in \['MergeMaster']:\n           nuke.delete(n)\n\n    for n in range(amount):\n        mergeNew = nuke.nodes.Merge2(xpos = Xpos-(n+1)*110, ypos = Ypos)\n        mergeNew.setName('Merge_' + str(n+1))\n        mergeNew\['mix'].setExpression('parent.mix')\n        mergeNew.setInput(1, dotIN)\n        if n == 0:\n            mergeNew.setInput(0, mergeMaster)\n        else :\n            mergeNew.setInput(0, nuke.toNode('Merge_' + str(n)))\n        if n == amount - 1:\n            dotOUT.setInput(0, nuke.toNode('Merge_' + str(n+1)))"
+label v1.0
+selected true
+xpos -4751
+ypos 5048
+addUserKnob {20 controls l Controls}
+addUserKnob {7 amount l Amount R 0 10}
+amount 1
+addUserKnob {7 mix l Mix}
+mix 1
+addUserKnob {26 ""}
+addUserKnob {26 copyright1 l "" +STARTLINE T "<b>T_OverStack v1.0</b> - Petar Tsonev (c)"}
+}
+Input {
+inputs 0
+name Input1
+xpos -40
+ypos -10
+}
+Dot {
+name Dot_In
+label Dot_In
+note_font "Verdana Bold Bold Bold Bold Bold"
+note_font_size 40
+xpos -6
+ypos 186
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nd891320 [stack 0]
+push $Nd891320
+Dot {
+name Dot1
+xpos -6
+ypos 378
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N57ed67a0 [stack 0]
+Dot {
+name Dot2
+xpos 214
+ypos 378
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot3
+xpos 214
+ypos 618
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N57ed67a0
+Merge2 {
+inputs 2
+mix {{"(parent.amount - floor(parent.amount))*parent.mix"}}
+name MergeMaster
+xpos -40
+ypos 614
+}
+Merge2 {
+inputs 2
+mix {{parent.mix}}
+name Merge_1
+xpos -150
+ypos 614
+}
+Dot {
+name Dot_Out
+label Dot_Out
+note_font "Verdana Bold Bold Bold Bold Bold"
+note_font_size 40
+xpos -6
+ypos 1290
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Output {
+name Output1
+xpos -40
+ypos 1430
+}
+end_group

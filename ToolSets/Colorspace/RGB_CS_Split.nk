@@ -1,0 +1,195 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name RGB_CS_Split
+tile_color 0xffc17100
+selected true
+xpos -1212
+ypos -2120
+addUserKnob {20 User}
+addUserKnob {26 Position -STARTLINE}
+addUserKnob {41 position l position_x T Transform1.position}
+addUserKnob {26 Colorspace}
+addUserKnob {41 colorspace_in l in T Colorspace5.colorspace_in}
+addUserKnob {41 colorspace_out l out T Colorspace5.colorspace_out}
+addUserKnob {22 create_cs T "cs = nuke.toNode(\"Colorspace5\")\n#print cs\['colorspace_out'].value()\n\nnuke.root().begin()\n\nnuke.nodes.Colorspace().knob('colorspace_out').setValue(cs\['colorspace_out'].value())\n#print nuke.toNode('Colorspace1')\['colorspace_out'].value()" +STARTLINE}
+addUserKnob {20 endGroup n -1}
+}
+BackdropNode {
+inputs 0
+name BackdropNode2
+tile_color 0x29272901
+label RGB_Colorspace_check
+note_font_size 20
+note_font_color 0xb4b4b401
+xpos 330
+ypos -775
+bdwidth 496
+bdheight 637
+}
+Input {
+inputs 0
+name Input1
+xpos 573
+ypos -866
+}
+Dot {
+name Dot86
+label Input
+note_font_size 20
+xpos 607
+ypos -826
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Transform {
+center {1472 1080}
+shutter 0.86
+shutteroffset centred
+name Transform2
+xpos 573
+ypos -717
+}
+Transform {
+translate {{-width/1.5*position x1 0} 0}
+center {1440 1080}
+name Transform1
+xpos 573
+ypos -666
+addUserKnob {20 User}
+addUserKnob {7 position}
+position 0.5
+}
+Crop {
+preset square
+box {0 0 {Input1.bbox.r/3} {Input1.bbox.t}}
+reformat true
+crop false
+name Crop3
+xpos 573
+ypos -613
+}
+Colorspace {
+colorspace_out HSV
+name Colorspace5
+xpos 573
+ypos -563
+}
+Dot {
+name Dot87
+xpos 607
+ypos -489
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2a65bcf0 [stack 0]
+Dot {
+name Dot88
+xpos 717
+ypos -489
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Shuffle {
+red blue
+green blue
+alpha white
+name Shuffle8
+xpos 683
+ypos -445
+}
+Transform {
+translate {{root.width/3*2} 0}
+center {1440 1080}
+name Transform9
+xpos 683
+ypos -397
+}
+Dot {
+name Dot89
+xpos 717
+ypos -225
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N2a65bcf0
+Shuffle {
+red green
+blue green
+alpha white
+name Shuffle9
+xpos 573
+ypos -445
+}
+Transform {
+translate {{root.width/3} 0}
+center {1440 1080}
+name Transform7
+xpos 573
+ypos -395
+}
+Dot {
+name Dot90
+xpos 607
+ypos -297
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N2a65bcf0
+Dot {
+name Dot91
+xpos 497
+ypos -489
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Reformat {
+resize none
+center false
+black_outside true
+name Reformat4
+xpos 463
+ypos -449
+}
+Shuffle {
+green red
+blue red
+alpha white
+name Shuffle10
+xpos 463
+ypos -398
+}
+Merge2 {
+inputs 2
+name Merge12
+xpos 463
+ypos -301
+}
+Merge2 {
+inputs 2
+name Merge13
+xpos 463
+ypos -229
+}
+Reformat {
+resize none
+center false
+name Reformat5
+xpos 463
+ypos -173
+}
+Dot {
+name Dot92
+note_font_size 50
+xpos 497
+ypos -76
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Output {
+name Output1
+xpos 463
+ypos -7
+}
+end_group

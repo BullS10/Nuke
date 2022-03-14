@@ -1,0 +1,29 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+LABcorrect {
+ name LABcorrect
+ note_font Verdana
+ selected true
+ xpos -6124
+ ypos 4761
+ master 1
+ shadows 1
+ midtones 1
+ highlights 1
+ lsharpen 0
+ amaster 1
+ asat 1
+ aunsat 1
+ ablur 0
+ bmaster 1
+ bsat 1
+ bunsat 1
+ bblur 0
+ luma_lookup 1
+ lookup {shadow {}
+   midtone {}
+   highlight {}}
+ sat_threshold 1
+ maskChannelInput none
+}

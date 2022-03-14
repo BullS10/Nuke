@@ -1,0 +1,546 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name reflectionMy
+selected true
+xpos -6853
+ypos -1685
+addUserKnob {20 User}
+addUserKnob {41 scale l "reflection quality" T Reformat2.scale}
+addUserKnob {41 scale_1 l "edges quality" T Reformat3.scale}
+addUserKnob {26 ""}
+addUserKnob {41 specular T BasicMaterial1.specular}
+addUserKnob {41 min_shininess l "min shininess" T BasicMaterial1.min_shininess}
+addUserKnob {41 max_shininess l "max shininess" T BasicMaterial1.max_shininess}
+addUserKnob {41 mix T Merge3.mix}
+addUserKnob {26 ""}
+addUserKnob {41 samples l " motion blur samples" T ScanlineRender4.samples}
+addUserKnob {41 shutter T ScanlineRender4.shutter}
+addUserKnob {41 shutteroffset l "shutter offset" T ScanlineRender4.shutteroffset}
+addUserKnob {41 shuttercustomoffset l "" -STARTLINE T ScanlineRender4.shuttercustomoffset}
+addUserKnob {26 ""}
+addUserKnob {41 format l "output format" T Reformat1.format}
+addUserKnob {6 q l "export object only" +STARTLINE}
+addUserKnob {6 d l "no hold out" +STARTLINE}
+}
+Input {
+inputs 0
+name cam
+xpos -1494
+ypos -46
+number 2
+}
+Dot {
+name Dot4
+xpos -1460
+ypos 627
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N718be470 [stack 0]
+Dot {
+name Dot5
+xpos -1460
+ypos 883
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N718c3190 [stack 0]
+Input {
+inputs 0
+name env
+xpos -302
+ypos 18
+number 1
+}
+Dot {
+name Dot1
+label environment3D
+note_font_size 30
+xpos -268
+ypos 82
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot9
+xpos -268
+ypos 161
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N718d13e0 [stack 0]
+Reformat {
+inputs 0
+format "1920 1080 0 0 1920 1080 1 1920_x_1080"
+name Reformat1
+xpos -46
+ypos 557
+}
+Reformat {
+type scale
+scale 0.3
+name Reformat3
+xpos -46
+ypos 593
+}
+Dot {
+name Dot7
+xpos -15
+ypos 627
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N9c95d3c0 [stack 0]
+Dot {
+name Dot8
+xpos -15
+ypos 874
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+ScanlineRender {
+inputs 3
+samples {{parent.ScanlineRender4.samples}}
+shutter {{parent.ScanlineRender4.shutter}}
+shutteroffset {{ScanlineRender4.shutteroffset}}
+shuttercustomoffset {{parent.ScanlineRender4.shuttercustomoffset}}
+motion_vectors_type distance
+name ScanlineRender3
+xpos -302
+ypos 871
+}
+set N9c966dc0 [stack 0]
+Dot {
+name Dot19
+xpos -422
+ypos 951
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N718be470
+Camera2 {
+inputs 0
+translate {{parent.Sphere2.translate} {parent.Sphere2.translate} {parent.Sphere2.translate}}
+rotate {{(degrees(atan((TargetCamera1.translate.y-translate.y)/sqrt(pow2(sqrt(pow2(TargetCamera1.translate.x-translate.x)+pow2(TargetCamera1.translate.z-translate.z)))))))} {"(TargetCamera1.translate.x-translate.x >= 0 ? 270-degrees(atan((TargetCamera1.translate.z-translate.z)/(TargetCamera1.translate.x-translate.x))): -degrees(atan((TargetCamera1.translate.z-translate.z)/(TargetCamera1.translate.x-translate.x)))-270)"} {parent.TargetCamera1.rotate.z}}
+projection_mode spherical
+near 1
+far 100000
+name Camera_env_map2
+xpos -1384
+ypos 273
+}
+push $N718d13e0
+Dot {
+name Dot10
+xpos -1201
+ypos 161
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Constant {
+inputs 0
+channels rgb
+format "512 256 0 0 512 256 1 latlong"
+name Constant_lat_long2
+xpos -1123
+ypos -186
+}
+Reformat {
+type scale
+name Reformat2
+xpos -1123
+ypos -88
+}
+Dot {
+name Dot11
+xpos -1089
+ypos 298
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+ScanlineRender {
+inputs 3
+motion_vectors_type velocity
+name Render_env_map2
+xpos -1235
+ypos 293
+}
+set N66c15d0 [stack 0]
+push 0
+Environment {
+inputs 2
+translate {{parent.Sphere2.translate} {parent.Sphere2.translate} {parent.Sphere2.translate}}
+rotate {{(degrees(atan((TargetCamera1.translate.y-translate.y)/sqrt(pow2(sqrt(pow2(TargetCamera1.translate.x-translate.x)+pow2(TargetCamera1.translate.z-translate.z)))))))} {"(TargetCamera1.translate.x-translate.x >= 0 ? 270-degrees(atan((TargetCamera1.translate.z-translate.z)/(TargetCamera1.translate.x-translate.x))): -degrees(atan((TargetCamera1.translate.z-translate.z)/(TargetCamera1.translate.x-translate.x)))-270)"} {0 x15 1000}}
+name Environment2
+xpos -1225
+ypos 475
+}
+Constant {
+inputs 0
+color {1 1 1 1}
+name Constant5
+tile_color 0xffffffff
+note_font "Bitstream Vera Sans Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+xpos -971
+ypos -161
+postage_stamp false
+}
+Constant {
+inputs 0
+name Constant3
+tile_color 0xffffffff
+note_font "Bitstream Vera Sans Bold Bold Bold Bold Bold Bold Bold Bold"
+xpos -897
+ypos -189
+postage_stamp false
+}
+set Na9ea4e10 [stack 0]
+push $Na9ea4e10
+Constant {
+inputs 0
+color {0 0 0 1}
+name Constant4
+tile_color 0xffffffff
+note_font "Bitstream Vera Sans Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+xpos -831
+ypos -163
+postage_stamp false
+}
+Dot {
+name Dot3
+xpos -802
+ypos -126
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+BasicMaterial {
+inputs 4
+diffuse 0.265
+min_shininess 0
+max_shininess 0
+name BasicMaterial2
+xpos -897
+ypos -110
+}
+Dot {
+name Dot12
+xpos -863
+ypos 373
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Input {
+inputs 0
+name object
+xpos -693
+ypos -33
+}
+ApplyMaterial {
+inputs 2
+name ApplyMaterial1
+xpos -693
+ypos 370
+}
+MergeGeo {
+inputs 2
+selectable false
+name MergeGeo6
+xpos -693
+ypos 496
+}
+Dot {
+name Dot17
+xpos -659
+ypos 578
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N1bf6820 [stack 0]
+push $N9c95d3c0
+add_layer {Pworld Pworld.red Pworld.green Pworld.blue Pworld.alpha}
+add_layer {normal normal.x normal.y normal.z}
+ScanlineRender {
+inputs 3
+samples 0
+shutteroffset centred
+motion_vectors_type distance
+output_shader_vectors true
+P_channel Pworld
+N_channel normal
+name ScanlineRender4
+xpos -693
+ypos 624
+}
+DeepHoldout2 {
+inputs 2
+name DeepHoldout2
+xpos -693
+ypos 948
+disable {{parent.d}}
+}
+Reformat {
+type scale
+scale {{1/parent.Reformat3.scale}}
+name Reformat4
+xpos -693
+ypos 1215
+}
+set Nf4c17aa0 [stack 0]
+Dot {
+name Dot23
+xpos -780
+ypos 1309
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot24
+xpos -780
+ypos 1466
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N9c966dc0
+Dot {
+name Dot6
+xpos -381
+ypos 1136
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N718c3190
+Dot {
+name Dot14
+xpos -1460
+ypos 1077
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Constant {
+inputs 0
+color {1 1 1 1}
+name Constant1
+tile_color 0xffffffff
+note_font "Bitstream Vera Sans Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+xpos -1977
+ypos 784
+postage_stamp false
+}
+Constant {
+inputs 0
+name Constant2
+tile_color 0xffffffff
+note_font "Bitstream Vera Sans Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+xpos -1903
+ypos 758
+postage_stamp false
+}
+set Nf4c427e0 [stack 0]
+push $Nf4c427e0
+Constant {
+inputs 0
+color {0 0 0 1}
+name Constant6
+tile_color 0xffffffff
+note_font "Bitstream Vera Sans Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+xpos -1837
+ypos 782
+postage_stamp false
+}
+Dot {
+name Dot15
+xpos -1808
+ypos 819
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+BasicMaterial {
+inputs 4
+diffuse 0.265
+specular 1
+min_shininess 1
+max_shininess 2
+name BasicMaterial1
+xpos -1903
+ypos 868
+}
+Dot {
+name Dot16
+xpos -1869
+ypos 972
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N1bf6820
+Dot {
+name Dot18
+xpos -1162
+ypos 578
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+ApplyMaterial {
+inputs 2
+name ApplyMaterial2
+xpos -1196
+ypos 969
+}
+push $N9c95d3c0
+ScanlineRender {
+inputs 3
+shutteroffset centred
+motion_vectors_type distance
+output_shader_vectors true
+P_channel Pworld
+N_channel normal
+name ScanlineRender1
+xpos -1196
+ypos 1074
+}
+DeepHoldout2 {
+inputs 2
+name DeepHoldout1
+xpos -1194
+ypos 1133
+disable {{parent.d}}
+}
+Reformat {
+type scale
+scale {{1/parent.Reformat3.scale}}
+name Reformat6
+xpos -1196
+ypos 1211
+}
+Dot {
+name Dot22
+xpos -1162
+ypos 1268
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $Nf4c17aa0
+Dot {
+name Dot21
+xpos -873
+ypos 1218
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2
+operation from
+bbox B
+name Merge1
+xpos -907
+ypos 1265
+}
+Clamp {
+channels rgba
+maximum_enable false
+name Clamp1
+xpos -907
+ypos 1289
+}
+Dot {
+name Dot20
+xpos -873
+ypos 1417
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $Nf4c17aa0
+Merge2 {
+inputs 2
+operation copy
+bbox A
+also_merge all
+mix 0
+name Merge3
+xpos -693
+ypos 1414
+}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy1
+xpos -692
+ypos 1457
+}
+Dot {
+name Dot2
+xpos -659
+ypos 1503
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Na4be4d00 [stack 0]
+Dot {
+name Dot13
+xpos -659
+ypos 1593
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $Na4be4d00
+push $N9c966dc0
+Reformat {
+type scale
+scale {{1/parent.Reformat3.scale}}
+name Reformat5
+xpos -302
+ypos 1213
+}
+Merge2 {
+inputs 2
+also_merge all
+name Merge2
+xpos -302
+ypos 1500
+}
+Switch {
+inputs 2
+which {{parent.q}}
+name Switch1
+xpos -302
+ypos 1590
+}
+Output {
+name Output1
+xpos -302
+ypos 1669
+}
+Camera2 {
+inputs 0
+translate {{parent.input2.translate.x x1 -19.13081551 x10 -11.66025162 x20 6.12830162 -10.42668247} {parent.input2.translate.y x1 2.099999905 x10 2.099999905 x20 2.099999905 2.100006819} {parent.input2.translate.z x1 4.62827301 x10 -19.25162888 x20 13.9478426 8.93324852}}
+rotate {{parent.input2.rotate.x x1 0 x10 0 x20 0 0} {parent.input2.rotate.y x1 215.5630493 x6 202.0971222 x10 171.8755496 x20 51.10560297 -27.11569391} {parent.input2.rotate.z x1 0 x10 0 x20 0 0}}
+focal 10
+name TargetCamera1
+xpos -1384
+ypos -63
+addUserKnob {20 User}
+addUserKnob {22 Createtarget l "Create target" T "n = nuke.thisNode()\nx = int(n\['xpos'].value())\ny = int(n\['ypos'].value())\nname = n\['name'].value()\nhexColour = int('%02x%02x%02x%02x' % (0,150,150,1),16)\nn\['tile_color'].setValue(hexColour)\n  \n\na = nuke.nodes.Axis()\na.setXYpos(x-100,y)\na\['name'].setValue(\"Target\"+name)\na\['tile_color'].setValue(hexColour)\nTarget = a\['name'].value()\nX = \"degrees(atan((\"+Target+\".translate.y-translate.y)/sqrt(pow2(sqrt(pow2(\"+Target+\".translate.x-translate.x)+pow2(\"+Target+\".translate.z-translate.z))))))\"\nn\['rotate'].setExpression(X,0)\n\nY = Target+\".translate.x-translate.x >= 0 ? 270-degrees(atan((\"+Target+\".translate.z-translate.z)/(\"+Target+\".translate.x-translate.x))): -degrees(atan((\"+Target+\".translate.z-translate.z)/(\"+Target+\".translate.x-translate.x)))-270\"\nn\['rotate'].setExpression(Y,1)\nmerge = nuke.createNode(\"MergeGeo\")\nmerge.setInput(1,a)\n" +STARTLINE}
+}
+Sphere {
+inputs 0
+rows 5
+columns 5
+translate {{parent.input0.translate.x x1 19 x10 -19.39999962 x20 -18.50727463 x22 -2.45339632 x30 19} 1.4 {parent.input0.translate.z x1 31.39999962 x10 17.39999962 x20 -18.73165512 x22 -6 x30 -26.20000076}}
+uniform_scale 6
+name Sphere2
+label Object
+note_font_size 14
+xpos -581
+ypos -43
+}
+push $N66c15d0
+Viewer {
+frame 1196
+frame_range 1001-1400
+name Viewer1
+xpos -1395
+ypos 384
+}
+end_group

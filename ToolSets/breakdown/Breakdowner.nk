@@ -1,0 +1,1873 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+ name Breakdowner1
+ help "BREAKDOWNER\n\nThis tool will help you make a Breakdowned shot for a Showreel in a fast and easy way. \n\n     Step 1   ---   Plug in the Shot that you want to breakdown in the 'Shot' Input  and Plug in the \"Layers\" of the breakdown that you want to show (ie Wireframed version, Greenscreen Plate etc..). You can plug in up to 10 \"Layers\" (Inputs 4-10 are sitting on left side of Gizmo).  \n\nNote:  Make sure all your input layers are sharing the same timing and frame range as your Shot.  In 'Freeze Frame' mode It is suggested to also plug in your Shot as your \"final Layer\" aswell so you present it as your final breakdown before it continues to play the rest of the shot after the breakdowns.\n\n     Step 2  ---   Fill out the node variables\n\nSHOT SETUP\nShot Framerange: Click 'Set' button to automatically set your 'Shot' Framerange. ( SHot must already be plugged into the 'Shot' input. Further calculations will be based of this Original Framerange)\n\nBreakdown Frame: The Frame were the breakdown will take place\n\n# of Layers: how many Layers you are pluggin into the tool (up to 10)\n\n\nBREAKDOWN CONTROLS \n\nBreakdown Type (2 types):\n'Freeze Frame' will play the Shot and stop in a desired frame ( Breakdown Frame ) and will breakdown the shot with the layers in that specific Frozen frame. Once it has finished wiping the layers it will conitune to play the shot till the end (this mode will increase automatically the shot framerange, depending on in input number and \"Frame per Layer' number).  'Continuous Play' will breakdown the shot asi it keeps playing. The breakdown will begin on the 'breakdown frame' that you have chosen as it keeps playing (for this option, make sure you pick up a frame thats gives time to the breakdown to finish ( ie. If you have 4 layers that will show up for 10 frames each you will have to give at least 40 frames before its last frame to your 'Breakdown Frame' to let the breakdown to finish)\n\nFrames per Layer:  How many frames will each \"Layer\" have to show up on the breakdown\n\nTransition Type: 'Wipe' and 'Cross Dissolve'.   \n'Transition Speed': 4 speeds (5,10, 15 and 20 frames) how many frames the \"Wipe\" takes to cross the Screen or how many frames will take to \"CrossFade\".\nWipe Direction: (not for Crossdissolve mode) \nWipe Edge Blur Size:  (not for Crossdissolve mode)   \n\n\nOutput: 2 options. \"Breakdown Shot' outputs the breakdowned Shot beginig on the first frame of the Original Framerange. 'Edited' Option, will first play the 'Shot' and then will playe the \"Breakdowned\" Shot after it, in case you want to showcase the complete original Shot before its brokendown. \n\nFinal Frame Range:  Click 'Reset' button to update and know what your Final Frame Range will be before you play or render.  (TIP: its better to keep the timeline in 'Input' mode)\n\nCheers Amigos!\n\nDaniel Gonzalez Solozabal.    GONZO FX\n"
+ tile_color 0x8ff3f9ff
+ selected true
+ xpos -1714
+ ypos -2561
+ addUserKnob {20 User l BREAKDOWNER}
+ addUserKnob {26 ""}
+ addUserKnob {26 hyf l "Shot Setup" T " \n"}
+ addUserKnob {41 first_frame l "Shot Framerange" T FrameRangeMAIN.first_frame}
+ addUserKnob {41 last_frame l "" -STARTLINE T FrameRangeMAIN.last_frame}
+ addUserKnob {41 reset_1 l Set -STARTLINE T FrameRangeMAIN.reset}
+ addUserKnob {41 curframe_1 l "Breakdown Frame" T FrameHoldMAIN1.curframe}
+ addUserKnob {41 LayerNumber l "# of Layers (1-10)" t "How many Layers are you using beside the shot? \n\nWhats the last input number you are using?" T WIPE_CONTROLS1.LayerNumber}
+ addUserKnob {26 ""}
+ addUserKnob {26 srgt l "Breakdown Controls" T " \n"}
+ addUserKnob {4 TypeSwitch l "Breakdown Type" M {"Freeze Frame " "Continuous Play " "" "" "" ""}}
+ addUserKnob {41 time_offset l "Frames per Layer" T TimeOffsetMAIN.time_offset}
+ addUserKnob {41 WipeTypeSwitch l "Transition Type" T WipeMatte1.WipeTypeSwitch}
+ addUserKnob {41 WipeSpeed l "Transition Speed" -STARTLINE T WipeMatte1.WipeSpeed}
+ addUserKnob {41 wipedir l "     Wipe Direction" T WipeMatte1.wipedir}
+ addUserKnob {41 Blurwipesize l "Wipe Edge Blur Size" -STARTLINE T WipeMatte1.Blurwipesize}
+ addUserKnob {26 ""}
+ addUserKnob {4 Output M {"Breakdowned Shot" "Edited: Shot > Breakdowned Shot " ""}}
+ addUserKnob {26 ""}
+ addUserKnob {26 frfr l "" -STARTLINE T "Click 'Reset' to update and know your Final Frame Range "}
+ addUserKnob {41 first_frame_1 l "Final Frame Range" T FrameRange1.first_frame}
+ addUserKnob {41 last_frame_1 l "" -STARTLINE T FrameRange1.last_frame}
+ addUserKnob {41 reset -STARTLINE T FrameRange1.reset}
+ addUserKnob {26 dgss l "" +STARTLINE T "    \n Daniel Gonzalez Solozabal"}
+}
+ Input {
+  inputs 0
+  name Shot
+  xpos 461
+  ypos 284
+ }
+ NoOp {
+  name WIPE_CONTROLS1
+  xpos 461
+  ypos 333
+  addUserKnob {20 User}
+  addUserKnob {7 LayerNumber l "Number of Layers" R 1 10}
+  LayerNumber 10
+ }
+ Dot {
+  name Dot18
+  xpos 495
+  ypos 444
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N9ad4460 [stack 0]
+ FrameRange {
+  first_frame 1001
+  last_frame 1124
+  time ""
+  name FrameRangeMAIN
+  xpos 327
+  ypos 468
+ }
+push $N9ad4460
+ Dot {
+  name Dot27
+  xpos 304
+  ypos 444
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N3e56d10 [stack 0]
+ Dot {
+  name Dot6
+  xpos -120
+  ypos 444
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N3e5b6d0 [stack 0]
+ NoOp {
+  name FrameCount
+  xpos -275
+  ypos 4699
+  addUserKnob {20 User}
+  addUserKnob {7 framcount}
+  framcount {{parent.FrameRangeMAIN.knob.last_frame-parent.FrameRangeMAIN.knob.first_frame+parent.FrameRangeLAST.knob.last_frame+1}}
+ }
+push $N9ad4460
+ Dot {
+  name Dot10
+  xpos 619
+  ypos 444
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N3e657b0 [stack 0]
+ Dot {
+  name Dot19
+  xpos 1105
+  ypos 444
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Dot {
+  name Dot20
+  xpos 1105
+  ypos 3773
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N3e6efc0 [stack 0]
+ FrameRange {
+  first_frame {{parent.FrameRangeLAST.knob.first_frame i}}
+  last_frame {{parent.FrameRangeMAIN.knob.last_frame i}}
+  time ""
+  name FrameRange2
+  xpos 1277
+  ypos 4043
+ }
+push $N3e6efc0
+ TimeOffset {
+  time_offset {{parent.WIPE_CONTROLS1.LayerNumber*parent.TimeOffsetMAIN.time_offset+parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset8
+  xpos 1067
+  ypos 3902
+ }
+ FrameRange {
+  first_frame {{parent.FrameRangeFIRST.knob.last_frame+1 i}}
+  last_frame {{parent.FrameRangeMAIN.knob.last_frame+parent.TimeOffset8.time_offset i}}
+  time ""
+  name FrameRangeLAST
+  xpos 1067
+  ypos 3949
+ }
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch10
+  xpos 1067
+  ypos 4043
+ }
+ Group {
+  inputs 0
+  name WipeMatte1
+  xpos 804
+  ypos 569
+  addUserKnob {20 User}
+  addUserKnob {4 WipeTypeSwitch l "Transition Type" M {Wipe "Cross Dissolve" ""}}
+  addUserKnob {41 time_offset l "Start Wipe Matte at" T TimeOffset2.time_offset}
+  addUserKnob {4 WipeSpeed l "Wipe Speed" M {"5 frames" "10 frames" "15 frames" "20 frames" "" ""}}
+  WipeSpeed "10 frames"
+  addUserKnob {6 BlurCheck l "Wiper Blur" +STARTLINE}
+  BlurCheck true
+  addUserKnob {4 wipedir l "Wipe Direction" M {"Left to Right" "Right to Left" "Top to Bottom" "Bottom to Top"}}
+  addUserKnob {7 Blurwipesize l "Wipe Blur Size" R 0 500}
+  Blurwipesize 15
+ }
+  Constant {
+   inputs 0
+   color {{curve 0 x20 1}}
+   name Constant5
+   xpos 1105
+   ypos 705
+  }
+  Constant {
+   inputs 0
+   color {{curve 0 x15 1}}
+   name Constant4
+   xpos 996
+   ypos 709
+  }
+  Constant {
+   inputs 0
+   color {{curve 0 x10 1}}
+   name Constant3
+   xpos 898
+   ypos 712
+  }
+  Constant {
+   inputs 0
+   color {{curve 0 x5 1}}
+   name Constant1
+   xpos 790
+   ypos 715
+  }
+  Switch {
+   inputs 4
+   which {{parent.WipeSpeed i x-1207 0}}
+   name SPEEDwipe1
+   xpos 936
+   ypos 824
+  }
+  Constant {
+   inputs 0
+   color 1
+   format "1828 1556 0 0 1828 1556 2 SoundstripCrop"
+   name Constant2
+   xpos 494
+   ypos 96
+  }
+  Crop {
+   box {-140 0 2098 1556}
+   name Crop2
+   xpos 494
+   ypos 211
+  }
+  Blur {
+   channels rgba
+   size {{parent.Blurwipesize} 0}
+   name Blurrepap
+   xpos 494
+   ypos 277
+  }
+  ColorLookup {
+   lut {master {curve C 0 s0.5 x0.8247339129 1 s0.6499999762}
+     red {}
+     green {}
+     blue {}
+     alpha {}}
+   name ColorLookup1
+   xpos 494
+   ypos 334
+  }
+  Clamp {
+   name Clamp1
+   xpos 494
+   ypos 371
+  }
+set N9f53850 [stack 0]
+  Transform {
+   translate {{curve -2580 x20 0} 0}
+   center {914 778}
+   name Transform4
+   xpos 694
+   ypos 448
+  }
+push $N9f53850
+  Transform {
+   translate {{curve i -2580 x15 0} 0}
+   center {914 778}
+   name Transform2
+   xpos 576
+   ypos 450
+  }
+push $N9f53850
+  Transform {
+   translate {{curve i -2580 x10 0} 0}
+   center {914 778}
+   name Transform3
+   xpos 473
+   ypos 451
+  }
+push $N9f53850
+  Transform {
+   translate {{curve i -2580 x5 0} 0}
+   center {914 778}
+   name Transform7
+   xpos 368
+   ypos 451
+  }
+  Switch {
+   inputs 4
+   which {{parent.WipeSpeed i x-1207 0}}
+   name SPEEDwipe
+   xpos 506
+   ypos 516
+  }
+set N9f98bf0 [stack 0]
+  Transform {
+   rotate 90
+   scale {0.5 2.4}
+   center {914 778}
+   name Transform1
+   xpos 655
+   ypos 599
+  }
+set N9fa09e0 [stack 0]
+push $N9fa09e0
+  Mirror {
+   Vertical true
+   name Mirror2
+   xpos 758
+   ypos 599
+  }
+push $N9f98bf0
+  Mirror {
+   Horizontal true
+   name Mirror1
+   xpos 560
+   ypos 600
+  }
+push $N9f98bf0
+  Switch {
+   inputs 4
+   which {{parent.wipedir i}}
+   name DirectionSwitch
+   xpos 506
+   ypos 662
+  }
+  Reformat {
+   resize distort
+   name Reformat1
+   xpos 506
+   ypos 819
+  }
+  Dot {
+   name Dot1
+   xpos 540
+   ypos 892
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Switch {
+   inputs 2
+   which {{parent.WipeTypeSwitch i}}
+   name WipeType
+   xpos 735
+   ypos 944
+  }
+  TimeOffset {
+   time_offset {{parent.parent.FrameHoldMAIN1.curframe}}
+   time ""
+   name TimeOffset2
+   xpos 735
+   ypos 989
+  }
+  Output {
+   name Output1
+   xpos 735
+   ypos 1077
+  }
+ end_group
+set N3ecbc50 [stack 0]
+ TimeOffset {
+  time_offset 15
+  time ""
+  name TimeOffsetMAIN
+  xpos 804
+  ypos 681
+ }
+set N9fefa80 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset11
+  xpos 804
+  ypos 803
+ }
+set N9ff7f40 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset12
+  xpos 804
+  ypos 962
+ }
+set Na000950 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset13
+  xpos 804
+  ypos 1136
+ }
+set Na009450 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset14
+  xpos 804
+  ypos 1332
+ }
+set Na011ef0 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset15
+  xpos 804
+  ypos 1536
+ }
+set Na01a9a0 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset1
+  xpos 806
+  ypos 1725
+ }
+set Na023440 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset2
+  xpos 804
+  ypos 1952
+ }
+set Na02c090 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset5
+  xpos 804
+  ypos 2176
+ }
+set Na0349d0 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset6
+  xpos 808
+  ypos 2414
+ }
+set Na03d620 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset7
+  xpos 806
+  ypos 2622
+ }
+set Na045f60 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset9
+  xpos 806
+  ypos 2833
+ }
+set Na04ea00 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset10
+  xpos 804
+  ypos 3019
+ }
+set Na0574d0 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset16
+  xpos 804
+  ypos 3240
+ }
+set Na05ff70 [stack 0]
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset17
+  xpos 804
+  ypos 3432
+ }
+set Na068a10 [stack 0]
+push $Na068a10
+ TimeOffset {
+  time_offset {{parent.TimeOffsetMAIN.time_offset i}}
+  time ""
+  name TimeOffset18
+  xpos 804
+  ypos 3622
+ }
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch33
+  xpos 712
+  ypos 3622
+ }
+ Input {
+  inputs 0
+  name Input16
+  xpos -70
+  ypos 3497
+  number 16
+ }
+ Dot {
+  name Dot30
+  label 16
+  note_font_size 50
+  xpos -36
+  ypos 3565
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na086800 [stack 0]
+push $Na086800
+ Group {
+  name FrameHoldM15
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -70
+  ypos 3615
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch34
+  xpos 171
+  ypos 3622
+ }
+push $Na05ff70
+push $Na068a10
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch31
+  xpos 712
+  ypos 3432
+ }
+ Input {
+  inputs 0
+  name Input15
+  xpos -70
+  ypos 3307
+  number 15
+ }
+ Dot {
+  name Dot29
+  label 15
+  note_font_size 50
+  xpos -36
+  ypos 3375
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na0ba190 [stack 0]
+push $Na0ba190
+ Group {
+  name FrameHoldM14
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -70
+  ypos 3425
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch32
+  xpos 171
+  ypos 3432
+ }
+push $Na0574d0
+push $Na05ff70
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch29
+  xpos 712
+  ypos 3240
+ }
+ Input {
+  inputs 0
+  name Input14
+  xpos -70
+  ypos 3115
+  number 14
+ }
+ Dot {
+  name Dot28
+  label 14
+  note_font_size 50
+  xpos -36
+  ypos 3183
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na0ed7d0 [stack 0]
+push $Na0ed7d0
+ Group {
+  name FrameHoldM13
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -70
+  ypos 3233
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch30
+  xpos 171
+  ypos 3240
+ }
+push $Na04ea00
+push $Na0574d0
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch27
+  xpos 712
+  ypos 3019
+ }
+ Input {
+  inputs 0
+  name Input13
+  xpos -70
+  ypos 2894
+  number 13
+ }
+set Na11c510 [stack 0]
+ Dot {
+  name Dot17
+  label "13\n"
+  note_font_size 50
+  xpos -36
+  ypos 2962
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na120d20 [stack 0]
+push $Na120d20
+ Group {
+  name FrameHoldM12
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -70
+  ypos 3012
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch28
+  xpos 171
+  ypos 3019
+ }
+push $Na045f60
+push $Na04ea00
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch25
+  xpos 714
+  ypos 2833
+ }
+ Input {
+  inputs 0
+  name Input12
+  xpos -68
+  ypos 2708
+  number 12
+ }
+ Dot {
+  name Dot16
+  label "12\n"
+  note_font_size 50
+  xpos -34
+  ypos 2776
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na154390 [stack 0]
+push $Na154390
+ Group {
+  name FrameHoldM11
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -68
+  ypos 2826
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch26
+  xpos 173
+  ypos 2833
+ }
+push $Na03d620
+push $Na045f60
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch23
+  xpos 714
+  ypos 2622
+ }
+ Input {
+  inputs 0
+  name Input11
+  xpos -68
+  ypos 2489
+  number 11
+ }
+ Dot {
+  name Dot15
+  label "11\n"
+  note_font_size 50
+  xpos -34
+  ypos 2565
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na187a00 [stack 0]
+push $Na187a00
+ Group {
+  name FrameHoldM10
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -68
+  ypos 2615
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch24
+  xpos 173
+  ypos 2622
+ }
+push $Na0349d0
+push $Na03d620
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch21
+  xpos 716
+  ypos 2414
+ }
+ Input {
+  inputs 0
+  name Input10
+  xpos -66
+  ypos 2282
+  number 10
+ }
+ Dot {
+  name Dot14
+  label "10\n"
+  note_font_size 50
+  xpos -32
+  ypos 2357
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na1bafa0 [stack 0]
+push $Na1bafa0
+ Group {
+  name FrameHoldM9
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -66
+  ypos 2407
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch22
+  xpos 178
+  ypos 2414
+ }
+push $Na02c090
+push $Na0349d0
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch19
+  xpos 704
+  ypos 2176
+ }
+ Input {
+  inputs 0
+  name Input9
+  xpos -70
+  ypos 2038
+  number 9
+ }
+ Dot {
+  name Dot13
+  label "9\n"
+  note_font_size 50
+  xpos -36
+  ypos 2119
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na1ee7c0 [stack 0]
+push $Na1ee7c0
+ Group {
+  name FrameHoldM8
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -70
+  ypos 2169
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch20
+  xpos 169
+  ypos 2176
+ }
+push $Na023440
+push $Na02c090
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch9
+  xpos 704
+  ypos 1952
+ }
+ Input {
+  inputs 0
+  name Input8
+  xpos -70
+  ypos 1814
+  number 8
+ }
+ Dot {
+  name Dot2
+  label "8\n"
+  note_font_size 50
+  xpos -36
+  ypos 1895
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na221dd0 [stack 0]
+push $Na221dd0
+ Group {
+  name FrameHoldM7
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -70
+  ypos 1945
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch17
+  xpos 168
+  ypos 1952
+ }
+push $Na01a9a0
+push $Na023440
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch8
+  xpos 681
+  ypos 1725
+ }
+ Input {
+  inputs 0
+  name Input7
+  xpos -72
+  ypos 1602
+  number 7
+ }
+ Dot {
+  name Dot1
+  label "7\n"
+  note_font_size 50
+  xpos -38
+  ypos 1679
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na2553e0 [stack 0]
+push $Na2553e0
+ Group {
+  name FrameHoldM6
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -72
+  ypos 1719
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch16
+  xpos 100
+  ypos 1725
+ }
+push $Na011ef0
+push $Na01a9a0
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch7
+  xpos 671
+  ypos 1528
+ }
+ Input {
+  inputs 0
+  name Input6
+  xpos -76
+  ypos 1420
+  number 6
+ }
+ Dot {
+  name Dot21
+  label "6\n"
+  note_font_size 50
+  xpos -42
+  ypos 1476
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na2889d0 [stack 0]
+push $Na2889d0
+ Group {
+  name FrameHoldM5
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -76
+  ypos 1530
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch15
+  xpos 76
+  ypos 1536
+ }
+push $Na009450
+push $Na011ef0
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch6
+  xpos 680
+  ypos 1332
+ }
+ Input {
+  inputs 0
+  name Input5
+  xpos -74
+  ypos 1195
+  number 5
+ }
+ Dot {
+  name Dot22
+  label "5\n"
+  note_font_size 50
+  xpos -40
+  ypos 1269
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na2bc000 [stack 0]
+push $Na2bc000
+ Group {
+  name FrameHoldM4
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -74
+  ypos 1326
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch14
+  xpos 69
+  ypos 1332
+ }
+push $Na000950
+push $Na009450
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch5
+  xpos 686
+  ypos 1136
+ }
+ Input {
+  inputs 0
+  name Input4
+  xpos -79
+  ypos 1029
+  number 4
+ }
+ Dot {
+  name Dot23
+  label "4\n"
+  note_font_size 50
+  xpos -45
+  ypos 1088
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na2ef580 [stack 0]
+push $Na2ef580
+ Group {
+  name FrameHoldM3
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -79
+  ypos 1130
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch13
+  xpos 78
+  ypos 1136
+ }
+push $N9ff7f40
+push $Na000950
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch4
+  xpos 665
+  ypos 962
+ }
+ Input {
+  inputs 0
+  name Input3
+  xpos -69
+  ypos 877
+  number 1
+ }
+ Dot {
+  name Dot24
+  label "3\n"
+  note_font_size 50
+  xpos -35
+  ypos 935
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na322c30 [stack 0]
+push $Na322c30
+ Group {
+  name FrameHoldM2
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -69
+  ypos 956
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch12
+  xpos 107
+  ypos 962
+ }
+set Na342100 [stack 0]
+push $N9fefa80
+push $N9ff7f40
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch3
+  xpos 661
+  ypos 803
+ }
+ Input {
+  inputs 0
+  name Input2
+  xpos -69
+  ypos 735
+  number 2
+ }
+ Dot {
+  name Dot25
+  label "2\n"
+  note_font_size 50
+  xpos -35
+  ypos 771
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na356280 [stack 0]
+push $Na356280
+ Group {
+  name FrameHoldM1
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -69
+  ypos 836
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch11
+  xpos 47
+  ypos 804
+ }
+push $N3ecbc50
+push $N9fefa80
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch2
+  xpos 661
+  ypos 681
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos -72
+  ypos 607
+  number 3
+ }
+ Dot {
+  name Dot26
+  label "1\n"
+  note_font_size 50
+  xpos -38
+  ypos 657
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na3898b0 [stack 0]
+push $Na3898b0
+ Group {
+  name FrameHoldM
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos -72
+  ypos 675
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe {{parent.FrameHoldMAIN1.curframe}}
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which i}}
+  name Switch1
+  xpos 61
+  ypos 681
+ }
+push $N3e657b0
+ Dot {
+  name Dot11
+  xpos 619
+  ypos 638
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N9ad4460
+ Group {
+  name FrameHoldMAIN1
+  tile_color 0xff5e6bff
+  label "\[value curframe]"
+  note_font "Bitstream Vera Sans"
+  xpos 461
+  ypos 489
+  mapsize {0.15 0.15}
+  addUserKnob {20 User}
+  addUserKnob {3 curframe l "first frame"}
+  curframe 1043
+  addUserKnob {22 setcurrent l "set current" -STARTLINE T nuke.thisNode().knob('curframe').setValue(nuke.frame())}
+  addUserKnob {3 increment}
+ }
+  Input {
+   inputs 0
+   name Input
+   xpos 318
+   ypos 393
+  }
+  FrameHold {
+   first_frame {{(curframe)}}
+   increment {{parent.increment}}
+   name FrameHold
+   xpos 318
+   ypos 448
+  }
+  Output {
+   name Output1
+   xpos 318
+   ypos 531
+  }
+ end_group
+ FrameRange {
+  first_frame {{parent.FrameHoldMAIN1.curframe+1 i}}
+  last_frame {{parent.FrameRangeMAIN.knob.last_frame i}}
+  time ""
+  name FrameRange7
+  xpos 461
+  ypos 553
+ }
+push $N3e56d10
+ FrameRange {
+  first_frame {{parent.FrameRangeMAIN.knob.first_frame i}}
+  last_frame {{parent.FrameHoldMAIN1.curframe i}}
+  time ""
+  name FrameRange8
+  xpos 270
+  ypos 584
+ }
+ AppendClip {
+  inputs 2
+  firstFrame {{parent.FrameRangeMAIN.knob.first_frame i}}
+  lastFrame 1117
+  time ""
+  name AppendClip3
+  xpos 465
+  ypos 584
+ }
+ Switch {
+  inputs 2
+  which {{parent.TypeSwitch i}}
+  name SwitchType
+  xpos 465
+  ypos 634
+ }
+ Keymix {
+  inputs 3
+  name Keymix8
+  xpos 465
+  ypos 675
+ }
+ Keymix {
+  inputs 3
+  name Keymix9
+  xpos 465
+  ypos 797
+ }
+ Keymix {
+  inputs 3
+  name Keymix10
+  xpos 465
+  ypos 956
+ }
+ Keymix {
+  inputs 3
+  name Keymix11
+  xpos 465
+  ypos 1130
+ }
+ Keymix {
+  inputs 3
+  name Keymix12
+  xpos 465
+  ypos 1326
+ }
+ Keymix {
+  inputs 3
+  name Keymix13
+  xpos 465
+  ypos 1530
+ }
+ Keymix {
+  inputs 3
+  name Keymix1
+  xpos 465
+  ypos 1719
+ }
+ Keymix {
+  inputs 3
+  name Keymix2
+  xpos 465
+  ypos 1946
+ }
+ Keymix {
+  inputs 3
+  name Keymix3
+  xpos 465
+  ypos 2170
+ }
+ Keymix {
+  inputs 3
+  name Keymix4
+  xpos 465
+  ypos 2408
+ }
+ Keymix {
+  inputs 3
+  name Keymix5
+  xpos 467
+  ypos 2616
+ }
+ Keymix {
+  inputs 3
+  name Keymix6
+  xpos 467
+  ypos 2827
+ }
+ Keymix {
+  inputs 3
+  name Keymix7
+  xpos 465
+  ypos 3013
+ }
+ Keymix {
+  inputs 3
+  name Keymix14
+  xpos 465
+  ypos 3234
+ }
+ Keymix {
+  inputs 3
+  name Keymix15
+  xpos 465
+  ypos 3426
+ }
+ Keymix {
+  inputs 3
+  name Keymix16
+  xpos 465
+  ypos 3616
+ }
+ Dot {
+  name Dot12
+  xpos 501
+  ypos 3963
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na480b80 [stack 0]
+ FrameRange {
+  first_frame {{parent.FrameRangeMAIN.knob.first_frame i}}
+  last_frame {{parent.FrameRangeMAIN.knob.last_frame i}}
+  time ""
+  name FrameRangeFIRST1
+  xpos 559
+  ypos 4001
+ }
+push $Na480b80
+ FrameRange {
+  first_frame {{parent.FrameRangeMAIN.knob.first_frame i}}
+  last_frame {{parent.FrameHoldMAIN1.curframe+parent.TimeOffset8.time_offset i x1133 1082}}
+  time ""
+  name FrameRangeFIRST
+  xpos 389
+  ypos 4009
+ }
+ Switch {
+  inputs 2
+  which {{parent.SwitchType.which}}
+  name Switch18
+  xpos 464
+  ypos 4063
+ }
+ AppendClip {
+  inputs 2
+  firstFrame {{parent.FrameRangeMAIN.knob.first_frame i}}
+  lastFrame 1100
+  time ""
+  name AppendClip4
+  xpos 832
+  ypos 4271
+ }
+ Dot {
+  name Dot5
+  label "BREAKDOWN COMP"
+  note_font_size 50
+  xpos 866
+  ypos 4392
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Na4a8390 [stack 0]
+ TimeOffset {
+  time_offset {{-parent.FrameRangeMAIN.knob.first_frame x1082 0}}
+  time ""
+  name TimeOffset3
+  xpos 324
+  ypos 4647
+ }
+ TimeOffset {
+  time_offset {{parent.FrameRange6.knob.last_frame+1}}
+  time ""
+  name TimeOffset4
+  xpos 324
+  ypos 4710
+ }
+ Dot {
+  name Dot4
+  label "BREAKDOWN COMP\nw Time Offset \nto Start after SHOTs last frame"
+  note_font_size 50
+  xpos 358
+  ypos 4987
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N3e5b6d0
+ FrameRange {
+  first_frame {{parent.FrameRangeMAIN.knob.first_frame}}
+  last_frame {{parent.FrameRangeMAIN.knob.last_frame}}
+  time ""
+  name FrameRange6
+  xpos -154
+  ypos 4709
+ }
+ Dot {
+  name Dot3
+  label SHOT
+  note_font_size 50
+  xpos -120
+  ypos 4993
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ AppendClip {
+  inputs 2
+  firstFrame {{parent.FrameRange6.knob.first_frame}}
+  lastFrame 1261
+  time ""
+  name AppendClip1
+  xpos 84
+  ypos 5119
+ }
+ Dot {
+  name Dot7
+  label "EDITED\nSHOT > SHOT w Breakdowns"
+  note_font_size 50
+  xpos 118
+  ypos 5407
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $Na4a8390
+ Dot {
+  name Dot8
+  xpos 1243
+  ypos 4667
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Dot {
+  name Dot9
+  xpos 1243
+  ypos 5373
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Switch {
+  inputs 2
+  which {{"parent.Output "}}
+  name OutputSwitch
+  xpos 729
+  ypos 5675
+ }
+ FrameRange {
+  first_frame 1001
+  last_frame 1289
+  time ""
+  name FrameRange1
+  xpos 729
+  ypos 5761
+ }
+ Output {
+  name Output1
+  xpos 729
+  ypos 5854
+ }
+push $Na342100
+push $Na11c510
+push 0
+push 0
+push 0
+push 0
+push 0
+push 0
+push 0
+ Viewer {
+  inputs 9
+  frame_range 1001-1001
+  fps 25
+  input_number 8
+  name Viewer1
+  selected true
+  xpos -423
+  ypos 2214
+ }
+end_group

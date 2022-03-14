@@ -1,0 +1,1402 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name G_AddKey
+tile_color 0x9fffff
+selected true
+xpos -594
+ypos -3701
+addUserKnob {20 User}
+addUserKnob {4 screenType l "screen type" M {green blue "" ""}}
+screenType blue
+addUserKnob {26 ""}
+addUserKnob {4 cleanPlateMode l mode M {"clean plate" pick "" ""}}
+addUserKnob {18 cleanPlateColor l "clean plate color"}
+cleanPlateColor {0.1097384468 0.1778288037 0.2924214602}
+addUserKnob {6 cleanPlateColor_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 cleanPlateColor_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 cleanPlateColor_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 cleanPlateColor_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 cleanPlateColor_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 cleanPlateColor_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {26 ""}
+addUserKnob {26 darks l "" +STARTLINE T darks}
+addUserKnob {7 darkGamma l gamma}
+darkGamma 1
+addUserKnob {7 darkBlackPoint l blackPoint}
+addUserKnob {6 darkGamma_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {18 darkTint l tint}
+darkTint {0 0 0}
+addUserKnob {6 darkTint_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 darkTint_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 darkTint_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 darkTint_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 darkTint_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 darkTint_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 darkTint_panelDropped_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 darkTint_panelDropped_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 darkTint_panelDropped_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 darkTint_panelDropped_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {7 darkSaturation l saturation R 0 5}
+darkSaturation 1
+addUserKnob {7 darkMix l "darks mix"}
+darkMix 1
+addUserKnob {26 ""}
+addUserKnob {26 highlights l "" +STARTLINE T highlights}
+addUserKnob {7 lightsGain l gain R 0 5}
+lightsGain 1
+addUserKnob {7 lightsWhitePoint l "white point"}
+lightsWhitePoint 1
+addUserKnob {6 lightsTint_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 lightsTint_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+lightsTint_panelDropped true
+addUserKnob {18 lightsTint l tint}
+lightsTint {1 1 1}
+addUserKnob {6 lightsTint_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 lightsTint_panelDropped_2 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 lightsTint_panelDropped_2_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 lightsTint_panelDropped_2_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 lightsTint_panelDropped_2_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {7 lightsSaturation l saturation R 0 5}
+lightsSaturation 1
+addUserKnob {6 lightsTint_panelDropped_2_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 lightsTint_panelDropped_2_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 lightsTint_panelDropped_2_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 lightsTint_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {7 lightsMix l "highlights mix"}
+lightsMix 1
+addUserKnob {26 note l "" +STARTLINE T "for tinting highlights, decrease RGB "}
+addUserKnob {20 extra_highlight n 1}
+extra_highlight 0
+addUserKnob {7 brightTreshold l "bright treshold" R 0 0.1}
+brightTreshold 0.03
+addUserKnob {7 extraHighlightsMix l "extra highlights mix"}
+addUserKnob {7 extraHighlightsBlur l "extra highlights blur" R 0 5}
+addUserKnob {20 endGroup n -1}
+addUserKnob {26 ""}
+addUserKnob {7 postBlur l "post blur" R 0 5}
+addUserKnob {7 overallMix l mix}
+overallMix 1
+addUserKnob {26 ""}
+addUserKnob {26 author l "" +STARTLINE T "Made by Gaetan Verheyen\n\nv 1.0.5"}
+}
+Constant {
+inputs 0
+channels rgb
+name Constant1
+xpos -751
+ypos -419
+}
+Grade {
+add {{cleanPlateColor.r} {cleanPlateColor.g} {cleanPlateColor.b} 0}
+name Grade3
+xpos -751
+ypos -310
+}
+Dot {
+name Dot16
+xpos -717
+ypos -220
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Input {
+inputs 0
+name CleanPlate
+label "Clean Plate\n"
+note_font Verdana
+xpos -417
+ypos -458
+number 1
+}
+Clamp {
+maximum_enable false
+name Clamp4
+xpos -417
+ypos -352
+}
+Switch {
+inputs 2
+which {{parent.cleanPlateMode}}
+name Switch2
+xpos -417
+ypos -224
+}
+Dot {
+name Dot7
+xpos -383
+ypos -125
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N8fe45330 [stack 0]
+Dot {
+name Dot8
+xpos -493
+ypos -125
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nf7efcc50 [stack 0]
+OFXuk.co.thefoundry.keylight.keylight_v201 {
+show "Final Result"
+unPreMultiply false
+screenColour {0 0 1}
+screenGain 1
+screenBalance 0.95
+alphaBias {0.5 0.5 0.5}
+despillBias {0.5 0.5 0.5}
+gangBiases true
+preBlur 0
+"Screen Matte" 0
+screenClipMin 0
+screenClipMax 1
+screenClipRollback 0
+screenGrowShrink 0
+screenSoftness 0
+screenDespotBlack 0
+screenDespotWhite 0
+screenReplaceMethod "Soft Colour"
+screenReplaceColour {0.5 0.5 0.5}
+Tuning 0
+midPoint 0.5
+lowGain 1
+midGain 1
+highGain 1
+"Inside Mask" 0
+sourceAlphaHandling Ignore
+insideReplaceMethod "Soft Colour"
+insideReplaceColour {0.5 0.5 0.5}
+Crops 0
+SourceXMethod Colour
+SourceYMethod Colour
+SourceEdgeColour 0
+SourceCropL 0
+SourceCropR 1
+SourceCropB 0
+SourceCropT 1
+balanceSet false
+insideComponent None
+outsideComponent None
+cacheBreaker true
+name Keylight1
+xpos -527
+ypos 125
+}
+set C7fce3de0 [stack 0]
+Input {
+inputs 0
+name Plate
+label Plate
+xpos 992
+ypos -526
+number 2
+}
+Clamp {
+maximum_enable false
+name Clamp3
+xpos 992
+ypos -443
+}
+Dot {
+name Dot5
+xpos 1026
+ypos -326
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N8ff67700 [stack 0]
+Dot {
+name Dot6
+xpos 890
+ypos -326
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N8f826140 [stack 0]
+Dot {
+name Dot9
+xpos 541
+ypos -326
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N8e428f70 [stack 0]
+Expression {
+expr2 b>(2*g+r)/3?(2*g+r)/3:b
+name Expression4
+xpos 379
+ypos -253
+}
+set Cc3efc4b0 [stack 0]
+push $N8f826140
+clone $C7fce3de0 {
+xpos 856
+ypos -73
+selected false
+}
+OFXuk.co.thefoundry.keylight.keylight_v201 {
+show "Final Result"
+unPreMultiply false
+screenColour {0 1 0}
+screenGain 1
+screenBalance 0.5
+alphaBias {0.5 0.5 0.5}
+despillBias {0.5 0.5 0.5}
+gangBiases true
+preBlur 0
+"Screen Matte" 0
+screenClipMin 0
+screenClipMax 1
+screenClipRollback 0
+screenGrowShrink 0
+screenSoftness 0
+screenDespotBlack 0
+screenDespotWhite 0
+screenReplaceMethod "Soft Colour"
+screenReplaceColour {0.5 0.5 0.5}
+Tuning 0
+midPoint 0.5
+lowGain 1
+midGain 1
+highGain 1
+"Inside Mask" 0
+sourceAlphaHandling Ignore
+insideReplaceMethod "Soft Colour"
+insideReplaceColour {0.5 0.5 0.5}
+Crops 0
+SourceXMethod Colour
+SourceYMethod Colour
+SourceEdgeColour 0
+SourceCropL 0
+SourceCropR 1
+SourceCropB 0
+SourceCropT 1
+balanceSet false
+insideComponent None
+outsideComponent None
+cacheBreaker true
+name Keylight2
+xpos 916
+ypos -174
+}
+Input {
+inputs 0
+name Mask
+xpos 2684
+ypos 1351
+number 3
+}
+Invert {
+name Invert2
+xpos 2684
+ypos 1404
+}
+Expression {
+channel0 {-rgba.red -rgba.green -rgba.blue none}
+expr0 0
+channel1 {-rgba.red -rgba.green -rgba.blue none}
+expr1 0
+channel2 {-rgba.red -rgba.green -rgba.blue none}
+expr2 0
+channel3 {rgba.alpha none none rgba.alpha}
+expr3 a==0?0:a
+name AlphaFix2
+label "To avoid Gizmo being in state of\nerror without something plugged in input."
+xpos 2684
+ypos 1462
+}
+Invert {
+name Invert1
+xpos 2684
+ypos 1529
+}
+Dot {
+name Dot4
+xpos 2718
+ypos 1589
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Input {
+inputs 0
+name BG
+label "BG\n"
+xpos 2316
+ypos 104
+}
+set Ndc9297e0 [stack 0]
+PostageStamp {
+name PostageStamp9
+label "bg\n"
+xpos 401
+ypos 1006
+hide_input true
+postage_stamp true
+}
+Saturation {
+saturation 0
+name Saturation3
+xpos 401
+ypos 1108
+}
+Dot {
+name Dot53
+xpos 435
+ypos 1187
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $Nf7efcc50
+Dot {
+name Dot12
+xpos -888
+ypos -125
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nef9c2b70 [stack 0]
+Expression {
+temp_name0 x
+temp_expr0 2
+temp_name1 y
+temp_expr1 1
+expr2 "b > ((r/x)+g)/2/y ? ((r/x)+g)/2/y :b"
+name Expression3
+xpos -922
+ypos -15
+}
+set C8e417e80 [stack 0]
+Expression {
+temp_name0 x
+temp_expr0 1
+expr1 "g>(r+b)/2/x ? (r+b)/2/x:g"
+name Expression2
+xpos -922
+ypos 82
+}
+set C8fd413c0 [stack 0]
+set N8fd413c0 [stack 0]
+push $Nef9c2b70
+Dot {
+name Dot14
+xpos -1181
+ypos -125
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2
+operation from
+bbox B
+name Merge4
+xpos -1215
+ypos 82
+}
+set C3a679a10 [stack 0]
+Saturation {
+saturation 0
+name Saturation5
+xpos -1215
+ypos 177
+}
+set Cd3ecc670 [stack 0]
+set Nd3ecc670 [stack 0]
+Dot {
+name Dot13
+xpos -1181
+ypos 279
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Grade {
+multiply 0.5
+name Grade5
+xpos -1071
+ypos 275
+}
+set C8e9ff490 [stack 0]
+push $Nd3ecc670
+Grade {
+white 0.5
+name Grade4
+xpos -1080
+ypos 177
+}
+set Ca3f41550 [stack 0]
+push $N8fd413c0
+Merge2 {
+inputs 2
+operation plus
+bbox B
+mix 0.5
+name Merge5
+xpos -922
+ypos 177
+}
+set Cc3ed4f80 [stack 0]
+Merge2 {
+inputs 2
+operation plus
+bbox B
+name Merge6
+xpos -922
+ypos 275
+}
+set C87cd59c0 [stack 0]
+Dot {
+name Dot15
+xpos -888
+ypos 359
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N8fe45330
+OFXuk.co.thefoundry.keylight.keylight_v201 {
+show "Final Result"
+unPreMultiply false
+screenColour {0 1 0}
+screenGain 1
+screenBalance 0.5
+alphaBias {0.5 0.5 0.5}
+despillBias {0.5 0.5 0.5}
+gangBiases true
+preBlur 0
+"Screen Matte" 0
+screenClipMin 0
+screenClipMax 1
+screenClipRollback 0
+screenGrowShrink 0
+screenSoftness 0
+screenDespotBlack 0
+screenDespotWhite 0
+screenReplaceMethod "Soft Colour"
+screenReplaceColour {0.5 0.5 0.5}
+Tuning 0
+midPoint 0.5
+lowGain 1
+midGain 1
+highGain 1
+"Inside Mask" 0
+sourceAlphaHandling Ignore
+insideReplaceMethod "Soft Colour"
+insideReplaceColour {0.5 0.5 0.5}
+Crops 0
+SourceXMethod Colour
+SourceYMethod Colour
+SourceEdgeColour 0
+SourceCropL 0
+SourceCropR 1
+SourceCropB 0
+SourceCropT 1
+balanceSet false
+insideComponent None
+outsideComponent None
+cacheBreaker true
+name Keylight6
+xpos -417
+ypos 130
+}
+set Ccbcdf6b0 [stack 0]
+Switch {
+inputs 2
+which {{screenType}}
+name Switch1
+xpos -417
+ypos 355
+}
+set C63a88dc0 [stack 0]
+Saturation {
+saturation {{parent.lightsSaturation}}
+name Saturation4
+xpos -417
+ypos 494
+}
+set C39e53f0 [stack 0]
+Grade {
+add {{parent.lightsTint.r-1} {parent.lightsTint.g-1} {parent.lightsTint.b-1} {curve}}
+name Grade6
+xpos -417
+ypos 535
+}
+set Cc37eae80 [stack 0]
+Grade {
+whitepoint {{parent.lightsWhitePoint}}
+white {{parent.lightsGain}}
+name Grade8
+xpos -417
+ypos 595
+}
+set Cefdb1e30 [stack 0]
+Dot {
+name Dot17
+xpos -383
+ypos 843
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N8e428f70
+clone $C8e417e80 {
+xpos 507
+ypos -206
+selected false
+}
+clone $C8fd413c0 {
+xpos 507
+ypos -119
+selected false
+}
+set N87cbed20 [stack 0]
+push $N8e428f70
+Dot {
+name Dot10
+xpos 248
+ypos -326
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+clone $C3a679a10 {
+inputs 2
+xpos 214
+ypos -119
+selected false
+}
+clone $Cd3ecc670 {
+xpos 214
+ypos -24
+selected false
+}
+set Neffc4420 [stack 0]
+Dot {
+name Dot11
+xpos 248
+ypos 78
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+clone $C8e9ff490 {
+xpos 346
+ypos 74
+selected false
+}
+push $Neffc4420
+clone $Ca3f41550 {
+xpos 351
+ypos -24
+selected false
+}
+push $N87cbed20
+clone $Cc3ed4f80 {
+inputs 2
+xpos 507
+ypos -24
+selected false
+}
+clone $C87cd59c0 {
+inputs 2
+xpos 507
+ypos 74
+selected false
+}
+push $N8ff67700
+clone $Ccbcdf6b0 {
+xpos 992
+ypos -68
+selected false
+}
+clone $C63a88dc0 {
+inputs 2
+xpos 992
+ypos 74
+selected false
+}
+clone $C39e53f0 {
+xpos 992
+ypos 222
+selected false
+}
+clone $Cc37eae80 {
+xpos 992
+ypos 273
+selected false
+}
+clone $Cefdb1e30 {
+xpos 992
+ypos 331
+selected false
+}
+Merge2 {
+inputs 2
+operation from
+name Merge10
+xpos 992
+ypos 839
+}
+Merge2 {
+inputs 2
+operation multiply
+name Merge12
+xpos 992
+ypos 1183
+disable true
+}
+Grade {
+name Grade2
+xpos 992
+ypos 1276
+}
+Shuffle {
+alpha black
+name Shuffle1
+xpos 992
+ypos 1320
+}
+Dot {
+name Dot37
+xpos 1026
+ypos 1397
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N8ff67700
+PostageStamp {
+name PostageStamp4
+label plate
+xpos 1527
+ypos 254
+hide_input true
+postage_stamp true
+}
+Dot {
+name Dot34
+xpos 1561
+ypos 459
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N8fe45330
+PostageStamp {
+name PostageStamp1
+label "clean plate\n"
+xpos 1725
+ypos 254
+hide_input true
+postage_stamp true
+}
+Merge2 {
+inputs 2
+operation divide
+name Merge8
+xpos 1725
+ypos 455
+}
+Saturation {
+saturation 0
+name Saturation2
+xpos 1725
+ypos 527
+}
+Dot {
+name Dot18
+xpos 1759
+ypos 610
+}
+set N8e421740 [stack 0]
+Dot {
+name Dot21
+xpos 1498
+ypos 610
+}
+set Ne7f02110 [stack 0]
+Dot {
+name Dot19
+xpos 1240
+ypos 610
+}
+Grade {
+white_clamp true
+name Grade9
+xpos 1206
+ypos 686
+}
+Dot {
+name Dot20
+xpos 1240
+ypos 896
+}
+push $Ne7f02110
+Grade {
+name Grade10
+xpos 1464
+ypos 682
+}
+Merge2 {
+inputs 2
+operation from
+bbox B
+name Merge1
+xpos 1464
+ypos 892
+}
+Grade {
+blackpoint {{parent.brightTreshold}}
+name Grade11
+xpos 1464
+ypos 969
+}
+Group {
+name Tonemap1
+xpos 1464
+ypos 1045
+addUserKnob {20 tonemap l Tonemap t "Adjusts blend between linear colors and full tonemap"}
+addUserKnob {41 operator l Operator t "Choose between tonemap operators.\n\nReinhard: Used by V-Ray. Desaturates bright colors. \n\nExponential Luma: Used by Maxwell and MODO. Maintains saturation and hue of bright colors.\n\nFilmic: Used by many video games. Offers a greater degree of control over the look. Tends to crush dark colors.\n\nReinhard Luma: Half-way between Reinhard and Exponential Luma. It maintains more color saturation in bright areas than Reinhard, but less so than Exponential Luma.\n\nLogarithmic Compression: Produces similar results to Reinhard, but somewhat brighter. Allows you to choose starting point for compression in order to preserve values of darker colors.\n\nHighlight compression: Basically the same as Reinhard, but uses a \"Compression\" control where higher values produce more compression and 1.0 is linear. Used by Corona." T Switch1.operator}
+addUserKnob {41 mix l Amount t "Blends between input & tonemap" -STARTLINE T Merge1.mix}
+addUserKnob {41 whitebalance l "White Balance" t "White Balance in degrees Kelvin.\n\nLow values produce a colder image; high values produce a warmer. Neutral is set to 7000 K.\n\nMin: 2000 K\nMax: 15 000 K" T WhiteBalance.whitebalance}
+addUserKnob {20 exposure l Exposure n 1}
+addUserKnob {41 mode l "Adjust in" T EXPTool1.mode}
+addUserKnob {41 gang T EXPTool1.gang}
+addUserKnob {41 red T EXPTool1.red}
+addUserKnob {41 green T EXPTool1.green}
+addUserKnob {41 blue T EXPTool1.blue}
+addUserKnob {20 endGroup n -1}
+addUserKnob {20 filmicControls l "Filmic Controls" n 1}
+filmicControls 0
+addUserKnob {19 Grade1_black l lift R 0 0.1}
+Grade1_black 0.025
+addUserKnob {6 Grade1_black_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_black_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_black_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_black_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_black_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_black_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_black_panelDropped_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {41 shoulderStr l "Shoulder strength" T Expression_Filmic.shoulderStr}
+addUserKnob {41 linStr l "Linear strength" T Expression_Filmic.linStr}
+addUserKnob {41 linAngle l "Linear angle" T Expression_Filmic.linAngle}
+addUserKnob {41 toeStr l "Toe strength" T Expression_Filmic.toeStr}
+addUserKnob {41 toeNum l "Toe numerator" T Expression_Filmic.toeNum}
+addUserKnob {41 toeDen l "Toe denominator" T Expression_Filmic.toeDen}
+addUserKnob {41 whitepoint l "White point" T Expression_Filmic.whitepoint}
+addUserKnob {20 endGroup_1 l endGroup n -1}
+addUserKnob {20 LogCompressSettings l "Logarithmic Compression Controls" n 1}
+LogCompressSettings 0
+addUserKnob {8 SoftClip2_softclip_min l "Compression Start"}
+addUserKnob {20 endGroup_2 l endGroup n -1}
+addUserKnob {20 CompressControls l "Highlight Compression Controls" n 1}
+CompressControls 0
+addUserKnob {41 compression l "Highlight Compression" T Expression_Compression.compression}
+addUserKnob {20 endGroup_3 l endGroup n -1}
+}
+BackdropNode {
+inputs 0
+name BackdropNode1
+xpos -419
+ypos 129
+bdwidth 271
+bdheight 77
+}
+BackdropNode {
+inputs 0
+name BackdropNode2
+xpos -418
+ypos 223
+bdwidth 279
+bdheight 138
+}
+BackdropNode {
+inputs 0
+name Corona
+xpos -423
+ypos 396
+bdwidth 285
+bdheight 68
+}
+BackdropNode {
+inputs 0
+name Filmic
+xpos -420
+ypos 21
+bdwidth 315
+bdheight 87
+}
+BackdropNode {
+inputs 0
+name Luma_modo
+xpos -129
+ypos -219
+bdwidth 273
+bdheight 140
+}
+BackdropNode {
+inputs 0
+name Notes
+label "Filmic tonemap operator is based\non John Hable's work for Unchartered 2:\nhttp://filmicgames.com/archives/75\n\nExponential luma operator is based on\nmodo's built-in tone mapper.\n\nReinhard operator is Reinhard global.\n"
+note_font_size 25
+xpos 290
+ypos -224
+bdwidth 546
+bdheight 282
+}
+BackdropNode {
+inputs 0
+name Reinhard
+xpos -425
+ypos -130
+bdwidth 212
+bdheight 124
+}
+Input {
+inputs 0
+name mask
+xpos -480
+ypos -462
+number 1
+}
+Dot {
+name Dot19
+xpos 238
+ypos -459
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot10
+xpos 238
+ypos 640
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Input {
+inputs 0
+name img
+xpos -578
+ypos -463
+}
+Multiply {
+channels rgb
+value {{"\[python -execlocal temps\\ =\\ \\ (2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000)\\nreds\\ =\\ \\ \\ (2.42,1.474,1.211,1.093,1.028,1.0,0.937,0.919,0.906,0.896,0.888,0.882,0.877,0.873)\\ngreens\\ =\\ (1.568,1.189,1.094,1.049,1.024,1.0,0.974,0.966,0.96,\\ 0.955,0.951,0.947,0.944,0.942)\\nblues\\ =\\ \\ (0.513,0.675,0.793,0.883,0.952,1.0,1.103,1.14,1.17,1.195,1.216,1.233,1.248,1.261)\\n\\ndef\\ LinearInt(positions,\\ values,\\ keyValue):\\n\\ \\ \\ \\ index_low\\ =\\ 0\\n\\ \\ \\ \\ index_high\\ =\\ len(positions)-1\\n\\ \\ \\ \\ for\\ index,\\ value\\ in\\ enumerate(positions):\\n\\ \\ \\ \\ \\ \\ \\ \\ diff\\ =\\ value-keyValue\\n\\ \\ \\ \\ \\ \\ \\ \\ if\\ diff\\ <\\ 0:\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ index_low\\ =\\ index\\n\\ \\ \\ \\ \\ \\ \\ \\ elif\\ diff\\ ==\\ 0:\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ index_low\\ =\\ index_high\\ =\\ index\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ break\\n\\ \\ \\ \\ \\ \\ \\ \\ else:\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ index_high\\ =\\ index\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ break\\n\\n\\ \\ \\ \\ if\\ index_low\\ !=\\ index_high:\\n\\ \\ \\ \\ \\ \\ \\ \\ value_low\\ \\ =\\ positions\\\[index_low\\]\\n\\ \\ \\ \\ \\ \\ \\ \\ value_high\\ =\\ positions\\\[index_high\\]\\n\\ \\ \\ \\ \\ \\ \\ \\ fraction\\ =\\ (keyValue-value_low\\ +\\ 0.0)/(value_high-value_low)\\n\\ \\ \\ \\ else:\\n\\ \\ \\ \\ \\ \\ \\ \\ fraction\\ =\\ 1.0\\n\\n\\ \\ \\ \\ color_low\\ \\ =\\ values\\\[index_low\\]\\n\\ \\ \\ \\ color_high\\ =\\ values\\\[index_high\\]\\n\\n\\ \\ \\ \\ color_out\\ \\ =\\ color_high*fraction+color_low*(1.0-fraction)\\n\\ \\ \\ \\ return\\ color_out\\n\\nret\\ =\\ 1.0/LinearInt(temps,\\ reds,\\ nuke.thisNode().knob(\\\"whitebalance\\\").value())]"} {"\[python -execlocal temps\\ =\\ \\ (2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000)\\nreds\\ =\\ \\ \\ (2.42,1.474,1.211,1.093,1.028,1.0,0.937,0.919,0.906,0.896,0.888,0.882,0.877,0.873)\\ngreens\\ =\\ (1.568,1.189,1.094,1.049,1.024,1.0,0.974,0.966,0.96,\\ 0.955,0.951,0.947,0.944,0.942)\\nblues\\ =\\ \\ (0.513,0.675,0.793,0.883,0.952,1.0,1.103,1.14,1.17,1.195,1.216,1.233,1.248,1.261)\\n\\ndef\\ LinearInt(positions,\\ values,\\ keyValue):\\n\\ \\ \\ \\ index_low\\ =\\ 0\\n\\ \\ \\ \\ index_high\\ =\\ len(positions)-1\\n\\ \\ \\ \\ for\\ index,\\ value\\ in\\ enumerate(positions):\\n\\ \\ \\ \\ \\ \\ \\ \\ diff\\ =\\ value-keyValue\\n\\ \\ \\ \\ \\ \\ \\ \\ if\\ diff\\ <\\ 0:\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ index_low\\ =\\ index\\n\\ \\ \\ \\ \\ \\ \\ \\ elif\\ diff\\ ==\\ 0:\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ index_low\\ =\\ index_high\\ =\\ index\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ break\\n\\ \\ \\ \\ \\ \\ \\ \\ else:\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ index_high\\ =\\ index\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ break\\n\\n\\ \\ \\ \\ if\\ index_low\\ !=\\ index_high:\\n\\ \\ \\ \\ \\ \\ \\ \\ value_low\\ \\ =\\ positions\\\[index_low\\]\\n\\ \\ \\ \\ \\ \\ \\ \\ value_high\\ =\\ positions\\\[index_high\\]\\n\\ \\ \\ \\ \\ \\ \\ \\ fraction\\ =\\ (keyValue-value_low\\ +\\ 0.0)/(value_high-value_low)\\n\\ \\ \\ \\ else:\\n\\ \\ \\ \\ \\ \\ \\ \\ fraction\\ =\\ 1.0\\n\\n\\ \\ \\ \\ color_low\\ \\ =\\ values\\\[index_low\\]\\n\\ \\ \\ \\ color_high\\ =\\ values\\\[index_high\\]\\n\\n\\ \\ \\ \\ color_out\\ \\ =\\ color_high*fraction+color_low*(1.0-fraction)\\n\\ \\ \\ \\ return\\ color_out\\n\\nret\\ =\\ 1.0/LinearInt(temps,\\ greens,\\ nuke.thisNode().knob(\\\"whitebalance\\\").value())]"} {"\[python -execlocal temps\\ =\\ \\ (2000,3000,4000,5000,6000,7000,8000,9000,10000,11000,12000,13000,14000,15000)\\nreds\\ =\\ \\ \\ (2.42,1.474,1.211,1.093,1.028,1.0,0.937,0.919,0.906,0.896,0.888,0.882,0.877,0.873)\\ngreens\\ =\\ (1.568,1.189,1.094,1.049,1.024,1.0,0.974,0.966,0.96,\\ 0.955,0.951,0.947,0.944,0.942)\\nblues\\ =\\ \\ (0.513,0.675,0.793,0.883,0.952,1.0,1.103,1.14,1.17,1.195,1.216,1.233,1.248,1.261)\\n\\ndef\\ LinearInt(positions,\\ values,\\ keyValue):\\n\\ \\ \\ \\ index_low\\ =\\ 0\\n\\ \\ \\ \\ index_high\\ =\\ len(positions)-1\\n\\ \\ \\ \\ for\\ index,\\ value\\ in\\ enumerate(positions):\\n\\ \\ \\ \\ \\ \\ \\ \\ diff\\ =\\ value-keyValue\\n\\ \\ \\ \\ \\ \\ \\ \\ if\\ diff\\ <\\ 0:\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ index_low\\ =\\ index\\n\\ \\ \\ \\ \\ \\ \\ \\ elif\\ diff\\ ==\\ 0:\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ index_low\\ =\\ index_high\\ =\\ index\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ break\\n\\ \\ \\ \\ \\ \\ \\ \\ else:\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ index_high\\ =\\ index\\n\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ break\\n\\n\\ \\ \\ \\ if\\ index_low\\ !=\\ index_high:\\n\\ \\ \\ \\ \\ \\ \\ \\ value_low\\ \\ =\\ positions\\\[index_low\\]\\n\\ \\ \\ \\ \\ \\ \\ \\ value_high\\ =\\ positions\\\[index_high\\]\\n\\ \\ \\ \\ \\ \\ \\ \\ fraction\\ =\\ (keyValue-value_low\\ +\\ 0.0)/(value_high-value_low)\\n\\ \\ \\ \\ else:\\n\\ \\ \\ \\ \\ \\ \\ \\ fraction\\ =\\ 1.0\\n\\n\\ \\ \\ \\ color_low\\ \\ =\\ values\\\[index_low\\]\\n\\ \\ \\ \\ color_high\\ =\\ values\\\[index_high\\]\\n\\n\\ \\ \\ \\ color_out\\ \\ =\\ color_high*fraction+color_low*(1.0-fraction)\\n\\ \\ \\ \\ return\\ color_out\\n\\nret\\ =\\ 1.0/LinearInt(temps,\\ blues,\\ nuke.thisNode().knob(\\\"whitebalance\\\").value())]"} 1}
+value_panelDropped true
+name WhiteBalance
+selected true
+xpos -578
+ypos -402
+addUserKnob {20 User}
+addUserKnob {7 whitebalance l "White Balance" t "White Balance in degrees Kelvin. Neutral is set to 7000 degrees.\n\nMin: 2000 K\nMax: 15000 K\n" R 2000 15000}
+whitebalance 7000
+}
+Dot {
+name Dot14
+xpos -547
+ypos -334
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N8fd683b0 [stack 0]
+EXPTool {
+mode Stops
+name EXPTool1
+xpos -578
+ypos -271
+}
+Dot {
+name Dot1
+xpos -547
+ypos -183
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nc36d8730 [stack 0]
+Dot {
+name Dot4
+xpos -547
+ypos -89
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N189e1190 [stack 0]
+Dot {
+name Dot5
+xpos -545
+ypos 58
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N189e5eb0 [stack 0]
+Dot {
+name Dot16
+xpos -545
+ypos 152
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N18383730 [stack 0]
+Dot {
+name Dot23
+xpos -545
+ypos 278
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N18388450 [stack 0]
+Dot {
+name Dot34
+xpos -545
+ypos 435
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Expression {
+expr0 r*(1+r/(compression**2))/(1+r)
+expr1 g*(1+g/(compression**2))/(1+g)
+expr2 b*(1+b/(compression**2))/(1+b)
+name Expression_Compression
+xpos -332
+ypos 432
+addUserKnob {20 User}
+addUserKnob {7 compression l "Highlight Compression" R 1 10}
+compression 2
+}
+Dot {
+name Dot26
+xpos -64
+ypos 435
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N18388450
+SoftClip {
+conversion "logarithmic compress"
+softclip_min {{parent.SoftClip2_softclip_min}}
+name SoftClip2
+xpos -339
+ypos 275
+}
+Dot {
+name Dot25
+xpos -43
+ypos 278
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N18383730
+Dot {
+name Dot17
+xpos -376
+ypos 152
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N6e27750 [stack 0]
+Colorspace {
+colorspace_out HSL
+name Colorspace1
+xpos -361
+ypos 181
+}
+push $N6e27750
+MergeExpression {
+inputs 2
+temp_name0 luma
+temp_expr0 Ab
+expr0 r/(1+luma)
+expr1 g/(1+luma)
+expr2 b/(1+luma)
+name MergeExpression1
+xpos -299
+ypos 149
+}
+Dot {
+name Dot18
+xpos -123
+ypos 152
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot22
+xpos -1
+ypos 228
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N189e5eb0
+EXPTool {
+mode Stops
+red 1.8
+green 1.8
+blue 1.8
+name EXPTool2
+xpos -402
+ypos 55
+}
+set Ne1bdde00 [stack 0]
+Expression {
+temp_name0 luma
+temp_expr0 "0.2126*r + 0.7152*b + 0.0722*g"
+temp_name1 val
+temp_expr1 "max(r, g, b)"
+temp_name2 a1
+temp_expr2 "clamp(1-luma, 0, 1)**InvLumaExponent*clamp(luma, 0, 1)**LumaExponent"
+temp_name3 a2
+temp_expr3 "clamp((1-luma), 0, 1)**10"
+expr3 a2
+name MaxLift
+xpos -402
+ypos 85
+addUserKnob {20 User}
+addUserKnob {7 InvLumaExponent l "Inverted Luma Exponent" R 1 30}
+InvLumaExponent 20
+addUserKnob {7 LumaExponent l "Luma Exponent" R 0.1 2}
+LumaExponent 0.15
+}
+push $Ne1bdde00
+Grade {
+inputs 1+1
+black {{parent.Grade1_black.r} {parent.Grade1_black.g} {parent.Grade1_black.b} {parent.Grade1_black.a}}
+name Grade1
+xpos -279
+ypos 55
+addUserKnob {20 User}
+}
+Expression {
+temp_name0 tNtD
+temp_expr0 toeNum/toeDen
+temp_name1 tStD
+temp_expr1 toeStr*toeDen
+temp_name2 tStN
+temp_expr2 toeStr*toeNum
+temp_name3 lAlS
+temp_expr3 linAngle*linStr
+expr0 ((r*(shoulderStr*r+lAlS)+tStN)/(r*(shoulderStr*r+linStr)+tStD))-tNtD
+expr1 ((g*(shoulderStr*g+lAlS)+tStN)/(g*(shoulderStr*g+linStr)+tStD))-tNtD
+expr2 ((b*(shoulderStr*b+lAlS)+tStN)/(b*(shoulderStr*b+linStr)+tStD))-tNtD
+name Expression_Filmic
+xpos -183
+ypos 55
+addUserKnob {20 User}
+addUserKnob {7 shoulderStr l "Shoulder strength"}
+shoulderStr 0.2
+addUserKnob {7 linStr l "Linear strength"}
+linStr 0.4
+addUserKnob {7 linAngle l "Linear angle"}
+linAngle 0.15
+addUserKnob {7 toeStr l "Toe strength"}
+toeStr 0.3
+addUserKnob {7 toeNum l "Toe numerator" R 0 0.1}
+toeNum 0.1
+addUserKnob {7 toeDen l "Toe denominator"}
+toeDen 1
+addUserKnob {7 whitepoint l "White point" R 0 50}
+addUserKnob {7 whitepointExp}
+whitepointExp {{((whitepoint*(shoulderStr*whitepoint+linAngle*linStr)+toeStr*toeNum)/(whitepoint*(shoulderStr*whitepoint+linStr)+toeStr*toeDen))-(toeNum/toeDen)}}
+}
+Dot {
+name Dot9
+xpos -20
+ypos 58
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot21
+xpos 69
+ypos 221
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $Nc36d8730
+Dot {
+name Dot2
+xpos -109
+ypos -183
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Na1048fd0 [stack 0]
+Dot {
+name Dot3
+xpos -36
+ypos -117
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $Na1048fd0
+Saturation {
+saturation 0
+name Saturation1
+xpos -61
+ypos -186
+}
+Add {
+value 1
+name Add1
+xpos 38
+ypos -192
+}
+Merge2 {
+inputs 2
+operation divide
+Bchannels rgb
+name Merge2
+xpos 38
+ypos -120
+}
+Dot {
+name Dot8
+xpos 69
+ypos -20
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot11
+xpos 200
+ypos 242
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N189e1190
+Dot {
+name Dot12
+xpos -394
+ypos -89
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nd20c0f20 [stack 0]
+Dot {
+name Dot13
+xpos -394
+ypos -43
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $Nd20c0f20
+Add {
+value 1
+name Add2
+xpos -335
+ypos -98
+}
+Merge2 {
+inputs 2
+operation divide
+Bchannels rgb
+name Merge3
+xpos -335
+ypos -46
+}
+Dot {
+name Dot7
+xpos 19
+ypos 25
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot20
+xpos 136
+ypos 221
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Switch {
+inputs 6
+which {{operator}}
+name Switch1
+xpos 38
+ypos 348
+addUserKnob {20 User}
+addUserKnob {4 operator l Operator t "Tonemap operator\n\nReinhard: \nDesaturates colours somewhat. Used by V-Ray and many other renderers.\n\nExponential luma: \nCan over-saturate bright colours. Used by MODO and Maxwell.\n\nFilmic:\nAdvanced tone mapper to simulate filmic response curves. Not based on actual film data. Used in certain video games. Offers manual control over the look.\n\nReinhard (Luma):\nReinhard operator but working in luminosity mode instead of per component. Used by Redshift." M {Reinhard "Exponential luma" Filmic "Reinhard (Luma)" "Logarithmic Compression" "Highlight Compression"}}
+}
+Clamp {
+maximum_enable false
+name Clamp1
+xpos 38
+ypos 581
+disable true
+}
+push $N8fd683b0
+Dot {
+name Dot15
+xpos -616
+ypos -282
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot6
+xpos -616
+ypos 640
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2+1
+operation copy
+name Merge1
+xpos 38
+ypos 637
+}
+Output {
+name Output1
+xpos 38
+ypos 737
+}
+end_group
+Blur {
+size {{parent.extraHighlightsBlur}}
+name Blur2
+label "Size: \[value size]"
+xpos 1464
+ypos 1078
+}
+Dot {
+name Dot22
+xpos 1498
+ypos 1191
+}
+push $N8e421740
+Grade {
+blackpoint {{parent.darkBlackPoint}}
+gamma {{parent.darkGamma}}
+black_clamp false
+white_clamp true
+name Grade1
+xpos 1725
+ypos 682
+}
+Grade {
+gamma {{parent.darkTint.r+1} {parent.darkTint.g+1} {parent.darkTint.b+1} 0}
+black_clamp false
+white_clamp {{parent.whiteClamp}}
+name Grade18
+xpos 1725
+ypos 747
+}
+Saturation {
+saturation {{parent.darkSaturation}}
+name Saturation1
+xpos 1725
+ypos 802
+}
+Shuffle {
+alpha black
+name Shuffle2
+xpos 1725
+ypos 857
+}
+Dot {
+name Dot35
+xpos 1759
+ypos 925
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nf7ef1bf0 [stack 0]
+push $Ndc9297e0
+Dot {
+name Dot2
+xpos 2351
+ypos 516
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N3dcd01c0 [stack 0]
+Dot {
+name Dot3
+xpos 2134
+ypos 516
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Clamp {
+maximum_enable false
+name Clamp1
+xpos 2100
+ypos 663
+}
+Merge2 {
+inputs 2
+operation multiply
+bbox B
+output rgb
+mix {{parent.darkMix}}
+name Merge9
+xpos 2100
+ypos 921
+}
+Merge2 {
+inputs 2
+operation plus
+bbox B
+mix {{parent.extraHighlightsMix}}
+name Merge2
+xpos 2100
+ypos 1187
+}
+Merge2 {
+inputs 2
+operation plus
+bbox B
+output rgb
+mix {{parent.lightsMix}}
+name Merge11
+xpos 2100
+ypos 1393
+}
+set Nc37cf6f0 [stack 0]
+Blur {
+size {{parent.postBlur}}
+name Blur1
+label "Size: \[value size]"
+xpos 2100
+ypos 1469
+}
+Dot {
+name Dot1
+xpos 2134
+ypos 1589
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N3dcd01c0
+Keymix {
+inputs 3
+channels rgb
+mix {{parent.overallMix}}
+bbox B
+name Keymix1
+xpos 2317
+ypos 1585
+}
+Output {
+name Output1
+xpos 2317
+ypos 2095
+}
+push $Nef9c2b70
+clone $Cc3efc4b0 {
+xpos -1052
+ypos -53
+selected false
+}
+push $Nf7ef1bf0
+Grade {
+blackpoint 0.9
+white_clamp true
+name Grade7
+xpos 1725
+ypos 977
+}
+push $Nc37cf6f0
+Viewer {
+frame 1057
+frame_range 1001-1001
+colour_sample_bbox {-0.1923611164 0.4583333433 -0.143749997 0.493750006}
+name Viewer1
+xpos 3399
+ypos 1163
+}
+end_group

@@ -1,0 +1,242 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name EdgeMatteDetect
+tile_color 0x6aff55ff
+selected true
+xpos -2678
+ypos -2913
+addUserKnob {20 User l Setup}
+addUserKnob {6 on l "Overlay Fringe On / Off" +STARTLINE}
+on true
+addUserKnob {6 crop l "crop to format" +STARTLINE}
+addUserKnob {26 ""}
+addUserKnob {41 size l Delate_INT_size T Dilate_INT_NegatifValue.size}
+addUserKnob {41 size_1 l Blur_INT_size T Blur_INT.size}
+addUserKnob {41 white l Gain_INT T Gamma_Gain_INT.white}
+addUserKnob {41 gamma l Gamma_INT T Gamma_Gain_INT.gamma}
+addUserKnob {26 ""}
+addUserKnob {41 size_2 l Delate_EXT_size T Dilate_EXT_PositifValue.size}
+addUserKnob {41 size_3 l Blur_EXT_size T Blur_EXT.size}
+addUserKnob {41 white_1 l Gain_EXT T Gamma_Gain_EXT.white}
+addUserKnob {41 gamma_1 l Gamma_EXT T Gamma_Gain_EXT.gamma}
+addUserKnob {26 ""}
+addUserKnob {41 size_4 l General_Blur_size T Blur1.size}
+addUserKnob {26 ""}
+addUserKnob {41 translate l "XY Transform" T Transform1.translate}
+}
+Input {
+inputs 0
+name mask
+xpos -692
+ypos 13
+number 1
+}
+Input {
+inputs 0
+name Matte
+xpos -257
+ypos -298
+}
+Dot {
+name Dot1
+xpos -223
+ypos -243
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N26b3ef50 [stack 0]
+Dot {
+name Dot6
+xpos -466
+ypos -243
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Shuffle {
+red black
+green black
+blue black
+alpha white
+name Shuffle2
+xpos -500
+ypos -129
+}
+Switch {
+inputs 2
+which {{"parent.input1.name +1"}}
+name Switch2
+label "\[value which]"
+xpos -500
+ypos 7
+}
+BlackOutside {
+name BlackOutside1
+xpos -500
+ypos 69
+}
+Dot {
+name Dot5
+xpos -466
+ypos 127
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N26b3ef50
+Dilate {
+channels alpha
+size -3
+name Dilate_INT_NegatifValue
+xpos -257
+ypos -193
+}
+Blur {
+channels alpha
+name Blur_INT
+xpos -257
+ypos -155
+}
+Grade {
+channels alpha
+black_clamp false
+white_clamp true
+name Gamma_Gain_INT
+xpos -257
+ypos -97
+}
+Transform {
+center {1024 778}
+name Transform1
+xpos -257
+ypos -59
+}
+push $N26b3ef50
+Dot {
+name Dot2
+xpos -64
+ypos -243
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dilate {
+channels alpha
+size 3
+name Dilate_EXT_PositifValue
+xpos -98
+ypos -186
+}
+Blur {
+channels alpha
+name Blur_EXT
+xpos -98
+ypos -148
+}
+Grade {
+channels alpha
+black_clamp false
+white_clamp true
+name Gamma_Gain_EXT
+xpos -98
+ypos -96
+}
+Dot {
+name Dot4
+xpos -64
+ypos 29
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2
+operation stencil
+Achannels {rgba.alpha none none rgba.alpha}
+Bchannels {rgba.alpha none none rgba.alpha}
+output alpha
+name Merge1
+xpos -257
+ypos 19
+}
+Unpremult {
+name Unpremult1
+xpos -259
+ypos 71
+}
+Merge2 {
+inputs 2
+operation mask
+bbox intersection
+name Merge4
+xpos -259
+ypos 123
+}
+Premult {
+name Premult1
+xpos -259
+ypos 149
+}
+Blur {
+channels alpha
+name Blur1
+xpos -257
+ypos 178
+}
+Dot {
+name Dot3
+xpos -223
+ypos 224
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2780bbe0 [stack 0]
+Shuffle {
+in alpha
+name Shuffle1
+xpos -113
+ypos 220
+}
+Constant {
+inputs 0
+channels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+color 1
+name Constant1
+xpos 85
+ypos 282
+}
+Merge2 {
+inputs 2
+operation mask
+name Merge2
+xpos -113
+ypos 305
+}
+push $N2780bbe0
+Merge2 {
+inputs 2
+bbox B
+mix {{parent.on.main}}
+name Merge3
+xpos -257
+ypos 305
+}
+Clamp {
+channels alpha
+name Clamp1
+xpos -257
+ypos 347
+}
+Crop {
+box {0 0 {Matte.width} {Matte.height}}
+reformat true
+crop false
+name Crop2
+xpos -257
+ypos 392
+disable {{!parent.crop}}
+}
+Output {
+name Output1
+xpos -257
+ypos 465
+}
+end_group

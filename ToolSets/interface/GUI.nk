@@ -1,0 +1,22 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Switch {
+ which 1
+ name GUI
+ tile_color 0xaa00ff
+ label Control
+ selected true
+ xpos -413
+ ypos -366
+ disable true
+ addUserKnob {20 User}
+ addUserKnob {41 guiSwitch l "GUI ON/OFF" T GUI.disable}
+ addUserKnob {3 motionBlur l "motion blur"}
+ motionBlur {{"(!guiSwitch)?\$gui?motionBlurValueGui:motionBlurValue:motionBlurValue"}}
+ addUserKnob {22 motionBlurMoins l - -STARTLINE T "n = nuke.thisNode()\nif n\['guiSwitch'].value() == 0:\n  n\['motionBlurValue'].setValue(n\['motionBlurValue'].value()-1)\nelse:\n  n\['motionBlurValueGui'].setValue(n\['motionBlurValueGui'].value()-1)"}
+ addUserKnob {22 motionBlurPlus l + -STARTLINE T "n = nuke.thisNode()\nif n\['guiSwitch'].value() == 0:\n  n\['motionBlurValue'].setValue(n\['motionBlurValue'].value()+1)\nelse:\n  n\['motionBlurValueGui'].setValue(n\['motionBlurValueGui'].value()+1)"}
+ addUserKnob {3 motionBlurValue l INVISIBLE +INVISIBLE}
+ addUserKnob {3 motionBlurValueGui l INVISIBLE +INVISIBLE}
+ motionBlurValueGui 10
+}

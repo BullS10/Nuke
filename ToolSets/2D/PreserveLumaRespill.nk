@@ -1,0 +1,260 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+ name PreserveLumaRespill
+ selected true
+ xpos 1658
+ ypos 5072
+ addUserKnob {20 LumaRespill}
+ addUserKnob {41 Softness T Blur7.size}
+ addUserKnob {4 Colorspace M {HSV HSL}}
+ Colorspace HSL
+ addUserKnob {6 Log l Log2lin +STARTLINE}
+ Log true
+ addUserKnob {26 ""}
+ addUserKnob {41 mix T MergeBack.mix}
+}
+ Input {
+  inputs 0
+  name Despilled
+  xpos -36
+  ypos -583
+ }
+ Shuffle {
+  name Shuffle2
+  xpos -36
+  ypos -559
+ }
+ Clamp {
+  maximum_enable false
+  name Clamp2
+  xpos -36
+  ypos -535
+ }
+ Dot {
+  name Dot27
+  xpos -2
+  ypos -403
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Nd360860 [stack 0]
+ Dot {
+  name Dot2
+  xpos -2
+  ypos 254
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Nd3655c0 [stack 0]
+ Dot {
+  name Dot3
+  xpos 623
+  ypos 344
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Nd36a2b0 [stack 0]
+ Dot {
+  name Dot4
+  xpos 623
+  ypos 476
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $Nd36a2b0
+push $Nd360860
+ Log2Lin {
+  operation lin2log
+  name Log2Lin2
+  xpos 42
+  ypos -408
+  disable {{!parent.Log}}
+ }
+ Dot {
+  name Dot26
+  xpos 182
+  ypos -403
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set Nd3901f0 [stack 0]
+push $Nd3901f0
+ Blur {
+  channels rgba
+  name Blur7
+  xpos 384
+  ypos -408
+ }
+ set Cd394e40 [stack 0]
+set Nd394e40 [stack 0]
+ Merge2 {
+  inputs 2
+  operation divide
+  metainput All
+  name Merge17
+  xpos 384
+  ypos -12
+ }
+ Input {
+  inputs 0
+  name Respiller
+  xpos 351
+  ypos -924
+  number 1
+ }
+ Shuffle {
+  name Shuffle1
+  xpos 351
+  ypos -900
+ }
+ Clamp {
+  maximum_enable false
+  name Clamp1
+  xpos 351
+  ypos -876
+ }
+ Dot {
+  name Dot30
+  xpos 385
+  ypos -783
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Dot {
+  name Dot1
+  xpos 900
+  ypos -783
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Log2Lin {
+  operation lin2log
+  name Log2Lin1
+  xpos 866
+  ypos -741
+  disable {{!parent.Log}}
+ }
+clone $Cd394e40 {
+  xpos 866
+  ypos -656
+  selected false
+ }
+set Ncbab0f0 [stack 0]
+ Colorspace {
+  colorspace_out HSL
+  name Colorspace4
+  xpos 1219
+  ypos -573
+ }
+push $Nd394e40
+ Colorspace {
+  colorspace_out HSL
+  name Colorspace5
+  xpos 1019
+  ypos -343
+ }
+ Copy {
+  inputs 2
+  from0 rgba.red
+  to0 rgba.red
+  from1 rgba.green
+  to1 rgba.green
+  name Copy2
+  xpos 1219
+  ypos -357
+ }
+ Colorspace {
+  colorspace_in HSL
+  name Colorspace2
+  xpos 1219
+  ypos -218
+ }
+push $Ncbab0f0
+ Colorspace {
+  colorspace_out HSV
+  name Colorspace1
+  xpos 866
+  ypos -576
+ }
+ set Caa46f00 [stack 0]
+push $Nd394e40
+clone $Caa46f00 {
+  xpos 723
+  ypos -408
+  selected false
+ }
+ Copy {
+  inputs 2
+  from0 rgba.red
+  to0 rgba.red
+  from1 rgba.green
+  to1 rgba.green
+  name Copy1
+  xpos 866
+  ypos -422
+ }
+ Colorspace {
+  colorspace_in HSV
+  name Colorspace6
+  xpos 866
+  ypos -304
+ }
+ Switch {
+  inputs 2
+  which {{parent.Colorspace}}
+  name Switch1
+  xpos 866
+  ypos -218
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  metainput All
+  name Merge18
+  xpos 866
+  ypos -12
+ }
+ Log2Lin {
+  name Log2Lin3
+  xpos 866
+  ypos 41
+  disable {{!parent.Log}}
+ }
+ Dot {
+  name Dot25
+  xpos 900
+  ypos 138
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $Nd3655c0
+ Merge2 {
+  inputs 2
+  operation copy
+  metainput All
+  name MergeBack
+  xpos 866
+  ypos 249
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy3
+  xpos 866
+  ypos 332
+ }
+ CopyBBox {
+  inputs 2
+  name CopyBBox1
+  xpos 866
+  ypos 471
+ }
+ Output {
+  name Output1
+  xpos 866
+  ypos 748
+ }
+end_group

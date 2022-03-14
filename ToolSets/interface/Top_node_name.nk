@@ -1,0 +1,31 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Text2 {
+font_size_toolbar 100
+font_width_toolbar 100
+font_height_toolbar 100
+message "\[lindex \[split \[lindex \[split \[knob \[topnode].file] .] 0] /] end]"
+old_message {{91 108 105 110 100 101 120 32 91 115 112 108 105 116 32 91 108 105 110 100 101 120 32 91 115 112 108 105 116 32 91 107 110 111 98 32 110 111 100 101 49 102 51 102 53 55 102 48 46 102 105 108 101 93 32 46 93 32 48 93 32 47 93 32 101 110 100 93}
+  }
+old_expression_markers {{36 47}
+  }
+box {{input.bbox.x} {input.bbox.y} {input.bbox.r} {input.bbox.t/10}}
+xjustify center
+yjustify center
+transforms {{0 2}
+  }
+center {1440 810}
+cursor_initialised true
+autofit_bbox false
+initial_cursor_position {{0 1620}
+  }
+group_animations {{0} imported: 0 selected: items: "root transform/"}
+animation_layers {{1 11 1440 810 0 0 1 1 0 0 0 0}
+  }
+name Text31
+label "\[value message]"
+selected true
+xpos 11268
+ypos 7900
+}
