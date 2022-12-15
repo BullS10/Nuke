@@ -1,0 +1,194 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push 0
+push $cut_paste_input
+Group {
+inputs 2
+name S_edge_Merge
+tile_color 0xb74c53ff
+selected true
+xpos -40
+ypos -724
+addUserKnob {20 User}
+addUserKnob {26 despill}
+addUserKnob {7 desat}
+addUserKnob {41 mode l "luminance math" -STARTLINE T Saturation1.mode}
+addUserKnob {4 Operation -STARTLINE M {Multiply Color ""}}
+addUserKnob {26 Edge_matte}
+addUserKnob {20 In_1 l In n 1}
+addUserKnob {41 size l Dilate_INT_size T EdgeMatteDetect1.size}
+addUserKnob {41 size_1 l Blur_INT_size T EdgeMatteDetect1.size_1}
+addUserKnob {20 endGroup n -1}
+addUserKnob {20 Out_1 l Out n 1}
+addUserKnob {41 size_2 l Dilate_EXT_size T EdgeMatteDetect1.size_2}
+addUserKnob {41 size_3 l Blur_EXT_size T EdgeMatteDetect1.size_3}
+addUserKnob {20 endGroup_1 l endGroup n -1}
+addUserKnob {26 ""}
+addUserKnob {41 mix T Keymix2.mix}
+addUserKnob {26 credit l "V1.00 - 2019" T "Made by Glineur.S"}
+}
+Input {
+inputs 0
+name FG
+xpos -370
+ypos -610
+}
+Dot {
+name Dot35
+xpos -336
+ypos -534
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N103cc140 [stack 0]
+Dot {
+name Dot36
+xpos -226
+ypos -534
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+EdgeMatteDetect {
+name EdgeMatteDetect1
+xpos -260
+ypos -298
+size -2
+size_1 5
+size_2 10
+size_3 5
+}
+Dot {
+name Dot33
+xpos -226
+ypos 114
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Input {
+inputs 0
+name BG
+xpos -1140
+ypos -562
+number 1
+}
+Shuffle {
+alpha white
+name Shuffle1
+label "\[value in] -> \[value out]"
+xpos -1140
+ypos -520
+}
+Dot {
+name Dot5
+xpos -1106
+ypos -390
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N104f9110 [stack 0]
+Dot {
+name Dot3
+xpos -886
+ypos -390
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N104fdeb0 [stack 0]
+Dot {
+name Dot1
+xpos -666
+ypos -390
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N103cc140
+Saturation {
+saturation {{desat}}
+name Saturation1
+xpos -488
+ypos -538
+}
+Dot {
+name Dot31
+xpos -556
+ypos -534
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N1050e650 [stack 0]
+PSDMerge {
+inputs 2
+name PSDMerge1
+note_font "Bitstream Vera Sans"
+xpos -590
+ypos -298
+operation color
+maskChannelInput none
+}
+push $N104fdeb0
+push $N1050e650
+Dot {
+name Dot4
+xpos -776
+ypos -534
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2
+operation multiply
+bbox B
+output rgb
+name Merge1
+xpos -810
+ypos -298
+}
+Dot {
+name Dot2
+xpos -776
+ypos -134
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Switch {
+inputs 2
+which {{parent.Operation}}
+name Switch1
+label "\[value which]"
+xpos -590
+ypos -144
+}
+set N108b6d30 [stack 0]
+Dot {
+name Dot32
+xpos -556
+ypos 114
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N103cc140
+Keymix {
+inputs 3
+channels rgb
+name Keymix2
+xpos -370
+ypos 110
+}
+Output {
+name Output1
+xpos -370
+ypos 422
+}
+push $N104f9110
+push $N108b6d30
+Viewer {
+inputs 2
+frame_range 1001-1121
+fps 25
+gain 0.083
+input_process false
+name Viewer1
+xpos -480
+ypos -226
+}
+end_group

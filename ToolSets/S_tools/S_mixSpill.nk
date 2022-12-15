@@ -1,0 +1,237 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push 0
+push 0
+push $cut_paste_input
+Group {
+inputs 3
+name S_mixSpill
+tile_color 0xc6540eff
+selected true
+xpos 939
+ypos 467
+addUserKnob {20 User}
+addUserKnob {4 pulldown M {HSL Saturation ""}}
+pulldown Saturation
+addUserKnob {41 mode l "luminance math" T Saturation2.mode}
+addUserKnob {41 gamma T Grade22.gamma}
+addUserKnob {41 black_clamp l "black clamp" T Grade22.black_clamp}
+addUserKnob {41 white_clamp l "white clamp" -STARTLINE T Grade22.white_clamp}
+addUserKnob {41 which l mix T Dissolve1.which}
+addUserKnob {26 credit l "v1.00 - 2020" T "Made by Glineur.S"}
+}
+Input {
+inputs 0
+name mask
+xpos 355
+ypos -253
+number 3
+}
+Invert {
+channels alpha
+name Invert1
+xpos 355
+ypos -209
+}
+Input {
+inputs 0
+name plate_despill
+xpos 108
+ypos -1163
+}
+Dot {
+name Dot61
+xpos 142
+ypos -1075
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot62
+xpos 142
+ypos -902
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N9bab4320 [stack 0]
+Dot {
+name Dot1
+xpos -227
+ypos -902
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot2
+xpos -227
+ypos -199
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nb4db5740 [stack 0]
+Input {
+inputs 0
+name BG
+xpos 815
+ypos -664
+number 2
+}
+Grade {
+blackpoint 0.0005
+whitepoint 0.13
+name Grade2
+xpos 816
+ypos -547
+}
+set Ce29831b0 [stack 0]
+Dot {
+name Dot59
+xpos 849
+ypos -507
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N9bab4320
+Input {
+inputs 0
+name plate
+xpos 606
+ypos -1155
+number 1
+}
+Dot {
+name Dot63
+xpos 640
+ypos -1077
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2
+operation from
+bbox B
+output rgb
+name Merge9
+xpos 606
+ypos -906
+}
+Dot {
+name Dot64
+xpos 640
+ypos -772
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nf54ec8f0 [stack 0]
+Saturation {
+saturation 0
+mode Average
+name Saturation2
+xpos 421
+ypos -776
+}
+set Nf76bf8e0 [stack 0]
+push $Nf54ec8f0
+Colorspace {
+colorspace_in HSL
+name Colorspace7
+label "\[value colorspace_in] to \[value colorspace_out]"
+xpos 606
+ypos -726
+}
+Shuffle {
+red blue
+green blue
+alpha blue
+name Shuffle6
+tile_color 0x3fbfff
+label "\[value in] -> \[value out]"
+xpos 606
+ypos -655
+}
+Switch {
+inputs 2
+which {{pulldown}}
+name Switch1
+label "\[value which]"
+xpos 606
+ypos -597
+}
+clone $Ce29831b0 {
+xpos 606
+ypos -551
+selected false
+}
+Merge2 {
+inputs 2
+operation multiply
+bbox B
+output rgb
+name Merge13
+xpos 606
+ypos -511
+}
+Dot {
+name Dot65
+xpos 640
+ypos -331
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $Nf76bf8e0
+Grade {
+whitepoint 0.2
+white_clamp true
+name Grade22
+xpos 291
+ypos -776
+}
+push $N9bab4320
+Merge2 {
+inputs 2
+operation from
+bbox B
+output rgb
+name Merge14
+xpos 108
+ypos -776
+}
+Merge2 {
+inputs 2
+operation plus
+bbox B
+output rgb
+name Merge15
+xpos 108
+ypos -335
+}
+Keymix {
+inputs 3
+bbox B
+name Keymix1
+xpos 108
+ypos -209
+disable {{"!\[exists input1]"}}
+}
+push $Nb4db5740
+Dot {
+name Dot3
+xpos -227
+ypos -54
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dissolve {
+inputs 2
+which 0.02
+name Dissolve1
+label "\[value which]"
+xpos 108
+ypos -70
+}
+Output {
+name Output1
+xpos 108
+ypos 72
+}
+end_group

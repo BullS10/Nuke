@@ -1,0 +1,573 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+BackdropNode {
+inputs 0
+name BackdropNode74
+tile_color 0x7f663fff
+label "Fog / Atmosphere"
+note_font_size 42
+selected true
+xpos 3710
+ypos 17550
+bdwidth 1540
+bdheight 1008
+}
+Dot {
+inputs 0
+name Dot357
+label Cam
+note_font_size 42
+selected true
+xpos 4254
+ypos 17472
+hide_input true
+}
+Dot {
+name Dot358
+selected true
+xpos 4254
+ypos 17952
+}
+set Nf74e6450 [stack 0]
+Dot {
+inputs 0
+name Dot359
+label WPP
+note_font_size 42
+selected true
+xpos 4034
+ypos 17472
+}
+Group {
+inputs 2
+name CS_PositionToDepth1
+selected true
+xpos 4000
+ypos 17948
+}
+Input {
+inputs 0
+name InputWPP
+xpos -920
+ypos -490
+}
+Dot {
+name Dot1
+xpos -886
+ypos -390
+}
+set Nf738eeb0 [stack 0]
+Dot {
+name Dot3
+xpos -886
+ypos -198
+}
+set N46bd8a70 [stack 0]
+push $Nf738eeb0
+Add {
+channels rgb
+value {{-Axis1.world_matrix.3} {-Axis1.world_matrix.7} {-Axis1.world_matrix.11} 0}
+name Add1
+xpos -810
+ypos -394
+}
+ColorMatrix {
+matrix {
+    {{Axis1.world_matrix.0} {Axis1.world_matrix.1} {Axis1.world_matrix.2}}
+    {{Axis1.world_matrix.4} {Axis1.world_matrix.5} {Axis1.world_matrix.6}}
+    {{Axis1.world_matrix.8} {Axis1.world_matrix.9} {Axis1.world_matrix.10}}
+  }
+invert true
+name ColorMatrix1
+selected true
+xpos -810
+ypos -346
+}
+Multiply {
+channels {-rgba.red -rgba.green rgba.blue none}
+value -1
+name Multiply1
+xpos -810
+ypos -298
+}
+Expression {
+channel0 depth
+expr0 1/b
+channel1 none
+channel2 none
+channel3 none
+name Expression1
+label "Nuke format zdepth"
+xpos -810
+ypos -256
+}
+MergeExpression {
+inputs 2
+channel0 depth
+expr0 "(Ar == 0 && Ag == 0 && Ab == 0 && Aa == 0) ? 0 : depth.Z"
+channel1 none
+channel2 none
+channel3 none
+name MergeExpression1
+label "fix background depth"
+xpos -810
+ypos -208
+}
+Dot {
+name Dot2
+xpos -776
+ypos -126
+}
+push $N46bd8a70
+Copy {
+inputs 2
+from0 depth.Z
+to0 depth.Z
+name Copy1
+xpos -920
+ypos -136
+}
+Output {
+name Output
+xpos -920
+ypos -58
+}
+Input {
+inputs 0
+name InputCam
+xpos -590
+ypos -490
+number 1
+}
+Axis2 {
+name Axis1
+xpos -580
+ypos -414
+}
+end_group
+Dot {
+inputs 0
+name Dot360
+label RGB
+note_font_size 42
+selected true
+xpos 5134
+ypos 17472
+}
+Dot {
+name Dot364
+selected true
+xpos 5134
+ypos 17664
+}
+set N64e56c70 [stack 0]
+Dot {
+name Dot366
+selected true
+xpos 3814
+ypos 17664
+}
+Copy {
+inputs 2
+from0 depth.Z
+to0 depth.Z
+name Copy3
+selected true
+xpos 3780
+ypos 17942
+}
+DeepFromImage {
+name DeepFromImage1
+selected true
+xpos 3780
+ypos 18092
+}
+set Nef7b5320 [stack 0]
+Dot {
+name Dot367
+selected true
+xpos 3814
+ypos 18408
+}
+push $Nf74e6450
+Dot {
+name Dot368
+selected true
+xpos 4254
+ypos 18096
+}
+set N35374170 [stack 0]
+Dot {
+name Dot369
+selected true
+xpos 4254
+ypos 18192
+}
+Constant {
+inputs 0
+channels rgb
+color {1 1 1 1}
+name Constant2
+selected true
+xpos 4660
+ypos 17733
+}
+Rectangle {
+output alpha
+premult alpha
+area {{curve} {curve} {width} {height}}
+softness {{"width * 0.5"} {"height * 0.5"}}
+name Rectangle1
+selected true
+xpos 4660
+ypos 17822
+}
+Ramp {
+output alpha
+premult alpha
+maskChannelInput rgba.alpha
+p0 {{"width / 2"} {height}}
+p1 {{"width / 2"} 0}
+type smooth
+name Ramp1
+selected true
+xpos 4660
+ypos 17870
+}
+Dot {
+name Dot370
+selected true
+xpos 4694
+ypos 17952
+}
+set N64e55d20 [stack 0]
+Dot {
+name Dot371
+selected true
+xpos 4804
+ypos 17952
+}
+set N992fc60 [stack 0]
+Dot {
+name Dot372
+selected true
+xpos 4914
+ypos 17952
+}
+Noise {
+output alpha
+premult rgba
+maskChannelInput rgba.alpha
+size 500
+zoffset {{"frame * 0.002"}}
+translate {5000 {frame}}
+center {960 540}
+name Noise5
+selected true
+xpos 4880
+ypos 17990
+}
+clone node2b6c373a8550|Grade|12613 Grade {
+white 0.2
+gamma {1.416666627 1.266666651 0.9166666269 1}
+unpremult rgba.alpha
+name Grade21
+selected true
+xpos 4880
+ypos 18038
+}
+set C373a8550 [stack 0]
+Card2 {
+rows 2
+columns 2
+translate {0 0 500}
+uniform_scale 500
+control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+name Card5
+selected true
+xpos 4880
+ypos 18092
+}
+push $N992fc60
+Noise {
+output alpha
+premult rgba
+maskChannelInput rgba.alpha
+size 400
+zoffset {{"frame * 0.002"}}
+translate {4000 {frame}}
+center {960 540}
+name Noise4
+selected true
+xpos 4770
+ypos 17990
+}
+clone $C373a8550 {
+xpos 4770
+ypos 18038
+selected true
+}
+Card2 {
+rows 2
+columns 2
+translate {0 0 400}
+uniform_scale 400
+control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+name Card4
+selected true
+xpos 4770
+ypos 18092
+}
+push $N64e55d20
+Noise {
+output alpha
+premult rgba
+maskChannelInput rgba.alpha
+size 300
+zoffset {{"frame * 0.002"}}
+translate {3000 {frame}}
+center {960 540}
+name Noise3
+selected true
+xpos 4660
+ypos 17990
+}
+clone $C373a8550 {
+xpos 4660
+ypos 18038
+selected true
+}
+Card2 {
+rows 2
+columns 2
+translate {0 0 300}
+uniform_scale 300
+control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+name Card3
+selected true
+xpos 4660
+ypos 18092
+}
+push $N64e55d20
+Dot {
+name Dot373
+selected true
+xpos 4584
+ypos 17952
+}
+set N434de640 [stack 0]
+Noise {
+output alpha
+premult rgba
+maskChannelInput rgba.alpha
+size 200
+zoffset {{"frame * 0.002"}}
+translate {2000 {frame}}
+center {960 540}
+name Noise2
+selected true
+xpos 4550
+ypos 17990
+}
+clone $C373a8550 {
+xpos 4550
+ypos 18038
+selected true
+}
+Card2 {
+rows 2
+columns 2
+translate {0 0 200}
+uniform_scale 200
+control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+name Card2
+selected true
+xpos 4550
+ypos 18092
+}
+push $N434de640
+Dot {
+name Dot374
+selected true
+xpos 4474
+ypos 17952
+}
+Noise {
+output alpha
+premult rgba
+maskChannelInput rgba.alpha
+size 100
+zoffset {{"frame * 0.002"}}
+translate {1000 {frame}}
+center {960 540}
+name Noise1
+selected true
+xpos 4440
+ypos 17990
+}
+clone $C373a8550 {
+xpos 4440
+ypos 18038
+selected true
+}
+Card2 {
+rows 2
+columns 2
+translate {0 0 100}
+uniform_scale 100
+control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+name Card1
+selected true
+xpos 4440
+ypos 18092
+}
+Scene {
+inputs 5
+name RenderScene
+selected true
+xpos 4670
+ypos 18168
+}
+set N354a1330 [stack 0]
+Reformat {
+inputs 0
+name Reformat6
+selected true
+xpos 4382
+ypos 18135
+}
+ScanlineRender {
+inputs 3
+conservative_shader_sampling false
+zblend_mode smooth
+motion_vectors_type off
+name ScanlineRender30
+selected true
+xpos 4440
+ypos 18188
+}
+DeepColorCorrect2 {
+gamma 2
+gain 0.5
+zmap {500 4000 4000 4000}
+limit_z true
+name DeepColorCorrect1
+selected true
+xpos 4440
+ypos 18332
+}
+DeepHoldout2 {
+inputs 2
+name DeepHoldout1
+selected true
+xpos 4440
+ypos 18404
+}
+Dot {
+name Dot375
+selected true
+xpos 4474
+ypos 18480
+}
+Unpremult {
+name Unpremult3
+selected true
+xpos 4550
+ypos 18476
+}
+Blur {
+channels alpha
+size 2
+name Blur61
+selected true
+xpos 4660
+ypos 18470
+}
+Premult {
+name Premult7
+selected true
+xpos 4770
+ypos 18476
+}
+push $N64e56c70
+Merge2 {
+inputs 2
+name Merge21
+selected true
+xpos 5100
+ypos 18476
+}
+push $N354a1330
+Dot {
+name Dot376
+selected true
+xpos 4694
+ypos 18288
+}
+push $N35374170
+push $Nef7b5320
+DeepToPoints {
+inputs 2
+detail 0.5
+name DeepToPoints1
+selected true
+xpos 4000
+ypos 18092
+}
+Scene {
+inputs 2
+name SetupScene
+selected true
+xpos 4010
+ypos 18264
+}

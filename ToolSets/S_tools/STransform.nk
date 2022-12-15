@@ -1,0 +1,324 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name STransform
+selected true
+xpos 548
+ypos 6360
+addUserKnob {20 User}
+addUserKnob {41 format_1 l format T S_STadv.format}
+addUserKnob {41 channels T STMap4.channels}
+addUserKnob {41 translate T Transform8.translate}
+addUserKnob {41 rotate T Transform8.rotate}
+addUserKnob {41 scale T Transform8.scale}
+addUserKnob {41 skewX l "skew X" T Transform8.skewX}
+addUserKnob {41 skewY l "skew Y" T Transform8.skewY}
+addUserKnob {41 center T Transform8.center}
+addUserKnob {26 ""}
+addUserKnob {41 filter T STMap4.filter}
+addUserKnob {41 scale_1 l OverScan T S_STadv.scale}
+addUserKnob {4 crop M {"crop intersect" "crop to format" "no crop"}}
+crop "no crop"
+addUserKnob {3 addbbox l "add bbox" -STARTLINE}
+addbbox 25
+addUserKnob {7 mix}
+mix 1
+}
+Input {
+inputs 0
+name img
+label img
+xpos -950
+ypos -568
+}
+Dot {
+name Dot53
+xpos -916
+ypos -198
+}
+set Nafac89c0 [stack 0]
+Dot {
+name Dot54
+xpos -1104
+ypos -198
+}
+set Na6674d20 [stack 0]
+Dot {
+name Dot2
+xpos -1364
+ypos -198
+}
+Shuffle {
+red black
+green black
+blue black
+alpha black
+name Shuffle1
+label "\[value in] -> \[value out]"
+xpos -1398
+ypos -112
+}
+Dot {
+name Dot1
+xpos -1364
+ypos 18
+}
+push $Na6674d20
+Transform {
+center {1920 1080}
+shutteroffset centred
+name Transform8
+note_font "Bitstream Vera Sans"
+xpos -1138
+ypos -130
+}
+set Ce3c48e20 [stack 0]
+AdjBBox {
+numpixels {{parent.addbbox}}
+name AdjBBox1
+xpos -1138
+ypos -34
+}
+Merge2 {
+inputs 2
+Achannels rgb
+Bchannels rgb
+output rgb
+name Merge1
+xpos -1138
+ypos 14
+}
+Dot {
+name Dot55
+xpos -1104
+ypos 66
+}
+Input {
+inputs 0
+name Ctrl_mask
+label "Ctrl mask"
+xpos -247
+ypos -328
+number 1
+}
+Reformat {
+resize none
+pbb true
+name Reformat6
+xpos -247
+ypos -256
+}
+Dot {
+name Dot60
+xpos -213
+ypos -198
+}
+Group {
+inputs 0
+name S_STadv
+knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\n\nif n\['Type'].value() == 'OverScan':\n    n\['scale'].setVisible(True)\n    n\['repeatx'].setVisible(False)\n    n\['repeaty'].setVisible(False)\n    n\['ratex'].setVisible(False)\n    n\['ratey'].setVisible(False)\n    n\['time'].setVisible(False)\nelse:\n    n\['scale'].setVisible(False)\n    n\['repeatx'].setVisible(True)\n    n\['repeaty'].setVisible(True)\n    n\['ratex'].setVisible(True)\n    n\['ratey'].setVisible(True)\n    n\['time'].setVisible(True)\n"
+tile_color 0x55ff7fff
+xpos -430
+ypos -464
+addUserKnob {20 User}
+addUserKnob {41 format l "output format" T Reformat6.format}
+addUserKnob {4 Type M {OverScan Tiling ""}}
+addUserKnob {7 scale R 1 5}
+scale 1.2
+addUserKnob {7 repeatx +HIDDEN}
+repeatx 3
+addUserKnob {7 repeaty +HIDDEN}
+repeaty 3
+addUserKnob {7 ratex +HIDDEN}
+addUserKnob {7 ratey +HIDDEN}
+addUserKnob {7 time +HIDDEN}
+time 1
+}
+Constant {
+inputs 0
+name Constant1
+xpos 1037
+ypos 422
+}
+Reformat {
+resize none
+pbb true
+name Reformat6
+xpos 1037
+ypos 535
+}
+set Cebbcedb0 [stack 0]
+Transform {
+scale {{parent.scale}}
+center {{Reformat6.format.r/2} {Reformat6.format.t/2}}
+shutteroffset centred
+name Transform2
+xpos 1037
+ypos 594
+disable {{Type}}
+}
+Expression {
+expr0 (x+0.5)/parent.Reformat6.width
+expr1 (y+0.5)/parent.Reformat6.height
+name Expression1
+xpos 1037
+ypos 647
+}
+Expression {
+temp_name0 rate
+temp_expr0 5
+expr0 r%(1/parent.repeatx)*parent.repeatx
+expr1 g%(1/parent.repeaty)*parent.repeaty
+name Expression2
+label "multiply uvs"
+xpos 1037
+ypos 694
+disable {{!Type}}
+addUserKnob {20 User}
+addUserKnob {7 repeatx +HIDDEN R 0 10}
+repeatx 1
+addUserKnob {7 repeaty +HIDDEN R 0 10}
+repeaty 1
+}
+Expression {
+temp_name0 shiftx
+temp_expr0 (time/24*parent.ratex)%1
+temp_name1 shifty
+temp_expr1 (time/24*parent.ratey)%1
+expr0 "( r+shiftx < 0) ? 1+r+shiftx :  (r+shiftx)%1"
+expr1 "( g+shifty < 0) ? 1+g+shifty :  (g+shifty)%1"
+name Expression7
+label "offset uvs"
+xpos 1037
+ypos 763
+disable {{!Type}}
+addUserKnob {20 User}
+addUserKnob {7 ratex t "\t\t" +HIDDEN R -10 10}
+addUserKnob {7 ratey +HIDDEN R -10 10}
+addUserKnob {7 time R -1000 1000}
+time {{parent.time}}
+}
+clone $Cebbcedb0 {
+xpos 1037
+ypos 851
+selected false
+}
+set Ne7d59640 [stack 0]
+Output {
+name Output1
+xpos 1037
+ypos 914
+}
+push $Ne7d59640
+Viewer {
+frame_range 1001-2036
+fps 25
+name Viewer1
+xpos 1170
+ypos 977
+}
+end_group
+Dot {
+name Dot59
+xpos -396
+ypos -342
+}
+set Ne89f5370 [stack 0]
+Dot {
+name Dot58
+xpos -526
+ypos -342
+}
+clone $Ce3c48e20 {
+xpos -560
+ypos -274
+selected false
+}
+Dot {
+name Dot57
+xpos -526
+ypos -198
+}
+push $Ne89f5370
+Dissolve {
+inputs 2+1
+channels rgb
+which {{parent.mix}}
+name Dissolve2
+label "\[value which]"
+xpos -430
+ypos -208
+disable {{"!\[exists parent.input1]"}}
+}
+Dot {
+name Dot56
+xpos -396
+ypos -78
+}
+push $Nafac89c0
+STMap {
+inputs 2
+channels rgba
+uv rgb
+name STMap4
+xpos -950
+ypos -82
+}
+CopyBBox {
+inputs 2
+name CopyBBox2
+xpos -950
+ypos 62
+}
+Dot {
+name Dot4
+xpos -916
+ypos 138
+}
+set Nc3029940 [stack 0]
+Dot {
+name Dot6
+xpos -1046
+ypos 138
+}
+set Nc302e160 [stack 0]
+Dot {
+name Dot3
+xpos -1176
+ypos 138
+}
+Dot {
+name Dot5
+xpos -1176
+ypos 330
+}
+push $Nc302e160
+Crop {
+box {{img.format.x} {img.format.y} {img.format.r} {img.format.t}}
+name Crop1
+xpos -1080
+ypos 206
+}
+push $Nc3029940
+Crop {
+box {{img.format.x} {img.format.y} {img.format.r} {img.format.t}}
+intersect true
+name Crop2
+xpos -950
+ypos 230
+}
+Switch {
+inputs 3
+which {{parent.crop}}
+name Switch1
+label "\[value which]"
+xpos -950
+ypos 320
+}
+Output {
+name Output1
+xpos -950
+ypos 446
+}
+end_group

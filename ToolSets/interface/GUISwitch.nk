@@ -1,0 +1,38 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Dot {
+name Dot53
+selected true
+xpos -3942
+ypos 626
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot54
+selected true
+xpos -4078
+ypos 626
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot60
+selected true
+xpos -4078
+ypos 805
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push 0
+Switch {
+inputs 2
+which {{"\$gui"}}
+name GUISwitch1
+tile_color 0xff5f00ff
+label "\[value which]"
+selected true
+xpos -3976
+ypos 795
+}

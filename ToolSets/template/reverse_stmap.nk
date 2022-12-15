@@ -1,0 +1,121 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Dot {
+ name Dot41
+ selected true
+ xpos -766
+ ypos -1699
+ addUserKnob {20 beDotTab l BeDot}
+ addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N47dc380 [stack 0]
+Dot {
+ name Dot42
+ selected true
+ xpos -1005
+ ypos -1699
+ addUserKnob {20 beDotTab l BeDot}
+ addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Group {
+ name STile1
+ tile_color 0x55ff7fff
+ selected true
+ xpos -1039
+ ypos -1538
+ addUserKnob {20 User}
+ addUserKnob {41 format l "output format" T Reformat6.format}
+ addUserKnob {41 repeaty T Expression2.repeaty}
+ addUserKnob {41 repeatx T Expression2.repeatx}
+ addUserKnob {41 ratex T Expression7.ratex}
+ addUserKnob {41 ratey T Expression7.ratey}
+ addUserKnob {41 time T Expression7.time}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 1037
+  ypos 571
+ }
+ Reformat {
+  name Reformat6
+  xpos 1037
+  ypos 611
+ }
+ Expression {
+  expr0 (x+0.5)/parent.Reformat6.width
+  expr1 (y+0.5)/parent.Reformat6.height
+  name Expression1
+  xpos 1037
+  ypos 645
+ }
+ Expression {
+  temp_name0 rate
+  temp_expr0 5
+  expr0 r%(1/repeatx)*repeatx
+  expr1 g%(1/repeaty)*repeaty
+  name Expression2
+  label "multiply uvs"
+  xpos 1037
+  ypos 693
+  addUserKnob {20 User}
+  addUserKnob {7 repeatx R 0 10}
+  repeatx 1
+  addUserKnob {7 repeaty R 0 10}
+  repeaty 1
+ }
+ Expression {
+  temp_name0 shiftx
+  temp_expr0 (time/24*ratex)%1
+  temp_name1 shifty
+  temp_expr1 (time/24*ratey)%1
+  expr0 "( r+shiftx < 0) ? 1+r+shiftx :  (r+shiftx)%1"
+  expr1 "( g+shifty < 0) ? 1+g+shifty :  (g+shifty)%1"
+  name Expression7
+  label "offset uvs"
+  xpos 1037
+  ypos 758
+  addUserKnob {20 User}
+  addUserKnob {7 ratex t "\t\t" R -10 10}
+  addUserKnob {7 ratey R -10 10}
+  addUserKnob {7 time R -1000 1000}
+  time 1
+ }
+ Output {
+  name Output1
+  xpos 1037
+  ypos 858
+ }
+end_group
+set N25160150 [stack 0]
+Dot {
+ name Dot40
+ selected true
+ xpos -1005
+ ypos -1402
+ addUserKnob {20 beDotTab l BeDot}
+ addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N47dc380
+push $N25160150
+Merge2 {
+ inputs 2
+ operation from
+ bbox B
+ output rgb
+ name Merge4
+ selected true
+ xpos -800
+ ypos -1538
+}
+Merge2 {
+ inputs 2
+ operation plus
+ bbox B
+ output rgb
+ name Merge6
+ selected true
+ xpos -800
+ ypos -1406
+}

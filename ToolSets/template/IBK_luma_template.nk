@@ -1,0 +1,2124 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+StickyNote {
+ inputs 0
+ name StickyNote1
+ label "        brighter blues for more uniform sky       "
+ note_font_size 22
+ selected true
+ xpos 92
+ ypos -643
+}
+StickyNote {
+ inputs 0
+ name StickyNote3
+ label "        extending hills       "
+ note_font_size 22
+ selected true
+ xpos 170
+ ypos -260
+}
+StickyNote {
+ inputs 0
+ name StickyNote2
+ label "        extending sky       "
+ note_font_size 22
+ selected true
+ xpos -445
+ ypos -247
+}
+Roto {
+ inputs 0
+ output alpha
+ cliptype none
+ curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097664}
+    {t x43d74000 x4385c000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px 1
+        {0 0}
+        {xc089999a x4394d99a}
+        {0 0}
+        {xc0066668 x3f266600}
+        {x41000000 x4392f333}
+        {x40066668 xbf266600}
+        {xbfc66660 x3f199a00}
+        {x41cb999a x43906ccd}
+        {x3fc66660 xbf199a00}
+        {xbfd999a0 x3ecccc00}
+        {x424c0000 x438da666}
+        {x3fd999a0 xbecccc00}
+        {xbe4cce00 0}
+        {x42b16666 x43892666}
+        {x3e4cce00 0}
+        {xbe4ccc00 0}
+        {x42e8cccd x43858ccd}
+        {x3e4ccc00 0}
+        {xbdccd000 0}
+        {x43170000 x43802666}
+        {x3dccd000 0}
+        {xbe4ccc00 x3dccd000}
+        {x4335cccd x4379199a}
+        {x3e4ccc00 xbdccd000}
+        {xbdccd000 0}
+        {x43540000 x4371e666}
+        {x3dccd000 0}
+        {xbf800000 x3dccd000}
+        {x4377e666 x4368199a}
+        {1 xbdccd000}
+        {xc0066680 xbe4ccc00}
+        {x43862666 x4365cccd}
+        {x40066680 x3e4ccc00}
+        {xbfa66600 1}
+        {x438b8000 x43660000}
+        {x3fa66600 xbf800000}
+        {xc0333300 x3f666600}
+        {x4392c000 x435e0000}
+        {x40333300 xbf666600}
+        {xc0400000 x3fb33300}
+        {x439be666 x43590000}
+        {x40400000 xbfb33300}
+        {xc0133380 x3e4ccc00}
+        {x43a66666 x4352cccd}
+        {x40133380 xbe4ccc00}
+        {xbff33300 xbe4ccc00}
+        {x43aa4ccd x4355199a}
+        {x3ff33300 x3e4ccc00}
+        {xbfd99a00 xbe4ccc00}
+        {x43b7f333 x435c4ccd}
+        {x3fd99a00 x3e4ccc00}
+        {xc0333380 xbf199900}
+        {x43cde666 x43674ccd}
+        {x40333380 x3f199900}
+        {xc02ccd00 1}
+        {x43d66666 x4369e666}
+        {x402ccd00 xbf800000}
+        {xc0866680 xbe999a00}
+        {x43ddb333 x43680000}
+        {x40866680 x3e999a00}
+        {xc0933340 xbf8ccd00}
+        {x43e87333 x436a6666}
+        {x40933340 x3f8ccd00}
+        {xc06ccd00 xbfc00000}
+        {x43fab333 x4375999a}
+        {x406ccd00 x3fc00000}
+        {xc0199900 x3dccc800}
+        {x4401599a x437ab333}
+        {x40199900 xbdccc800}
+        {xc04ccd00 xbf333300}
+        {x44056666 x437e0000}
+        {x404ccd00 x3f333300}
+        {xbf800000 xbecccc00}
+        {x4409799a x43823333}
+        {1 x3ecccc00}
+        {xc02ccd00 0}
+        {x440b9333 x43834ccd}
+        {x402ccd00 0}
+        {xc0000000 x3e4cd000}
+        {x4410199a x43830000}
+        {x40000000 xbe4cd000}
+        {xc0900000 xbe999800}
+        {x4415e666 x43834000}
+        {x40900000 x3e999800}
+        {xc04ccd00 xbf199a00}
+        {x44198666 x4385a666}
+        {x404ccd00 x3f199a00}
+        {xc04ccd00 xc0000000}
+        {x44206666 x438ca666}
+        {x404ccd00 x40000000}
+        {xbf199c00 x3dccd000}
+        {x44229333 x438e4000}
+        {x3f199c00 xbdccd000}
+        {xc0200000 0}
+        {x4424a000 x438d8000}
+        {x40200000 0}
+        {xc00ccd00 xbf000000}
+        {x4428b333 x438f6666}
+        {x400ccd00 x3f000000}
+        {xc06ccd00 xbfd99900}
+        {x442ba666 x4392cccd}
+        {x406ccd00 x3fd99900}
+        {xc0066600 xbfa66700}
+        {x442ee000 x43966666}
+        {x40066600 x3fa66700}
+        {xc0400000 xbfa66600}
+        {x4431c000 x43998ccd}
+        {x40400000 x3fa66600}
+        {xc06ccd00 x3f000000}
+        {x44356666 x439ab333}
+        {x406ccd00 xbf000000}
+        {xbfe66800 xbf8ccd00}
+        {x44384666 x439b4000}
+        {x3fe66800 x3f8ccd00}
+        {xc0599a00 xc00ccc80}
+        {x443f0666 x43a2cccd}
+        {x40599a00 x400ccc80}
+        {xbf999800 xbf199a00}
+        {x4444f99a x43a9c000}
+        {x3f999800 x3f199a00}
+        {xc0799900 xbff33300}
+        {x444bb99a x43b17333}
+        {x40799900 x3ff33300}
+        {xc0200000 xbf800000}
+        {x44510000 x43b68ccd}
+        {x40200000 1}
+        {xc0200000 xbf4ccc00}
+        {x4454d99a x43ba4ccd}
+        {x40200000 x3f4ccc00}
+        {xc0400000 xbe999c00}
+        {x4457f99a x43bd2666}
+        {x40400000 x3e999c00}
+        {xc0400000 x40000000}
+        {x445b8000 xc1700000}
+        {x40400000 xc0000000}
+        {0 0}
+        {xc1600000 xc1a00000}
+        {0 0}}}     idem}
+     {tx 1 x43e9075f x43823de8}
+     {a osw x41200000 osf 0 str 1 spx x44700000 spy x44070000 sb 1 tt x40800000}}}}}}
+ toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+ toolbar_brush_hardness 0.200000003
+ toolbar_source_transform_scale {1 1}
+ toolbar_source_transform_center {960 540}
+ colorOverlay {0 0 0 0}
+ lifetime_type "all frames"
+ motionblur_shutter_offset_type centred
+ source_black_outside true
+ name Roto2
+ selected true
+ xpos 55
+ ypos -377
+}
+Dot {
+ name Dot5
+ selected true
+ xpos 89
+ ypos -316
+}
+set N89be470 [stack 0]
+push $cut_paste_input
+Dot {
+ name Dot2
+ selected true
+ xpos -34
+ ypos -710
+}
+set N8b134e0 [stack 0]
+Dot {
+ name Dot4
+ selected true
+ xpos 783
+ ypos -710
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ bbox B
+ name Copy3
+ selected true
+ xpos 749
+ ypos -326
+}
+Premult {
+ name Premult1
+ selected true
+ xpos 749
+ ypos -288
+}
+Dot {
+ name Dot6
+ selected true
+ xpos 783
+ ypos 265
+}
+CheckerBoard2 {
+ inputs 0
+ name CheckerBoard1
+ selected true
+ xpos 425
+ ypos -192
+}
+Dot {
+ name Dot1
+ selected true
+ xpos 459
+ ypos -96
+}
+set N8b4f130 [stack 0]
+push $N8b4f130
+push $N89be470
+push $N8b134e0
+Group {
+ name DespillToColor
+ selected true
+ xpos -68
+ ypos -637
+ addUserKnob {20 User l main}
+ addUserKnob {68 sto l "screen type" t "- auto - The screen type will be controlled by \n  the screen color.\n- picking a primary color acts as an override so for example you can pick a blue-ish screen color but still despill green tones.\n" M {auto green blue red "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" ""}}
+ sto blue
+ addUserKnob {18 sc l "screen color"}
+ sc {0.09989872575 0.2581827939 0.5647113919}
+ addUserKnob {6 sc_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 sc_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {18 tc l "target color"}
+ tc {0.6399999857 0.7863414884 1}
+ addUserKnob {6 tc_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 tc_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 balance t "- determines which colors get affected more by the despill operation. \nlower : red\nhigher : green / blue" R 0 2}
+ balance 1
+ addUserKnob {7 gain t "Increasing gain will affect a wider range of colors." R 0.5 3.5}
+ gain 1
+ addUserKnob {26 ""}
+ addUserKnob {6 enableErode l "enable erode" +STARTLINE}
+ addUserKnob {6 spillmatte l "spillmatte output" t "- spillmatte output to alpha channel.\nThis channel is normalised, so the picked color has an alpha value of 1. \nIn ordner not to clamp values above 1 you might choose to grade this mask down a bit." -STARTLINE}
+ addUserKnob {7 erode t "For blurry edges, eroding the despill matte is an alternative to increasing the gain." R 0.1 50}
+ erode 1
+ addUserKnob {7 erodeMix l mix}
+ erodeMix 1
+ addUserKnob {26 ""}
+ addUserKnob {7 falloff t "- controls the gamma on the despill matte." R 0.5 1.5}
+ falloff 1
+ addUserKnob {26 ""}
+ addUserKnob {41 maskChannelMask l mask -STARTLINE T mrg.maskChannelMask}
+ addUserKnob {41 inject -STARTLINE T mrg.inject}
+ addUserKnob {41 invert_mask l invert -STARTLINE T mrg.invert_mask}
+ addUserKnob {41 fringe -STARTLINE T mrg.fringe}
+ addUserKnob {41 unpremult l "(un)premult by" T despill.unpremult}
+ addUserKnob {7 mix}
+ mix 1
+ addUserKnob {26 ""}
+ addUserKnob {20 info l "info / advanced" n 1}
+ info 0
+ addUserKnob {26 jm l "" +STARTLINE T "Despill to Color by Johannes Masanz\nVersion: 4.4"}
+ addUserKnob {26 ""}
+ addUserKnob {7 ir l "increase range" t "compensates for screen values higher than 1" R 0 100}
+ ir 50
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+}
+ Input {
+  inputs 0
+  name mask
+  xpos -234
+  ypos 280
+  number 1
+ }
+set N8b61390 [stack 0]
+ Input {
+  inputs 0
+  name source
+  xpos -84
+  ypos 50
+ }
+set N8b65b80 [stack 0]
+ Expression {
+  temp_name0 which
+  temp_expr0 parent.sto==0?parent.sc.b>parent.sc.g?(parent.sc.b>parent.sc.r?1:2):(parent.sc.r>parent.sc.g?2:0):parent.sto-1
+  expr0 which==0?r:which==1?r:which==2?g:1
+  expr1 which==0?g:which==1?b:which==2?r:1
+  expr2 which==0?b:which==1?g:which==2?b:1
+  name exp
+  xpos 314
+  ypos 50
+ }
+ Expression {
+  channel3 alpha
+  expr3 parent.gain<1?min((g*parent.gain-(r*parent.balance+b*(1-(parent.balance-1)))/2),(g-(r*parent.balance+b*(1-(parent.balance-1)))/2)):(g*parent.gain-(r*parent.balance+b*(1-(parent.balance-1)))/2)
+  name exp2
+  xpos 314
+  ypos 76
+ }
+ Grade {
+  channels alpha
+  whitepoint {{av}}
+  name white
+  xpos 314
+  ypos 102
+  addUserKnob {20 User}
+  addUserKnob {7 av}
+  av {{parent.sto==0?parent.sc.b>parent.sc.g?(parent.sc.b>parent.sc.r?avb:avr):(parent.sc.r>parent.sc.g?avr:avg):parent.sto==1?avg:parent.sto==2?avb:parent.sto==3?avr:1}}
+  addUserKnob {7 avr}
+  avr {{parent.sc.r*clamp(0.1,parent.gain,inf)-(parent.sc.g*(1-(parent.balance-1))+parent.sc.b*parent.balance)/2}}
+  addUserKnob {7 avg}
+  avg {{parent.sc.g*clamp(0.1,parent.gain,inf)-(parent.sc.b*(1-(parent.balance-1))+parent.sc.r*parent.balance)/2}}
+  addUserKnob {7 avb}
+  avb {{parent.sc.b*clamp(0.1,parent.gain,inf)-(parent.sc.g*(1-(parent.balance-1))+parent.sc.r*parent.balance)/2}}
+ }
+ FilterErode {
+  size {{-parent.erode}}
+  filter gaussian
+  mix {{parent.erodeMix}}
+  name erode
+  xpos 314
+  ypos 140
+  disable {{1-parent.enableErode}}
+ }
+set N8b98f40 [stack 0]
+ Expression {
+  expr3 a>=1?0:1
+  name exp3
+  xpos 430
+  ypos 179
+ }
+push $N8b98f40
+ Grade {
+  channels alpha
+  gamma {{parent.falloff}}
+  black_clamp false
+  name falloff
+  xpos 314
+  ypos 178
+ }
+push $N8b98f40
+ Merge2 {
+  inputs 2+1
+  operation copy
+  name mrg2
+  xpos 314
+  ypos 216
+ }
+set N8bc36f0 [stack 0]
+push $N8b61390
+push $N8bc36f0
+ Grade {
+  channels alpha
+  whitepoint {{parent.white.whitepoint}}
+  white {{parent.ir+1}}
+  reverse true
+  name rev
+  xpos 314
+  ypos 242
+ }
+push $N8b65b80
+ Grade {
+  inputs 1+1
+  channels rgba
+  add {{parent.tc*clamp(1/clamp(parent.white.av/(parent.ir+1)),0,inf)-parent.sc*clamp(1/clamp(parent.white.av/(parent.ir+1)),0,inf)} {parent.tc*clamp(1/clamp(parent.white.av/(parent.ir+1)),0,inf)-parent.sc*clamp(1/clamp(parent.white.av/(parent.ir+1)),0,inf)} {parent.tc*clamp(1/clamp(parent.white.av/(parent.ir+1)),0,inf)-parent.sc*clamp(1/clamp(parent.white.av/(parent.ir+1)),0,inf)} {curve}}
+  black_clamp false
+  unpremult -rgba.alpha
+  name despill
+  xpos 314
+  ypos 280
+ }
+push $N8b65b80
+ Merge2 {
+  inputs 2+1
+  operation copy
+  bbox B
+  maskChannelInput -rgba.alpha
+  mix {{parent.mix}}
+  name mrg
+  xpos -84
+  ypos 280
+ }
+ Shuffle {
+  alpha black
+  name sh
+  tile_color 0x9e3c6300
+  xpos -84
+  ypos 324
+  disable {{1-spillmatte}}
+  addUserKnob {20 Presets}
+  addUserKnob {26 a l "All Channels"}
+  addUserKnob {6 redAll l Red +STARTLINE}
+  addUserKnob {6 greenAll l Green +STARTLINE}
+  addUserKnob {6 blueAll l Blue +STARTLINE}
+  addUserKnob {6 alphaAll l Alpha +STARTLINE}
+  addUserKnob {6 noAlpha l "No Alpha" +STARTLINE}
+  addUserKnob {26 ""}
+  addUserKnob {6 auto_label l "Auto Label" -STARTLINE}
+  auto_label true
+ }
+ Copy {
+  inputs 2+1
+  from0 rgba.alpha
+  to0 rgba.alpha
+  bbox B
+  name cpy
+  xpos -84
+  ypos 363
+  disable {{1-spillmatte}}
+ }
+ Output {
+  name Output
+  xpos -84
+  ypos 417
+ }
+end_group
+Dot {
+ name Dot3
+ selected true
+ xpos -34
+ ypos -245
+}
+set N8c28f00 [stack 0]
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy2
+ selected true
+ xpos 55
+ ypos -255
+}
+Crop {
+ box {0 0 861 535}
+ crop false
+ name Crop2
+ selected true
+ xpos 55
+ ypos -217
+}
+Group {
+ name edgeExtendTool1
+ selected true
+ xpos 55
+ ypos -161
+ addUserKnob {20 main}
+ addUserKnob {4 alpha M {"keep original" extend}}
+ addUserKnob {19 initBlackAndGamma_blackpoint l blackpoint R 0 0.9999}
+ initBlackAndGamma_blackpoint 0.9
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_gamma_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 initErode l erode R 0 100}
+ addUserKnob {6 initGammaErode_gamma_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {26 ""}
+ addUserKnob {14 firstPassBlur R 0 100}
+ firstPassBlur 2
+ addUserKnob {14 firstPassErode R 0 100}
+ addUserKnob {6 secondPass +STARTLINE}
+ secondPass true
+ addUserKnob {14 secondPassBlur l blur R 0 100}
+ secondPassBlur 4
+ addUserKnob {14 secondPassErode l erode R 0 100}
+ secondPassErode 1
+ addUserKnob {6 thirdPass +STARTLINE}
+ thirdPass true
+ addUserKnob {6 thirdPassStat +INVISIBLE +STARTLINE}
+ thirdPassStat true
+ addUserKnob {14 thirdPassBlur l blur R 0 100}
+ thirdPassBlur 8
+ addUserKnob {14 thirdPassErode l erode R 0 100}
+ thirdPassErode 3
+ addUserKnob {6 fourthPass +STARTLINE}
+ fourthPass true
+ addUserKnob {6 fourthPassStat +INVISIBLE +STARTLINE}
+ fourthPassStat true
+ addUserKnob {14 fourthPassBlur l blur R 0 100}
+ fourthPassBlur 16
+ addUserKnob {14 fourthPassErode l erode R 0 100}
+ fourthPassErode 6
+ addUserKnob {6 fifthPass +STARTLINE}
+ fifthPass true
+ addUserKnob {14 fifthPassBlur l blur R 0 100}
+ fifthPassBlur 32
+ addUserKnob {14 fifthPassErode l erode R 0 100}
+ fifthPassErode 12
+ addUserKnob {26 ""}
+ addUserKnob {14 softenEdge t "soften the outer edge" R 0 100}
+ addUserKnob {26 ""}
+ addUserKnob {41 maskChannelMask l mask -STARTLINE T Merge1.maskChannelMask}
+ addUserKnob {41 inject -STARTLINE T Merge1.inject}
+ addUserKnob {41 invert_mask l invert -STARTLINE T Merge1.invert_mask}
+ addUserKnob {41 fringe -STARTLINE T Merge1.fringe}
+ addUserKnob {41 mix T Merge1.mix}
+ addUserKnob {20 info n 1}
+ info 0
+ addUserKnob {26 jm l "" +STARTLINE T "EdgeExtend_v3.1 by Johannes Masanz\n\nThis node expects an unpremultiplied rgba input.\n\nThe first two knobs just twaek the alpha \nbefore the other operations happen and basically \nhelp fefine how much to cut off an edge \nbefore extending.\n\n"}
+ addUserKnob {20 endGroup n -1}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -350
+  ypos 479
+ }
+set N8c55ca0 [stack 0]
+ Input {
+  inputs 0
+  name mask
+  xpos -506
+  ypos 1546
+  number 1
+ }
+push $N8c55ca0
+ Clamp {
+  channels alpha
+  name initClamp
+  xpos -350
+  ypos 539
+ }
+ Grade {
+  channels alpha
+  blackpoint {{parent.initBlackAndGamma_blackpoint.r}}
+  white_clamp true
+  name initBlackAndGamma
+  xpos -350
+  ypos 577
+ }
+set N8c6d940 [stack 0]
+ FilterErode {
+  size {{parent.initErode} {parent.initErode}}
+  name initErode
+  xpos -236
+  ypos 577
+ }
+ Grade {
+  channels alpha
+  blackpoint 0.001
+  name Grade2
+  xpos -236
+  ypos 615
+ }
+push $N8c6d940
+ Merge2 {
+  inputs 2
+  operation min
+  name initMin
+  xpos -350
+  ypos 621
+ }
+ Grade {
+  add 0.1
+  black_clamp false
+  name initColorOffset
+  xpos -350
+  ypos 647
+ }
+set N8ca9720 [stack 0]
+push $N8ca9720
+ Premult {
+  name edPremult1
+  xpos -475
+  ypos 682
+ }
+ Blur {
+  size {{parent.firstPassBlur} {parent.firstPassBlur}}
+  name edBlur1
+  xpos -475
+  ypos 731
+ }
+ Unpremult {
+  name edUnpremult1
+  xpos -475
+  ypos 777
+ }
+push $N8ca9720
+ FilterErode {
+  size {{parent.firstPassErode} {parent.firstPassErode}}
+  filter gaussian
+  name edErode1
+  xpos -236
+  ypos 719
+ }
+push $N8ca9720
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin1
+  xpos -350
+  ypos 725
+ }
+ Premult {
+  name edPremultEroded1
+  xpos -350
+  ypos 751
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder1
+  xpos -350
+  ypos 777
+ }
+ Expression {
+  channel0 alpha
+  expr0 g>b?(g>0?1:0):(b>0?1:0)
+  name edRedIsZero2
+  xpos -350
+  ypos 803
+  disable {{1-parent.secondPass}}
+ }
+set N8d09ea0 [stack 0]
+ Premult {
+  name edPremult2
+  xpos -475
+  ypos 803
+  disable {{1-parent.secondPass}}
+ }
+ Blur {
+  size {{parent.secondPassBlur} {parent.secondPassBlur}}
+  name edBlur2
+  xpos -475
+  ypos 852
+  disable {{1-parent.secondPass}}
+ }
+ Unpremult {
+  name edUnpremult2
+  xpos -475
+  ypos 898
+  disable {{1-parent.secondPass}}
+ }
+push $N8d09ea0
+ FilterErode {
+  size {{parent.secondPassErode} {parent.secondPassErode}}
+  filter gaussian
+  name edErode2
+  xpos -236
+  ypos 840
+  disable {{1-parent.secondPass}}
+ }
+push $N8d09ea0
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin2
+  xpos -350
+  ypos 846
+  disable {{1-parent.secondPass}}
+ }
+ Premult {
+  name edPremultEroded2
+  xpos -350
+  ypos 872
+  disable {{1-parent.secondPass}}
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder2
+  xpos -350
+  ypos 898
+  disable {{1-parent.secondPass}}
+ }
+ Expression {
+  channel0 alpha
+  expr0 g>b?(g>0?1:0):(b>0?1:0)
+  name edRedIsZero3
+  xpos -350
+  ypos 924
+  disable {{1-parent.thirdPass}}
+ }
+set N8d68f00 [stack 0]
+ Premult {
+  name edPremult3
+  xpos -475
+  ypos 924
+  disable {{1-parent.thirdPass}}
+ }
+ Blur {
+  size {{parent.thirdPassBlur} {parent.thirdPassBlur}}
+  name edBlur3
+  xpos -475
+  ypos 973
+  disable {{1-parent.thirdPass}}
+ }
+ Unpremult {
+  name edUnpremult3
+  xpos -475
+  ypos 1019
+  disable {{1-parent.thirdPass}}
+ }
+push $N8d68f00
+ FilterErode {
+  size {{parent.thirdPassErode} {parent.thirdPassErode}}
+  filter gaussian
+  name edErode3
+  xpos -236
+  ypos 961
+  disable {{1-parent.thirdPass}}
+ }
+push $N8d68f00
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin3
+  xpos -350
+  ypos 967
+  disable {{1-parent.thirdPass}}
+ }
+ Premult {
+  name edPremultEroded3
+  xpos -350
+  ypos 993
+  disable {{1-parent.thirdPass}}
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder3
+  xpos -350
+  ypos 1019
+  disable {{1-parent.thirdPass}}
+ }
+ Expression {
+  channel0 alpha
+  expr0 g>b?(g>0?1:0):(b>0?1:0)
+  name edRedIsZero4
+  xpos -350
+  ypos 1045
+  disable {{1-parent.fourthPass}}
+ }
+set N8dc81c0 [stack 0]
+ Premult {
+  name edPremult4
+  xpos -475
+  ypos 1045
+  disable {{1-parent.fourthPass}}
+ }
+ Blur {
+  size {{parent.fourthPassBlur} {parent.fourthPassBlur}}
+  name edBlur4
+  xpos -475
+  ypos 1094
+  disable {{1-parent.fourthPass}}
+ }
+ Unpremult {
+  name edUnpremult4
+  xpos -475
+  ypos 1140
+  disable {{1-parent.fourthPass}}
+ }
+push $N8dc81c0
+ FilterErode {
+  size {{parent.fourthPassErode} {parent.fourthPassErode}}
+  filter gaussian
+  name edErode4
+  xpos -236
+  ypos 1082
+  disable {{1-parent.fourthPass}}
+ }
+push $N8dc81c0
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin4
+  xpos -350
+  ypos 1088
+  disable {{1-parent.fourthPass}}
+ }
+ Premult {
+  name edPremultEroded4
+  xpos -350
+  ypos 1114
+  disable {{1-parent.fourthPass}}
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder4
+  xpos -350
+  ypos 1140
+  disable {{1-parent.fourthPass}}
+ }
+ Expression {
+  channel0 alpha
+  expr0 g>b?(g>0?1:0):(b>0?1:0)
+  name edRedIsZero6
+  xpos -350
+  ypos 1166
+  disable {{1-parent.fifthPass}}
+ }
+set N8e272a0 [stack 0]
+ Premult {
+  name edPremult5
+  xpos -475
+  ypos 1166
+  disable {{1-parent.fifthPass}}
+ }
+ Blur {
+  size {{parent.fifthPassBlur} {parent.fifthPassBlur}}
+  name edBlur5
+  xpos -475
+  ypos 1215
+  disable {{1-parent.fifthPass}}
+ }
+ Unpremult {
+  name edUnpremult5
+  xpos -475
+  ypos 1261
+  disable {{1-parent.fifthPass}}
+ }
+push $N8e272a0
+ FilterErode {
+  size {{parent.fifthPassErode} {parent.fifthPassErode}}
+  filter gaussian
+  name edErode5
+  xpos -236
+  ypos 1203
+  disable {{1-parent.fifthPass}}
+ }
+push $N8e272a0
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin5
+  xpos -350
+  ypos 1209
+  disable {{1-parent.fifthPass}}
+ }
+ Premult {
+  name edPremultEroded5
+  xpos -350
+  ypos 1235
+  disable {{1-parent.fifthPass}}
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder5
+  xpos -350
+  ypos 1261
+  disable {{1-parent.fifthPass}}
+ }
+ Expression {
+  channel0 alpha
+  expr0 g>b?(g>0?1:0):(b>0?1:0)
+  name edRedIsZero5
+  xpos -350
+  ypos 1295
+ }
+set N8e86310 [stack 0]
+ Blur {
+  channels alpha
+  size {{parent.softenEdge}}
+  name edSoftenEdge1
+  xpos -612
+  ypos 1289
+ }
+ Grade {
+  channels alpha
+  blackpoint 0.95
+  gamma 0.98
+  white_clamp true
+  name Grade1
+  xpos -612
+  ypos 1353
+ }
+ FilterErode {
+  size {{-parent.edSoftenEdge1.size/4}}
+  filter gaussian
+  name FilterErode1
+  xpos -612
+  ypos 1411
+ }
+ ChannelMerge {
+  inputs 2
+  name ChannelMerge2
+  xpos -475
+  ypos 1404
+ }
+push $N8e86310
+ ChannelMerge {
+  inputs 2
+  operation min
+  bbox B
+  name ChannelMerge1
+  xpos -350
+  ypos 1404
+  disable {{"edSoftenEdge1.size < 0.001"}}
+ }
+ Grade {
+  add 0.1
+  reverse true
+  black_clamp false
+  name initColorOffset1
+  xpos -350
+  ypos 1456
+ }
+ Premult {
+  name Premult1
+  xpos -350
+  ypos 1482
+ }
+push $N8c55ca0
+ Merge2 {
+  inputs 2+1
+  operation copy
+  maskChannelInput -rgba.alpha
+  name Merge1
+  xpos -350
+  ypos 1546
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  selected true
+  xpos -350
+  ypos 1628
+  disable {{parent.alpha}}
+ }
+ Output {
+  name Output1
+  xpos -350
+  ypos 1732
+ }
+end_group
+Roto {
+ inputs 0
+ output alpha
+ cliptype none
+ curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097664}
+    {t x43d74000 x4385c000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup Bezier1 512 bezier
+     {{cc
+       {f 8192}
+       {px 1
+        {x40399998 xbe4cd000}
+        {xc190cccd x439a6666}
+        {xc0399998 x3e4cd000}
+        {xbf99999c x3e199800}
+        {x408b3333 x43962000}
+        {x3f99999c xbe199800}
+        {xc0133334 x3eb33400}
+        {x41373333 x4396b99a}
+        {x40133334 xbeb33400}
+        {xc0100000 x3f4ccc00}
+        {x41b9999a x4393a000}
+        {x40100000 xbf4ccc00}
+        {xbf666640 x3e4cc800}
+        {x422dcccd x43915333}
+        {x3f666640 xbe4cc800}
+        {xc00cccc0 x3f599a00}
+        {x428d199a x438e8ccd}
+        {x400cccc0 xbf599a00}
+        {xc0200000 x3f266600}
+        {x42b98000 x438b4666}
+        {x40200000 xbf266600}
+        {xbf000000 x3e4cd000}
+        {x42e28000 x4388e000}
+        {x3f000000 xbe4cd000}
+        {xc02999a0 xbf0ccc00}
+        {x42efcccd x43882000}
+        {x402999a0 x3f0ccc00}
+        {xbfa00000 x3f666600}
+        {x42fe6666 x4386f333}
+        {x3fa00000 xbf666600}
+        {xbf0ccd00 x3e4cd000}
+        {x430ae666 x4385399a}
+        {x3f0ccd00 xbe4cd000}
+        {xc0800000 x3fa66700}
+        {x431f4ccd x4382999a}
+        {x40800000 xbfa66700}
+        {xc0333340 x3f666700}
+        {x433de666 x437d4ccd}
+        {x40333340 xbf666700}
+        {xc0733300 x3f333400}
+        {x4358999a x4377999a}
+        {x40733300 xbf333400}
+        {xc0533340 x3f666600}
+        {x436acccd x43740000}
+        {x40533340 xbf666600}
+        {xc0000000 x3f000000}
+        {x4379e666 x436e6666}
+        {x40000000 xbf000000}
+        {xc0866680 0}
+        {x4388f333 x436c999a}
+        {x40866680 0}
+        {xc0333300 x3fb33300}
+        {x43950ccd x4365e666}
+        {x40333300 xbfb33300}
+        {xc0066680 x3ecccc00}
+        {x43a3cccd x435bb333}
+        {x40066680 xbecccc00}
+        {xc0533300 xc0066640}
+        {x43aac000 x435acccd}
+        {x40533300 x40066640}
+        {xc0000000 xbf199a00}
+        {x43bab333 x43646666}
+        {x40000000 x3f199a00}
+        {xc0600000 xbfb33300}
+        {x43c7599a x436a999a}
+        {x40600000 x3fb33300}
+        {xc0833300 xbdccd000}
+        {x43d1599a x436fe666}
+        {x40833300 x3dccd000}
+        {xbfe66700 x3f4ccd00}
+        {x43d8f333 x4370199a}
+        {x3fe66700 xbf4ccd00}
+        {xc0733300 xbeccce00}
+        {x43dfc000 x436d3333}
+        {x40733300 x3eccce00}
+        {xc08cccc0 xbf999a00}
+        {x43ee999a x4373e666}
+        {x408cccc0 x3f999a00}
+        {xc0900000 xbf800000}
+        {x43faf333 x437d4ccd}
+        {x40900000 1}
+        {xc0199900 xbf666800}
+        {x44030ccd x43816666}
+        {x40199900 x3f666800}
+        {xc0399a00 xc0000000}
+        {x44087333 x43850ccd}
+        {x40399a00 x40000000}
+        {xc0899980 x3f666600}
+        {x440bd333 x43868ccd}
+        {x40899980 xbf666600}
+        {xc0a00000 xbf666600}
+        {x4412e000 x4385cccd}
+        {x40a00000 x3f666600}
+        {xc0899980 xc0066680}
+        {x44178000 x4387cccd}
+        {x40899980 x40066680}
+        {xc0533300 xc0200000}
+        {x441c0ccd x438bd99a}
+        {x40533300 x40200000}
+        {xc0533300 xbfb33400}
+        {x4420399a x4390a666}
+        {x40533300 x3fb33400}
+        {xc0666600 x40066600}
+        {x44244000 x4391e666}
+        {x40666600 xc0066600}
+        {xc0b00000 xc0466680}
+        {x44290000 x43936666}
+        {x40b00000 x40466680}
+        {xc0000000 xbfcccd00}
+        {x442d0ccd x4397f333}
+        {x40000000 x3fcccd00}
+        {xc04ccd00 xbfa66600}
+        {x442f2ccd x439b0000}
+        {x404ccd00 x3fa66600}
+        {xc06ccd00 x3dccc000}
+        {x44358000 x439de666}
+        {x406ccd00 xbdccc000}
+        {xc0266600 xbfe66600}
+        {x443a0000 x43a0cccd}
+        {x40266600 x3fe66600}
+        {xc06ccc00 xc0200000}
+        {x4440199a x43a80000}
+        {x406ccc00 x40200000}
+        {xc02ccd00 xbfcccd00}
+        {x4447b333 x43b00ccd}
+        {x402ccd00 x3fcccd00}
+        {xc0400000 xc0066600}
+        {x444daccd x43b6d99a}
+        {x40400000 x40066600}
+        {xc0333300 xbf199a00}
+        {x4451f99a x43bc0ccd}
+        {x40333300 x3f199a00}
+        {xbf666800 xbf000000}
+        {x44559333 x43bdf333}
+        {x3f666800 x3f000000}
+        {xc0000000 xbf000000}
+        {x4457eccd x43c0e666}
+        {x40000000 x3f000000}
+        {xc0400000 xc1a80000}
+        {x44644000 x43d88000}
+        {x40400000 x41a80000}
+        {0 0}
+        {x445e8000 x440bc000}
+        {0 0}
+        {0 0}
+        {xc1a80000 x440bc000}
+        {0 0}}}     idem}
+     {tx 1 x43d72301 x4393829c}
+     {a osw x41200000 osf 0 str 1 spx x44700000 spy x44070000 sb 1 tt x40800000}}}}}}
+ toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+ toolbar_brush_hardness 0.200000003
+ toolbar_source_transform_scale {1 1}
+ toolbar_source_transform_center {960 540}
+ colorOverlay {0 0 0 0}
+ lifetime_type "all frames"
+ motionblur_shutter_offset_type centred
+ source_black_outside true
+ name Roto1
+ selected true
+ xpos -176
+ ypos -368
+}
+push $N8c28f00
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy1
+ selected true
+ xpos -176
+ ypos -255
+}
+Crop {
+ box {0 0 861 535}
+ crop false
+ name Crop1
+ selected true
+ xpos -176
+ ypos -217
+}
+Group {
+ name edgeExtendTool
+ selected true
+ xpos -176
+ ypos -164
+ addUserKnob {20 main}
+ addUserKnob {4 alpha M {"keep original" extend}}
+ addUserKnob {19 initBlackAndGamma_blackpoint l blackpoint R 0 0.9999}
+ initBlackAndGamma_blackpoint 0.51
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_blackpoint_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 initBlackAndGamma_gamma_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 initErode l erode R 0 100}
+ addUserKnob {6 initGammaErode_gamma_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {26 ""}
+ addUserKnob {14 firstPassBlur R 0 100}
+ firstPassBlur 2
+ addUserKnob {14 firstPassErode R 0 100}
+ addUserKnob {6 secondPass +STARTLINE}
+ secondPass true
+ addUserKnob {14 secondPassBlur l blur R 0 100}
+ secondPassBlur 4
+ addUserKnob {14 secondPassErode l erode R 0 100}
+ secondPassErode 1
+ addUserKnob {6 thirdPass +STARTLINE}
+ thirdPass true
+ addUserKnob {6 thirdPassStat +INVISIBLE +STARTLINE}
+ thirdPassStat true
+ addUserKnob {14 thirdPassBlur l blur R 0 100}
+ thirdPassBlur 8
+ addUserKnob {14 thirdPassErode l erode R 0 100}
+ thirdPassErode 3
+ addUserKnob {6 fourthPass +STARTLINE}
+ fourthPass true
+ addUserKnob {6 fourthPassStat +INVISIBLE +STARTLINE}
+ fourthPassStat true
+ addUserKnob {14 fourthPassBlur l blur R 0 100}
+ fourthPassBlur 16
+ addUserKnob {14 fourthPassErode l erode R 0 100}
+ fourthPassErode 6
+ addUserKnob {6 fifthPass +STARTLINE}
+ fifthPass true
+ addUserKnob {14 fifthPassBlur l blur R 0 100}
+ fifthPassBlur 32
+ addUserKnob {14 fifthPassErode l erode R 0 100}
+ fifthPassErode 12
+ addUserKnob {26 ""}
+ addUserKnob {14 softenEdge t "soften the outer edge" R 0 100}
+ addUserKnob {26 ""}
+ addUserKnob {41 maskChannelMask l mask -STARTLINE T Merge1.maskChannelMask}
+ addUserKnob {41 inject -STARTLINE T Merge1.inject}
+ addUserKnob {41 invert_mask l invert -STARTLINE T Merge1.invert_mask}
+ addUserKnob {41 fringe -STARTLINE T Merge1.fringe}
+ addUserKnob {41 mix T Merge1.mix}
+ addUserKnob {20 info n 1}
+ info 0
+ addUserKnob {26 jm l "" +STARTLINE T "EdgeExtend_v3.1 by Johannes Masanz\n\nThis node expects an unpremultiplied rgba input.\n\nThe first two knobs just twaek the alpha \nbefore the other operations happen and basically \nhelp fefine how much to cut off an edge \nbefore extending.\n\n"}
+ addUserKnob {20 endGroup n -1}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -350
+  ypos 479
+ }
+set N9038350 [stack 0]
+ Input {
+  inputs 0
+  name mask
+  xpos -506
+  ypos 1546
+  number 1
+ }
+push $N9038350
+ Clamp {
+  channels alpha
+  name initClamp
+  xpos -350
+  ypos 539
+ }
+ Grade {
+  channels alpha
+  blackpoint {{parent.initBlackAndGamma_blackpoint.r}}
+  white_clamp true
+  name initBlackAndGamma
+  xpos -350
+  ypos 577
+ }
+set N904f5b0 [stack 0]
+ FilterErode {
+  size {{parent.initErode} {parent.initErode}}
+  name initErode
+  xpos -236
+  ypos 577
+ }
+ Grade {
+  channels alpha
+  blackpoint 0.001
+  name Grade2
+  xpos -236
+  ypos 615
+ }
+push $N904f5b0
+ Merge2 {
+  inputs 2
+  operation min
+  name initMin
+  xpos -350
+  ypos 621
+ }
+ Grade {
+  add 0.1
+  black_clamp false
+  name initColorOffset
+  xpos -350
+  ypos 647
+ }
+set N908b390 [stack 0]
+push $N908b390
+ Premult {
+  name edPremult1
+  xpos -475
+  ypos 682
+ }
+ Blur {
+  size {{parent.firstPassBlur} {parent.firstPassBlur}}
+  name edBlur1
+  xpos -475
+  ypos 731
+ }
+ Unpremult {
+  name edUnpremult1
+  xpos -475
+  ypos 777
+ }
+push $N908b390
+ FilterErode {
+  size {{parent.firstPassErode} {parent.firstPassErode}}
+  filter gaussian
+  name edErode1
+  xpos -236
+  ypos 719
+ }
+push $N908b390
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin1
+  xpos -350
+  ypos 725
+ }
+ Premult {
+  name edPremultEroded1
+  xpos -350
+  ypos 751
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder1
+  xpos -350
+  ypos 777
+ }
+ Expression {
+  channel0 alpha
+  expr0 g>b?(g>0?1:0):(b>0?1:0)
+  name edRedIsZero2
+  xpos -350
+  ypos 803
+  disable {{1-parent.secondPass}}
+ }
+set N90ebaf0 [stack 0]
+ Premult {
+  name edPremult2
+  xpos -475
+  ypos 803
+  disable {{1-parent.secondPass}}
+ }
+ Blur {
+  size {{parent.secondPassBlur} {parent.secondPassBlur}}
+  name edBlur2
+  xpos -475
+  ypos 852
+  disable {{1-parent.secondPass}}
+ }
+ Unpremult {
+  name edUnpremult2
+  xpos -475
+  ypos 898
+  disable {{1-parent.secondPass}}
+ }
+push $N90ebaf0
+ FilterErode {
+  size {{parent.secondPassErode} {parent.secondPassErode}}
+  filter gaussian
+  name edErode2
+  xpos -236
+  ypos 840
+  disable {{1-parent.secondPass}}
+ }
+push $N90ebaf0
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin2
+  xpos -350
+  ypos 846
+  disable {{1-parent.secondPass}}
+ }
+ Premult {
+  name edPremultEroded2
+  xpos -350
+  ypos 872
+  disable {{1-parent.secondPass}}
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder2
+  xpos -350
+  ypos 898
+  disable {{1-parent.secondPass}}
+ }
+ Expression {
+  channel0 alpha
+  expr0 g>b?(g>0?1:0):(b>0?1:0)
+  name edRedIsZero3
+  xpos -350
+  ypos 924
+  disable {{1-parent.thirdPass}}
+ }
+set N914ab50 [stack 0]
+ Premult {
+  name edPremult3
+  xpos -475
+  ypos 924
+  disable {{1-parent.thirdPass}}
+ }
+ Blur {
+  size {{parent.thirdPassBlur} {parent.thirdPassBlur}}
+  name edBlur3
+  xpos -475
+  ypos 973
+  disable {{1-parent.thirdPass}}
+ }
+ Unpremult {
+  name edUnpremult3
+  xpos -475
+  ypos 1019
+  disable {{1-parent.thirdPass}}
+ }
+push $N914ab50
+ FilterErode {
+  size {{parent.thirdPassErode} {parent.thirdPassErode}}
+  filter gaussian
+  name edErode3
+  xpos -236
+  ypos 961
+  disable {{1-parent.thirdPass}}
+ }
+push $N914ab50
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin3
+  xpos -350
+  ypos 967
+  disable {{1-parent.thirdPass}}
+ }
+ Premult {
+  name edPremultEroded3
+  xpos -350
+  ypos 993
+  disable {{1-parent.thirdPass}}
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder3
+  xpos -350
+  ypos 1019
+  disable {{1-parent.thirdPass}}
+ }
+ Expression {
+  channel0 alpha
+  expr0 g>b?(g>0?1:0):(b>0?1:0)
+  name edRedIsZero4
+  xpos -350
+  ypos 1045
+  disable {{1-parent.fourthPass}}
+ }
+set N91aa040 [stack 0]
+ Premult {
+  name edPremult4
+  xpos -475
+  ypos 1045
+  disable {{1-parent.fourthPass}}
+ }
+ Blur {
+  size {{parent.fourthPassBlur} {parent.fourthPassBlur}}
+  name edBlur4
+  xpos -475
+  ypos 1094
+  disable {{1-parent.fourthPass}}
+ }
+ Unpremult {
+  name edUnpremult4
+  xpos -475
+  ypos 1140
+  disable {{1-parent.fourthPass}}
+ }
+push $N91aa040
+ FilterErode {
+  size {{parent.fourthPassErode} {parent.fourthPassErode}}
+  filter gaussian
+  name edErode4
+  xpos -236
+  ypos 1082
+  disable {{1-parent.fourthPass}}
+ }
+push $N91aa040
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin4
+  xpos -350
+  ypos 1088
+  disable {{1-parent.fourthPass}}
+ }
+ Premult {
+  name edPremultEroded4
+  xpos -350
+  ypos 1114
+  disable {{1-parent.fourthPass}}
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder4
+  xpos -350
+  ypos 1140
+  disable {{1-parent.fourthPass}}
+ }
+ Expression {
+  channel0 alpha
+  expr0 g>b?(g>0?1:0):(b>0?1:0)
+  name edRedIsZero6
+  xpos -350
+  ypos 1166
+  disable {{1-parent.fifthPass}}
+ }
+set N9209110 [stack 0]
+ Premult {
+  name edPremult5
+  xpos -475
+  ypos 1166
+  disable {{1-parent.fifthPass}}
+ }
+ Blur {
+  size {{parent.fifthPassBlur} {parent.fifthPassBlur}}
+  name edBlur5
+  xpos -475
+  ypos 1215
+  disable {{1-parent.fifthPass}}
+ }
+ Unpremult {
+  name edUnpremult5
+  xpos -475
+  ypos 1261
+  disable {{1-parent.fifthPass}}
+ }
+push $N9209110
+ FilterErode {
+  size {{parent.fifthPassErode} {parent.fifthPassErode}}
+  filter gaussian
+  name edErode5
+  xpos -236
+  ypos 1203
+  disable {{1-parent.fifthPass}}
+ }
+push $N9209110
+ Merge2 {
+  inputs 2
+  operation min
+  name edMergeMin5
+  xpos -350
+  ypos 1209
+  disable {{1-parent.fifthPass}}
+ }
+ Premult {
+  name edPremultEroded5
+  xpos -350
+  ypos 1235
+  disable {{1-parent.fifthPass}}
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name edMergeUnder5
+  xpos -350
+  ypos 1261
+  disable {{1-parent.fifthPass}}
+ }
+ Expression {
+  channel0 alpha
+  expr0 g>b?(g>0?1:0):(b>0?1:0)
+  name edRedIsZero5
+  xpos -350
+  ypos 1295
+ }
+set N9268190 [stack 0]
+ Blur {
+  channels alpha
+  size {{parent.softenEdge}}
+  name edSoftenEdge1
+  xpos -612
+  ypos 1289
+ }
+ Grade {
+  channels alpha
+  blackpoint 0.95
+  gamma 0.98
+  white_clamp true
+  name Grade1
+  xpos -612
+  ypos 1353
+ }
+ FilterErode {
+  size {{-parent.edSoftenEdge1.size/4}}
+  filter gaussian
+  name FilterErode1
+  xpos -612
+  ypos 1411
+ }
+ ChannelMerge {
+  inputs 2
+  name ChannelMerge2
+  xpos -475
+  ypos 1404
+ }
+push $N9268190
+ ChannelMerge {
+  inputs 2
+  operation min
+  bbox B
+  name ChannelMerge1
+  xpos -350
+  ypos 1404
+  disable {{"edSoftenEdge1.size < 0.001"}}
+ }
+ Grade {
+  add 0.1
+  reverse true
+  black_clamp false
+  name initColorOffset1
+  xpos -350
+  ypos 1456
+ }
+ Premult {
+  name Premult1
+  xpos -350
+  ypos 1482
+ }
+push $N9038350
+ Merge2 {
+  inputs 2+1
+  operation copy
+  maskChannelInput -rgba.alpha
+  name Merge1
+  xpos -350
+  ypos 1546
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  selected true
+  xpos -350
+  ypos 1628
+  disable {{parent.alpha}}
+ }
+ Output {
+  name Output1
+  xpos -350
+  ypos 1732
+ }
+end_group
+push $N8c28f00
+Group {
+ inputs 4
+ name ibkLumaKeyer
+ selected true
+ xpos -68
+ ypos -50
+ addUserKnob {20 User}
+ addUserKnob {26 ""}
+ addUserKnob {6 invert +STARTLINE}
+ addUserKnob {26 ""}
+ addUserKnob {7 bgAdjustMix}
+ addUserKnob {26 ""}
+ addUserKnob {20 info n 1}
+ addUserKnob {26 infotext l "" +STARTLINE T "This node needs at least three inputs to work:\n\n1) source\n\n2) brightExt:\n-brighter area extended across the edge that\nyou are keying\n\n3) darkExt:\n-darker area extened acoss the edge that\nyou are keying\n\n4) (optional) BG\n- the bg input only needs to be connected in\norder to use the 'bgAdjustMix' function.\n\n'bgAdjustMix' can create nicer edge transitions \nby operating in Cineon colorspace.\nIt should be set to 0 when no BG is connected.\nMind this operation when working on stereo \nprojects.\n\n\nibkLumaKeyer_v1.0 by Johannes Masanz\njohanesmasanz.com"}
+ addUserKnob {20 endGroup n -1}
+}
+ Input {
+  inputs 0
+  name source
+  xpos 895
+  ypos 197
+ }
+ Colorspace {
+  colorspace_out Cineon
+  name Colorspace5
+  xpos 895
+  ypos 223
+ }
+set N92ffcd0 [stack 0]
+ Invert {
+  name Invert16
+  xpos 895
+  ypos 249
+ }
+ Input {
+  inputs 0
+  name brightExt
+  xpos 731
+  ypos 199
+  number 1
+ }
+ Colorspace {
+  colorspace_out Cineon
+  name Colorspace9
+  xpos 731
+  ypos 225
+ }
+set N9327740 [stack 0]
+ Invert {
+  name Invert15
+  xpos 731
+  ypos 251
+ }
+set N933eaf0 [stack 0]
+ Merge2 {
+  inputs 2
+  operation minus
+  name Merge1
+  xpos 511
+  ypos 384
+ }
+ Input {
+  inputs 0
+  name darkExt
+  xpos 1078
+  ypos 197
+  number 2
+ }
+ Colorspace {
+  colorspace_out Cineon
+  name Colorspace1
+  xpos 1078
+  ypos 223
+ }
+set N935e1d0 [stack 0]
+ Invert {
+  name Invert18
+  xpos 1078
+  ypos 249
+ }
+push $N933eaf0
+ Merge2 {
+  inputs 2
+  operation minus
+  name Merge2
+  xpos 619
+  ypos 383
+ }
+ Merge2 {
+  inputs 2
+  operation divide
+  name Merge3
+  xpos 511
+  ypos 452
+ }
+ Invert {
+  name Invert1
+  xpos 511
+  ypos 595
+  disable {{1-parent.invert}}
+ }
+set N93a0110 [stack 0]
+ Saturation {
+  saturation 0
+  name Saturation4
+  xpos 113
+  ypos 601
+ }
+ Shuffle {
+  green red
+  blue red
+  alpha red
+  name Shuffle5
+  xpos 113
+  ypos 711
+ }
+push $N93a0110
+ Shuffle {
+  green red
+  blue red
+  alpha red
+  name Shuffle3
+  xpos 629
+  ypos 694
+ }
+set N93c7910 [stack 0]
+push $N93c7910
+push $N935e1d0
+push $N92ffcd0
+ Merge2 {
+  inputs 2+1
+  operation from
+  invert_mask true
+  name Merge8
+  xpos 1387
+  ypos 694
+ }
+push $N93c7910
+push $N9327740
+push $N92ffcd0
+ Merge2 {
+  inputs 2+1
+  operation from
+  invert_mask true
+  name Merge5
+  xpos 1029
+  ypos 694
+ }
+ Switch {
+  inputs 2
+  which {{parent.invert}}
+  name Switch1
+  xpos 1029
+  ypos 861
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy6
+  xpos 1029
+  ypos 901
+ }
+ Unpremult {
+  name Unpremult3
+  xpos 1029
+  ypos 958
+ }
+ Colorspace {
+  colorspace_in Cineon
+  name Colorspace6
+  xpos 1029
+  ypos 1019
+ }
+push $N93a0110
+ Shuffle {
+  red blue
+  green blue
+  alpha blue
+  name Shuffle2
+  xpos 390
+  ypos 654
+ }
+set N942bf10 [stack 0]
+push $N942bf10
+push $N935e1d0
+push $N92ffcd0
+ Merge2 {
+  inputs 2+1
+  operation from
+  invert_mask true
+  name Merge6
+  xpos 1162
+  ypos 654
+ }
+push $N942bf10
+push $N9327740
+push $N92ffcd0
+ Merge2 {
+  inputs 2+1
+  operation from
+  invert_mask true
+  name Merge9
+  xpos 801
+  ypos 654
+ }
+ Switch {
+  inputs 2
+  which {{parent.invert}}
+  name Switch3
+  xpos 801
+  ypos 790
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy5
+  xpos 801
+  ypos 901
+ }
+ Unpremult {
+  name Unpremult1
+  xpos 801
+  ypos 951
+ }
+ Colorspace {
+  colorspace_in Cineon
+  name Colorspace3
+  xpos 801
+  ypos 1012
+ }
+push $N93a0110
+ Shuffle {
+  red green
+  blue green
+  alpha green
+  name Shuffle1
+  xpos 511
+  ypos 678
+ }
+set N94901a0 [stack 0]
+push $N94901a0
+push $N935e1d0
+push $N92ffcd0
+ Merge2 {
+  inputs 2+1
+  operation from
+  invert_mask true
+  name Merge7
+  xpos 1272
+  ypos 678
+ }
+push $N94901a0
+push $N9327740
+push $N92ffcd0
+ Merge2 {
+  inputs 2+1
+  operation from
+  invert_mask true
+  name Merge14
+  xpos 911
+  ypos 678
+ }
+ Switch {
+  inputs 2
+  which {{parent.invert}}
+  name Switch2
+  xpos 911
+  ypos 825
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy4
+  xpos 911
+  ypos 898
+ }
+ Unpremult {
+  name Unpremult2
+  xpos 911
+  ypos 952
+ }
+ Colorspace {
+  colorspace_in Cineon
+  name Colorspace4
+  xpos 911
+  ypos 1013
+ }
+ ShuffleCopy {
+  inputs 2
+  red blue
+  blue blue
+  name ShuffleCopy1
+  xpos 911
+  ypos 1113
+ }
+ ShuffleCopy {
+  inputs 2
+  red red
+  name ShuffleCopy2
+  xpos 1029
+  ypos 1113
+ }
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy7
+  xpos 1029
+  ypos 1207
+ }
+set N9514dd0 [stack 0]
+ Colorspace {
+  colorspace_out Cineon
+  name Colorspace8
+  xpos 1029
+  ypos 1280
+ }
+ Premult {
+  name Premult2
+  xpos 1029
+  ypos 1327
+ }
+ Dot {
+  name Dot5
+  xpos 1063
+  ypos 1378
+ }
+set N9541820 [stack 0]
+ Input {
+  inputs 0
+  name BG
+  xpos 1364
+  ypos 202
+  number 3
+ }
+ Dot {
+  name Dot1
+  xpos 1398
+  ypos 1378
+ }
+set N954a930 [stack 0]
+ Dot {
+  name Dot3
+  xpos 1398
+  ypos 1504
+ }
+push $N954a930
+ Colorspace {
+  colorspace_out Cineon
+  name Colorspace2
+  xpos 1269
+  ypos 1374
+ }
+push $N9541820
+ Merge2 {
+  inputs 2
+  operation under
+  bbox B
+  Achannels rgb
+  name Merge16
+  xpos 1143
+  ypos 1374
+ }
+ Colorspace {
+  colorspace_in Cineon
+  name Colorspace7
+  xpos 1143
+  ypos 1444
+ }
+ Merge2 {
+  inputs 2+1
+  operation from
+  bbox B
+  output rgb
+  invert_mask true
+  name Merge4
+  xpos 1029
+  ypos 1500
+ }
+push $N9514dd0
+ Premult {
+  name Premult1
+  xpos 732
+  ypos 1398
+ }
+ Dissolve {
+  inputs 2
+  which {{parent.bgAdjustMix}}
+  name Dissolve1
+  selected true
+  xpos 1029
+  ypos 1570
+ }
+ Output {
+  name Output1
+  xpos 1029
+  ypos 1690
+ }
+end_group
+Merge2 {
+ inputs 2
+ operation under
+ bbox B
+ name Merge1
+ selected true
+ xpos -68
+ ypos 134
+}
+Merge2 {
+ inputs 2
+ name Merge2
+ selected true
+ xpos -68
+ ypos 261
+}
+Dot {
+ name Dot7
+ selected true
+ xpos -34
+ ypos 382
+}
+StickyNote {
+ inputs 0
+ name StickyNote4
+ label "        keyer       "
+ note_font_size 22
+ selected true
+ xpos -91
+ ypos 29
+}

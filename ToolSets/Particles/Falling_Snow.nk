@@ -1,0 +1,571 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+BackdropNode {
+inputs 0
+name BackdropNode12
+tile_color 0x49494901
+label <center>Look
+note_font_size 42
+selected true
+xpos 2941
+ypos -5417
+bdwidth 462
+bdheight 518
+}
+BackdropNode {
+inputs 0
+name BackdropNode13
+tile_color 0x7c7c7c01
+label <center>Speed
+note_font_size 42
+selected true
+xpos 3162
+ypos -4390
+bdwidth 240
+bdheight 240
+}
+BackdropNode {
+inputs 0
+name BackdropNode14
+tile_color 0x49494901
+label <center>Forces
+note_font_size 42
+selected true
+xpos 3162
+ypos -4750
+bdwidth 240
+bdheight 335
+}
+Axis2 {
+inputs 0
+rotate {0 -20 0}
+name Axis2
+selected true
+xpos 2922
+ypos -3940
+}
+Camera2 {
+translate {0 10 21}
+haperture 36
+vaperture 20.25
+near 10
+name Camera2
+selected true
+xpos 2922
+ypos -3820
+}
+Constant {
+inputs 0
+name Constant2
+selected true
+xpos 3022
+ypos -5335
+}
+Reformat {
+format "256 256 0 0 256 256 1 square"
+resize none
+black_outside true
+name Reformat3
+selected true
+xpos 3022
+ypos -5246
+}
+RotoPaint {
+cliptype none
+curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097152}
+    {t x44b40000 x444a8000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup OpenSpline12 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x41cc4442 x43160888}
+        {}
+        {}
+        {{a osw 1 osf 0}     x423105b2 x43008e39}
+        {}
+        {}
+        {{a osw 1 osf 0}     x41c85b05 x42d2b05b}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {tx x4480c000 x42040000 x43058889}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}
+    {curvegroup OpenSpline11 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x4221d284 x4295d82d}
+        {}
+        {}
+        {{a osw 1 osf 0}     x4287fa51 x429927d2}
+        {}
+        {}
+        {{a osw 1 osf 0}     x427d82d7 x4236888b}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {tx x4480c000 x42337778 x4253bbbc}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}
+    {curvegroup OpenSpline10 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x42c6c16e x42137777}
+        {}
+        {}
+        {{a osw 1 osf 0}     x42f72222 x42653e91}
+        {}
+        {}
+        {{a osw 1 osf 0}     x43115557 x42073e93}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {tx x4480c000 x42eeaaab x42222223}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}
+    {curvegroup OpenSpline9 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x433327d3 x421ddde1}
+        {}
+        {}
+        {{a osw 1 osf 0}     x433682d6 x4285ddde}
+        {}
+        {}
+        {{a osw 1 osf 0}     x4355d27d x428838e3}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {tx x4480c000 x43438888 x4259dddd}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}
+    {curvegroup OpenSpline8 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x4365749e x43139999}
+        {}
+        {}
+        {{a osw 1 osf 0}     x434ccfa7 x42fe7d29}
+        {}
+        {}
+        {{a osw 1 osf 0}     x4364f49e x42cfb05c}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {tx x4480c000 x43630000 x42f9dddf}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}
+    {curvegroup OpenSpline7 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x433902da x43581c71}
+        {}
+        {}
+        {{a osw 1 osf 0}     x433afa50 x433960b6}
+        {}
+        {}
+        {{a osw 1 osf 0}     x435de0b7 x433d6665}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {tx x4480c000 x43596665 x43545555}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}
+    {curvegroup OpenSpline6 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x42c0d27f x43663333}
+        {}
+        {}
+        {{a osw 1 osf 0}     x42f5fa50 x434c71c6}
+        {}
+        {}
+        {{a osw 1 osf 0}     x4316d27d x436396c2}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {tx x4480c000 x42fc0000 x435c7778}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}
+    {curvegroup OpenSpline5 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x42062d86 x4339582e}
+        {}
+        {}
+        {{a osw 1 osf 0}     x427f777c x433c6c16}
+        {}
+        {}
+        {{a osw 1 osf 0}     x4286eef0 x43592222}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {tx x4480c000 x422ccccd x4354cccc}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}
+    {curvegroup OpenSpline4 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x42f64444 x41c5c720}
+        {}
+        {}
+        {{a osw 1 osf 0}     x42f73333 x4370999a}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {tx x4480c000 x42f36666 x4304cccd}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}
+    {curvegroup OpenSpline3 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x4167a4f3 x43000000}
+        {}
+        {}
+        {{a osw 1 osf 0}     x4370c16b x4300638f}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {tx x4480c000 x42fe6666 x43020000}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}
+    {curvegroup OpenSpline2 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x424927ce x426c9f4a}
+        {}
+        {}
+        {{a osw 1 osf 0}     x43513e98 x434e16c0}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {}
+        {}
+        {}
+        {}
+        {}}}}
+     {tx x4480c000 x4300199a x4304e666}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}
+    {curvegroup OpenSpline1 1049088 bezier
+     {{cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}     x421a93f3 x4356eeee}
+        {}
+        {}
+        {{a osw 1 osf 0}     x434c6665 x4234d830}
+        {}}}
+      {cc
+       {f 1056800}
+       {p
+        {}
+        {{a osw 1 osf 0}}
+        {}
+        {}
+        {{a osw 1 osf 0}}
+        {}}}}
+     {tx x4480c000 x42ee9999 x430520b6}
+     {a osbe 0 osee 0 osw x40800000 osf 0 str 1 ltn x4480c000 ltm x4480c000 tt x41200000}}}}}}
+toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createOpenSpline str 1 ssx 1 ssy 1 sf 1 tt 10 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 tt 17 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+toolbar_brush_hardness 0.200000003
+toolbar_openspline_width 4
+toolbar_source_transform_scale {1 1}
+toolbar_source_transform_center {320 240}
+colorOverlay {0 0 0 0}
+lifetime_type "all frames"
+lifetime_start 1030
+lifetime_end 1030
+motionblur_shutter_offset_type centred
+openspline_width 4
+name RotoPaint2
+selected true
+xpos 3022
+ypos -5192
+}
+Transform {
+scale 0.6
+center {128 128}
+shutteroffset centred
+name Transform3
+selected true
+xpos 3022
+ypos -5158
+}
+FilterErode {
+channels rgba
+size -6
+filter gaussian
+name FilterErode3
+label "\[value size]"
+selected true
+xpos 3022
+ypos -5102
+}
+Blur {
+size 10
+name Blur7
+label "\[value size]"
+selected true
+xpos 3022
+ypos -5060
+}
+push $cut_paste_input
+Card2 {
+rows 1
+columns 1
+translate {37.00002289 37.96073914 -71.32299042}
+rotate {99 0 0}
+scaling {2 1 1}
+uniform_scale 100
+control_points {3 3 3 6 
+
+1 {-0.5 -0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0 0 0} 
+1 {0 -0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {0.5 0 0} 
+1 {0.5 -0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666865 0} 0 {0 0 0} 0 {1 0 0} 
+1 {-0.5 0 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0 0.5 0} 
+1 {0 0 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {0.5 0.5 0} 
+1 {0.5 0 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0.1666666716 0} 0 {0 -0.1666666716 0} 0 {1 0.5 0} 
+1 {-0.5 0.5 0} 0 {0.1666666865 0 0} 0 {0 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0 1 0} 
+1 {0 0.5 0} 0 {0.1666666716 0 0} 0 {-0.1666666716 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {0.5 1 0} 
+1 {0.5 0.5 0} 0 {0 0 0} 0 {-0.1666666865 0 0} 0 {0 0 0} 0 {0 -0.1666666865 0} 0 {1 1 0} }
+name Card2
+selected true
+xpos 3242
+ypos -5216
+}
+push 0
+ParticleEmitter {
+inputs 3
+start_frame 840
+emit_from faces
+rate 5
+lifetime 300
+velocity 0.02
+velocity_variation 1
+rotation_velocity 4
+size 0.2
+size_variation 0.5
+mass_variation 1
+transfer_window 0
+start_frame_animation "in order"
+max_clip_length 200
+name ParticleEmitter2
+selected true
+xpos 3242
+ypos -5048
+}
+ParticleGravity {
+to {0 -0.04 0}
+name ParticleGravity2
+selected true
+xpos 3242
+ypos -4670
+}
+ParticleTurbulence {
+strength {0.2 0.1 0.1}
+scale {1 2 1}
+probability 0.5
+name ParticleTurbulence3
+label "X/Z random"
+selected true
+xpos 3242
+ypos -4628
+}
+ParticleTurbulence {
+strength {-0.1 0.9 0.1}
+scale {2 2 2}
+probability 0.1
+name ParticleTurbulence4
+label "Y random"
+selected true
+xpos 3242
+ypos -4556
+}
+ParticleWind {
+from {-1 0 0}
+to {0 0.15 0}
+drag 0.1
+probability 0.3
+region box
+translate {0 -80 0}
+uniform_scale 200
+name ParticleWind2
+label Direction
+selected true
+xpos 3242
+ypos -4508
+}
+ParticleDrag {
+drag 0.4
+region box
+translate {0 -60 -30}
+uniform_scale 200
+name ParticleDrag2
+selected true
+xpos 3242
+ypos -4310
+}
+ParticleSpeedLimit {
+maximum 0.5
+name ParticleSpeedLimit2
+selected true
+xpos 3242
+ypos -4262
+disable true
+}
+ParticleBounce {
+out_bounce 0
+in_bounce_mode kill
+in_new_channels all
+bounceaxis_translate {0 -30 0}
+bounceaxis_uniform_scale 500
+name ParticleBounce2
+label "Kill Particles"
+selected true
+xpos 3242
+ypos -4052
+}
+push 0
+ScanlineRender {
+inputs 3
+conservative_shader_sampling false
+samples 5
+shutter 1
+shutteroffset centred
+motion_vectors_type velocity
+name ScanlineRender2
+selected true
+xpos 3242
+ypos -3800
+}

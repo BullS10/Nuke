@@ -1,0 +1,239 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name Glare
+tile_color 0xff3600ff
+label "\n"
+selected true
+xpos -662
+ypos -2570
+addUserKnob {20 "" l User}
+addUserKnob {26 "" l "Glare Creation Options"}
+addUserKnob {7 glaretol l Tolerance}
+glaretol 0.2
+addUserKnob {7 glaresize l "Glare Size" R 0 3}
+glaresize 1.34
+addUserKnob {7 glareaspect l Aspect R 0 2}
+glareaspect 1
+addUserKnob {6 nonlinear l "Non Linear Glare" -STARTLINE}
+addUserKnob {26 "" l "Chromatic Abberation Options"}
+addUserKnob {7 glarespread l "Chroma Spread" R 0 2}
+glarespread 0.65
+addUserKnob {7 Flare1_chroma_shift l "Chroma Shift" R -20 20}
+Flare1_chroma_shift 1.4
+addUserKnob {7 Flare1_chroma_shift_angle l "Chroma Shift Angle" R -180 180}
+Flare1_chroma_shift_angle 4
+addUserKnob {26 "" l "Multipoint Options"}
+addUserKnob {3 Flare1_asym_repeat l "Glare Points"}
+Flare1_asym_repeat 5
+addUserKnob {7 Flare1_asym_falloff l "Glare Point Falloff" R 0.1 10}
+Flare1_asym_falloff 10
+addUserKnob {7 Flare1_asym_angle l "Glare Point Rotation" R -180 180}
+Flare1_asym_angle 68
+addUserKnob {26 "" l "Shape Options"}
+addUserKnob {3 Flare1_corners l "Shape Corners"}
+Flare1_corners 5
+addUserKnob {7 Flare1_flattening l "Shape Adherance" R 0 5}
+Flare1_flattening 4.42
+addUserKnob {7 Flare1_corners_angle l "Shape Angle" R -180 180}
+Flare1_corners_angle 79
+addUserKnob {26 "" l "Color Options"}
+addUserKnob {19 Grade1_multiply l Mult R 0 4}
+Grade1_multiply 1
+addUserKnob {6 Grade1_multiply_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1_1_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_multiply_panelDropped_1_1_1_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {19 Grade1_gamma l Gamma R 0.2 5}
+Grade1_gamma 1
+addUserKnob {6 Grade1_gamma_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1_1_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 Grade1_gamma_panelDropped_1_1_1_1_1_1_1_1_1_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {7 Saturation1_saturation l Saturation R 0 4}
+Saturation1_saturation 1
+addUserKnob {6 effect_only l "Output Effect Only" -STARTLINE}
+}
+Constant {
+ inputs 0
+ format "100 100 0 0 100 100 1 Glare"
+ name Constant1
+ xpos 17
+ ypos 382
+}
+Flare {
+ position {50 50}
+ radius {8.26 28.26 48.26}
+ size_mult {{parent.glaresize i}}
+ anamorph {{parent.glareaspect i}}
+ inner_color 0.22
+ chroma_spread {{parent.glarespread i}}
+ chroma_shift {{parent.Flare1_chroma_shift i}}
+ chroma_shift_angle {{parent.Flare1_chroma_shift_angle i}}
+ corners {{parent.Flare1_corners==1?2:parent.Flare1_corners i}}
+ flattening {{parent.Flare1_flattening*5 i}}
+ sharpness 1
+ corners_angle {{parent.Flare1_corners_angle}}
+ asym_repeat {{parent.Flare1_asym_repeat i}}
+ asym_multiplier {{asym_repeat==0?1:0 i}}
+ asym_falloff {{parent.Flare1_asym_falloff i}}
+ asym_angle {{parent.Flare1_asym_angle i}}
+ name Flare1
+ xpos 17
+ ypos 473
+}
+Keyer {
+ operation "luminance key"
+ name Keyer2
+ tile_color 0xff0000
+ label (alpha)
+ xpos 17
+ ypos 508
+}
+Transform {
+ scale {{parent.glaresize/5} {w/glareaspect}}
+ center {50 50}
+ name Transform1
+ xpos 17
+ ypos 561
+}
+Input {
+ inputs 0
+ name img
+ xpos 560
+ ypos 291
+}
+Grade {
+ gamma 2.2
+ unpremult -rgba.alpha
+ name Grade2
+ tile_color 0x7aa9ff00
+ xpos 560
+ ypos 341
+ disable {{!parent.nonlinear}}
+}
+Dot {
+ name Dot1
+ xpos 594
+ ypos 415
+}
+set N123d2080 [stack 0]
+Transform {
+ scale 0.2
+ center {{input.width/2} {input.height/2}}
+ filter Parzen
+ name Transform2
+ xpos 384
+ ypos 411
+}
+Keyer {
+ operation "luminance key"
+ range {{parent.glaretol} 1 1 1}
+ name Keyer1
+ tile_color 0xff0000
+ label (alpha)
+ xpos 200
+ ypos 398
+}
+Shuffle {
+ red alpha
+ green alpha
+ blue alpha
+ name Shuffle1
+ tile_color 0x9e3c6300
+ xpos 200
+ ypos 470
+}
+Convolve {
+ inputs 2
+ name Convolve1
+ label (all)
+ xpos 200
+ ypos 548
+}
+Grade {
+ multiply {{parent.Grade1_multiply.r} {parent.Grade1_multiply.g} {parent.Grade1_multiply.b} {parent.Grade1_multiply.a}}
+ add 0.035
+ gamma {{parent.Grade1_gamma.r} {parent.Grade1_gamma.g} {parent.Grade1_gamma.b} {parent.Grade1_gamma.a}}
+ unpremult rgba.alpha
+ name Grade1
+ tile_color 0x7aa9ff00
+ label "(rgb / - / rgba.alpha)"
+ xpos 200
+ ypos 601
+}
+Saturation {
+ saturation {{parent.Saturation1_saturation}}
+ name Saturation1
+ tile_color 0x7aa9ff00
+ xpos 200
+ ypos 654
+}
+Transform {
+ scale 5
+ center {{input.width/2} {input.height/2}}
+ filter Parzen
+ name Transform3
+ xpos 379
+ ypos 651
+}
+set N12369850 [stack 0]
+push $N12369850
+push $N123d2080
+Merge {
+ inputs 2
+ A {rgba.red rgba.green rgba.blue -rgba.alpha}
+ operation plus
+ name Merge1
+ tile_color 0x4b5ec600
+ xpos 560
+ ypos 651
+}
+Switch {
+ inputs 2
+ which {{parent.effect_only}}
+ name Switch1
+ xpos 560
+ ypos 712
+}
+Grade {
+ gamma 2.2
+ reverse true
+ unpremult -rgba.alpha
+ name Grade3
+ tile_color 0x7aa9ff00
+ xpos 560
+ ypos 758
+ disable {{!parent.nonlinear}}
+}
+Output {
+ name Output1
+ xpos 560
+ ypos 809
+}
+Viewer {
+ frame 79
+ name Viewer1
+ xpos 383
+ ypos 471
+}
+end_group

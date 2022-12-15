@@ -1,0 +1,99 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+Group {
+inputs 0
+name S_STadv
+knobChanged "n = nuke.thisNode()\nk = nuke.thisKnob()\n\nif n\['Type'].value() == 'OverScan':\n    n\['scale'].setVisible(True)\n    n\['repeatx'].setVisible(False)\n    n\['repeaty'].setVisible(False)\n    n\['ratex'].setVisible(False)\n    n\['ratey'].setVisible(False)\n    n\['time'].setVisible(False)\nelse:\n    n\['scale'].setVisible(False)\n    n\['repeatx'].setVisible(True)\n    n\['repeaty'].setVisible(True)\n    n\['ratex'].setVisible(True)\n    n\['ratey'].setVisible(True)\n    n\['time'].setVisible(True)\n"
+tile_color 0x55ff7fff
+selected true
+xpos -1807
+ypos 174
+addUserKnob {20 User}
+addUserKnob {41 format l "output format" T Reformat6.format}
+addUserKnob {4 Type M {OverScan Tiling ""}}
+addUserKnob {7 scale R 1 5}
+scale 1.2
+addUserKnob {7 repeatx +HIDDEN}
+repeatx 3
+addUserKnob {7 repeaty +HIDDEN}
+repeaty 3
+addUserKnob {7 ratex +HIDDEN}
+addUserKnob {7 ratey +HIDDEN}
+addUserKnob {7 time +HIDDEN}
+time 1
+}
+Constant {
+inputs 0
+name Constant1
+xpos 1037
+ypos 422
+}
+Reformat {
+resize none
+pbb true
+name Reformat6
+xpos 1037
+ypos 535
+}
+set C7f159fc0 [stack 0]
+Transform {
+scale {{parent.scale}}
+center {{Reformat6.format.r/2} {Reformat6.format.t/2}}
+shutteroffset centred
+name Transform2
+xpos 1037
+ypos 594
+disable {{Type}}
+}
+Expression {
+expr0 (x+0.5)/parent.Reformat6.width
+expr1 (y+0.5)/parent.Reformat6.height
+name Expression1
+xpos 1037
+ypos 647
+}
+Expression {
+temp_name0 rate
+temp_expr0 5
+expr0 r%(1/parent.repeatx)*parent.repeatx
+expr1 g%(1/parent.repeaty)*parent.repeaty
+name Expression2
+label "multiply uvs"
+xpos 1037
+ypos 694
+disable {{!Type}}
+addUserKnob {20 User}
+addUserKnob {7 repeatx +HIDDEN R 0 10}
+repeatx 1
+addUserKnob {7 repeaty +HIDDEN R 0 10}
+repeaty 1
+}
+Expression {
+temp_name0 shiftx
+temp_expr0 (time/24*parent.ratex)%1
+temp_name1 shifty
+temp_expr1 (time/24*parent.ratey)%1
+expr0 "( r+shiftx < 0) ? 1+r+shiftx :  (r+shiftx)%1"
+expr1 "( g+shifty < 0) ? 1+g+shifty :  (g+shifty)%1"
+name Expression7
+label "offset uvs"
+xpos 1037
+ypos 763
+disable {{!Type}}
+addUserKnob {20 User}
+addUserKnob {7 ratex t "\t\t" +HIDDEN R -10 10}
+addUserKnob {7 ratey +HIDDEN R -10 10}
+addUserKnob {7 time R -1000 1000}
+time {{parent.time}}
+}
+clone $C7f159fc0 {
+xpos 1037
+ypos 851
+selected true
+}
+Output {
+name Output1
+xpos 1037
+ypos 914
+}
+end_group

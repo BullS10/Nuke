@@ -1,0 +1,784 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name VanishingPoint
+tile_color 0x5100ff
+selected true
+xpos -2522
+ypos -847
+addUserKnob {20 vanishingPoint l VanishingPoint}
+addUserKnob {41 translate l "vanishing point" T Transform2.translate}
+addUserKnob {6 colorLines l "black lines" +STARTLINE}
+colorLines true
+addUserKnob {7 size l "line size" R 0 100}
+size 2
+addUserKnob {26 ""}
+addUserKnob {12 p1}
+p1 {59 461}
+addUserKnob {12 p2}
+p2 {30 918}
+addUserKnob {26 ""}
+addUserKnob {41 mix T Merge1.mix}
+}
+Reformat {
+inputs 0
+type "to box"
+box_width {{Input.width}}
+box_height {{Input.height}}
+box_fixed true
+name Reformat1
+xpos 105
+ypos -175
+hide_input true
+}
+set N438bb00 [stack 0]
+Roto {
+cliptype none
+curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097664}
+    {t x448f0000 x44384000 0 0 0 0 0 0 0
+   {{x42fa0000 1 -}}}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup OpenSpline2 1049088 bezier
+     {{cc
+       {f 1056800}
+       {px
+        {x42980000 x42fa0000}
+        {{{0 -}}
+{{0 -}}}
+        {{a osw
+ {{x42980000 x3e666669 0 1 x3c81913d 1}
+  {x42fa0000 1 x3c81913d 1 0 1}} osf
+ {{x42980000 0 -}
+  {x42fa0000}}}
+{=width/2
+ {x448f0000 xc0400000}}
+{=height*5+(height/2)
+ {x45fd5800 x443ac000}}}
+        {{{0 -}}
+{{0 -}}}
+        {{{0 -}}
+{{0 -}}}
+        {{a osw
+ {{x42980000 x3f19999a 0 1 x3c05bf37 1}
+  {x42fa0000 1 x3c05bf37 1 0 1}} osf
+ {{x42980000 xc0400000 0 1 x3d7ac688 1}
+  {x42fa0000 0 x3d7ac688 1 0 1}}}
+{=width/2
+ {x448f0000 x45094ccd}}
+{=-(height*5)+(height/2)
+ {xc5cf4800 x44538ccc}}}
+        {{{0 -}}
+{{0 -}}}}}     idem}
+     {tx x42fa0000 x44144000 x443bc000}
+     {a osbe 0 osee 0 osw x40a00000 osf 0 str 1 ltn x42fa0000 ltm x42fa0000 tt x41200000 b 0 g 0}}
+    {curvegroup OpenSpline1 1049088 bezier
+     {{cc
+       {f 1056800}
+       {px
+        {x42980000 x42fa0000}
+        {{{0 -}}
+{{0 -}}}
+        {{a osw
+ {{x42980000 x3e666669 0 1 x3c81913d 1}
+  {x42fa0000 1 x3c81913d 1 0 1}} osf
+ {{x42980000 0 -}
+  {x42fa0000}}}
+{=width*5+(width/2)
+ {x4644a000 xc0400000}}
+{=height/2
+ {x44384000 x443ac000}}}
+        {{{0 -}}
+{{0 -}}}
+        {{{0 -}}
+{{0 -}}}
+        {{a osw
+ {{x42980000 x3f19999a 0 1 x3c05bf37 1}
+  {x42fa0000 1 x3c05bf37 1 0 1}} osf
+ {{x42980000 xc0400000 0 1 x3d7ac688 1}
+  {x42fa0000 0 x3d7ac688 1 0 1}}}
+{=-(width*5)+(width/2)
+ {xc620e000 x45094ccd}}
+{=height/2
+ {x44384000 x44538ccc}}}
+        {{{0 -}}
+{{0 -}}}}}
+      {cc
+       {f 1056800}
+       {px
+        {x42980000 x42fa0000}
+        {{0
+ {0 -}}
+{0
+ {0 -}}}
+        {{a osw
+ {{x42980000 x3e666669 0 1 x3c81913d 1}
+  {x42fa0000 1 x3c81913d 1 0 1}} osf
+ {{x42980000 0}
+  {x42fa0000}}}
+{0}
+{0}}
+        {{0
+ {0 -}}
+{0
+ {0 -}}}
+        {{0
+ {0 -}}
+{0
+ {0 -}}}
+        {{a osw
+ {{x42980000 x3f19999a 0 1 x3c05bf37 1}
+  {x42fa0000 1 x3c05bf37 1 0 1}} osf
+ {{x42980000 xc0400000 0 1 x3d7ac688 1}
+  {x42fa0000 0 x3d7ac688 1 0 1}}}
+{0}
+{0}}
+        {{0
+ {0 -}}
+{0
+ {0 -}}}}}}
+     {tx x42fa0000 x44144000 x443bc000}
+     {a osbe 0 osee 0 osw x40a00000 osf 0 str 1 ltn x42fa0000 ltm x42fa0000 tt x41200000 b 0 g 0}}}}}}
+toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createOpenSpline str 1 ssx 1 ssy 1 sf 1 tt 10 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+toolbar_brush_hardness 0.200000003
+toolbar_openspline_width 5
+toolbar_source_transform_scale {1 1}
+toolbar_source_transform_center {1144 737}
+color {1 0 0 1}
+colorOverlay {0 0 0 0}
+lifetime_type "all frames"
+lifetime_start 125
+lifetime_end 125
+motionblur_shutter_offset_type centred
+openspline_width 5
+name Roto2
+label Axes
+xpos 105
+ypos 99
+}
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+center {{input.width/2} {input.height/2}}
+name Transform1
+xpos 105
+ypos 287
+}
+push $N438bb00
+Roto {
+cliptype none
+curves {{{v x3f99999a}
+  {f 0}
+  {n
+   {layer Root
+    {f 2097664}
+    {t x448f0000 x44384000}
+    {a pt1x 0 pt1y 0 pt2x 0 pt2y 0 pt3x 0 pt3y 0 pt4x 0 pt4y 0 ptex00 0 ptex01 0 ptex02 0 ptex03 0 ptex10 0 ptex11 0 ptex12 0 ptex13 0 ptex20 0 ptex21 0 ptex22 0 ptex23 0 ptex30 0 ptex31 0 ptex32 0 ptex33 0 ptof1x 0 ptof1y 0 ptof2x 0 ptof2y 0 ptof3x 0 ptof3y 0 ptof4x 0 ptof4y 0 pterr 0 ptrefset 0 ptmot x40800000 ptref 0}
+    {curvegroup OpenSpline1 1049088 bezier
+     {{cc
+       {f 1056800}
+       {px
+        {x42980000 x42fa0000}
+        {{{0 -}}
+      {{0 -}}}
+        {{a osw
+       {{x42980000 x3e666669 0 1 x3c81913d 1}
+        {x42fa0000 1 x3c81913d 1 0 1}} osf
+       {{x42980000 0 -}
+        {x42fa0000}}}
+      {=width*5
+       {xc48f0000 xc0400000}}
+      {=height/2
+       {x44384000 x443ac000}}}
+        {{{0 -}}
+      {{0 -}}}
+        {{{0 -}}
+      {{0 -}}}
+        {{a osw
+       {{x42980000 x3f19999a 0 1 x3c05bf37 1}
+        {x42fa0000 1 x3c05bf37 1 0 1}} osf
+       {{x42980000 0 -}
+        {x42fa0000}}}
+      {=width/2
+       {x44a033d0 x45094ccd}}
+      {=height/2
+       {x440b5e79 x44538ccc}}}
+        {{{0 -}}
+      {{0 -}}}}}     idem}
+     {tx x42fa0000 x44144000 x443bc000}
+     {a osbe 0 osee 0 osw
+   {=parent.size x40000000}     osf 0 str 1 ltn x42fa0000 ltm x42fa0000 tt x41200000}}}}}}
+toolbox {selectAll {
+  { selectAll str 1 ssx 1 ssy 1 sf 1 }
+  { createBezier str 1 ssx 1 ssy 1 sf 1 sb 1 tt 4 }
+  { createBezierCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createBSpline str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createEllipse str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangle str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createRectangleCusped str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { createOpenSpline str 1 ssx 1 ssy 1 sf 1 tt 10 }
+  { brush str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { eraser src 2 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { clone src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { reveal src 3 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { dodge src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { burn src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { blur src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { sharpen src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+  { smear src 1 str 1 ssx 1 ssy 1 sf 1 sb 1 }
+} }
+toolbar_brush_hardness 0.200000003
+toolbar_openspline_width {{parent.size}}
+toolbar_source_transform_scale {1 1}
+toolbar_source_transform_center {320 240}
+colorOverlay {0 0 0 0}
+lifetime_type "all frames"
+lifetime_start 125
+lifetime_end 125
+motionblur_shutter_offset_type centred
+openspline_width {{parent.size}}
+name Roto1
+label Line
+xpos 252
+ypos -181
+}
+set N16fa2480 [stack 0]
+Grade {
+white {0 0 1 1}
+white_panelDropped true
+name Grade2
+xpos 2011
+ypos -175
+}
+Dot {
+name Dot18
+xpos 2134
+ypos -172
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7883e0 [stack 0]
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform20
+xpos 2234
+ypos 196
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{parent.p2.x} {parent.p2.y}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7883e0
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform19
+xpos 2100
+ypos 170
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{parent.p1.x} {parent.p1.y}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N16fa2480
+Grade {
+white {{1-parent.colorLines}}
+name Grade1
+xpos 252
+ypos -108
+}
+Dot {
+name Dot3
+xpos 286
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7be7d0 [stack 0]
+Dot {
+name Dot1
+xpos 396
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7c3580 [stack 0]
+Dot {
+name Dot4
+xpos 498
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7c8290 [stack 0]
+Dot {
+name Dot5
+xpos 599
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7ccfa0 [stack 0]
+Dot {
+name Dot6
+xpos 707
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7d1c20 [stack 0]
+Dot {
+name Dot7
+xpos 817
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7d69f0 [stack 0]
+Dot {
+name Dot8
+xpos 927
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7db700 [stack 0]
+Dot {
+name Dot9
+xpos 1032
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7e0410 [stack 0]
+Dot {
+name Dot10
+xpos 1142
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7e51a0 [stack 0]
+Dot {
+name Dot11
+xpos 1258
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7e9eb0 [stack 0]
+Dot {
+name Dot12
+xpos 1368
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7eebc0 [stack 0]
+Dot {
+name Dot13
+xpos 1478
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7f3840 [stack 0]
+Dot {
+name Dot14
+xpos 1604
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7f8640 [stack 0]
+Dot {
+name Dot15
+xpos 1714
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c7fd390 [stack 0]
+Dot {
+name Dot16
+xpos 1824
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c8020a0 [stack 0]
+Dot {
+name Dot17
+xpos 1934
+ypos -48
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform18
+xpos 1900
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{input.width/4*2} 0}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c8020a0
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform17
+xpos 1790
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{input.width/4} 0}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7fd390
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform16
+xpos 1680
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{input.width/4*3} 0}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7f8640
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform15
+xpos 1570
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{input.width} 0}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7f3840
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform14
+xpos 1444
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{input.width} {input.height/4}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7eebc0
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform13
+xpos 1334
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{input.width} {input.height/4*2}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7e9eb0
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform12
+xpos 1224
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{input.width} {input.height/4*3}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7e51a0
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform11
+xpos 1108
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{input.width} {input.height}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7e0410
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform10
+xpos 998
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{input.width/4*3} {input.height}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7db700
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform9
+xpos 893
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{input.width/4*2} {input.height}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7d69f0
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform8
+xpos 783
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {{input.width/4} {input.height}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7d1c20
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform7
+xpos 673
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {0 {input.height}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7ccfa0
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform6
+xpos 565
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {0 {input.height/4*3}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7c8290
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform5
+xpos 464
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {0 {input.height/4*2}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push 0
+push $N2c7c3580
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform4
+xpos 362
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+point2 {0 {input.height/4}}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+push $N2c7be7d0
+Transform {
+translate {{parent.Transform2.translate.x} {parent.Transform2.translate.y}}
+rotate {{(atan2((vRadius.y/radius),(vRadius.x/radius))*180/pi) x76 0 x125 0}}
+center {{input.width/2} {input.height/2}}
+name Transform3
+xpos 252
+ypos 77
+addUserKnob {20 User l Var}
+addUserKnob {7 radius R 0 180}
+radius {{sqrt((vRadius.x*vRadius.x)+(vRadius.y*vRadius.y)) x76 2}}
+addUserKnob {12 vRadius}
+vRadius {{point2-point1} {point2-point1}}
+addUserKnob {12 point2}
+addUserKnob {12 point1}
+point1 {{center+translate x76 1116} {center+translate x76 1027}}
+}
+Merge2 {
+inputs 18+1
+name Merge3
+xpos 252
+ypos 239
+}
+Merge2 {
+inputs 2
+name Merge2
+xpos 252
+ypos 287
+}
+Dot {
+name Dot2
+xpos 286
+ypos 365
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Input {
+inputs 0
+name Input
+xpos 0
+ypos -5
+}
+Merge2 {
+inputs 2
+name Merge1
+xpos 0
+ypos 361
+}
+Output {
+name Output1
+xpos 0
+ypos 419
+}
+Transform {
+inputs 0
+translate {1000 1000}
+center {{input.width/2 x44 0 x76 0 x1072 0} {input.height/2 x44 0 x76 0 x1072 0}}
+name Transform2
+label MASTER
+xpos 309
+ypos -1188
+hide_input true
+}
+end_group

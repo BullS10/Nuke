@@ -1,0 +1,25 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+MergeExpression {
+temp_name0 r
+temp_expr0 max((A.r*first),(B.r*second)*hardness)
+temp_name1 g
+temp_expr1 max((A.g*first),(B.g*second)*hardness)
+temp_name2 b
+temp_expr2 max((A.b*first),(B.b*second)*hardness)
+expr0 r
+expr1 g
+expr2 b
+name Max_soft
+selected true
+xpos -1228
+ypos -3406
+addUserKnob {20 User}
+addUserKnob {7 first}
+first 1
+addUserKnob {7 second}
+second 1
+addUserKnob {7 hardness}
+hardness 1
+}

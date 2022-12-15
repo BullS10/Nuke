@@ -1,0 +1,187 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+BackdropNode {
+inputs 0
+name BackdropNode11
+tile_color 0x49494901
+label <center>SV_workflow
+note_font_size 42
+selected true
+xpos 476
+ypos -7232
+bdwidth 1011
+bdheight 1734
+}
+CheckerBoard2 {
+inputs 0
+name CheckerBoard1
+selected true
+xpos 556
+ypos -7154
+}
+Dot {
+name Dot75
+label plate
+note_font_size 51
+selected true
+xpos 590
+ypos -6964
+}
+Transform {
+translate {{Tracker3.translate-Tracker3.translate(ref_frame)} {Tracker3.translate-Tracker3.translate(ref_frame)}}
+rotate {{Tracker3.rotate-Tracker3.rotate(ref_frame)}}
+scale {{Tracker3.scale*(1/Tracker3.scale(ref_frame))}}
+center {{Tracker3.center+(Tracker3.translate(ref_frame))} {Tracker3.center+(Tracker3.translate(ref_frame))}}
+invert_matrix true
+shutteroffset centred
+name Tracker3_Matchmove3
+tile_color 0xffbf00ff
+label stab
+selected true
+xpos 556
+ypos -6860
+addUserKnob {20 User}
+addUserKnob {3 ref_frame l "reference frame"}
+ref_frame 1400
+}
+Crop {
+box {1382 566 2229 2018}
+reformat true
+crop false
+name Crop7
+selected true
+xpos 556
+ypos -6723
+}
+set N182db910 [stack 0]
+SmartVector {
+file.first_frame 1001
+file.last_frame 1458
+render_root_frame 1001
+name SmartVector2
+selected true
+xpos 1327
+ypos -6729
+}
+Write {
+channels rgba
+name Write1
+selected true
+xpos 1327
+ypos -6590
+addUserKnob {20 beFileTab l BeFile}
+addUserKnob {22 revealExplorer l "Locate in explorer" -STARTLINE T "nuke.load('revealInExplorer.py'), revealInExplorerCustom()"}
+addUserKnob {22 elementOutput l "Render as element" -STARTLINE T "nuke.load('beElementManager.py'), setElementWriter(False)"}
+}
+Dot {
+name Dot76
+selected true
+xpos 1361
+ypos -6250
+}
+set Nf8befae0 [stack 0]
+Dot {
+name Dot77
+selected true
+xpos 1361
+ypos -5841
+}
+VectorDistort {
+referenceFrame 1400
+reference_frame_set true
+frameDistance 6
+outputMode st-map
+last_output_mode st-map
+name VectorDistort2
+label MM
+selected true
+xpos 1093
+ypos -5851
+}
+Blur {
+channels rgb
+size 20
+name Blur26
+label "\[value size]"
+selected true
+xpos 922
+ypos -5851
+}
+push $Nf8befae0
+VectorDistort {
+referenceFrame 1400
+reference_frame_set true
+frameDistance 6
+outputMode "st-map inverse"
+last_output_mode "st-map inverse"
+name VectorDistort4
+label "Stab\n"
+selected true
+xpos 1083
+ypos -6260
+}
+Blur {
+channels rgb
+size 20
+name Blur27
+label "\[value size]"
+selected true
+xpos 923
+ypos -6260
+}
+push $N182db910
+STMap {
+inputs 2
+channels rgba
+uv rgb
+name STMap3
+label stab
+selected true
+xpos 556
+ypos -6260
+}
+STMap {
+inputs 2
+channels rgba
+uv rgb
+name STMap4
+label MM
+selected true
+xpos 556
+ypos -5851
+}
+Reformat {
+resize none
+center false
+pbb true
+name Reformat3
+selected true
+xpos 556
+ypos -5758
+}
+Transform {
+translate {{parent.Crop7.box.x} {parent.Crop7.box.y}}
+center {1440 1080}
+filter Impulse
+shutteroffset centred
+name Transform3
+selected true
+xpos 556
+ypos -5684
+}
+Transform {
+translate {{Tracker3.translate-Tracker3.translate(ref_frame)} {Tracker3.translate-Tracker3.translate(ref_frame)}}
+rotate {{Tracker3.rotate-Tracker3.rotate(ref_frame)}}
+scale {{Tracker3.scale*(1/Tracker3.scale(ref_frame))}}
+center {{Tracker3.center+(Tracker3.translate(ref_frame))} {Tracker3.center+(Tracker3.translate(ref_frame))}}
+shutteroffset centred
+name Tracker3_Matchmove5
+tile_color 0xffbf00ff
+label MM
+selected true
+xpos 556
+ypos -5612
+addUserKnob {20 User}
+addUserKnob {3 ref_frame l "reference frame"}
+ref_frame 1400
+}

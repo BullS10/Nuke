@@ -1,0 +1,68 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name n_Despill
+help "Super destructive Green Despill Can be used after the whole despilling to get rid of the last bits of green. Default values are : Red Weight 0.5 Blue Weight 0.5 Luminance 1 PrePostOffset 0 GreenMultiplier 1 Mix 1 (That way it acts just as the good old cmivfx tutorials despill expression)\n(based on Agustin's input on how other despills worked)\n\n--Nico lcoronad@framestore.com"
+tile_color 0x3f94ffff
+selected true
+xpos -265
+ypos 1061
+dope_sheet true
+addUserKnob {20 User}
+addUserKnob {41 RedWeight t "default 0.5" T Expression5.RedWeight}
+addUserKnob {41 BlueWeight t "Default 0.5" T Expression5.BlueWeight}
+addUserKnob {41 luminance l Luminance T Expression5.luminance}
+addUserKnob {41 PrePostOffset t "Default 0" T Expression5.PrePostOffset}
+addUserKnob {41 GreenMultiplier t "Default 1\n" T Expression5.GreenMultiplier}
+addUserKnob {41 which l mix T Dissolve1.which}
+addUserKnob {26 version l "" +STARTLINE T v001_2}
+}
+Input {
+inputs 0
+name Input1
+xpos -436
+ypos 306
+}
+set N18b2f960 [stack 0]
+Expression {
+temp_name0 rm
+temp_expr0 RedWeight
+temp_name1 o
+temp_expr1 PrePostOffset
+temp_name2 gm
+temp_expr2 GreenMultiplier
+temp_name3 bm
+temp_expr3 BlueWeight
+expr0 g>(r*rm+b*bm)?r*luminance:r
+expr1 g>(r*rm+b*bm)?(r*(1-(rm+o))+b*(bm+o))*gm*luminance:g
+expr2 g>(r*rm+b*bm)?b*luminance:b
+name Expression5
+selected true
+xpos -361
+ypos 374
+addUserKnob {20 User}
+addUserKnob {7 luminance l Luminance R 0 2}
+luminance 1
+addUserKnob {7 RedWeight t "Default 0.5 = Average" R 0.4 0.6}
+RedWeight 0.5
+addUserKnob {7 BlueWeight t "Default 0.5 = Average" R 0.4 0.6}
+BlueWeight 0.5
+addUserKnob {7 PrePostOffset t "Default 0" R -0.1 0.1}
+addUserKnob {7 GreenMultiplier R 0 2}
+GreenMultiplier 1
+}
+push $N18b2f960
+Dissolve {
+inputs 2
+which 1
+name Dissolve1
+xpos -436
+ypos 464
+}
+Output {
+name Output1
+xpos -436
+ypos 549
+}
+end_group

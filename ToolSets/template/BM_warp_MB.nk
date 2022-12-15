@@ -1,0 +1,366 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+BackdropNode {
+inputs 0
+name BackdropNode24
+knobChanged "nuke.thisNode().knob('label').setValue(nuke.thisNode().knob('new_label').value())\nnuke.thisNode().knob('note_font_size').setValue(nuke.thisNode().knob('new_note_font_size').value())\nnuke.thisNode().knob('z_order').setValue(nuke.thisNode().knob('new_z_order').value())"
+tile_color 0x3f7f00ff
+label " Warp data"
+note_font_size 40
+note_font_color 0x7fff33ff
+selected true
+xpos -7670
+ypos -1466
+bdwidth 272
+bdheight 197
+addUserKnob {20 User}
+addUserKnob {43 new_label l Label}
+new_label " Warp data"
+addUserKnob {3 new_z_order l "Z Order"}
+addUserKnob {3 new_note_font_size l "Text Size"}
+new_note_font_size 40
+addUserKnob {3 size_int l "Scale Amount"}
+size_int 100
+addUserKnob {22 size_up l + -STARTLINE T "nuke.thisNode().knob(\"xpos\").setValue(nuke.thisNode().knob(\"xpos\").value()-nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"ypos\").setValue(nuke.thisNode().knob(\"ypos\").value()-nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"bdwidth\").setValue(nuke.thisNode().knob(\"bdwidth\").value()+nuke.thisNode().knob(\"size_int\").value()*2)\nnuke.thisNode().knob(\"bdheight\").setValue(nuke.thisNode().knob(\"bdheight\").value()+nuke.thisNode().knob(\"size_int\").value()*2)"}
+addUserKnob {22 size_up_1 l - -STARTLINE T "nuke.thisNode().knob(\"xpos\").setValue(nuke.thisNode().knob(\"xpos\").value()+nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"ypos\").setValue(nuke.thisNode().knob(\"ypos\").value()+nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"bdwidth\").setValue(nuke.thisNode().knob(\"bdwidth\").value()-nuke.thisNode().knob(\"size_int\").value()*2)\nnuke.thisNode().knob(\"bdheight\").setValue(nuke.thisNode().knob(\"bdheight\").value()-nuke.thisNode().knob(\"size_int\").value()*2)"}
+addUserKnob {7 brightness_mult l "Preset Brightness"}
+brightness_mult 1
+addUserKnob {26 ""}
+addUserKnob {22 bmBackdrop_preset_red l "<img src='bmBackdrop_preset_red.png'>" T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))" +STARTLINE}
+addUserKnob {22 bmBackdrop_preset_orange l "<img src='bmBackdrop_preset_orange.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_yellow l "<img src='bmBackdrop_preset_yellow.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_lime l "<img src='bmBackdrop_preset_lime.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_green l "<img src='bmBackdrop_preset_green.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_teal l "<img src='bmBackdrop_preset_teal.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.3*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.7*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_cyan l "<img src='bmBackdrop_preset_cyan.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_blue l "<img src='bmBackdrop_preset_blue.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.4*nuke.thisNode()\[\"brightness_mult\"].value(),0.4*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_purple l "<img src='bmBackdrop_preset_purple.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.8*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_magenta l "<img src='bmBackdrop_preset_magenta.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_random l "<img src='bmBackdrop_preset_random.png'>" T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value()))" +STARTLINE}
+addUserKnob {22 bmBackdrop_preset_black l "<img src='bmBackdrop_preset_black.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0,0,0))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2,0.2,0.2))"}
+addUserKnob {22 bmBackdrop_preset_darkgrey l "<img src='bmBackdrop_preset_darkgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25,0.25,0.25))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5,0.5,0.5))"}
+addUserKnob {22 bmBackdrop_preset_midgrey l "<img src='bmBackdrop_preset_midgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5,0.5,0.5))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0,0,0))"}
+addUserKnob {22 bmBackdrop_preset_lightgrey l "<img src='bmBackdrop_preset_lightgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.75,0.75,0.75))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25,0.25,0.25))"}
+addUserKnob {22 bmBackdrop_preset_white l "<img src='bmBackdrop_preset_white.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1,1,1))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2,0.2,0.2))"}
+addUserKnob {26 ""}
+}
+BackdropNode {
+inputs 0
+name BackdropNode25
+knobChanged "nuke.thisNode().knob('label').setValue(nuke.thisNode().knob('new_label').value())\nnuke.thisNode().knob('note_font_size').setValue(nuke.thisNode().knob('new_note_font_size').value())\nnuke.thisNode().knob('z_order').setValue(nuke.thisNode().knob('new_z_order').value())"
+tile_color 0x3f3f3fff
+label " Input image"
+note_font_size 40
+note_font_color 0x727272ff
+selected true
+xpos -7307
+ypos -1532
+bdwidth 200
+bdheight 239
+addUserKnob {20 User}
+addUserKnob {43 new_label l Label}
+new_label " Input image"
+addUserKnob {3 new_z_order l "Z Order"}
+addUserKnob {3 new_note_font_size l "Text Size"}
+new_note_font_size 40
+addUserKnob {3 size_int l "Scale Amount"}
+size_int 10
+addUserKnob {22 size_up l + -STARTLINE T "nuke.thisNode().knob(\"xpos\").setValue(nuke.thisNode().knob(\"xpos\").value()-nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"ypos\").setValue(nuke.thisNode().knob(\"ypos\").value()-nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"bdwidth\").setValue(nuke.thisNode().knob(\"bdwidth\").value()+nuke.thisNode().knob(\"size_int\").value()*2)\nnuke.thisNode().knob(\"bdheight\").setValue(nuke.thisNode().knob(\"bdheight\").value()+nuke.thisNode().knob(\"size_int\").value()*2)"}
+addUserKnob {22 size_up_1 l - -STARTLINE T "nuke.thisNode().knob(\"xpos\").setValue(nuke.thisNode().knob(\"xpos\").value()+nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"ypos\").setValue(nuke.thisNode().knob(\"ypos\").value()+nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"bdwidth\").setValue(nuke.thisNode().knob(\"bdwidth\").value()-nuke.thisNode().knob(\"size_int\").value()*2)\nnuke.thisNode().knob(\"bdheight\").setValue(nuke.thisNode().knob(\"bdheight\").value()-nuke.thisNode().knob(\"size_int\").value()*2)"}
+addUserKnob {7 brightness_mult l "Preset Brightness"}
+brightness_mult 1
+addUserKnob {26 ""}
+addUserKnob {22 bmBackdrop_preset_red l "<img src='bmBackdrop_preset_red.png'>" T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))" +STARTLINE}
+addUserKnob {22 bmBackdrop_preset_orange l "<img src='bmBackdrop_preset_orange.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_yellow l "<img src='bmBackdrop_preset_yellow.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_lime l "<img src='bmBackdrop_preset_lime.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_green l "<img src='bmBackdrop_preset_green.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_teal l "<img src='bmBackdrop_preset_teal.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.3*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.7*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_cyan l "<img src='bmBackdrop_preset_cyan.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_blue l "<img src='bmBackdrop_preset_blue.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.4*nuke.thisNode()\[\"brightness_mult\"].value(),0.4*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_purple l "<img src='bmBackdrop_preset_purple.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.8*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_magenta l "<img src='bmBackdrop_preset_magenta.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_random l "<img src='bmBackdrop_preset_random.png'>" T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value()))" +STARTLINE}
+addUserKnob {22 bmBackdrop_preset_black l "<img src='bmBackdrop_preset_black.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0,0,0))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2,0.2,0.2))"}
+addUserKnob {22 bmBackdrop_preset_darkgrey l "<img src='bmBackdrop_preset_darkgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25,0.25,0.25))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5,0.5,0.5))"}
+addUserKnob {22 bmBackdrop_preset_midgrey l "<img src='bmBackdrop_preset_midgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5,0.5,0.5))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0,0,0))"}
+addUserKnob {22 bmBackdrop_preset_lightgrey l "<img src='bmBackdrop_preset_lightgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.75,0.75,0.75))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25,0.25,0.25))"}
+addUserKnob {22 bmBackdrop_preset_white l "<img src='bmBackdrop_preset_white.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1,1,1))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2,0.2,0.2))"}
+addUserKnob {26 ""}
+}
+BackdropNode {
+inputs 0
+name BackdropNode26
+knobChanged "nuke.thisNode().knob('label').setValue(nuke.thisNode().knob('new_label').value())\nnuke.thisNode().knob('note_font_size').setValue(nuke.thisNode().knob('new_note_font_size').value())\nnuke.thisNode().knob('z_order').setValue(nuke.thisNode().knob('new_z_order').value())"
+tile_color 0x3f3f3fff
+label " Create motion vectors"
+note_font_size 40
+note_font_color 0x727272ff
+selected true
+xpos -7759
+ypos -1259
+bdwidth 433
+bdheight 456
+addUserKnob {20 User}
+addUserKnob {43 new_label l Label}
+new_label " Create motion vectors"
+addUserKnob {3 new_z_order l "Z Order"}
+addUserKnob {3 new_note_font_size l "Text Size"}
+new_note_font_size 40
+addUserKnob {3 size_int l "Scale Amount"}
+size_int 100
+addUserKnob {22 size_up l + -STARTLINE T "nuke.thisNode().knob(\"xpos\").setValue(nuke.thisNode().knob(\"xpos\").value()-nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"ypos\").setValue(nuke.thisNode().knob(\"ypos\").value()-nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"bdwidth\").setValue(nuke.thisNode().knob(\"bdwidth\").value()+nuke.thisNode().knob(\"size_int\").value()*2)\nnuke.thisNode().knob(\"bdheight\").setValue(nuke.thisNode().knob(\"bdheight\").value()+nuke.thisNode().knob(\"size_int\").value()*2)"}
+addUserKnob {22 size_up_1 l - -STARTLINE T "nuke.thisNode().knob(\"xpos\").setValue(nuke.thisNode().knob(\"xpos\").value()+nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"ypos\").setValue(nuke.thisNode().knob(\"ypos\").value()+nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"bdwidth\").setValue(nuke.thisNode().knob(\"bdwidth\").value()-nuke.thisNode().knob(\"size_int\").value()*2)\nnuke.thisNode().knob(\"bdheight\").setValue(nuke.thisNode().knob(\"bdheight\").value()-nuke.thisNode().knob(\"size_int\").value()*2)"}
+addUserKnob {7 brightness_mult l "Preset Brightness"}
+brightness_mult 1
+addUserKnob {26 ""}
+addUserKnob {22 bmBackdrop_preset_red l "<img src='bmBackdrop_preset_red.png'>" T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))" +STARTLINE}
+addUserKnob {22 bmBackdrop_preset_orange l "<img src='bmBackdrop_preset_orange.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_yellow l "<img src='bmBackdrop_preset_yellow.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_lime l "<img src='bmBackdrop_preset_lime.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_green l "<img src='bmBackdrop_preset_green.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_teal l "<img src='bmBackdrop_preset_teal.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.3*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.7*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_cyan l "<img src='bmBackdrop_preset_cyan.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_blue l "<img src='bmBackdrop_preset_blue.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.4*nuke.thisNode()\[\"brightness_mult\"].value(),0.4*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_purple l "<img src='bmBackdrop_preset_purple.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.8*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_magenta l "<img src='bmBackdrop_preset_magenta.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_random l "<img src='bmBackdrop_preset_random.png'>" T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value()))" +STARTLINE}
+addUserKnob {22 bmBackdrop_preset_black l "<img src='bmBackdrop_preset_black.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0,0,0))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2,0.2,0.2))"}
+addUserKnob {22 bmBackdrop_preset_darkgrey l "<img src='bmBackdrop_preset_darkgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25,0.25,0.25))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5,0.5,0.5))"}
+addUserKnob {22 bmBackdrop_preset_midgrey l "<img src='bmBackdrop_preset_midgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5,0.5,0.5))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0,0,0))"}
+addUserKnob {22 bmBackdrop_preset_lightgrey l "<img src='bmBackdrop_preset_lightgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.75,0.75,0.75))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25,0.25,0.25))"}
+addUserKnob {22 bmBackdrop_preset_white l "<img src='bmBackdrop_preset_white.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1,1,1))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2,0.2,0.2))"}
+addUserKnob {26 ""}
+}
+BackdropNode {
+inputs 0
+name BackdropNode27
+knobChanged "nuke.thisNode().knob('label').setValue(nuke.thisNode().knob('new_label').value())\nnuke.thisNode().knob('note_font_size').setValue(nuke.thisNode().knob('new_note_font_size').value())\nnuke.thisNode().knob('z_order').setValue(nuke.thisNode().knob('new_z_order').value())"
+tile_color 0x3f3fff
+label " Compare Outputs"
+note_font_size 40
+note_font_color 0x197f7fff
+selected true
+xpos -7303
+ypos -800
+bdwidth 397
+bdheight 248
+addUserKnob {20 User}
+addUserKnob {43 new_label l Label}
+new_label " Compare Outputs"
+addUserKnob {3 new_z_order l "Z Order"}
+addUserKnob {3 new_note_font_size l "Text Size"}
+new_note_font_size 40
+addUserKnob {3 size_int l "Scale Amount"}
+size_int 10
+addUserKnob {22 size_up l + -STARTLINE T "nuke.thisNode().knob(\"xpos\").setValue(nuke.thisNode().knob(\"xpos\").value()-nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"ypos\").setValue(nuke.thisNode().knob(\"ypos\").value()-nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"bdwidth\").setValue(nuke.thisNode().knob(\"bdwidth\").value()+nuke.thisNode().knob(\"size_int\").value()*2)\nnuke.thisNode().knob(\"bdheight\").setValue(nuke.thisNode().knob(\"bdheight\").value()+nuke.thisNode().knob(\"size_int\").value()*2)"}
+addUserKnob {22 size_up_1 l - -STARTLINE T "nuke.thisNode().knob(\"xpos\").setValue(nuke.thisNode().knob(\"xpos\").value()+nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"ypos\").setValue(nuke.thisNode().knob(\"ypos\").value()+nuke.thisNode().knob(\"size_int\").value())\nnuke.thisNode().knob(\"bdwidth\").setValue(nuke.thisNode().knob(\"bdwidth\").value()-nuke.thisNode().knob(\"size_int\").value()*2)\nnuke.thisNode().knob(\"bdheight\").setValue(nuke.thisNode().knob(\"bdheight\").value()-nuke.thisNode().knob(\"size_int\").value()*2)"}
+addUserKnob {7 brightness_mult l "Preset Brightness"}
+brightness_mult 0.5
+addUserKnob {26 ""}
+addUserKnob {22 bmBackdrop_preset_red l "<img src='bmBackdrop_preset_red.png'>" T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))" +STARTLINE}
+addUserKnob {22 bmBackdrop_preset_orange l "<img src='bmBackdrop_preset_orange.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_yellow l "<img src='bmBackdrop_preset_yellow.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_lime l "<img src='bmBackdrop_preset_lime.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_green l "<img src='bmBackdrop_preset_green.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_teal l "<img src='bmBackdrop_preset_teal.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.3*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),0.7*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_cyan l "<img src='bmBackdrop_preset_cyan.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_blue l "<img src='bmBackdrop_preset_blue.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.4*nuke.thisNode()\[\"brightness_mult\"].value(),0.4*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_purple l "<img src='bmBackdrop_preset_purple.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.8*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_magenta l "<img src='bmBackdrop_preset_magenta.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5*nuke.thisNode()\[\"brightness_mult\"].value(),0*nuke.thisNode()\[\"brightness_mult\"].value(),0.5*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1*nuke.thisNode()\[\"brightness_mult\"].value(),0.2*nuke.thisNode()\[\"brightness_mult\"].value(),1*nuke.thisNode()\[\"brightness_mult\"].value()))"}
+addUserKnob {22 bmBackdrop_preset_random l "<img src='bmBackdrop_preset_random.png'>" T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value()))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value(),random.random()*nuke.thisNode()\[\"brightness_mult\"].value()))" +STARTLINE}
+addUserKnob {22 bmBackdrop_preset_black l "<img src='bmBackdrop_preset_black.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0,0,0))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2,0.2,0.2))"}
+addUserKnob {22 bmBackdrop_preset_darkgrey l "<img src='bmBackdrop_preset_darkgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25,0.25,0.25))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5,0.5,0.5))"}
+addUserKnob {22 bmBackdrop_preset_midgrey l "<img src='bmBackdrop_preset_midgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.5,0.5,0.5))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0,0,0))"}
+addUserKnob {22 bmBackdrop_preset_lightgrey l "<img src='bmBackdrop_preset_lightgrey.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.75,0.75,0.75))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.25,0.25,0.25))"}
+addUserKnob {22 bmBackdrop_preset_white l "<img src='bmBackdrop_preset_white.png'>" -STARTLINE T "nuke.thisNode().knob(\"tile_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(1,1,1))\nnuke.thisNode().knob(\"note_font_color\").setValue(bm_NukeColourConverter.hex_colour_to_rgb(0.2,0.2,0.2))"}
+addUserKnob {26 ""}
+}
+push $cut_paste_input
+Expression {
+expr0 (x+.5)/width
+expr1 (y+.5)/height
+name Expression1
+label "Create STMap"
+selected true
+xpos -7579
+ypos -1520
+}
+GridWarp3 {
+toolbar_visibility_src false
+source_grid_col   {
+    1 5 5 4 1 0
+    {default }
+    {
+      { {2 0 0} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 512 0} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 1024 0} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 1536 0} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 2048 0} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 0 389} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 512 389} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 1024 389} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 1536 389} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 2048 389} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 0 778} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 512 778} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 1024 778} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 1536 778} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 2048 778} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 0 1167} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 512 1167} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 1024 1167} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 1536 1167} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 2048 1167} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 0 1556} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 512 1556} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 1024 1556} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 1536 1556} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+      { {2 2048 1556} { {2 0 129.667}  {2 0 -129.667}  {2 170.667 0}  {2 -170.667 0} } } 
+    }
+  }
+destination_grid_col   {
+    1 5 5 4 1 0
+    {default }
+    {
+      { {1 {curve L x1 0} {curve L x1 0}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 512} {curve L x1 0}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 1024} {curve L x1 0}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 1536} {curve L x1 0}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 2048} {curve L x1 0}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 0} {curve L x1 389}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 512} {curve L x1 389}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 1024} {curve L x1 389}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 1536} {curve L x1 389}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 2048} {curve L x1 389}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 0} {curve L x1 778}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 512} {curve L x1 778}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 1024 x10 1320} {curve L x1 778 x10 790}} { {1 {curve L x1 0 x10 0} {curve L x1 129.6666718 x10 129.6666718}}  {1 {curve L x1 0 x10 0} {curve L x1 -129.6666718 x10 -129.6666718}}  {1 {curve L x1 170.6666718 x10 170.6666718} {curve L x1 0 x10 0}}  {1 {curve L x1 -170.6666718 x10 -170.6666718} {curve L x1 0 x10 0}} } } 
+      { {1 {curve L x1 1536} {curve L x1 778}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 2048} {curve L x1 778}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 0} {curve L x1 1167}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 512} {curve L x1 1167}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 1024} {curve L x1 1167}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 1536} {curve L x1 1167}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 2048} {curve L x1 1167}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 0} {curve L x1 1556}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 512} {curve L x1 1556}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 1024} {curve L x1 1556}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 1536} {curve L x1 1556}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+      { {1 {curve L x1 2048} {curve L x1 1556}} { {1 {curve L x1 0} {curve L x1 129.6666718}}  {1 {curve L x1 0} {curve L x1 -129.6666718}}  {1 {curve L x1 170.6666718} {curve L x1 0}}  {1 {curve L x1 -170.6666718} {curve L x1 0}} } } 
+    }
+  }
+grids_manually_moved true
+source_grid_transform_center {1024 778}
+destination_grid_transform_center {1024 778}
+name GridWarp3_1
+selected true
+xpos -7579
+ypos -1341
+}
+Dot {
+name Dot104
+label "  "
+note_font "Arial Black"
+note_font_size 16
+selected true
+xpos -7545
+ypos -1143
+}
+set N736e3240 [stack 0]
+CheckerBoard2 {
+inputs 0
+name CheckerBoard1
+selected true
+xpos -7246
+ypos -1426
+}
+STMap {
+inputs 2
+uv rgba
+name STMap1
+label "Warp the image"
+selected true
+xpos -7246
+ypos -1158
+}
+set N7b08bde0 [stack 0]
+Dot {
+name Dot134
+label "  "
+note_font "Arial Black"
+note_font_size 16
+selected true
+xpos -7015
+ypos -1143
+}
+MotionBlur {
+shutterSamples 32
+shutterTime 0.5
+motionEstimation Regularized
+name MotionBlur1
+selected true
+xpos -7049
+ypos -645
+}
+push $N736e3240
+TimeOffset {
+time_offset -1
+time ""
+name TimeOffset1
+label "Offset \[value time_offset] frame"
+selected true
+xpos -7659
+ypos -1059
+}
+push $N736e3240
+TimeOffset {
+time_offset 1
+time ""
+name TimeOffset2
+label "Offset \[value time_offset] frame"
+selected true
+xpos -7506
+ypos -1056
+}
+Merge2 {
+inputs 2
+operation from
+Achannels rgb
+name Merge9
+selected true
+xpos -7581
+ypos -981
+}
+Expression {
+expr0 r*input.width/2
+expr1 g*input.height/2
+name Expression2
+label "<b>r</b> = r*input.width/2\n<b>g</b> = g*input.height/2"
+note_font Verdana
+selected true
+xpos -7581
+ypos -922
+}
+push $N7b08bde0
+Copy {
+inputs 2
+from0 rgba.red
+to0 forward.u
+from1 rgba.green
+to1 forward.v
+name Copy6
+label "\n<b>Copy motion vectors in.</b>"
+note_font Verdana
+selected true
+xpos -7246
+ypos -934
+}
+VectorBlur {
+uv forward
+scale 0.5
+name VectorBlur_old
+selected true
+xpos -7246
+ypos -654
+}

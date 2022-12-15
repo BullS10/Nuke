@@ -1,0 +1,408 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+ name D_QCTool
+ tile_color 0x349d83ff
+ selected true
+ xpos -299
+ ypos -4053
+ addUserKnob {20 QCTool}
+ addUserKnob {4 Mode M {All Grain "Clipping Area" "Saturation Level" Luminance ""}}
+ Mode "Clipping Area"
+ addUserKnob {6 Text +STARTLINE}
+ Text true
+ addUserKnob {26 ""}
+ addUserKnob {26 copyright l "" +STARTLINE T "D_QCTool v2.0 - (c) 2013 - Denis Scolan"}
+}
+ Input {
+  inputs 0
+  name Inputinput
+  xpos -610
+  ypos -1070
+ }
+ Dot {
+  name Dot26
+  xpos -576
+  ypos -1030
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N12089f70 [stack 0]
+ Dot {
+  name Dot27
+  xpos -313
+  ypos -916
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Colorspace {
+  colorspace_out YPbPr
+  name Colorspace2
+  xpos -347
+  ypos -216
+ }
+ Shuffle {
+  green red
+  blue red
+  alpha red
+  name Shuffle5
+  label LUMINACE
+  xpos -347
+  ypos -166
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message LUMINANCE
+  old_message {{76 85 77 73 78 65 78 67 69}
+    }
+  box {0 0 {input.width} {input.height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 9
+  center {1079 450}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 900}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1079 450 0 0 1 1 0 0 0 0}
+    }
+  color {1 1 0 1}
+  name Text8
+  xpos -347
+  ypos -128
+  disable {{1-Text}}
+ }
+set Nbafd020 [stack 0]
+push $N12089f70
+ Dot {
+  name Dot28
+  xpos -478
+  ypos -916
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ SoftClip {
+  conversion "logarithmic compress"
+  softclip_min 0.685
+  name SoftClip2
+  xpos -512
+  ypos -255
+ }
+ Colorspace {
+  colorspace_out HSL
+  name Colorspace1
+  xpos -512
+  ypos -209
+ }
+ Shuffle {
+  red green
+  blue green
+  alpha green
+  name Shuffle6
+  label SATURATION
+  xpos -512
+  ypos -164
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "SATURATION LEVEL"
+  old_message {{83 65 84 85 82 65 84 73 79 78 32 76 69 86 69 76}
+    }
+  box {0 0 {input.width} {input.height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 16
+  center {1079 450}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 900}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1079 450 0 0 1 1 0 0 0 0}
+    }
+  color {1 1 0 1}
+  name Text7
+  xpos -512
+  ypos -108
+  disable {{1-Text}}
+ }
+set Nc8d6ad0 [stack 0]
+push $N12089f70
+ Dot {
+  name Dot29
+  xpos -677
+  ypos -916
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Log2Lin {
+  operation lin2log
+  name Log2Lin5
+  xpos -711
+  ypos -277
+ }
+ ColorLookup {
+  lut {master {curve L 10 x0 0 x1 1 x1 -0.1}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup6
+  xpos -711
+  ypos -221
+ }
+ Log2Lin {
+  name Log2Lin6
+  xpos -711
+  ypos -157
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "CLIPPING AREAS"
+  old_message {{67 76 73 80 80 73 78 71 32 65 82 69 65 83}
+    }
+  box {0 0 {input.width} {input.height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 14
+  center {1079 450}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 900}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1079 450 0 0 1 1 0 0 0 0}
+    }
+  color {1 1 0 1}
+  name Text4
+  xpos -711
+  ypos -74
+  disable {{1-Text}}
+ }
+set N1744adb0 [stack 0]
+push $N12089f70
+ Dot {
+  name Dot30
+  xpos -1326
+  ypos -894
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N1746b2d0 [stack 0]
+ Dot {
+  name Dot4
+  xpos -906
+  ypos -620
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N1746fc30 [stack 0]
+ Dot {
+  name Dot6
+  xpos -805
+  ypos -620
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Dot {
+  name Dot5
+  xpos -805
+  ypos -265
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N1746fc30
+ Colorspace {
+  name Colorspace4
+  xpos -940
+  ypos -514
+ }
+set N1747d630 [stack 0]
+push $N1747d630
+ Blur {
+  size 1.7
+  name Blur4
+  xpos -895
+  ypos -477
+ }
+ Merge2 {
+  inputs 2
+  operation minus
+  name Merge2
+  xpos -940
+  ypos -422
+ }
+ Grade {
+  white 500
+  black_clamp false
+  name Grade2
+  xpos -940
+  ypos -346
+ }
+ Saturation {
+  saturation 3
+  name Saturation2
+  xpos -940
+  ypos -303
+ }
+ ShuffleCopy {
+  inputs 2
+  name ShuffleCopy2
+  xpos -940
+  ypos -249
+ }
+push $N1746b2d0
+ Log2Lin {
+  operation lin2log
+  name Log2Lin4
+  xpos -1204
+  ypos -674
+ }
+ Dot {
+  name Dot2
+  xpos -1170
+  ypos -621
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N174ec0f0 [stack 0]
+ Dot {
+  name Dot3
+  xpos -1069
+  ypos -621
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Dot {
+  name Dot1
+  xpos -1069
+  ypos -270
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N174ec0f0
+ Colorspace {
+  colorspace_out Cineon
+  name Colorspace3
+  xpos -1204
+  ypos -541
+ }
+set N174f9a50 [stack 0]
+push $N174f9a50
+ Blur {
+  size 1.7
+  name Blur2
+  xpos -1159
+  ypos -497
+ }
+ Merge2 {
+  inputs 2
+  operation minus
+  name Merge1
+  xpos -1204
+  ypos -442
+ }
+ Grade {
+  white 100
+  black_clamp false
+  name Grade1
+  xpos -1204
+  ypos -366
+ }
+ Saturation {
+  saturation 3
+  name Saturation1
+  xpos -1204
+  ypos -323
+ }
+ ShuffleCopy {
+  inputs 2
+  name ShuffleCopy1
+  xpos -1204
+  ypos -251
+ }
+ Merge2 {
+  inputs 2
+  operation max
+  name Max
+  xpos -1070
+  ypos -154
+ }
+push $N1746b2d0
+ Merge2 {
+  inputs 2
+  operation plus
+  name Plus3
+  xpos -1360
+  ypos -81
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message GRAIN
+  old_message {{71 82 65 73 78}
+    }
+  box {0 0 {input.width} {input.height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 5
+  center {1079 450}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 900}
+    }
+  group_animations {{0} imported: 0 selected: 0 items: "root transform/"}
+  animation_layers {{1 11 1079 450 0 0 1 1 0 0 0 0}
+    }
+  color {1 1 0 1}
+  name Text6
+  xpos -1360
+  ypos -48
+  disable {{1-Text}}
+ }
+set N175794b0 [stack 0]
+push $Nbafd020
+push $Nc8d6ad0
+push $N1744adb0
+push $N175794b0
+ ContactSheet {
+  inputs 4
+  width {{input.width i}}
+  height {{input.height i}}
+  rows 2
+  columns 2
+  roworder TopBottom
+  name ContactSheet1
+  xpos -611
+  ypos 101
+ }
+ Switch {
+  inputs 5
+  which {{Mode i}}
+  name Switch1
+  xpos -787
+  ypos 101
+ }
+ Output {
+  name Output1
+  xpos -787
+  ypos 201
+ }
+end_group
