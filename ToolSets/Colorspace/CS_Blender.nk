@@ -1,0 +1,196 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name CS_Blender
+selected true
+xpos -298
+ypos -4534
+addUserKnob {20 User}
+addUserKnob {4 type M {"autum  | Lab" "Sat red  | Lab ->YPbPr" "Sat green | Lab ->YPbPr" "" "" "" ""}}
+addUserKnob {6 Lin_Log l Log -STARTLINE}
+Lin_Log true
+addUserKnob {41 which l Mix T Dissolve1.which}
+}
+Input {
+inputs 0
+name RGB
+xpos -581
+ypos -657
+}
+Dot {
+name Dot61
+xpos -547
+ypos -540
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N100639e0 [stack 0]
+Log2Lin {
+operation lin2log
+name Log2Lin1
+xpos -732
+ypos -544
+disable {{!Lin_Log}}
+}
+Dot {
+name Dot58
+xpos -955
+ypos -540
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N2c96f4e0 [stack 0]
+Dot {
+name Dot59
+xpos -1153
+ypos -540
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Colorspace {
+colorspace_out CIE-Lab
+name Colorspace3
+label "\[value colorspace_in] to \[value colorspace_out]"
+xpos -1187
+ypos -428
+}
+set N4173f530 [stack 0]
+push 0
+push 0
+push 0
+push 0
+push 0
+push 0
+push 0
+push $N100639e0
+push $N4173f530
+Dot {
+name Dot1
+xpos -1153
+ypos -339
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N135a8d20 [stack 0]
+Dot {
+name Dot2
+xpos -1043
+ypos -339
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N4efd3660 [stack 0]
+Dot {
+name Dot3
+xpos -856
+ypos -339
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N2c96f4e0
+Colorspace {
+colorspace_out YPbPr
+name Colorspace4
+label "\[value colorspace_in] to \[value colorspace_out]"
+xpos -989
+ypos -441
+}
+set N48fae450 [stack 0]
+Dot {
+name Dot4
+xpos -749
+ypos -431
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+ShuffleCopy {
+inputs 2
+blue green
+name ShuffleCopy2
+label "\[value in] -> \[value out]"
+xpos -783
+ypos -310
+}
+Colorspace {
+colorspace_in YPbPr
+name Colorspace2
+label "\[value colorspace_in] to \[value colorspace_out]"
+xpos -783
+ypos -217
+}
+push $N4efd3660
+push $N48fae450
+ShuffleCopy {
+inputs 2
+blue blue
+name ShuffleCopy1
+label "\[value in] -> \[value out]"
+xpos -989
+ypos -304
+}
+Colorspace {
+colorspace_in YPbPr
+name Colorspace5
+label "\[value colorspace_in] to \[value colorspace_out]"
+xpos -989
+ypos -229
+}
+push $N135a8d20
+Shuffle {
+green blue
+name Shuffle1
+label "\[value in] -> \[value out]"
+xpos -1187
+ypos -282
+}
+Colorspace {
+colorspace_in CIE-Lab
+name Colorspace1
+label "\[value colorspace_in] to \[value colorspace_out]"
+xpos -1187
+ypos -215
+}
+Switch {
+inputs 3
+which {{type}}
+name Switch1
+label "\[value which]"
+xpos -989
+ypos -131
+}
+Log2Lin {
+name Log2Lin2
+selected true
+xpos -731
+ypos -125
+disable {{!Lin_Log}}
+}
+push $N100639e0
+Dissolve {
+inputs 2
+channels rgba
+which 1
+name Dissolve1
+label "\[value which]"
+xpos -581
+ypos -131
+}
+set N88b776c0 [stack 0]
+Viewer {
+inputs 10
+frame_range 1001-1145
+fps 25
+gain 0.126
+input_process false
+name Viewer1
+xpos -794
+ypos 143
+}
+push $N88b776c0
+Output {
+name Output1
+xpos -581
+ypos -8
+}
+end_group

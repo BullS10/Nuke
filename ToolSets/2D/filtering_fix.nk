@@ -1,0 +1,62 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Matrix {
+channels alpha
+matrix {
+    {0 -2 0}
+    {-2 4 -2}
+    {0 -2 0}
+  }
+normalize true
+name Matrix12
+selected true
+xpos 3307
+ypos 4773
+}
+Matrix {
+channels alpha
+matrix {
+    {0 2 0}
+    {2 4 2}
+    {0 2 0}
+  }
+normalize true
+name Matrix13
+selected true
+xpos 3307
+ypos 4811
+}
+Clamp {
+channels alpha
+name Clamp6
+selected true
+xpos 3307
+ypos 4866
+}
+Matrix {
+channels alpha
+matrix {
+    {0 2 0}
+    {2 -9 2}
+    {0 2 0}
+  }
+normalize true
+name Matrix14
+selected true
+xpos 3307
+ypos 4924
+}
+Matrix {
+channels alpha
+matrix {
+    {1 5 1}
+    {5 0 5}
+    {1 5 1}
+  }
+normalize true
+name Matrix15
+selected true
+xpos 3307
+ypos 4962
+}

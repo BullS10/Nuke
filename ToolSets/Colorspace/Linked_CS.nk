@@ -1,0 +1,18 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Colorspace {
+name Colorspace10
+label "\[knob colorspace_in]  ->  \[knob colorspace_out]"
+selected true
+xpos -6148
+ypos 3001
+}
+Colorspace {
+colorspace_in {{Colorspace10.colorspace_out x1034 13}}
+name Colorspace11
+label "\[knob Colorspace10.colorspace_out]  ->  \[knob colorspace_out]"
+selected true
+xpos -6148
+ypos 3069
+}

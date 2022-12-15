@@ -1,0 +1,466 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name egoEdgeExtension
+selected true
+xpos 4927
+ypos 297
+addUserKnob {20 EdgeExtension l "Edge Extension"}
+addUserKnob {6 matteinvert l "Invert Matte" +STARTLINE}
+addUserKnob {7 threshold l "Matte Threshold" t "Sets the black level of the matte"}
+threshold 0.24
+addUserKnob {14 mattedilate l "Matte Dilate" R 0 100}
+mattedilate 7
+addUserKnob {26 ""}
+addUserKnob {14 recon l "Reconstruction Amount" R 0 100}
+recon 8.5
+addUserKnob {14 reconblur l "Blur Reconstruction" t "Blur the reconstructed area (including edge)" R 0 100}
+addUserKnob {26 ""}
+addUserKnob {6 enablefill l "Enable Constant Fill" +STARTLINE}
+addUserKnob {18 constantfill l "Constant Fill Colour"}
+constantfill {0 0 0}
+addUserKnob {6 constantfill_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 constantfill_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {6 constantfill_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+}
+Input {
+inputs 0
+name FG
+xpos 646
+ypos -9
+}
+set N7b6b8220 [stack 0]
+Dot {
+name Dot2
+xpos 1177
+ypos 1302
+}
+Input {
+inputs 0
+name Matte
+xpos 348
+ypos -15
+number 1
+}
+Clamp {
+channels alpha
+minimum {{parent.threshold}}
+maximum 0
+MinClampTo_enable true
+MaxClampTo_enable true
+name ClampMatte
+xpos 348
+ypos 156
+}
+Invert {
+channels alpha
+name InvertMatte
+xpos 348
+ypos 199
+disable {{!parent.matteinvert}}
+}
+Dilate {
+channels alpha
+size {{-parent.mattedilate} {-parent.mattedilate}}
+name Dilate1
+xpos 348
+ypos 248
+}
+push $N7b6b8220
+Shuffle {
+alpha white
+name ShuffleAlpha
+xpos 638
+ypos 163
+}
+Merge2 {
+inputs 2
+operation mask
+name Merge2
+xpos 646
+ypos 254
+}
+set N773408c0 [stack 0]
+Dot {
+name Dot1
+xpos 680
+ypos 1603
+}
+set N7b501840 [stack 0]
+Grade {
+channels rgba
+black {{parent.constantfill} {parent.constantfill} {parent.constantfill} 1}
+white {{parent.constantfill} {parent.constantfill} {parent.constantfill} 1}
+black_clamp false
+unpremult -rgba.alpha
+name ConstantFillGrade
+xpos 567
+ypos 1600
+}
+push $N773408c0
+Blur {
+channels rgba
+size {{"min(parent.recon*0.05, 1)"} {"min(parent.recon*0.05, 1)"}}
+name Blur1
+xpos 350
+ypos 371
+}
+Unpremult {
+channels rgba
+name Unpremult1
+xpos 350
+ypos 397
+}
+Grade {
+channels alpha
+whitepoint 0.5
+white_clamp true
+unpremult -rgba.alpha
+name Grade7
+xpos 350
+ypos 421
+}
+push $N773408c0
+Merge2 {
+inputs 2
+operation under
+bbox B
+name Merge7
+xpos 457
+ypos 470
+}
+set N10cde3c0 [stack 0]
+Clamp {
+channels alpha
+maximum 0
+MinClampTo_enable true
+MaxClampTo_enable true
+name ClampMatte7
+xpos 349
+ypos 496
+}
+Blur {
+channels rgba
+size {{"min(parent.recon*0.1, 2)"} {"min(parent.recon*0.1, 2)"}}
+name Blur5
+xpos 349
+ypos 530
+}
+Unpremult {
+channels rgba
+name Unpremult8
+xpos 349
+ypos 556
+}
+Grade {
+channels alpha
+whitepoint 0.5
+black_clamp false
+unpremult -rgba.alpha
+name Grade2
+xpos 349
+ypos 580
+}
+push $N10cde3c0
+Premult {
+name Premult6
+xpos 457
+ypos 562
+}
+Merge2 {
+inputs 2
+operation under
+bbox B
+name Merge9
+xpos 457
+ypos 641
+}
+set N7739d150 [stack 0]
+Clamp {
+channels alpha
+maximum 0
+MinClampTo_enable true
+MaxClampTo_enable true
+name ClampMatte4
+xpos 351
+ypos 679
+}
+Blur {
+channels rgba
+size {{"min(parent.recon*0.2, 4)"} {"min(parent.recon*0.2, 4)"}}
+crop false
+name Blur6
+xpos 351
+ypos 713
+}
+Unpremult {
+channels rgba
+name Unpremult9
+xpos 351
+ypos 739
+}
+Grade {
+channels alpha
+whitepoint 0.5
+black_clamp false
+unpremult -rgba.alpha
+name Grade1
+xpos 351
+ypos 763
+}
+push $N7739d150
+Premult {
+name Premult1
+xpos 457
+ypos 719
+}
+Merge2 {
+inputs 2
+operation under
+bbox B
+name Merge10
+xpos 457
+ypos 829
+}
+set N8bf2e1f0 [stack 0]
+Clamp {
+channels alpha
+maximum 0
+MinClampTo_enable true
+MaxClampTo_enable true
+name ClampMatte5
+xpos 347
+ypos 858
+}
+Blur {
+channels rgba
+size {{"min(parent.recon*0.4, 8)"} {"min(parent.recon*0.4, 8)"}}
+crop false
+name Blur7
+xpos 347
+ypos 892
+}
+Unpremult {
+channels rgba
+name Unpremult10
+xpos 347
+ypos 918
+}
+Grade {
+channels alpha
+whitepoint 0.5
+black_clamp false
+unpremult -rgba.alpha
+name Grade3
+xpos 347
+ypos 942
+}
+push $N8bf2e1f0
+Premult {
+name Premult2
+xpos 457
+ypos 899
+}
+Merge2 {
+inputs 2
+operation under
+bbox B
+name Merge11
+xpos 457
+ypos 997
+}
+set N7bb1a030 [stack 0]
+Clamp {
+channels alpha
+maximum 0
+MinClampTo_enable true
+MaxClampTo_enable true
+name ClampMatte1
+xpos 349
+ypos 1016
+}
+Blur {
+channels rgba
+size {{"min(parent.recon*0.6, 12)"} {"min(parent.recon*0.6, 12)"}}
+name Blur2
+xpos 349
+ypos 1050
+}
+Unpremult {
+channels rgba
+name Unpremult5
+xpos 349
+ypos 1076
+}
+Grade {
+channels alpha
+whitepoint 0.5
+black_clamp false
+unpremult -rgba.alpha
+name Grade4
+xpos 349
+ypos 1100
+}
+push $N7bb1a030
+Premult {
+name Premult3
+xpos 457
+ypos 1053
+}
+Merge2 {
+inputs 2
+operation under
+bbox B
+name Merge3
+xpos 457
+ypos 1179
+}
+set N77694f00 [stack 0]
+Clamp {
+channels alpha
+maximum 0
+MinClampTo_enable true
+MaxClampTo_enable true
+name ClampMatte6
+xpos 351
+ypos 1199
+}
+Blur {
+channels rgba
+size {{"min(parent.recon*0.8, 16)"} {"min(parent.recon*0.8, 16)"}}
+crop false
+name Blur3
+xpos 351
+ypos 1235
+}
+Unpremult {
+channels rgba
+name Unpremult6
+xpos 351
+ypos 1259
+}
+Grade {
+channels alpha
+whitepoint 0.5
+black_clamp false
+unpremult -rgba.alpha
+name Grade5
+xpos 351
+ypos 1283
+}
+push $N77694f00
+Premult {
+name Premult4
+xpos 457
+ypos 1239
+}
+Merge2 {
+inputs 2
+operation under
+bbox B
+name Merge4
+xpos 457
+ypos 1344
+}
+set N168dfc20 [stack 0]
+Clamp {
+channels alpha
+maximum 0
+MinClampTo_enable true
+MaxClampTo_enable true
+name ClampMatte3
+xpos 347
+ypos 1378
+}
+Blur {
+channels rgba
+size {{parent.recon} {parent.recon}}
+crop false
+name Blur4
+xpos 347
+ypos 1416
+}
+Unpremult {
+channels rgba
+name Unpremult7
+xpos 347
+ypos 1438
+}
+Grade {
+channels alpha
+whitepoint 0.5
+black_clamp false
+unpremult -rgba.alpha
+name Grade6
+xpos 347
+ypos 1462
+}
+push $N168dfc20
+Premult {
+name Premult5
+xpos 457
+ypos 1412
+}
+Merge2 {
+inputs 2
+operation under
+bbox B
+name Merge8
+xpos 457
+ypos 1468
+}
+Clamp {
+channels alpha
+maximum 0
+MinClampTo_enable true
+MaxClampTo_enable true
+name ClampMatte2
+xpos 457
+ypos 1504
+}
+Merge2 {
+inputs 2
+operation under
+name Merge5
+xpos 457
+ypos 1600
+disable {{!parent.enablefill}}
+}
+Blur {
+channels rgba
+size {{parent.reconblur} {parent.reconblur}}
+name Blur8
+xpos 457
+ypos 1667
+}
+push $N7b501840
+EdgeBlur {
+channels rgba
+size {{parent.reconblur} {parent.reconblur}}
+name EdgeBlur4
+xpos 646
+ypos 1652
+}
+Merge2 {
+inputs 2
+operation under
+bbox B
+name Merge1
+xpos 646
+ypos 1739
+}
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy1
+xpos 641
+ypos 1901
+}
+Output {
+name Output1
+xpos 646
+ypos 2004
+}
+end_group

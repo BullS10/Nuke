@@ -1,0 +1,124 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name Erode_matrix
+tile_color 0x2b3a00
+selected true
+xpos -1152
+ypos -809
+addUserKnob {20 User}
+addUserKnob {41 size T NoOp1.size}
+addUserKnob {41 softness T NoOp1.softness}
+addUserKnob {41 disable_1 l Push/Pull T Invert2.disable}
+}
+Input {
+inputs 0
+name Input1
+xpos -761
+ypos -675
+}
+set N9c9adb0 [stack 0]
+Dot {
+name Dot2
+xpos -1035
+ypos -671
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot1
+xpos -1035
+ypos -105
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N9c9adb0
+Invert {
+channels alpha
+name Invert2
+xpos -761
+ypos -599
+disable true
+}
+set C9ca9ad0 [stack 0]
+set N9ca9ad0 [stack 0]
+Dot {
+name Dot4
+xpos -897
+ypos -589
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Matrix {
+channels alpha
+matrix {
+    {{"-(matrix.4)/(8* (softness == 0 ? 0.01 : softness))"} {"-(matrix.4)/(4* (softness == 0 ? 0.01 : softness))"} {"-(matrix.4)/(8* (softness == 0 ? 0.01 : softness))"}}
+    {{"-(matrix.4)/(4* (softness == 0 ? 0.01 : softness))"} {-NoOp1.size} {"-(matrix.4)/(4* (softness == 0 ? 0.01 : softness))"}}
+    {{"-(matrix.4)/(8* (softness == 0 ? 0.01 : softness))"} {"-(matrix.4)/(4* (softness == 0 ? 0.01 : softness))"} {"-(matrix.4)/(8* (softness == 0 ? 0.01 : softness))"}}
+  }
+name Matrix5
+xpos -931
+ypos -483
+}
+Dot {
+name Dot3
+xpos -897
+ypos -393
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N9ca9ad0
+Matrix {
+channels alpha
+matrix {
+    {{"(matrix.4)/(8* (softness == 0 ? 0.01 : softness))"} {"(matrix.4)/(4* (softness == 0 ? 0.01 : softness))"} {"(matrix.4)/(8* (softness == 0 ? 0.01 : softness))"}}
+    {{"(matrix.4)/(4* (softness == 0 ? 0.01 : softness))"} {NoOp1.size} {"(matrix.4)/(4* (softness == 0 ? 0.01 : softness))"}}
+    {{"(matrix.4)/(8* (softness == 0 ? 0.01 : softness))"} {"(matrix.4)/(4* (softness == 0 ? 0.01 : softness))"} {"(matrix.4)/(8* (softness == 0 ? 0.01 : softness))"}}
+  }
+name Matrix1
+xpos -761
+ypos -485
+}
+Blend {
+inputs 2
+name Blend1
+xpos -761
+ypos -403
+}
+Clamp {
+channels alpha
+name Clamp1
+xpos -761
+ypos -260
+}
+clone $C9ca9ad0 {
+xpos -761
+ypos -200
+selected false
+}
+Switch {
+inputs 2
+which {{"NoOp1.size == 0? 1 : 0"}}
+name Switch1
+label "\[value which]"
+xpos -761
+ypos -115
+}
+Output {
+name Output1
+xpos -761
+ypos -58
+}
+NoOp {
+inputs 0
+name NoOp1
+xpos -523
+ypos -493
+addUserKnob {20 User}
+addUserKnob {7 size R 0 5}
+size 45
+addUserKnob {7 softness R 0 5}
+softness 20
+}
+end_group

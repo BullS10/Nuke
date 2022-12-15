@@ -1,0 +1,326 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name STMapRefFrame
+selected true
+xpos 1912
+ypos 3519
+addUserKnob {20 stmap}
+addUserKnob {41 format l "set input format" T Reformat1.format}
+addUserKnob {26 ""}
+addUserKnob {41 ref_frame l "New Reference Frame" T FrameHold1.first_frame}
+addUserKnob {41 setframe l "Set to this frame" -STARTLINE T Controller.setframe}
+addUserKnob {41 precision T Controller.precision}
+addUserKnob {41 remove_outside l "remove unusable areas" t "your input stmap needs an alpha for this to work" T Controller.remove_outside}
+addUserKnob {26 ""}
+addUserKnob {26 info l "" +STARTLINE T "Your input stmap needs an alpha channel."}
+addUserKnob {20 advanced l reverse_stmap}
+addUserKnob {41 scale l "warp resolution" t "1 equals an reverse stmap resolution of 1000 square" T Reformat3.scale}
+addUserKnob {26 ""}
+addUserKnob {26 copyright l "" +STARTLINE T "© STMap_Ref_Frame v1.1    |     by Marcel Pichert"}
+}
+Camera2 {
+inputs 0
+translate {0.5 0.5 1}
+projection_mode orthographic
+focal 25
+haperture 25
+vaperture 25
+near 0.5
+far 1.5
+name Camera1
+xpos -308
+ypos 610
+addUserKnob {20 User}
+addUserKnob {22 reveal l "reveal in explorer" -STARTLINE T "from nuke_utils import reveal_in_explorer;reveal_in_explorer.reveal(nuke.thisNode())"}
+}
+Input {
+inputs 0
+name Input1
+xpos -537
+ypos -394
+}
+Dot {
+name Dot28
+xpos -503
+ypos -263
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N5725e4c0 [stack 0]
+Dot {
+name Dot26
+xpos -503
+ypos 103
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nc3b5570 [stack 0]
+FrameHold {
+first_frame 1001
+name FrameHold1
+xpos -340
+ypos 93
+}
+Dot {
+name Dot8
+xpos -102
+ypos 103
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N68cab380 [stack 0]
+push $N5725e4c0
+Dot {
+name Dot29
+xpos 876
+ypos -263
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Expression {
+expr0 (x+0.5)/width
+expr1 (y+0.5)/height
+name Expression3
+label st-map
+xpos 842
+ypos -94
+}
+set Na3a93320 [stack 0]
+Merge2 {
+inputs 2
+operation from
+bbox B
+Bchannels {rgba.red rgba.green -rgba.blue -rgba.alpha}
+output {rgba.red rgba.green -rgba.blue none}
+name Merge1
+label "\[if \{\[value mix]<1\} \{ value mix \}]"
+xpos 842
+ypos 99
+}
+Dot {
+name Dot9
+xpos 876
+ypos 333
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N68897400 [stack 0]
+Expression {
+expr0 r*-1
+expr1 g*-1
+name Expression1
+xpos 217
+ypos 329
+}
+push $N68cab380
+ShuffleCopy {
+inputs 2
+red red
+green green
+blue blue
+alpha alpha2
+out2 forward
+name ShuffleCopy1
+label "\[value in] -> \[value out]"
+xpos -135
+ypos 323
+}
+PositionToPoints2 {
+display textured
+render_mode textured
+P_channel forward
+detail {{Reformat3.width/this.width+0.2}}
+pointSize 1
+name PositionToPoints1
+xpos -135
+ypos 472
+disable {{Controller.precision}}
+}
+Reformat {
+inputs 0
+format "1024 1024 0 0 1024 1024 1 square_1K"
+name Reformat2
+xpos 43
+ypos 537
+}
+Reformat {
+type scale
+scale 0.5
+name Reformat3
+xpos 43
+ypos 630
+}
+ScanlineRender {
+inputs 3
+conservative_shader_sampling false
+max_tessellation 1
+shutteroffset centred
+motion_vectors_type distance
+name ScanlineRender1
+label "\[if \{\[value samples]>1\} \{ value samples \} ] \[if \{\[value samples]>1\} \{ return samples \} ]\n\[if \{\[value projection_mode] != \"render camera\"\} \{ value projection_mode  \}]\n"
+xpos -135
+ypos 630
+}
+Reformat {
+resize distort
+name Reformat1
+xpos -135
+ypos 748
+}
+FrameHold {
+first_frame {{parent.FrameHold1.knob.first_frame}}
+name FrameHold2
+xpos -135
+ypos 851
+}
+Dot {
+name Dot6
+xpos -101
+ypos 982
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N18d50110 [stack 0]
+push $Na3a93320
+Dot {
+name Dot7
+xpos 557
+ypos -84
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2
+operation from
+bbox B
+name Merge2
+label "\[if \{\[value mix]<1\} \{ value mix \}]"
+xpos 523
+ypos 978
+}
+push $Nc3b5570
+Dot {
+name Dot3
+xpos -503
+ypos 1175
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N688d2ce0 [stack 0]
+Dot {
+name Dot4
+xpos -269
+ypos 1175
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N135d2a40 [stack 0]
+STMap {
+inputs 2
+channels {rgba.red rgba.green -rgba.blue none}
+uv rgb
+name STMap1
+xpos 523
+ypos 1165
+}
+push $N68897400
+STMap {
+inputs 2
+channels {rgba.red rgba.green -rgba.blue none}
+uv rgb
+name STMap2
+xpos 842
+ypos 1165
+disable {{parent.Controller.precision_toggle}}
+}
+Dot {
+name Dot27
+xpos 876
+ypos 1648
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N1df3c730 [stack 0]
+Dot {
+name Dot2
+xpos 876
+ypos 1815
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N18d50110
+Dot {
+name Dot5
+xpos -101
+ypos 1467
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N135d2a40
+ChannelMerge {
+inputs 2
+operation in
+name ChannelMerge2
+xpos -303
+ypos 1450
+disable {{parent.Controller.precision_toggle}}
+}
+ChannelMerge {
+inputs 2
+operation in
+name ChannelMerge1
+xpos -303
+ypos 1798
+}
+Dot {
+name Dot1
+xpos -269
+ypos 1990
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+push $N1df3c730
+push $N688d2ce0
+Merge2 {
+inputs 2
+operation plus
+bbox B
+output rgb
+name Merge7
+label "\[if \{\[value mix]<1\} \{ value mix \}]"
+xpos -537
+ypos 1644
+}
+Multiply {
+inputs 1+1
+channels rgba
+value 0
+invert_mask true
+name Multiply1
+label "\[value value]"
+xpos -537
+ypos 1980
+disable {{1-Controller.remove_outside}}
+}
+Output {
+name Output1
+xpos -537
+ypos 2197
+}
+NoOp {
+inputs 0
+name Controller
+note_font_size 74
+xpos 1125
+ypos 1672
+addUserKnob {20 User}
+addUserKnob {22 setframe l "Set to this frame" T "nuke.toNode(\"FrameHold1\")\[\"first_frame\"].setValue(nuke.frame())" +STARTLINE}
+addUserKnob {6 precision_toggle l "precision toggle" +STARTLINE}
+precision_toggle {{this.precision}}
+addUserKnob {4 precision M {"high (slow)" "low (can cause sliding)" ""}}
+precision "low (can cause sliding)"
+addUserKnob {6 remove_outside l "remove unusable areas" +STARTLINE}
+}
+end_group

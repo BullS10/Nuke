@@ -1,0 +1,570 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+name G_ChannelReBuild
+help "Channel ReBuild\n\nUse this tool to rebuild existing color Channel o Channels that come with undesired aberrations, offests, bad pixels, etc.\n\nCheck boxes indicate channels that will be Fixed, all though the Channel chosen as a \"Good Channel\" in the dropdown will not be afected at all. Uncheck boxes to fix an induvidual channel to fix (If only channel is to be corrected, uncheck the other channel boxes)\n\nPick your \"good\" channel with the dropdown menu, to match opposite channel to it. Its selected to Green by default (which can be used to fix common chromatic aberrations where Red and Blue are off)\n\nSelect the amount of Fix by using the Amount slider\nYou can add some sharpening to the channels to help prevent bluriness \n\nHope you find this useful \n\nDaniel Gonzalez Solozabal"
+selected true
+xpos -8270
+ypos 8264
+addUserKnob {20 User l ChannelRebuild}
+addUserKnob {26 Title l Aberratorade T "\n"}
+addUserKnob {26 Channelpick l Rebuild: T ""}
+addUserKnob {6 redcheck l Red -STARTLINE}
+addUserKnob {6 greencheck l Green t "   " -STARTLINE}
+addUserKnob {6 bluecheck l Blue -STARTLINE}
+bluecheck true
+addUserKnob {4 menupulldown l "    Using" -STARTLINE M {R "G " B "" "" "" "" "" ""}}
+menupulldown "G "
+addUserKnob {26 note l "" -STARTLINE T " as a \"Good\" Channel"}
+addUserKnob {7 BlendSlider l Amount R 1 30}
+BlendSlider 11
+addUserKnob {7 SharpenSlider l "Sharpen " R 0 10}
+SharpenSlider 1.95
+addUserKnob {26 Signature l "" +STARTLINE T "\n\nGONZO FX \nDaniel Gonzalez Solozabal / BruTools / www.retinaut.com"}
+}
+Input {
+inputs 0
+name Source
+label Plate
+xpos 461
+ypos 405
+}
+Dot {
+name Dot39
+xpos 495
+ypos 660
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N220f65b0 [stack 0]
+Dot {
+name Dot77
+xpos 495
+ypos 1146
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N8f3c44b0 [stack 0]
+Dot {
+name Dot79
+xpos 495
+ypos 1628
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Dot {
+name Dot80
+xpos 874
+ypos 1628
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N3b43ff90 [stack 0]
+Dot {
+name Dot53
+xpos 874
+ypos 1698
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N3b43d750 [stack 0]
+Blur {
+channels rgba
+size {{parent.BlurG.size i}}
+name BlurG1
+xpos 898
+ypos 1778
+}
+set N913c9ba0 [stack 0]
+Shuffle {
+red green
+blue green
+alpha green
+name Shuffle28
+xpos 1008
+ypos 1778
+}
+push $N913c9ba0
+Shuffle {
+red blue
+green blue
+alpha blue
+name B_Shuffle2
+xpos 898
+ypos 1862
+}
+Merge2 {
+inputs 2
+operation divide
+name div6
+xpos 1008
+ypos 1862
+}
+push $N3b43d750
+Shuffle {
+red blue
+green blue
+alpha blue
+name B_Shuffle
+xpos 534
+ypos 1694
+}
+Dot {
+name Dot55
+xpos 568
+ypos 1944
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N917c3790 [stack 0]
+Dot {
+name Dot56
+xpos 568
+ypos 2036
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2
+operation multiply
+name Merge72
+xpos 1008
+ypos 2032
+}
+Dot {
+name Dot69
+xpos 1118
+ypos 2036
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Sharpen {
+channels rgba
+size {{parent.SharpenR.size i}}
+name SharpenG2
+xpos 1228
+ypos 2033
+}
+push $N3b43d750
+Blur {
+channels rgba
+size {{parent.BlurR.size i}}
+name BlurR1
+xpos 731
+ypos 1781
+}
+set N6e949f50 [stack 0]
+Shuffle {
+green red
+blue red
+alpha red
+name Shuffle36
+xpos 621
+ypos 1781
+}
+push $N6e949f50
+Shuffle {
+red blue
+green blue
+alpha blue
+name B_Shuffle1
+xpos 731
+ypos 1865
+}
+Merge2 {
+inputs 2
+operation divide
+name div5
+xpos 621
+ypos 1865
+}
+push $N917c3790
+Merge2 {
+inputs 2
+operation multiply
+name Merge74
+xpos 621
+ypos 1940
+}
+Dot {
+name Dot68
+xpos 1126
+ypos 1944
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Sharpen {
+channels rgba
+minimum {{parent.SharpenR.size i}}
+name SharpenR2
+xpos 1236
+ypos 1941
+}
+push $N3b43ff90
+Copy {
+inputs 2
+from0 rgba.red
+to0 rgba.red
+name CopyR1
+xpos 1502
+ypos 1936
+disable {{parent.redcheck-1 i}}
+}
+Copy {
+inputs 2
+from0 rgba.green
+to0 rgba.green
+name CopyG1
+xpos 1502
+ypos 2028
+disable {{parent.greencheck-1 i}}
+}
+push $N8f3c44b0
+Dot {
+name Dot48
+xpos 850
+ypos 1146
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N4de8b650 [stack 0]
+Dot {
+name Dot40
+xpos 850
+ypos 1199
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N24d9d730 [stack 0]
+Blur {
+channels rgba
+size {{parent.BlurB.size i}}
+name BlurB1
+xpos 902
+ypos 1304
+}
+set N919c940 [stack 0]
+Shuffle {
+red blue
+green blue
+alpha blue
+name Shuffle25
+xpos 1012
+ypos 1304
+}
+push $N919c940
+Shuffle {
+red green
+blue green
+alpha green
+name G_Shuffle2
+xpos 902
+ypos 1383
+}
+Merge2 {
+inputs 2
+operation divide
+name div4
+xpos 1012
+ypos 1383
+}
+push $N24d9d730
+Shuffle {
+red green
+blue green
+alpha green
+name G_Shuffle
+xpos 533
+ypos 1195
+}
+Dot {
+name Dot46
+xpos 567
+ypos 1465
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N916fa9f0 [stack 0]
+Dot {
+name Dot45
+xpos 567
+ypos 1557
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2
+operation multiply
+name Merge62
+xpos 1012
+ypos 1553
+}
+Dot {
+name Dot72
+xpos 1122
+ypos 1557
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Sharpen {
+channels rgba
+size {{parent.SharpenR.size i}}
+name SharpenB2
+xpos 1232
+ypos 1554
+}
+push $N24d9d730
+Blur {
+channels rgba
+size {{parent.BlendSlider x1015 0}}
+name BlurR
+xpos 737
+ypos 1302
+}
+set N914f87f0 [stack 0]
+Shuffle {
+green red
+blue red
+alpha red
+name Shuffle11
+xpos 627
+ypos 1302
+}
+push $N914f87f0
+Shuffle {
+red green
+blue green
+alpha green
+name G_Shuffle1
+xpos 737
+ypos 1386
+}
+Merge2 {
+inputs 2
+operation divide
+name div3
+xpos 627
+ypos 1386
+}
+push $N916fa9f0
+Merge2 {
+inputs 2
+operation multiply
+name Merge60
+xpos 627
+ypos 1461
+}
+Dot {
+name Dot66
+xpos 1128
+ypos 1465
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Sharpen {
+channels rgba
+size {{parent.SharpenSlider}}
+name SharpenR
+xpos 1238
+ypos 1462
+}
+push $N4de8b650
+Copy {
+inputs 2
+from0 rgba.red
+to0 rgba.red
+name CopyR2
+xpos 1521
+ypos 1457
+disable {{parent.redcheck-1 i}}
+}
+Copy {
+inputs 2
+from0 rgba.blue
+to0 rgba.blue
+name CopyB1
+xpos 1521
+ypos 1549
+disable {{parent.bluecheck-1 i}}
+}
+push $N220f65b0
+Dot {
+name Dot78
+xpos 851
+ypos 660
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N914a4010 [stack 0]
+Dot {
+name Dot47
+xpos 851
+ypos 728
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set N21b81060 [stack 0]
+Blur {
+channels rgba
+size {{parent.BlurR.size i}}
+name BlurB
+xpos 896
+ypos 830
+}
+set N220f2be0 [stack 0]
+Shuffle {
+red blue
+green blue
+alpha blue
+name Shuffle30
+xpos 1006
+ypos 830
+}
+push $N220f2be0
+Shuffle {
+green red
+blue red
+alpha red
+name R_Shuffle2
+xpos 896
+ypos 914
+}
+Merge2 {
+inputs 2
+operation divide
+name div2
+xpos 1006
+ypos 914
+}
+push $N21b81060
+Shuffle {
+green red
+blue red
+alpha red
+name R_Shuffle
+xpos 543
+ypos 724
+}
+Dot {
+name Dot49
+xpos 577
+ypos 994
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+set Nebb04de0 [stack 0]
+Dot {
+name Dot50
+xpos 577
+ypos 1086
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Merge2 {
+inputs 2
+operation multiply
+name Merge66
+xpos 1006
+ypos 1082
+}
+Dot {
+name Dot73
+xpos 1116
+ypos 1086
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Sharpen {
+channels rgba
+size {{parent.SharpenR.size i}}
+name SharpenB
+xpos 1226
+ypos 1083
+}
+push $N21b81060
+Blur {
+channels rgba
+size {{parent.BlurR.size i}}
+name BlurG
+xpos 737
+ypos 831
+}
+set N20618c70 [stack 0]
+Shuffle {
+red green
+blue green
+alpha green
+name Shuffle34
+xpos 637
+ypos 831
+}
+push $N20618c70
+Shuffle {
+green red
+blue red
+alpha red
+name R_Shuffle1
+xpos 737
+ypos 915
+}
+Merge2 {
+inputs 2
+operation divide
+name div1
+xpos 637
+ypos 915
+}
+push $Nebb04de0
+Merge2 {
+inputs 2
+operation multiply
+name Merge68
+xpos 637
+ypos 990
+}
+Dot {
+name Dot75
+xpos 1090
+ypos 993
+addUserKnob {20 beDotTab l BeDot}
+addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+}
+Sharpen {
+channels rgba
+size {{parent.SharpenR.size i}}
+name SharpenG
+xpos 1223
+ypos 990
+}
+push $N914a4010
+Copy {
+inputs 2
+from0 rgba.green
+to0 rgba.green
+name CopyG2
+xpos 1507
+ypos 998
+disable {{parent.greencheck-1 i}}
+}
+Copy {
+inputs 2
+from0 rgba.blue
+to0 rgba.blue
+name CopyB2
+xpos 1507
+ypos 1078
+}
+Switch {
+inputs 3
+which {{parent.menupulldown i}}
+name MainSwitch
+xpos 1831
+ypos 1554
+}
+Output {
+name Output2
+xpos 2029
+ypos 1554
+}
+end_group

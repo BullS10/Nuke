@@ -1,0 +1,129 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+ name TMask
+ tile_color 0x55bfffff
+ selected true
+ xpos 9721
+ ypos 4315
+ addUserKnob {20 TMask}
+ addUserKnob {26 unnamed l "" +STARTLINE T " "}
+ addUserKnob {26 info l " " t "Nicolas Corson - 2019" T "<h1><span style=\"color: #01aadc;\">Tmask</span></h1>"}
+ addUserKnob {26 version l "" -STARTLINE T 1.0}
+ addUserKnob {26 separator l " " t "  " T " "}
+ addUserKnob {41 operation l Merge T Merge3.operation}
+ addUserKnob {41 bbox l "set bbox to " -STARTLINE T Merge3.bbox}
+ addUserKnob {41 operation_1 l "Channel Merge" t "ChannelMerge1.operation.setVisible(False) " T ChannelMerge1.operation}
+ addUserKnob {41 bbox_1 l "Set BBox to " -STARTLINE T ChannelMerge1.bbox}
+ addUserKnob {41 mix -STARTLINE T ChannelMerge1.mix}
+ addUserKnob {26 ""}
+ addUserKnob {41 matrix T Transform20.matrix}
+ addUserKnob {41 translate T Transform20.translate}
+ addUserKnob {41 rotate T Transform20.rotate}
+ addUserKnob {41 scale T Transform20.scale}
+ addUserKnob {41 skewX l "skew X" T Transform20.skewX}
+ addUserKnob {41 skewY l "skew Y" T Transform20.skewY}
+ addUserKnob {41 skew_order l "skew order" T Transform20.skew_order}
+ addUserKnob {41 center T Transform20.center}
+ addUserKnob {41 filter T Transform20.filter}
+ addUserKnob {41 clamp -STARTLINE T Transform20.clamp}
+ addUserKnob {41 black_outside l "black outside" -STARTLINE T Transform20.black_outside}
+ addUserKnob {41 motionblur T Transform20.motionblur}
+ addUserKnob {41 shutter T Transform20.shutter}
+ addUserKnob {41 shutteroffset l "shutter offset" T Transform20.shutteroffset}
+ addUserKnob {41 shuttercustomoffset l "" -STARTLINE T Transform20.shuttercustomoffset}
+ addUserKnob {41 mix_1 l mix T Merge3.mix}
+ addUserKnob {41 invert_mask l invert -STARTLINE T Merge3.invert_mask}
+ addUserKnob {26 Benuts l " " t "nico                   " T "                   "}
+}
+ Input {
+  inputs 0
+  name mask
+  xpos -627
+  ypos 299
+  number 1
+ }
+ Dot {
+  name alpha
+  label alpha
+  xpos -593
+  ypos 373
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N28ce1fd0 [stack 0]
+ Dot {
+  name Dot11
+  xpos -593
+  ypos 487
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N28ce1fd0
+ Input {
+  inputs 0
+  name Input1
+  xpos -766
+  ypos 182
+ }
+ Dot {
+  name Dot7
+  xpos -732
+  ypos 296
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N164b94b0 [stack 0]
+ Dot {
+  name Dot8
+  xpos -884
+  ypos 296
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Shuffle {
+  alpha black
+  name Shuffle1
+  xpos -918
+  ypos 327
+ }
+ Transform {
+  center {1024 576}
+  filter Simon
+  shutteroffset centred
+  name Transform20
+  xpos -918
+  ypos 370
+ }
+push $N164b94b0
+ Merge2 {
+  inputs 2+1
+  operation copy
+  bbox B
+  name Merge3
+  xpos -766
+  ypos 369
+ }
+set N28e61450 [stack 0]
+ ChannelMerge {
+  inputs 2
+  operation plus
+  name ChannelMerge1
+  xpos -763
+  ypos 471
+ }
+ Output {
+  name Output1
+  xpos -763
+  ypos 781
+ }
+push $N28e61450
+ Viewer {
+  frame_range 25-94
+  input_process false
+  name Viewer1
+  xpos -1018
+  ypos 770
+ }
+end_group

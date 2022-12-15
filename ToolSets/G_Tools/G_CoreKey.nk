@@ -1,0 +1,891 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Group {
+ name G_CoreKey
+ tile_color 0x9fffff
+ selected true
+ xpos -2166
+ ypos -2108
+ addUserKnob {20 User}
+ addUserKnob {4 screenType l screentype M {Green Blue ""}}
+ screenType Blue
+ addUserKnob {6 screenColor_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {18 screenColor l "screen color" +INVISIBLE}
+ screenColor {0.4590943158 0.721718967 0.3507202268}
+ addUserKnob {6 screenColor_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 screenColor_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 screenColor_panelDropped_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {6 screenColor_panelDropped_1_1_1 l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {26 ""}
+ addUserKnob {26 secondPass l "" +STARTLINE T "fill core"}
+ addUserKnob {7 coreWeight l weight}
+ coreWeight 0.8
+ addUserKnob {7 corePunch l punch R 0 0.1}
+ corePunch 0.1
+ addUserKnob {26 ""}
+ addUserKnob {26 blackSpot l "" +STARTLINE T "clear black spot"}
+ addUserKnob {7 blackSpotStrength l strength R 0 0.1}
+ addUserKnob {26 ""}
+ addUserKnob {26 edgeText l "" +STARTLINE T edge}
+ addUserKnob {7 edgeBlur l blur R 0 10}
+ addUserKnob {7 edgeErode l erode R 0 5}
+ addUserKnob {26 ""}
+ addUserKnob {26 expoBlurText l "" +STARTLINE T "expo blur"}
+ addUserKnob {7 expoBlurSize l size R -5 5}
+ expoBlurSize -2
+ addUserKnob {7 expoBlurMultiplier l multiplier R 1 5}
+ expoBlurMultiplier 1
+ addUserKnob {7 expoBlurMix l mix}
+ addUserKnob {26 ""}
+ addUserKnob {26 authorText l "" +STARTLINE T "made by Gaetan Verheyen\nv 1.0.3"}
+}
+ Input {
+  inputs 0
+  name Rgb
+  xpos 576
+  ypos 370
+ }
+ Shuffle {
+  alpha black
+  name Shuffle48
+  xpos 576
+  ypos 417
+ }
+ Dot {
+  name Dot218
+  xpos 610
+  ypos 514
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N265e3280 [stack 0]
+ Dot {
+  name Dot11
+  xpos 610
+  ypos 3343
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N2664d4b0 [stack 0]
+ Input {
+  inputs 0
+  name Fill
+  xpos -256
+  ypos 3176
+  number 1
+ }
+push $N265e3280
+ Dot {
+  name Dot219
+  xpos 131
+  ypos 514
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N266bc080 [stack 0]
+ Dot {
+  name Dot9
+  xpos -84
+  ypos 514
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Group {
+  name G_CoreKeyer4
+  tile_color 0x3fffff
+  xpos -118
+  ypos 600
+  addUserKnob {20 User}
+  addUserKnob {7 weight R 0 2}
+  weight {{parent.coreWeight}}
+  addUserKnob {7 punch R 0 0.2}
+  punch {{parent.corePunch}}
+  addUserKnob {26 ""}
+  addUserKnob {7 sizeBlur l "size blur" R -5 5}
+  addUserKnob {7 multiplierBlur l "multiplier blur" R 0 10}
+  addUserKnob {7 erode R -10 10}
+ }
+  Input {
+   inputs 0
+   name In
+   xpos 576
+   ypos -699
+  }
+set N2679d400 [stack 0]
+  Dot {
+   name Dot1
+   xpos 610
+   ypos -577
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N26806de0 [stack 0]
+  Dot {
+   name Dot2
+   xpos 415
+   ypos -577
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Shuffle {
+   alpha black
+   name Shuffle1
+   xpos 381
+   ypos -538
+  }
+  Expression {
+   expr3 "b<((r+g)*weight+punch)? 1:a"
+   name CoreKey
+   xpos 381
+   ypos -483
+   addUserKnob {20 User}
+   addUserKnob {7 weight R 0 2}
+   weight {{parent.weight}}
+   addUserKnob {7 punch R 0 0.2}
+   punch {{parent.punch}}
+  }
+  FilterErode {
+   channels alpha
+   size {{-parent.erode}}
+   name FilterErode1
+   xpos 381
+   ypos -424
+  }
+  Group {
+   name L_ExponBlur
+   help "L_ExponBlur_v03 The ExponBlur blurs an image with an exponential falloff based upon an alpha. Most often used with roto shapes. The effect is applied to RGBA only. (For any questions, comments or suggestions please email gizmos@luma-pictures.com)"
+   note_font "Bitstream Vera Sans"
+   xpos 381
+   ypos -379
+   mapsize {0.15 0.15}
+   addUserKnob {20 ExponBlur}
+   addUserKnob {26 Description l "" +STARTLINE T ":ExponBlur: by Luma Pictures\n\nExponentially blurs image outward or inward"}
+   addUserKnob {14 size R -40 40}
+   size {{parent.sizeBlur}}
+   addUserKnob {7 Multiplier R 0 10}
+   Multiplier {{parent.multiplierBlur}}
+   addUserKnob {6 crop l "crop to format" +STARTLINE}
+   addUserKnob {6 disableCropBB l "disable CropBB" -STARTLINE}
+   addUserKnob {26 ""}
+  }
+   Input {
+    inputs 0
+    name Input1
+    xpos -372
+    ypos 265
+   }
+set N26aa2810 [stack 0]
+   Invert {
+    name L_ExponBlur_Invert4
+    xpos -372
+    ypos 330
+    disable {{"parent.size>=0 ? 1 : 0" i}}
+   }
+set N26b7a100 [stack 0]
+   Blur {
+    size {{parent.size.w i} {parent.size.h i}}
+    crop {{parent.crop i}}
+    name L_ExponBlur_Blur1
+    label "\[value size]"
+    xpos -592
+    ypos 479
+   }
+push $N26b7a100
+   Blur {
+    size {{parent.size.w*parent.Multiplier i} {parent.size.h*parent.Multiplier i}}
+    crop {{parent.crop i}}
+    name L_ExponBlur_Blur2
+    label "\[value size]"
+    xpos -482
+    ypos 479
+   }
+   Merge2 {
+    inputs 2
+    name L_ExponBlur_Merge7
+    xpos -537
+    ypos 572
+   }
+push $N26b7a100
+   Blur {
+    size {{parent.size.w*parent.Multiplier*2 i} {parent.size.h*parent.Multiplier*2 i}}
+    crop {{parent.crop i}}
+    name L_ExponBlur_Blur3
+    label "\[value size]"
+    xpos -372
+    ypos 479
+   }
+   Merge2 {
+    inputs 2
+    name L_ExponBlur_Merge8
+    xpos -477
+    ypos 637
+   }
+push $N26b7a100
+   Blur {
+    size {{parent.size.w*parent.Multiplier*4 i} {parent.size.h*parent.Multiplier*4 i}}
+    crop {{parent.crop i}}
+    name L_ExponBlur_Blur4
+    label "\[value size]"
+    xpos -262
+    ypos 479
+   }
+   Merge2 {
+    inputs 2
+    name L_ExponBlur_Merge9
+    xpos -372
+    ypos 709
+   }
+   Invert {
+    name L_ExponBlur_Invert5
+    xpos -372
+    ypos 774
+    disable {{"parent.size>=0 ? 1 : 0" i}}
+   }
+   Clamp {
+    channels alpha
+    name L_ExponBlur_clampOutput
+    xpos -372
+    ypos 833
+   }
+set N15e87330 [stack 0]
+   Viewer {
+    input_process false
+    name Viewer1
+    xpos -372
+    ypos 372
+   }
+push $N15e87330
+   Crop {
+    box {0 0 {input.width i} {input.height i}}
+    reformat true
+    crop false
+    name L_ExponBlur_Crop1
+    xpos -372
+    ypos 901
+    disable {{parent.disableCropBB i x-5 1}}
+   }
+push $N26aa2810
+   Dot {
+    name Dot1
+    xpos -81
+    ypos 270
+    addUserKnob {20 beDotTab l BeDot}
+    addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+   }
+   ShuffleCopy {
+    inputs 2
+    red red
+    green green
+    blue blue
+    name L_ExponBlur_ChannelsPassThrough
+    xpos -115
+    ypos 901
+   }
+   Output {
+    name Output1
+    xpos -115
+    ypos 993
+   }
+  end_group
+  Dot {
+   name Dot3
+   xpos 415
+   ypos -249
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N26806de0
+  Copy {
+   inputs 2
+   from0 rgba.alpha
+   to0 rgba.alpha
+   bbox A
+   name Copy1
+   xpos 576
+   ypos -257
+  }
+  Output {
+   name Output1
+   xpos 576
+   ypos -153
+  }
+push $N2679d400
+  Viewer {
+   frame_range 1-25
+   fps 9.699999809
+   colour_sample_bbox {-0.1763888896 0.4222222269 -0.07708333433 0.4868055582}
+   name Viewer1
+   xpos 381
+   ypos -446
+  }
+ end_group
+ Dot {
+  name Dot10
+  xpos -84
+  ypos 718
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N266bc080
+ Group {
+  name G_CoreKeyer
+  tile_color 0x7fff00ff
+  xpos 97
+  ypos 612
+  addUserKnob {20 User}
+  addUserKnob {7 weight R 0 2}
+  weight {{parent.coreWeight}}
+  addUserKnob {7 punch R 0 0.2}
+  punch {{parent.corePunch}}
+  addUserKnob {26 ""}
+  addUserKnob {7 sizeBlur l "size blur" R -5 5}
+  addUserKnob {7 multiplierBlur l "multiplier blur" R 0 10}
+  addUserKnob {7 erode R -10 10}
+ }
+  Input {
+   inputs 0
+   name In
+   xpos 576
+   ypos -594
+  }
+  Dot {
+   name Dot1
+   xpos 610
+   ypos -513
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+set N264396b0 [stack 0]
+  Dot {
+   name Dot2
+   xpos 415
+   ypos -513
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  Expression {
+   expr3 "g<((r+b)*weight+punch)? 1:a"
+   name CoreKey
+   selected true
+   xpos 381
+   ypos -431
+   addUserKnob {20 User}
+   addUserKnob {7 weight R 0 2}
+   weight {{parent.weight}}
+   addUserKnob {7 punch R 0 0.2}
+   punch {{parent.punch}}
+  }
+set N2650dd90 [stack 0]
+  Dot {
+   name Dot3
+   xpos 415
+   ypos -249
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+push $N264396b0
+  Copy {
+   inputs 2
+   from0 rgba.alpha
+   to0 rgba.alpha
+   bbox A
+   name Copy1
+   xpos 576
+   ypos -257
+  }
+  Output {
+   name Output1
+   xpos 576
+   ypos -153
+  }
+push $N2650dd90
+  Viewer {
+   frame_range 1-25
+   fps 9.699999809
+   name Viewer1
+   xpos 975
+   ypos -403
+  }
+ end_group
+ Switch {
+  inputs 2
+  which {{parent.screenType}}
+  name Switch1
+  xpos 97
+  ypos 714
+ }
+ Grade {
+  channels alpha
+  whitepoint 0.6
+  name Grade51
+  xpos 97
+  ypos 787
+ }
+ Shuffle {
+  in alpha
+  name Shuffle49
+  xpos 97
+  ypos 847
+ }
+ Matrix {
+  matrix {
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+      {{killBlackSpot} 1 {killBlackSpot}}
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+    }
+  name Matrix1
+  xpos 97
+  ypos 1075
+  addUserKnob {20 User}
+  addUserKnob {7 killBlackSpot l "black spot"}
+  killBlackSpot {{parent.blackSpotStrength}}
+ }
+ Matrix {
+  matrix {
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+      {{killBlackSpot} 1 {killBlackSpot}}
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+    }
+  name Matrix2
+  xpos 97
+  ypos 1115
+  addUserKnob {20 User}
+  addUserKnob {7 killBlackSpot l "black spot"}
+  killBlackSpot {{parent.blackSpotStrength}}
+ }
+ Matrix {
+  matrix {
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+      {{killBlackSpot} 1 {killBlackSpot}}
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+    }
+  name Matrix3
+  xpos 97
+  ypos 1153
+  addUserKnob {20 User}
+  addUserKnob {7 killBlackSpot l "black spot"}
+  killBlackSpot {{parent.blackSpotStrength}}
+ }
+ Matrix {
+  matrix {
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+      {{killBlackSpot} 1 {killBlackSpot}}
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+    }
+  name Matrix6
+  xpos 97
+  ypos 1191
+  addUserKnob {20 User}
+  addUserKnob {7 killBlackSpot l "black spot"}
+  killBlackSpot {{parent.blackSpotStrength}}
+ }
+ Matrix {
+  matrix {
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+      {{killBlackSpot} 1 {killBlackSpot}}
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+    }
+  name Matrix7
+  xpos 97
+  ypos 1217
+  addUserKnob {20 User}
+  addUserKnob {7 killBlackSpot l "black spot"}
+  killBlackSpot {{parent.blackSpotStrength}}
+ }
+ Matrix {
+  matrix {
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+      {{killBlackSpot} 1 {killBlackSpot}}
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+    }
+  name Matrix8
+  xpos 97
+  ypos 1255
+  addUserKnob {20 User}
+  addUserKnob {7 killBlackSpot l "black spot"}
+  killBlackSpot {{parent.blackSpotStrength}}
+ }
+ Matrix {
+  matrix {
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+      {{killBlackSpot} 1 {killBlackSpot}}
+      {{killBlackSpot} {killBlackSpot} {killBlackSpot}}
+    }
+  name Matrix9
+  xpos 97
+  ypos 1293
+  addUserKnob {20 User}
+  addUserKnob {7 killBlackSpot l "black spot"}
+  killBlackSpot {{parent.blackSpotStrength}}
+ }
+ Dot {
+  name Dot271
+  xpos 131
+  ypos 1537
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N15bcd410 [stack 0]
+ Dot {
+  name Dot272
+  xpos 43
+  ypos 1537
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Dot {
+  name Dot273
+  xpos 43
+  ypos 1650
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N15bcd410
+ Merge2 {
+  inputs 2
+  operation hard-light
+  name Merge92
+  xpos 97
+  ypos 1647
+ }
+ Dot {
+  name Dot274
+  xpos 131
+  ypos 1744
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N15da0670 [stack 0]
+ Dot {
+  name Dot275
+  xpos 43
+  ypos 1744
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Dot {
+  name Dot276
+  xpos 43
+  ypos 1857
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N15da0670
+ Merge2 {
+  inputs 2
+  operation hard-light
+  name Merge93
+  xpos 97
+  ypos 1854
+ }
+ Dot {
+  name Dot277
+  xpos 131
+  ypos 1908
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N15f08140 [stack 0]
+ Dot {
+  name Dot278
+  xpos 43
+  ypos 1908
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Dot {
+  name Dot279
+  xpos 43
+  ypos 2021
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N15f08140
+ Merge2 {
+  inputs 2
+  operation hard-light
+  name Merge94
+  xpos 97
+  ypos 2018
+ }
+ Dot {
+  name Dot280
+  xpos 131
+  ypos 2097
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N160ddb30 [stack 0]
+ Dot {
+  name Dot281
+  xpos 43
+  ypos 2097
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Dot {
+  name Dot282
+  xpos 43
+  ypos 2210
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N160ddb30
+ Merge2 {
+  inputs 2
+  operation hard-light
+  name Merge95
+  xpos 97
+  ypos 2207
+ }
+ Clamp {
+  name Clamp2
+  xpos 97
+  ypos 2316
+ }
+ Crop {
+  box {{curve} {curve} {input.width} {input.height}}
+  crop false
+  name Crop1
+  xpos 97
+  ypos 2414
+ }
+set N163322f0 [stack 0]
+ Blur {
+  size {{parent.edgeBlur}}
+  name Blur23
+  label "Size: \[value size]"
+  xpos 97
+  ypos 2516
+ }
+ FilterErode {
+  channels alpha
+  size {{parent.edgeErode}}
+  name FilterErode14
+  xpos 97
+  ypos 2566
+ }
+ Blur {
+  size {{parent.Blur23.size}}
+  name Blur24
+  label "Size: \[value size]"
+  xpos 97
+  ypos 2628
+ }
+ Dot {
+  name Dot7
+  xpos 131
+  ypos 2886
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+set N165f8560 [stack 0]
+ Dot {
+  name Dot8
+  xpos 17
+  ypos 2886
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+ Group {
+  name L_ExponBlur4
+  help "L_ExponBlur_v03 The ExponBlur blurs an image with an exponential falloff based upon an alpha. Most often used with roto shapes. The effect is applied to RGBA only. (For any questions, comments or suggestions please email gizmos@luma-pictures.com)"
+  note_font "Bitstream Vera Sans"
+  xpos -17
+  ypos 2962
+  addUserKnob {20 ExponBlur}
+  addUserKnob {26 Description l "" +STARTLINE T ":ExponBlur: by Luma Pictures\n\nExponentially blurs image outward or inward"}
+  addUserKnob {14 size R -40 40}
+  size {{parent.expoBlurSize}}
+  addUserKnob {7 Multiplier R 0 10}
+  Multiplier {{parent.expoBlurMultiplier}}
+  addUserKnob {6 crop l "crop to format" +STARTLINE}
+  addUserKnob {6 disableCropBB l "disable CropBB" -STARTLINE}
+  addUserKnob {26 ""}
+ }
+  Input {
+   inputs 0
+   name Input1
+   xpos -372
+   ypos 265
+  }
+set N262f6f00 [stack 0]
+  Invert {
+   name L_ExponBlur_Invert4
+   xpos -372
+   ypos 330
+   disable {{"parent.size>=0 ? 1 : 0" i}}
+  }
+set N262fb410 [stack 0]
+  Blur {
+   size {{parent.size.w i} {parent.size.h i}}
+   crop {{parent.crop i}}
+   name L_ExponBlur_Blur1
+   label "\[value size]"
+   xpos -592
+   ypos 479
+  }
+push $N262fb410
+  Blur {
+   size {{parent.size.w*parent.Multiplier i} {parent.size.h*parent.Multiplier i}}
+   crop {{parent.crop i}}
+   name L_ExponBlur_Blur2
+   label "\[value size]"
+   xpos -482
+   ypos 479
+  }
+  Merge2 {
+   inputs 2
+   name L_ExponBlur_Merge7
+   xpos -537
+   ypos 572
+  }
+push $N262fb410
+  Blur {
+   size {{parent.size.w*parent.Multiplier*2 i} {parent.size.h*parent.Multiplier*2 i}}
+   crop {{parent.crop i}}
+   name L_ExponBlur_Blur3
+   label "\[value size]"
+   xpos -372
+   ypos 479
+  }
+  Merge2 {
+   inputs 2
+   name L_ExponBlur_Merge8
+   xpos -477
+   ypos 637
+  }
+push $N262fb410
+  Blur {
+   size {{parent.size.w*parent.Multiplier*4 i} {parent.size.h*parent.Multiplier*4 i}}
+   crop {{parent.crop i}}
+   name L_ExponBlur_Blur4
+   label "\[value size]"
+   xpos -262
+   ypos 479
+  }
+  Merge2 {
+   inputs 2
+   name L_ExponBlur_Merge9
+   xpos -372
+   ypos 709
+  }
+  Invert {
+   name L_ExponBlur_Invert5
+   xpos -372
+   ypos 774
+   disable {{"parent.size>=0 ? 1 : 0" i}}
+  }
+  Clamp {
+   channels alpha
+   name L_ExponBlur_clampOutput
+   xpos -372
+   ypos 833
+  }
+set N2696d740 [stack 0]
+  Viewer {
+   input_process false
+   name Viewer1
+   xpos -372
+   ypos 372
+  }
+push $N2696d740
+  Crop {
+   box {0 0 {input.width i} {input.height i}}
+   reformat true
+   crop false
+   name L_ExponBlur_Crop1
+   xpos -372
+   ypos 901
+   disable {{parent.disableCropBB i x-5 1}}
+  }
+push $N262f6f00
+  Dot {
+   name Dot1
+   xpos -81
+   ypos 270
+   addUserKnob {20 beDotTab l BeDot}
+   addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+  }
+  ShuffleCopy {
+   inputs 2
+   red red
+   green green
+   blue blue
+   name L_ExponBlur_ChannelsPassThrough
+   xpos -115
+   ypos 901
+  }
+  Output {
+   name Output1
+   xpos -115
+   ypos 993
+  }
+ end_group
+ Dot {
+  name Dot6
+  xpos 17
+  ypos 3020
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N165f8560
+ Dissolve {
+  inputs 2
+  which {{expoBlurMix}}
+  name Dissolve1
+  xpos 97
+  ypos 3010
+ }
+ ChannelMerge {
+  inputs 2
+  name ChannelMerge1
+  xpos 97
+  ypos 3165
+ }
+ Clamp {
+  name Clamp4
+  xpos 97
+  ypos 3267
+ }
+ CopyBBox {
+  inputs 2
+  name CopyBBox1
+  xpos 97
+  ypos 3339
+ }
+set N15d3f1f0 [stack 0]
+ Dot {
+  name Dot283
+  xpos 131
+  ypos 3638
+  addUserKnob {20 beDotTab l BeDot}
+  addUserKnob {22 rootName l "Add Root Name" -STARTLINE T "nuke.load('beAddRootToLabel.py'), beAddRootToLabel()"}
+ }
+push $N2664d4b0
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 rgba.alpha
+  bbox B
+  name Copy17
+  xpos 576
+  ypos 3628
+ }
+ Output {
+  name Output1
+  xpos 576
+  ypos 3731
+ }
+push $N163322f0
+push $N15d3f1f0
+ Viewer {
+  inputs 2
+  frame_range 100-100
+  fps 25
+  name Viewer1
+  xpos 97
+  ypos 639
+ }
+end_group

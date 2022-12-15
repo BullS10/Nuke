@@ -1,0 +1,33 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Expression {
+ temp_name0 a1
+ temp_expr0 0.17883277
+ temp_name1 b1
+ temp_expr1 0.28466892
+ temp_name2 c1
+ temp_expr2 0.55991073
+ expr0 "r > 1 ? a1 * log ((r) - b1) + c1 : 0.5 * sqrt(r)"
+ expr1 "g > 1 ? a1 * log ((g) - b1) + c1 : 0.5 * sqrt(g)"
+ expr2 "b > 1 ? a1 * log ((b) - b1) + c1 : 0.5 * sqrt(b)"
+ name HyperLogGamma
+ selected true
+ xpos -984
+ ypos -2222
+}
+Expression {
+ temp_name0 a1
+ temp_expr0 0.17883277
+ temp_name1 b1
+ temp_expr1 0.28466892
+ temp_name2 c1
+ temp_expr2 0.55991073
+ expr0 "r > 0.5 ? exp( (r - c1) / a1) + b1 : 4 * pow(r,2)"
+ expr1 "g > 0.5 ? exp( (g - c1) / a1) + b1 : 4 * pow(g,2)"
+ expr2 "b > 0.5 ? exp( (b - c1) / a1) + b1 : 4 * pow(b,2)"
+ name HyperLogGamma_inv
+ selected true
+ xpos -984
+ ypos -2146
+}
