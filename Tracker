@@ -1,0 +1,46 @@
+import nuke
+def tracker_transform_exporter():
+
+    node = nuke.selectedNode()
+    if "Tracker" in node.Class():
+        ref_frame = node['reference_frame'].value()
+
+        p = nuke.Panel('Tracker Transform Exporter')
+        p.addSingleLineInput('Reference Frame', str(int(ref_frame)))
+        p.addEnumerationPulldown('Transform', 'Matchmove Stabilize')
+        ret = p.show()
+        if ret:
+            tracker_name = node['name'].value()
+            ref_frame = int(p.value('Reference Frame'))
+            transform_type = p.value('Transform')
+            transform_node = nuke.nodes.Transform()
+            transform_node.setXpos(node.xpos()+35)
+            transform_node.setYpos(node.ypos()+50)
+
+            ref_knob = nuke.Int_Knob('ref_frame', 'reference frame')
+            ref_knob.setValue(ref_frame)
+            transform_node.addKnob(ref_knob)
+
+            if transform_type == "Matchmove":
+
+                transform_node['translate'].setExpression('{0}.translate-{0}.translate(ref_frame)'.format(tracker_name))
+                transform_node['rotate'].setExpression('{0}.rotate-{0}.rotate(ref_frame)'.format(tracker_name))
+                transform_node['scale'].setExpression('-({0}.scale(ref_frame)-1-{0}.scale)'.format(tracker_name))
+                transform_node['center'].setExpression('{0}.center+({0}.translate(ref_frame))'.format(tracker_name))    
+                transform_node.setName('%s_%s1' % (tracker_name, transform_type ))
+                transform_node['label'].setValue('[value ref_frame]')
+
+            if transform_type == "Stabilize":
+
+                transform_node['translate'].setExpression('-({0}.translate-{0}.translate(ref_frame))'.format(tracker_name))
+                transform_node['rotate'].setExpression('-({0}.rotate-{0}.rotate(ref_frame))'.format(tracker_name))
+                transform_node['scale'].setExpression('-1/(({0}.scale(ref_frame)-1)-{0}.scale)'.format(tracker_name))
+                transform_node['center'].setExpression('{0}.center+{0}.translate'.format(tracker_name))    
+                transform_node.setName('%s_%s1' % (tracker_name, transform_type ))
+                transform_node['label'].setValue('[value ref_frame]')
+            return
+        else:
+            return
+
+    else:
+        return
