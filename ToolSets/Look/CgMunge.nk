@@ -1,0 +1,1201 @@
+set cut_paste_input [stack 0]
+
+version 14.0 v3
+
+push $cut_paste_input
+
+Group {
+
+name CGMunge
+
+tile_color 0x3a89d8ff
+
+label v01.1
+
+selected true
+
+xpos 6869
+
+ypos 23927
+
+addUserKnob {20 User}
+
+addUserKnob {26 Lens l "" +STARTLINE T Lens}
+
+addUserKnob {41 white l INVISIBLE +INVISIBLE T Grade1.white}
+
+addUserKnob {7 vignette}
+
+vignette 0.25
+
+addUserKnob {41 size l "edge softening" T lensBlur.size}
+
+addUserKnob {41 rgpx l "chromatic abber" T ChromaticAberration4_1.rgpx}
+
+addUserKnob {26 Filter l "" +STARTLINE T Filter}
+
+addUserKnob {41 mix l promist T Promist1.mix}
+
+addUserKnob {41 subtract_brightness l "promist offset" T Promist1.subtract_brightness}
+
+addUserKnob {41 size_1 l "red bleed" T BlurRED.size}
+
+addUserKnob {41 size_2 l diffusion T BlurDiff.size}
+
+addUserKnob {26 BlackSoftClip l "" +STARTLINE T BlackSoftClip}
+
+addUserKnob {41 lift_1 l Lift T BlackSoftclip.lift}
+
+addUserKnob {41 pivot l Limit T BlackSoftclip.pivot}
+
+addUserKnob {41 soft l Smooth T BlackSoftclip.soft}
+
+addUserKnob {26 ""}
+
+addUserKnob {26 Crop_text l crop T ""}
+
+addUserKnob {6 cropOn l "" -STARTLINE}
+
+addUserKnob {4 Crop l "" -STARTLINE M {"tfh_2k 2156x1388" "gb_2k 2156x1388 Overscan" "" "" "" "" "" ""}}
+
+Crop "gb_2k 2156x1388 Overscan"
+
+}
+
+BackdropNode {
+
+inputs 0
+
+name BackdropNode4
+
+tile_color 0x5a5a5aff
+
+label "lens edge"
+
+note_font_size 42
+
+xpos -979
+
+ypos 412
+
+bdwidth 199
+
+bdheight 177
+
+}
+
+Input {
+
+inputs 0
+
+name Input1
+
+xpos -925
+
+ypos -175
+
+}
+
+set N286c3540 [stack 0]
+
+Dot {
+
+name Dot3
+
+xpos -658
+
+ypos -136
+
+}
+
+Multiply {
+
+value 0
+
+name Multiply1
+
+xpos -686
+
+ypos -106
+
+}
+
+Radial {
+
+area {{width} 0 0 {height}}
+
+softness 0
+
+name Radial1
+
+xpos -706
+
+ypos 301
+
+}
+
+Blur {
+
+channels rgba
+
+size 300
+
+name Blur5
+
+xpos -706
+
+ypos 430
+
+}
+
+Invert {
+
+channels rgba
+
+name Invert3
+
+xpos -706
+
+ypos 480
+
+}
+
+set N286f6b40 [stack 0]
+
+Dot {
+
+name Dot31
+
+xpos -672
+
+ypos 545
+
+}
+
+push $N286f6b40
+
+push $N286c3540
+
+Crop {
+
+box {-225 -200 2382 1607}
+
+crop false
+
+name tfh_2k_Overscan
+
+xpos -855
+
+ypos -108
+
+disable {{!parent.cropOn}}
+
+}
+
+push $N286c3540
+
+Crop {
+
+box {0 0 2156 1388}
+
+crop false
+
+name tfh_2k
+
+xpos -1017
+
+ypos -111
+
+disable {{!parent.cropOn}}
+
+}
+
+Switch {
+
+inputs 2
+
+which {{Crop}}
+
+name overscanSwitch
+
+xpos -933
+
+ypos -49
+
+}
+
+set N2871d230 [stack 0]
+
+Dot {
+
+name Dot1
+
+xpos -764
+
+ypos -45
+
+}
+
+Shuffle {
+
+red black
+
+green black
+
+blue black
+
+alpha black
+
+name Shuffle1
+
+xpos -798
+
+ypos 11
+
+}
+
+Rectangle {
+
+invert true
+
+area {{offset i} {offset i} {width-offset i} {height-offset i}}
+
+name Rectangle1
+
+xpos -798
+
+ypos 134
+
+addUserKnob {20 User}
+
+addUserKnob {3 offset}
+
+offset 2
+
+}
+
+push $N2871d230
+
+Blur {
+
+channels rgba
+
+mix 0.5
+
+name BlurDiff
+
+xpos -933
+
+ypos -23
+
+}
+
+set N2874ddd0 [stack 0]
+
+Dot {
+
+name Dot2
+
+xpos -1104
+
+ypos 98
+
+}
+
+set N2875bb80 [stack 0]
+
+push $N2875bb80
+
+push $N2874ddd0
+
+Group {
+
+name Promist1
+
+xpos -933
+
+ypos 21
+
+addUserKnob {20 User}
+
+addUserKnob {7 subtract_brightness l "subtract brightness" t "Pull this value down a touch if the promist effect is making things a little too glowy." R -1 0}
+
+subtract_brightness -0.01
+
+addUserKnob {7 mix t "Controls how much of the effect is present. The default value of 0.1 roughly matches selected plates from Avatar."}
+
+mix 0.16
+
+}
+
+Input {
+
+inputs 0
+
+name Input1
+
+xpos -557
+
+ypos -398
+
+}
+
+Dot {
+
+name Dot1
+
+xpos -523
+
+ypos -306
+
+}
+
+set N2876f850 [stack 0]
+
+Blur {
+
+channels rgba
+
+size 260
+
+name Blur2
+
+label broad
+
+xpos -501
+
+ypos -223
+
+}
+
+push $N2876f850
+
+Blur {
+
+channels rgba
+
+size 67
+
+name Blur1
+
+label tight
+
+xpos -603
+
+ypos -221
+
+}
+
+Dissolve {
+
+inputs 2
+
+which 0.5
+
+name Dissolve1
+
+xpos -555
+
+ypos -157
+
+}
+
+Grade {
+
+add {{parent.subtract_brightness}}
+
+unpremult -rgba.alpha
+
+name Grade1
+
+label "sub brightness"
+
+xpos -555
+
+ypos -50
+
+}
+
+set N2879c2f0 [stack 0]
+
+push $N2876f850
+
+Dot {
+
+name Dot2
+
+xpos -652
+
+ypos -306
+
+}
+
+Dissolve {
+
+inputs 2
+
+which {{parent.mix}}
+
+name Dissolve2
+
+label "master mix"
+
+xpos -686
+
+ypos -40
+
+}
+
+Output {
+
+name Output1
+
+xpos -686
+
+ypos 111
+
+}
+
+push $N2879c2f0
+
+push 0
+
+Viewer {
+
+inputs 2
+
+input_number 1
+
+center_fstop 0
+
+input_process false
+
+name Viewer1
+
+xpos -445
+
+ypos -151
+
+}
+
+end_group
+
+Unpremult {
+
+name Unpremult1
+
+xpos -933
+
+ypos 52
+
+}
+
+Copy {
+
+inputs 2
+
+from0 rgba.alpha
+
+to0 rgba.alpha
+
+name Copy1
+
+xpos -933
+
+ypos 88
+
+}
+
+Premult {
+
+name Premult1
+
+xpos -933
+
+ypos 141
+
+}
+
+push $N2874ddd0
+
+Keymix {
+
+inputs 3
+
+name Keymix2
+
+xpos -1138
+
+ypos 183
+
+}
+
+set N28863320 [stack 0]
+
+push $N28863320
+
+Group {
+
+name ChromaticAberration4_1
+
+note_font "Lucida Grande"
+
+xpos -1138
+
+ypos 253
+
+mapsize {0.15 0.15}
+
+addUserKnob {20 "" l User}
+
+addUserKnob {4 type t "apply effect to input only, or apply and layer over BG input" M {"effect only" "effect and layer over BG"}}
+
+addUserKnob {6 checker t "turns on a B/W checkerboard for easier setup" -STARTLINE}
+
+addUserKnob {7 rgpx l red/green R -5 5}
+
+rgpx 5
+
+addUserKnob {7 bypx l blue/yellow R -5 5}
+
+bypx {{-this.rgpx}}
+
+addUserKnob {14 center R 0 100}
+
+center {{actual_format.width/2} {actual_format.height/2}}
+
+addUserKnob {7 aspect -STARTLINE R 0.1 2}
+
+aspect 1
+
+addUserKnob {6 applyRed l INVISIBLE t "enables effect on red channel" -STARTLINE +INVISIBLE}
+
+applyRed true
+
+addUserKnob {6 applyBlue l INVISIBLE t "enables effect on blue channel" -STARTLINE +INVISIBLE}
+
+applyBlue true
+
+addUserKnob {26 ""}
+
+addUserKnob {18 godraysRGB l "godrays RGB" R 0 2}
+
+godraysRGB {1 1 1}
+
+addUserKnob {6 godraysRGB_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+
+addUserKnob {6 godraysRGB_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+
+addUserKnob {26 ""}
+
+addUserKnob {18 blurRGB l "blur RGB" t "blurs red, green & blue independently before layering over BG" R 0 10}
+
+blurRGB {0 0 0}
+
+addUserKnob {6 blurRGB_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+
+addUserKnob {6 blurRGB_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+
+}
+
+Input {
+
+inputs 0
+
+name Input1
+
+xpos -442
+
+ypos -234
+
+}
+
+set N2887b2c0 [stack 0]
+
+Input {
+
+inputs 0
+
+name BG
+
+xpos -66
+
+ypos -36
+
+number 1
+
+}
+
+set N28880140 [stack 0]
+
+Dot {
+
+name Dot1
+
+xpos 45
+
+ypos 366
+
+}
+
+CheckerBoard2 {
+
+inputs 0
+
+color0 0
+
+color1 1
+
+color2 0
+
+color3 1
+
+name CheckerBoard1
+
+xpos -46
+
+ypos -310
+
+}
+
+Shuffle {
+
+red green
+
+blue green
+
+alpha black
+
+name Shuffle2
+
+tile_color 0x9e3c6300
+
+xpos -46
+
+ypos -234
+
+}
+
+push $N2887b2c0
+
+Switch {
+
+inputs 2
+
+which {{parent.checker}}
+
+name Switch1
+
+xpos -197
+
+ypos -234
+
+}
+
+AddChannels {
+
+channels rgb
+
+name AddChannels1
+
+xpos -197
+
+ypos -35
+
+}
+
+set N288b52a0 [stack 0]
+
+Transform {
+
+scale {{parent.rgpx/input.width+1 i} {(parent.rgpx/input.width+1)/parent.aspect i}}
+
+center {{parent.center.w i} {parent.center.h i}}
+
+name Transform1
+
+xpos -74
+
+ypos 146
+
+}
+
+GodRays {
+
+scale {{godraysRGB.b i}}
+
+name GodRays3
+
+xpos -74
+
+ypos 174
+
+}
+
+Blur {
+
+channels rgba
+
+size {{parent.blurRGB.b i}}
+
+name Blur3
+
+label blue
+
+xpos -74
+
+ypos 218
+
+}
+
+Merge2 {
+
+inputs 2
+
+operation under
+
+also_merge all
+
+name Merge2
+
+label "for blue"
+
+xpos -74
+
+ypos 353
+
+disable {{parent.type==0 i}}
+
+}
+
+push $N28880140
+
+push $N288b52a0
+
+Transform {
+
+scale {{parent.bypx/input.width+1 i} {(parent.bypx/input.width+1)*parent.aspect i}}
+
+center {{parent.center.w i} {parent.center.h i}}
+
+name Transform2
+
+xpos -197
+
+ypos 112
+
+}
+
+GodRays {
+
+scale {{godraysRGB.r i}}
+
+name GodRays2
+
+xpos -197
+
+ypos 140
+
+}
+
+Blur {
+
+channels rgba
+
+size {{parent.blurRGB.r i}}
+
+name Blur2
+
+label red
+
+xpos -197
+
+ypos 184
+
+}
+
+Merge2 {
+
+inputs 2
+
+operation under
+
+also_merge all
+
+name Merge1
+
+label "for red"
+
+xpos -197
+
+ypos 324
+
+disable {{parent.type==0 i}}
+
+}
+
+push $N28880140
+
+push $N288b52a0
+
+GodRays {
+
+scale {{godraysRGB.g i}}
+
+name GodRays1
+
+xpos -310
+
+ypos 97
+
+}
+
+Blur {
+
+channels rgba
+
+size {{parent.blurRGB.g i}}
+
+name Blur1
+
+label green
+
+xpos -310
+
+ypos 141
+
+}
+
+Merge2 {
+
+inputs 2
+
+operation under
+
+also_merge all
+
+name Merge3
+
+label "for green"
+
+xpos -310
+
+ypos 223
+
+disable {{parent.type==0 i}}
+
+}
+
+Copy {
+
+inputs 2
+
+from0 rgba.red
+
+to0 rgba.red
+
+name Copy1
+
+xpos -310
+
+ypos 324
+
+}
+
+Copy {
+
+inputs 2
+
+from0 rgba.blue
+
+to0 rgba.blue
+
+name Copy2
+
+xpos -310
+
+ypos 483
+
+}
+
+CopyBBox {
+
+inputs 2
+
+name CopyBBox1
+
+tile_color 0x9e3c6300
+
+xpos -442
+
+ypos 562
+
+disable {{parent.type==1}}
+
+}
+
+Output {
+
+name Output1
+
+xpos -442
+
+ypos 617
+
+}
+
+end_group
+
+Keymix {
+
+inputs 3
+
+bbox B
+
+name Keymix1
+
+xpos -933
+
+ypos 247
+
+disable {{parent.tfh_2k.disable}}
+
+}
+
+Blur {
+
+channels {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+
+size 1
+
+name BlurRED
+
+xpos -933
+
+ypos 366
+
+}
+
+Blur {
+
+inputs 1+1
+
+channels rgba
+
+size 4
+
+name lensBlur
+
+xpos -933
+
+ypos 480
+
+}
+
+Grade {
+
+inputs 1+1
+
+white 0.05
+
+black_clamp false
+
+unpremult -rgba.alpha
+
+mix {{parent.vignette}}
+
+name Grade1
+
+xpos -933
+
+ypos 541
+
+}
+
+set N289b9a10 [stack 0]
+
+Group {
+
+name BlackSoftclip
+
+xpos -933
+
+ypos 637
+
+addUserKnob {20 m_blackSoftClip l M_BlackSoftClip}
+
+addUserKnob {41 lift l Lift t "- how much to lift blacks ( keep \"lift\" less than \"\"pivot\") \n" T RealBlackSoftClip1.lift}
+
+addUserKnob {41 pivot l Limit t "- up to what value to lift" T RealBlackSoftClip1.pivot}
+
+addUserKnob {41 soft l Smooth t "- creates soft transition between original and lifted\n0 = 0% (straight line)\n1 = 100% (the smoothest)\n" T RealBlackSoftClip1.soft}
+
+}
+
+Input {
+
+inputs 0
+
+name Input1
+
+xpos 585
+
+ypos 538
+
+}
+
+Expression {
+
+expr0 (r<pivot.r)?r+(lift.r*(pow((1-(r/pivot.r)),((((pivot.r/lift.r)-1)*soft.r)+1)))):r
+
+expr1 (g<pivot.g)?g+(lift.g*(pow((1-(g/pivot.g)),((((pivot.g/lift.g)-1)*soft.g)+1)))):g
+
+expr2 (b<pivot.b)?b+(lift.b*(pow((1-(b/pivot.b)),((((pivot.b/lift.b)-1)*soft.b)+1)))):b
+
+channel3 none
+
+name RealBlackSoftClip1
+
+selected true
+
+xpos 585
+
+ypos 608
+
+addUserKnob {20 User}
+
+addUserKnob {19 pivot}
+
+pivot 0.03
+
+addUserKnob {6 pivot_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+
+addUserKnob {6 pivot_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+
+addUserKnob {19 lift}
+
+lift {0 0 0 0}
+
+addUserKnob {6 lift_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+
+addUserKnob {6 lift_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+
+addUserKnob {19 soft}
+
+soft {0 0 0 0}
+
+addUserKnob {6 soft_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+
+addUserKnob {6 soft_panelDropped_1 l "panel dropped state" -STARTLINE +HIDDEN}
+
+}
+
+Output {
+
+name Output1
+
+xpos 585
+
+ypos 678
+
+}
+
+end_group
+
+set N289cacd0 [stack 0]
+
+Crop {
+
+box {{tfh_2k_Overscan.box} {tfh_2k_Overscan.box} {tfh_2k_Overscan.box} {tfh_2k_Overscan.box}}
+
+softness {{tfh_2k_Overscan.softness}}
+
+reformat {{tfh_2k_Overscan.reformat}}
+
+intersect {{tfh_2k_Overscan.intersect}}
+
+crop {{tfh_2k_Overscan.crop x13 1}}
+
+name tfh_2k_Overscan_linked
+
+xpos -852
+
+ypos 743
+
+disable {{tfh_2k_Overscan.disable}}
+
+}
+
+push $N289cacd0
+
+Crop {
+
+box {{tfh_2k.box} {tfh_2k.box} {tfh_2k.box} {tfh_2k.box}}
+
+softness {{tfh_2k.softness}}
+
+reformat {{tfh_2k.reformat}}
+
+intersect {{tfh_2k.intersect}}
+
+crop {{tfh_2k.crop x13 1 x1001 1}}
+
+name tfh_2k_linked
+
+xpos -1036
+
+ypos 743
+
+disable {{tfh_2k.disable}}
+
+}
+
+Switch {
+
+inputs 2
+
+which {{overscanSwitch.which}}
+
+name overscanSwitch_linked
+
+xpos -940
+
+ypos 831
+
+disable {{overscanSwitch.disable}}
+
+}
+
+Output {
+
+name Output1
+
+xpos -940
+
+ypos 905
+
+}
+
+push $N289b9a10
+
+push 0
+
+Viewer {
+
+inputs 2
+
+input_number 1
+
+center_fstop 0
+
+input_process false
+
+name Viewer1
+
+xpos -596
+
+ypos 220
+
+}
+
+end_group
